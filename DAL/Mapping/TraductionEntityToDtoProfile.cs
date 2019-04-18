@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace DAL.Mapping
 {
-    public class UserEntityToDtoProfile: Profile
+    public class TraductionEntityToDtoProfile : Profile
     {
-        public UserEntityToDtoProfile()
+        public TraductionEntityToDtoProfile()
         {
-            CreateMap<User, UserDTO>();
-            CreateMap<UserDTO, User>();
+            CreateMap<Traduction, TraductionDTO>();
+            CreateMap<TraductionDTO, Traduction>();
         }
     }
 }

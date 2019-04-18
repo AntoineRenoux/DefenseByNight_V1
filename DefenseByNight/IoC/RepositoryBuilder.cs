@@ -15,6 +15,10 @@ namespace DefenseByNight.IoC
         {
             builder.RegisterType<DBNContext>().InstancePerLifetimeScope();
 
+            #region Reference
+            builder.RegisterType<TraductionRepository>().As<ITraductionRepository>();
+            #endregion
+
             builder.RegisterType<UserRepository>().As<IUserRepository>();
         }
     }

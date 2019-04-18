@@ -12,6 +12,10 @@ namespace DefenseByNight.IoC
     {
         public static void Register(ContainerBuilder builder)
         {
+            #region Reference
+            builder.RegisterType<TraductionService>().As<ITraductionService>();
+            #endregion
+
             builder.RegisterType<UserService>().As<IUserService>();
         }
     }

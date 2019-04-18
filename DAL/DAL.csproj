@@ -56,10 +56,14 @@
     <Compile Include="BaseRepository.cs" />
     <Compile Include="DBNContext.cs" />
     <Compile Include="DBNDBInitializer.cs" />
+    <Compile Include="Interfaces\ITraductionRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Mapping\TraductionEntityToDtoProfile.cs" />
     <Compile Include="Mapping\UserEntityToDtoProfile.cs" />
+    <Compile Include="Models\Traduction.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\TraductionRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

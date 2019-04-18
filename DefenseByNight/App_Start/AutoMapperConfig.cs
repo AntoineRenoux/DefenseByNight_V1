@@ -12,6 +12,7 @@ namespace DefenseByNight.App_Start
         public static void Configure()
         {
             Mapper.Initialize(x => {
+                x.AddProfile<TraductionEntityToDtoProfile>();
                 x.AddProfile<UserEntityToDtoProfile>();
             });
         }
