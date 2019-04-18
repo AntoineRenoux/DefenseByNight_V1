@@ -5,12 +5,11 @@ Site permettant le traitement des AIP et la gestion de la cité de la Défense
 
 - Gestion des fiches de personnages
 
-  -> Création de personnage
+  * Création de personnage
   
-  -> Dépense d'xp
-  
-  
-  -> Gestion du background du personnage
+  * Dépense d'xp
+ 
+  * Gestion du background du personnage
   
   
 - Gestion des AIP
