@@ -10,6 +10,7 @@ namespace BLL.Enum
     {
         public readonly static string GEN_LBL_SITE_NAME = "GEN_LBL_SITE_NAME";
         public readonly static string GEN_LBL_CONNEXION = "GEN_LBL_CONNEXION";
+        public readonly static string GEN_LBL_REGISTRATION = "GEN_LBL_REGISTRATION";
 
         public readonly static string GEN_LBL_FIRSTNAME = "GEN_LBL_FIRSTNAME";
         public readonly static string GEN_LBL_LASTNAME = "GEN_LBL_LASTNAME";

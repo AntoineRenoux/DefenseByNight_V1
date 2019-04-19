@@ -17,5 +17,9 @@ namespace BLL.Enum
         public readonly static string ERR_ALIAS_MISSING = "ERR_ALIAS_MISSING";
         #endregion
 
+        #region Wrong input
+        public readonly static string ERR_PASSWORD_TO_SHORT = "ERR_PASSWORD_TO_SHORT";
+        #endregion
+
     }
 }

@@ -39,7 +39,9 @@ namespace DefenseByNight.App_Start
                         "~/Scripts/moment.min.js",
                         "~/Scripts/moment-with-locales.min.js"));
 
-            LoginBundleConfig.RegisterBundles(bundles);
+            bundles.Add(new ScriptBundle("~/bundles/custom-validator-login").Include(
+                      "~/Scripts/Custom/validation-connexion.js",
+                      "~/Scripts/Custom/validation-registration.js"));
 
         }
     }

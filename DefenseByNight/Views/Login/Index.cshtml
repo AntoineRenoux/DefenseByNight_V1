@@ -1,0 +1,95 @@
+﻿@model Dictionary<string, string>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model[EnumRessource.GEN_LBL_SITE_NAME] - @Model[EnumRessource.GEN_LBL_CONNEXION]</title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/fontawesome")
+
+</head>
+<body>
+
+
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="title">@Model[EnumRessource.GEN_LBL_SITE_NAME]</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="loginForm collapse in">
+                            @Html.Partial("_Connexion", new UserConnexionViewModel())
+                        </div>
+                        <div class="text-center">
+                            <a id="changeForm" href=".loginForm" data-toggle="collapse" aria-expanded="false" aria-controls="#loginForm">@Model[EnumRessource.GEN_LBL_REGISTRATION]</a>
+                        </div>
+                        <br />
+                        <div class="loginForm collapse">
+                            @Html.Partial("_Registration", new UserRegistrationViewModel())
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @Html.HiddenFor(m => m[EnumErrorsMessages.ERR_EMAIL_MISSING], new { id = "err_email_missing" })
+    @Html.HiddenFor(m => m[EnumErrorsMessages.ERR_PASSWORD_MISSING], new { id = "err_password_missing" })
+    @Html.HiddenFor(m => m[EnumErrorsMessages.ERR_PASSWORD_TO_SHORT], new { id = "err_password_toshort" })
+
+    @Html.HiddenFor(m => m[EnumRessource.GEN_LBL_EMAIL], new { id = "res_email_lbl" })
+    @Html.HiddenFor(m => m[EnumRessource.GEN_LBL_PASSWORD], new { id = "res_password_lbl" })
+    @Html.HiddenFor(m => m[EnumRessource.GEN_LBL_CONNEXION], new { id = "res_connexion_lbl" })
+    @Html.HiddenFor(m => m[EnumRessource.GEN_LBL_FIRSTNAME], new { id = "res_firstname_lbl" })
+    @Html.HiddenFor(m => m[EnumRessource.GEN_LBL_LASTNAME], new { id = "res_lastname_lbl" })
+    @Html.HiddenFor(m => m[EnumRessource.GEN_LBL_ALIAS], new { id = "res_alias_lbl" })
+    @Html.HiddenFor(m => m[EnumRessource.GEN_LBL_BIRTHDATE], new { id = "res_birthdate_lbl" })
+    @Html.HiddenFor(m => m[EnumRessource.GEN_LBL_REGISTRATION], new { id = "res_registration_lbl" })
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/custom-validator-login")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#res_email_connexion_lbl').text($('#res_email_lbl').val());
+            $('#res_password_connexion_lbl').text($('#res_password_lbl').val());
+            $('#submitButton').text($('#res_connexion_lbl').val());
+
+            $('#res_firstname_registration_lbl').text($('#res_firstname_lbl').val());
+            $('#res_lastname_registration_lbl').text($('#res_lastname_lbl').val());
+            $('#res_alias_registration_lbl').text($('#res_alias_lbl').val());
+            $('#res_email_registration_lbl').text($('#res_email_lbl').val());
+            $('#res_password_registration_lbl').text($('#res_password_lbl').val());
+            $('#res_password2_registration_lbl').text($('#res_password_lbl').val());
+            $('#res_birthdate_registration_lbl').text($('#res_birthdate_lbl').val());
+            $('#createUser').val($('#res_registration_lbl').val());
+        });
+
+        $('#changeForm').on('click', function () {
+
+            if ($('#changeForm').text() == '@Model[EnumRessource.GEN_LBL_REGISTRATION]') {
+                $('#changeForm').text('@Model[EnumRessource.GEN_LBL_CONNEXION]')
+            }
+            else {
+                $('#changeForm').text('@Model[EnumRessource.GEN_LBL_REGISTRATION]')
+            }
+        });
+
+    </script>
+
+</body>
+</html>
+
+

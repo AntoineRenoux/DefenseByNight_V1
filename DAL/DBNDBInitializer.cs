@@ -20,6 +20,7 @@ namespace DAL
             {
                 new Traduction{LCID = 1036, Key = "GEN_LBL_SITE_NAME", Text = "Defence By Night"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_CONNEXION", Text = "Connexion"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_REGISTRATION", Text = "Inscription"},
 
                 new Traduction{LCID = 1036, Key = "GEN_LBL_FIRSTNAME", Text = "Prénom"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_LASTNAME", Text = "Nom de famille"},
@@ -42,6 +43,8 @@ namespace DAL
                 new Traduction{LCID = 1036, Key = "ERR_PASSWORD_MISSING", Text = "Le mot de passe n'est pas renseigné."},
                 new Traduction{LCID = 1036, Key = "ERR_BIRTHDATE_MISSING", Text = "La date de naissance n'est pas renseignée."},
                 new Traduction{LCID = 1036, Key = "ERR_ALIAS_MISSING", Text = "Le pseudo n'est pas renseigné."},
+
+                new Traduction{LCID = 1036, Key = "ERR_PASSWORD_TO_SHORT", Text = "Le mot de passe doit faire au moins 6 carractères."},
             };
 
             errorMessages.ForEach(t =>

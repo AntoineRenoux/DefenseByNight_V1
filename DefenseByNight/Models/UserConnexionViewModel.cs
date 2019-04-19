@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DefenseByNight.Models
 {
     public class UserConnexionViewModel
     {
-        public int UserId { get; set; }
-
         [Required]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
@@ -18,9 +12,6 @@ namespace DefenseByNight.Models
         [Required]
         [DataType(DataType.Password)]
         [MinLength(6)]
-        //[RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,15}$")]
         public string Password { get; set; }
-
-        public Dictionary<string, string> Traductions;
     }
 }
