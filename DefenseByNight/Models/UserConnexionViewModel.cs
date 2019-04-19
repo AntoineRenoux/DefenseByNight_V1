@@ -17,7 +17,8 @@ namespace DefenseByNight.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,15}$")]
+        [MinLength(6)]
+        //[RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,15}$")]
         public string Password { get; set; }
 
         public Dictionary<string, string> Traductions;

@@ -17,6 +17,7 @@ namespace DefenseByNight.Areas.Login.Controllers
         }
 
         // GET: Login/Reception
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var model = new UserConnexionViewModel();

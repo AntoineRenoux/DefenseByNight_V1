@@ -14,10 +14,16 @@ namespace DefenseByNight.Areas.Login.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Connexion(UserConnexionViewModel model)
         {
-            return RedirectToAction("Index", "Home", new { area = "Portal"});
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index", "Home", new { area = "Portal" });
+            }
+
+            return RedirectToAction("Index", "Reception");
         }
     }
 }
