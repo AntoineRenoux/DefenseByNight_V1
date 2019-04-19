@@ -3,6 +3,10 @@
     src: url('../fonts/Northwood High.ttf');
 }
 
+body{
+    background-image: url("Images/Background-Connexion.jpg");
+}
+
 .title {
     font-family: "Northwood High";
     font-size: 50px;

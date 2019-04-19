@@ -43,6 +43,11 @@ namespace DefenseByNight.App_Start
                       "~/Scripts/Custom/validation-connexion.js",
                       "~/Scripts/Custom/validation-registration.js"));
 
+            #region Register
+            bundles.Add(new ScriptBundle("~/bundles/initializeRegister").Include(
+                        "~/Scripts/Custom/InitializationRegisterPage.js"));
+            #endregion
+
         }
     }
 }

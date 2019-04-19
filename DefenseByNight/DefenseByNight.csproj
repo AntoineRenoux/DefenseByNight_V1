@@ -120,6 +120,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Background-Connexion.jpg" />
+    <Content Include="Scripts\Custom\InitializationRegisterPage.js" />
     <Content Include="Scripts\Custom\validation-connexion.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -145,6 +147,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -189,6 +192,8 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\_Connexion.cshtml" />
     <Content Include="Views\Login\_Registration.cshtml" />
+    <Content Include="Views\Shared\_LayoutRegister.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -199,8 +204,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Content\Images\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
