@@ -1,18 +1,61 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model DefenseByNight.Models.UserConnexionViewModel
+@using BLL.Enum;
+
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>@Model.Traductions[EnumRessource.GEN_LBL_SITE_NAME] - @Model.Traductions[EnumRessource.GEN_LBL_CONNEXION]</title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/fontawesome")
+
 </head>
 <body>
-    <div> 
-        <h1>@ViewBag.Traductions.Text</h1>
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="title">@Model.Traductions[EnumRessource.GEN_LBL_SITE_NAME]</h4>
+                    </div>
+                    <div class="panel-body">
+                        @using (Html.BeginForm("Connexion", "SignIn", new { area = "Login" }, FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                @Html.Label(Model.Traductions[EnumRessource.GEN_LBL_EMAIL], new { @class = "col-sm-3 control-label" })
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", placeholder = "MonAdresseMail@toto.com" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label(Model.Traductions[EnumRessource.GEN_LBL_PASSWORD], new { @class = "col-sm-3 control-label" })
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @type = "password", placeholder = "********" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">@Model.Traductions[EnumRessource.GEN_LBL_CONNEXION]</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/moment")
+
 </body>
 </html>
+
+

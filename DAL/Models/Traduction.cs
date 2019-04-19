@@ -14,7 +14,6 @@ namespace DAL.Models
         [Column(Order = 1)]
         public string Key { get; set; }
 
-        [Required]
         [Key]
         [Column("CultureInfoId", Order = 2)]
         public int LCID { get; set; }

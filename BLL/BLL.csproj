@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\EnumErrorsMessages.cs" />
     <Compile Include="Enum\EnumRessource.cs" />
     <Compile Include="Enum\EnumSession.cs" />
     <Compile Include="Interfaces\ITraductionService.cs" />

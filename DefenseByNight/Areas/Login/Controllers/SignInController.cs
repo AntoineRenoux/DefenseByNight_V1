@@ -1,8 +1,5 @@
 ﻿using BLL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using DefenseByNight.Models;
 using System.Web.Mvc;
 
 namespace DefenseByNight.Areas.Login.Controllers
@@ -16,10 +13,11 @@ namespace DefenseByNight.Areas.Login.Controllers
             _userService = userService;
         }
 
-        // GET: Login/SignIn
-        public ActionResult Index()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Connexion(UserConnexionViewModel model)
         {
-            return View();
+            return RedirectToAction("Index", "Home", new { area = "Portal"});
         }
     }
 }

@@ -32,6 +32,13 @@ namespace DefenseByNight.App_Start
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/fontawesome").Include(
+                        "~/Content/font-awesome.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/moment").Include(
+                        "~/Scripts/moment.min.js",
+                        "~/Scripts/moment-with-locales.min.js"));
+
         }
     }
 }

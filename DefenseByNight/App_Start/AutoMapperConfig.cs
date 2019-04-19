@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DAL.Mapping;
+using DefenseByNight.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,15 @@ namespace DefenseByNight.App_Start
         public static void Configure()
         {
             Mapper.Initialize(x => {
+
+                #region Traduction
                 x.AddProfile<TraductionEntityToDtoProfile>();
+                #endregion
+
+                #region User
+                x.AddProfile<UserVMToDtoProfile>();
                 x.AddProfile<UserEntityToDtoProfile>();
+                #endregion
             });
         }
     }
