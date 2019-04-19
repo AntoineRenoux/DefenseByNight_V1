@@ -16,6 +16,10 @@ namespace DAL
 
         }
 
+        #region References
+        public DbSet<Traduction> Traductions { get; set; }
+        #endregion
+
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

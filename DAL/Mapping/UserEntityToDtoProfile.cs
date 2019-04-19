@@ -14,6 +14,7 @@ namespace DAL.Mapping
         public UserEntityToDtoProfile()
         {
             CreateMap<User, UserDTO>();
+            CreateMap<UserDTO, User>();
         }
     }
 }

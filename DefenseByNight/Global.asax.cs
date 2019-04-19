@@ -1,7 +1,11 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using BLL.Enum;
 using DefenseByNight.App_Start;
 using DefenseByNight.IoC;
+using System;
+using System.Globalization;
+using System.Threading;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -26,6 +30,13 @@ namespace DefenseByNight
 
             //Automapper
             AutoMapperConfig.Configure();
+        }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
+
+            Session[EnumSession.Culture] = currentCulture;
         }
     }
 }
