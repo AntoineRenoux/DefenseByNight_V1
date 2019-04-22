@@ -14,5 +14,12 @@ namespace BLL.Interfaces
         /// </summary>
         /// <returns>Liste des utilisateurs</returns>
         List<UserDTO> GetAll();
+
+        /// <summary>
+        /// Récupére un utilisateur lors de son identification
+        /// </summary>
+        /// <param name="userDTO"></param>
+        /// <returns></returns>
+        UserDTO GetSignUpUser(UserDTO userDTO);
     }
 }

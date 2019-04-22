@@ -1,9 +1,4 @@
-﻿using DefenseByNight.Areas.Login;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace DefenseByNight.App_Start
 {
@@ -28,6 +23,10 @@ namespace DefenseByNight.App_Start
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/unbostrusive-ajax").Include(
+                      "~/Scripts/jquery.unobtrusive-ajax.min.js"
+                ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
@@ -39,13 +38,18 @@ namespace DefenseByNight.App_Start
                         "~/Scripts/moment.min.js",
                         "~/Scripts/moment-with-locales.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/custom-validator-login").Include(
-                      "~/Scripts/Custom/validation-connexion.js",
-                      "~/Scripts/Custom/validation-registration.js"));
+            #region Login page
 
-            #region Register
+            bundles.Add(new StyleBundle("~/Content/customLogin").Include(
+                      "~/Areas/LoginManager/Content/custom.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/initializeRegister").Include(
-                        "~/Scripts/Custom/InitializationRegisterPage.js"));
+                        "~/Areas/LoginManager/Scripts/InitializationRegisterPage.js",
+                        "~/Areas/LoginManager/Scripts/LoginModule.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/custom-validator-login").Include(
+                    "~/Areas/LoginManager/Scripts/validation-connexion.js",
+                    "~/Areas/LoginManager/Scripts/validation-registration.js"));
             #endregion
 
         }

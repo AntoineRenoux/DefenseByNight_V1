@@ -121,8 +121,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\Background-Connexion.jpg" />
-    <Content Include="Scripts\Custom\InitializationRegisterPage.js" />
-    <Content Include="Scripts\Custom\validation-connexion.js" />
+    <Content Include="Areas\LoginManager\Content\custom.css" />
+    <Content Include="Areas\LoginManager\Scripts\InitializationRegisterPage.js" />
+    <Content Include="Areas\LoginManager\Scripts\LoginModule.js" />
+    <Content Include="Areas\LoginManager\Scripts\validation-connexion.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -147,11 +149,14 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\LoginManager\Views\web.config" />
+    <Content Include="Areas\LoginManager\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\LoginManager\Views\_ViewStart.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\Custom\validation-registration.js" />
+    <Content Include="Areas\LoginManager\Scripts\validation-registration.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -159,11 +164,14 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.bootstrap.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
@@ -174,7 +182,10 @@
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Areas\LoginManager\Controllers\LoginController.cs" />
+    <Compile Include="Areas\LoginManager\LoginManagerAreaRegistration.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\UserAuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,18 +193,17 @@
     <Compile Include="IoC\RepositoryBuilder.cs" />
     <Compile Include="IoC\ServiceBuilder.cs" />
     <Compile Include="Mapping\UserVMToDtoProfile.cs" />
-    <Compile Include="Models\UserConnexionViewModel.cs" />
-    <Compile Include="Models\UserRegistrationViewModel.cs" />
+    <Compile Include="Areas\LoginManager\Models\UserConnexionViewModel.cs" />
+    <Compile Include="Areas\LoginManager\Models\UserRegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Login\_Connexion.cshtml" />
-    <Content Include="Views\Login\_Registration.cshtml" />
-    <Content Include="Views\Shared\_LayoutRegister.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Areas\LoginManager\Views\Login\Index.cshtml" />
+    <Content Include="Areas\LoginManager\Views\Login\_Connexion.cshtml" />
+    <Content Include="Areas\LoginManager\Views\Login\_Registration.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -203,7 +213,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

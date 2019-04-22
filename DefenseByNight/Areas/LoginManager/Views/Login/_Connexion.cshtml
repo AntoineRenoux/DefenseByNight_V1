@@ -1,6 +1,9 @@
-﻿@model DefenseByNight.Models.UserConnexionViewModel
+﻿@model UserConnexionViewModel
 
-@using (Html.BeginForm("SignIn", "Login", FormMethod.Post, new { @class = "form-horizontal", id = "connexionForm" }))
+<div id="ErrLoginFailed" class="alert alert-danger" role="alert" hidden></div>
+
+@using (Ajax.BeginForm("SignIn", "Login", new { area = "LoginManager" }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoginModule.SignIn(data);" }
+        , new { @class = "form-horizontal", id = "connexionForm" }))
 {
 
     @Html.AntiForgeryToken()
@@ -21,6 +24,8 @@
             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger " })
         </div>
     </div>
+
+
 
     <div class="form-group">
         <div class="text-center">

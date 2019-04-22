@@ -1,11 +1,13 @@
 ﻿using BLL.Enum;
 using BLL.Interfaces;
-using DefenseByNight.Models;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Web.Mvc;
+using AutoMapper;
+using DTO;
+using DefenseByNight.Areas.LoginManager.Models;
 
-namespace DefenseByNight.Areas.Login.Controllers
+namespace DefenseByNight.Areas.LoginManager.Controllers
 {
     public class LoginController : Controller
     {
@@ -48,18 +50,39 @@ namespace DefenseByNight.Areas.Login.Controllers
             return View(traductions);
         }
 
+        /// <summary>
+        /// Permet de se connecter
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult SignIn(UserConnexionViewModel model)
         {
+            int langCurrent = ((CultureInfo)Session[EnumSession.Culture]).LCID;
+            var result = new JsonResult();
+
             if (ModelState.IsValid)
             {
+                var user = _userService.GetSignUpUser(Mapper.Map<UserConnexionViewModel, UserDTO>(model));
+                if (user != null && user.UserId != null)
+                {
+                    Session[EnumSession.CurrentUserDto] = user;
+                    result.Data = new { success = true, message = user.UserId };
+                }
+                else
+                    result.Data = new { success = false, message = _traductionService.GetTraduction(EnumErrorsMessages.ERR_SIGNIN_FAIL.ToString(), langCurrent).Text };
             }
-
-            return View();
+            return result;
         }
 
+
+        /// <summary>
+        /// Permet de s'identifier
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
