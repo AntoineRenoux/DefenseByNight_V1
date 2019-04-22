@@ -2,6 +2,7 @@
 using DTO;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
+using System.Web.Routing;
 
 namespace DefenseByNight.Filters
 {
@@ -21,10 +22,11 @@ namespace DefenseByNight.Filters
             // if yes then we are Redirect to Error View
             if (filterContext.Result == null || filterContext.Result is HttpUnauthorizedResult)
             {
-                filterContext.Result = new ViewResult
-                {
-                    ViewName = "Error"
-                };
+                filterContext.Result = new RedirectToRouteResult(
+                        new RouteValueDictionary(new { area = "LoginManager", controller = "Login", action = "Index" })
+                    );
+
+                filterContext.Result.ExecuteResult(filterContext.Controller.ControllerContext);
             }
         }
     }
