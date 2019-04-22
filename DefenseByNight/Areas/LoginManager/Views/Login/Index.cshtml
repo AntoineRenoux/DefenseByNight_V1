@@ -1,0 +1,44 @@
+﻿@model Dictionary<string, string>
+
+<div class="outer">
+    <div class="middle">
+        <div class="inner">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="title">@Model[EnumRessource.GEN_LBL_SITE_NAME]</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="loginForm collapse in">
+                        @Html.Partial("_Connexion", new UserConnexionViewModel())
+                    </div>
+                    <div class="text-center">
+                        <a id="changeForm" href=".loginForm" data-toggle="collapse" aria-expanded="false" aria-controls="#loginForm">@Model[EnumRessource.GEN_LBL_REGISTRATION]</a>
+                    </div>
+                    <br />
+                    <div class="loginForm collapse">
+                        @Html.Partial("_Registration", new UserRegistrationViewModel())
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Requiered*@
+@Html.HiddenFor(m => m[EnumErrorsMessages.ERR_EMAIL_MISSING], new { id = "err_email_missing" })
+@Html.HiddenFor(m => m[EnumErrorsMessages.ERR_PASSWORD_MISSING], new { id = "err_password_missing" })
+@Html.HiddenFor(m => m[EnumErrorsMessages.ERR_PASSWORD_TO_SHORT], new { id = "err_password_toshort" })
+@Html.HiddenFor(m => m[EnumErrorsMessages.ERR_FIRSTNAME_MISSING], new { id = "err_firstname_missing" })
+@Html.HiddenFor(m => m[EnumErrorsMessages.ERR_LASTNAME_MISSING], new { id = "err_lastname_missing" })
+@Html.HiddenFor(m => m[EnumErrorsMessages.ERR_ALIAS_MISSING], new { id = "err_alias_missing" })
+@Html.HiddenFor(m => m[EnumErrorsMessages.ERR_BIRTHDATE_MISSING], new { id = "err_birtdate_missing" })
+
+
+@Html.HiddenFor(m => m[EnumRessource.GEN_LBL_EMAIL], new { id = "res_email_lbl" })
+@Html.HiddenFor(m => m[EnumRessource.GEN_LBL_PASSWORD], new { id = "res_password_lbl" })
+@Html.HiddenFor(m => m[EnumRessource.GEN_LBL_CONNEXION], new { id = "res_connexion_lbl" })
+@Html.HiddenFor(m => m[EnumRessource.GEN_LBL_REGISTRATION], new { id = "res_registration_lbl" })
+@Html.HiddenFor(m => m[EnumRessource.GEN_LBL_FIRSTNAME], new { id = "res_firstname_lbl" })
+@Html.HiddenFor(m => m[EnumRessource.GEN_LBL_LASTNAME], new { id = "res_lastname_lbl" })
+@Html.HiddenFor(m => m[EnumRessource.GEN_LBL_ALIAS], new { id = "res_alias_lbl" })
+@Html.HiddenFor(m => m[EnumRessource.GEN_LBL_BIRTHDATE], new { id = "res_birthdate_lbl" })

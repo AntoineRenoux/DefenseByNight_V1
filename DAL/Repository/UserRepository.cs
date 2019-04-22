@@ -23,5 +23,17 @@ namespace DAL.Repository
 
             return Mapper.Map<List<User>, List<UserDTO>>(users);
         }
+
+        //TODO : Crypter le mot de passe
+        public UserDTO GetSignUpUser(UserDTO model)
+        {
+            var user = (from u in context.Users
+                        where u.Email == model.Email
+                        && u.Password == model.Password
+                        select u).FirstOrDefault();
+
+            return Mapper.Map<User, UserDTO>(user);
+                       
+        }
     }
 }

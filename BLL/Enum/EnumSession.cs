@@ -9,5 +9,6 @@ namespace BLL.Enum
     public static class EnumSession
     {
         public static readonly string Culture = "Culture";
+        public static readonly string CurrentUserDto = "CurrentUserDto";
     }
 }

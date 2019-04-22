@@ -21,5 +21,7 @@ namespace BLL.Enum
         public readonly static string ERR_PASSWORD_TO_SHORT = "ERR_PASSWORD_TO_SHORT";
         #endregion
 
+        public readonly static string ERR_SIGNIN_FAIL = "ERR_SIGNIN_FAIL";
+
     }
 }

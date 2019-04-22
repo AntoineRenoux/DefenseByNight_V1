@@ -19,5 +19,7 @@ namespace BLL.Services
         }
 
         public List<UserDTO> GetAll() => _userRepository.GetAll();
+
+        public UserDTO GetSignUpUser(UserDTO userDTO) => _userRepository.GetSignUpUser(userDTO);
     }
 }

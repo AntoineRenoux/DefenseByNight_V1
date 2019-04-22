@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DefenseByNight.Models
+namespace DefenseByNight.Areas.LoginManager.Models
 {
     public class UserConnexionViewModel
     {

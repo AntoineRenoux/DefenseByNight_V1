@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace DefenseByNight.Models
+namespace DefenseByNight.Areas.LoginManager.Models
 {
     public class UserRegistrationViewModel
     {

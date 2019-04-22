@@ -10,5 +10,6 @@ namespace DAL.Interfaces
     public interface IUserRepository
     {
         List<UserDTO> GetAll();
+        UserDTO GetSignUpUser(UserDTO userDTO);
     }
 }

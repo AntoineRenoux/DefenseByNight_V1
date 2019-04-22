@@ -18,7 +18,7 @@ namespace DAL
 
             var labels = new List<Traduction>
             {
-                new Traduction{LCID = 1036, Key = "GEN_LBL_SITE_NAME", Text = "Defence By Night"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_SITE_NAME", Text = "Defense By Night"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_CONNEXION", Text = "Connexion"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_REGISTRATION", Text = "Inscription"},
 
@@ -45,6 +45,8 @@ namespace DAL
                 new Traduction{LCID = 1036, Key = "ERR_ALIAS_MISSING", Text = "Le pseudo n'est pas renseigné."},
 
                 new Traduction{LCID = 1036, Key = "ERR_PASSWORD_TO_SHORT", Text = "Le mot de passe doit faire au moins 6 carractères."},
+
+                new Traduction{LCID = 1036, Key = "ERR_SIGNIN_FAIL", Text = "L'adresse mail ou le mot de passe est incorrecte."},
             };
 
             errorMessages.ForEach(t =>
