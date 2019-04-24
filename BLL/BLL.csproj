@@ -40,12 +40,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\Attributs\EnumAttribut.cs" />
+    <Compile Include="Enum\Disciplines\EnumAnimalism.cs" />
+    <Compile Include="Enum\Disciplines\EnumAuspex.cs" />
+    <Compile Include="Enum\Disciplines\EnumCelerity.cs" />
+    <Compile Include="Enum\Disciplines\EnumChimerstry.cs" />
+    <Compile Include="Enum\Disciplines\EnumDaimonion.cs" />
+    <Compile Include="Enum\Disciplines\EnumDementation.cs" />
+    <Compile Include="Enum\Disciplines\EnumDominate.cs" />
+    <Compile Include="Enum\Disciplines\EnumFortitude.cs" />
+    <Compile Include="Enum\Disciplines\EnumMelpominee.cs" />
+    <Compile Include="Enum\Disciplines\EnumMystherceria.cs" />
+    <Compile Include="Enum\Disciplines\EnumNecromancy.cs" />
+    <Compile Include="Enum\Disciplines\EnumObeah.cs" />
+    <Compile Include="Enum\Disciplines\EnumObfuscate.cs" />
+    <Compile Include="Enum\Disciplines\EnumObtenebration.cs" />
+    <Compile Include="Enum\Disciplines\EnumPotence.cs" />
+    <Compile Include="Enum\Disciplines\EnumPresence.cs" />
+    <Compile Include="Enum\Disciplines\EnumProtean.cs" />
+    <Compile Include="Enum\Disciplines\EnumQuietus.cs" />
+    <Compile Include="Enum\Disciplines\EnumSerpentis.cs" />
+    <Compile Include="Enum\Disciplines\EnumTemporis.cs" />
+    <Compile Include="Enum\Disciplines\EnumThanatosis.cs" />
+    <Compile Include="Enum\Disciplines\EnumThaumaturgy.cs" />
+    <Compile Include="Enum\Disciplines\EnumValeren.cs" />
+    <Compile Include="Enum\Disciplines\EnumVicissitude.cs" />
+    <Compile Include="Enum\Disciplines\EnumVisceratika.cs" />
     <Compile Include="Enum\EnumErrorsMessages.cs" />
     <Compile Include="Enum\EnumRessource.cs" />
     <Compile Include="Enum\EnumSession.cs" />
+    <Compile Include="Enum\Attributs\EnumFocus.cs" />
+    <Compile Include="Interfaces\IAttributService.cs" />
+    <Compile Include="Interfaces\IFocusService.cs" />
     <Compile Include="Interfaces\ITraductionService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AttributService.cs" />
+    <Compile Include="Services\FocusService.cs" />
     <Compile Include="Services\TraductionService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>

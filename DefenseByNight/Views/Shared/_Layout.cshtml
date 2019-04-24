@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Application - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/customLogin")
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">@ViewBag.Application</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#">IL FAUT LE NOM DU PERSONNAGE IIICCCCIIIII !!!! (et changer le Href)</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@ViewBag.FirstName @ViewBag.LastName  <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">@ViewBag.Account</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">@ViewBag.Disconnect</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTimeOffset.Now.Year - @ViewBag.Application - powered by Zesso</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/unbostrusive-ajax")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/custom-validator-login")
+    @Scripts.Render("~/bundles/initializeRegister")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

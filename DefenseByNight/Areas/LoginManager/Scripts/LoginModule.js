@@ -3,7 +3,7 @@
 
     self.SignIn = function (data) {
         if (data.success) {
-            window.location = "/Home/Index?userId=" + data.message;
+            window.location = "/Home/Index";
         }
         else {
             $('#ErrLoginFailed').text(data.message);

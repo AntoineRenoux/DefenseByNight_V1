@@ -1,0 +1,30 @@
+﻿@model List<DTO.AttributDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.AttributName</td>
+            <td>@item.Description</td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+

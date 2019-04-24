@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Models
+namespace DAL.Models.Ref
 {
     public class Traduction
     {
@@ -18,7 +18,6 @@ namespace DAL.Models
         [Column("CultureInfoId", Order = 2)]
         public int LCID { get; set; }
 
-        [Required]
         public string Text { get; set; }
     }
 }

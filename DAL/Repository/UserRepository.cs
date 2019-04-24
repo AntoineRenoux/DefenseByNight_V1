@@ -30,10 +30,16 @@ namespace DAL.Repository
             var user = (from u in context.Users
                         where u.Email == model.Email
                         && u.Password == model.Password
-                        select u).FirstOrDefault();
+                        select new UserDTO {
+                            Alias = u.Alias,
+                            BirthDate = u.BirthDate,
+                            Email = u.Email,
+                            FirstName = u.FirstName,
+                            LastName = u.LastName,
+                            UserId = u.UserId
+                        }).FirstOrDefault();
 
-            return Mapper.Map<User, UserDTO>(user);
-                       
+            return user;
         }
     }
 }

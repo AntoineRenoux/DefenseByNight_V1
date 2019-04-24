@@ -14,6 +14,8 @@ namespace DefenseByNight.IoC
         {
             #region Reference
             builder.RegisterType<TraductionService>().As<ITraductionService>();
+            builder.RegisterType<AttributService>().As<IAttributService>();
+            builder.RegisterType<FocusService>().As<IFocusService>();
             #endregion
 
             builder.RegisterType<UserService>().As<IUserService>();

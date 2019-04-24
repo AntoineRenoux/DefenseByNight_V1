@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using DAL.Models;
 using DAL.Models.Ref;
 using DTO;
 using System;
@@ -10,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace DAL.Mapping
 {
-    public class TraductionEntityToDtoProfile : Profile
+    public class DisciplineEntityToDtoProfile: Profile
     {
-        public TraductionEntityToDtoProfile()
+        public DisciplineEntityToDtoProfile()
         {
-            CreateMap<Traduction, TraductionDTO>();
-            CreateMap<TraductionDTO, Traduction>();
+            CreateMap<Discipline,DisciplineDTO>();
+            CreateMap<DisciplineDTO, Discipline>();
         }
     }
 }

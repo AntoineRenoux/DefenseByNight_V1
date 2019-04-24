@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using AutoMapper;
 using DTO;
 using DefenseByNight.Areas.LoginManager.Models;
+using DefenseByNight.Controllers;
 
 namespace DefenseByNight.Areas.LoginManager.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : BaseController
     {
         private readonly ITraductionService _traductionService;
         private readonly IUserService _userService;
@@ -23,27 +24,26 @@ namespace DefenseByNight.Areas.LoginManager.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            int langCurrent = ((CultureInfo)Session[EnumSession.Culture]).LCID;
             var traductions = new Dictionary<string, string>
             {
-                { EnumRessource.GEN_LBL_SITE_NAME, _traductionService.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME, langCurrent).Text },
-                { EnumRessource.GEN_LBL_CONNEXION, _traductionService.GetTraduction(EnumRessource.GEN_LBL_CONNEXION, langCurrent).Text },
-                { EnumRessource.GEN_LBL_REGISTRATION, _traductionService.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION, langCurrent).Text },
+                { EnumRessource.GEN_LBL_SITE_NAME, _traductionService.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME, CTX_LANGUAGE_ID).Text },
+                { EnumRessource.GEN_LBL_CONNEXION, _traductionService.GetTraduction(EnumRessource.GEN_LBL_CONNEXION, CTX_LANGUAGE_ID).Text },
+                { EnumRessource.GEN_LBL_REGISTRATION, _traductionService.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION, CTX_LANGUAGE_ID).Text },
 
-                { EnumRessource.GEN_LBL_EMAIL, _traductionService.GetTraduction(EnumRessource.GEN_LBL_EMAIL, langCurrent).Text },
-                { EnumRessource.GEN_LBL_PASSWORD, _traductionService.GetTraduction(EnumRessource.GEN_LBL_PASSWORD, langCurrent).Text },
-                { EnumRessource.GEN_LBL_FIRSTNAME, _traductionService.GetTraduction(EnumRessource.GEN_LBL_FIRSTNAME, langCurrent).Text },
-                { EnumRessource.GEN_LBL_LASTNAME, _traductionService.GetTraduction(EnumRessource.GEN_LBL_LASTNAME, langCurrent).Text },
-                { EnumRessource.GEN_LBL_ALIAS, _traductionService.GetTraduction(EnumRessource.GEN_LBL_ALIAS, langCurrent).Text },
-                { EnumRessource.GEN_LBL_BIRTHDATE, _traductionService.GetTraduction(EnumRessource.GEN_LBL_BIRTHDATE, langCurrent).Text },
+                { EnumRessource.GEN_LBL_EMAIL, _traductionService.GetTraduction(EnumRessource.GEN_LBL_EMAIL, CTX_LANGUAGE_ID).Text },
+                { EnumRessource.GEN_LBL_PASSWORD, _traductionService.GetTraduction(EnumRessource.GEN_LBL_PASSWORD, CTX_LANGUAGE_ID).Text },
+                { EnumRessource.GEN_LBL_FIRSTNAME, _traductionService.GetTraduction(EnumRessource.GEN_LBL_FIRSTNAME, CTX_LANGUAGE_ID).Text },
+                { EnumRessource.GEN_LBL_LASTNAME, _traductionService.GetTraduction(EnumRessource.GEN_LBL_LASTNAME, CTX_LANGUAGE_ID).Text },
+                { EnumRessource.GEN_LBL_ALIAS, _traductionService.GetTraduction(EnumRessource.GEN_LBL_ALIAS, CTX_LANGUAGE_ID).Text },
+                { EnumRessource.GEN_LBL_BIRTHDATE, _traductionService.GetTraduction(EnumRessource.GEN_LBL_BIRTHDATE, CTX_LANGUAGE_ID).Text },
 
-                { EnumErrorsMessages.ERR_EMAIL_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_EMAIL_MISSING, langCurrent).Text },
-                { EnumErrorsMessages.ERR_PASSWORD_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_PASSWORD_MISSING, langCurrent).Text },
-                { EnumErrorsMessages.ERR_ALIAS_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_ALIAS_MISSING, langCurrent).Text },
-                { EnumErrorsMessages.ERR_BIRTHDATE_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_BIRTHDATE_MISSING, langCurrent).Text },
-                { EnumErrorsMessages.ERR_FIRSTNAME_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING, langCurrent).Text },
-                { EnumErrorsMessages.ERR_LASTNAME_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_LASTNAME_MISSING, langCurrent).Text },
-                { EnumErrorsMessages.ERR_PASSWORD_TO_SHORT, _traductionService.GetTraduction(EnumErrorsMessages.ERR_PASSWORD_TO_SHORT, langCurrent).Text },
+                { EnumErrorsMessages.ERR_EMAIL_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_EMAIL_MISSING, CTX_LANGUAGE_ID).Text },
+                { EnumErrorsMessages.ERR_PASSWORD_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_PASSWORD_MISSING, CTX_LANGUAGE_ID).Text },
+                { EnumErrorsMessages.ERR_ALIAS_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_ALIAS_MISSING, CTX_LANGUAGE_ID).Text },
+                { EnumErrorsMessages.ERR_BIRTHDATE_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_BIRTHDATE_MISSING, CTX_LANGUAGE_ID).Text },
+                { EnumErrorsMessages.ERR_FIRSTNAME_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING, CTX_LANGUAGE_ID).Text },
+                { EnumErrorsMessages.ERR_LASTNAME_MISSING, _traductionService.GetTraduction(EnumErrorsMessages.ERR_LASTNAME_MISSING, CTX_LANGUAGE_ID).Text },
+                { EnumErrorsMessages.ERR_PASSWORD_TO_SHORT, _traductionService.GetTraduction(EnumErrorsMessages.ERR_PASSWORD_TO_SHORT, CTX_LANGUAGE_ID).Text },
 
             };
 
@@ -60,7 +60,6 @@ namespace DefenseByNight.Areas.LoginManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SignIn(UserConnexionViewModel model)
         {
-            int langCurrent = ((CultureInfo)Session[EnumSession.Culture]).LCID;
             var result = new JsonResult();
 
             if (ModelState.IsValid)
@@ -69,10 +68,10 @@ namespace DefenseByNight.Areas.LoginManager.Controllers
                 if (user != null && user.UserId != null)
                 {
                     Session[EnumSession.CurrentUserDto] = user;
-                    result.Data = new { success = true, message = user.UserId };
+                    result.Data = new { success = true };
                 }
                 else
-                    result.Data = new { success = false, message = _traductionService.GetTraduction(EnumErrorsMessages.ERR_SIGNIN_FAIL.ToString(), langCurrent).Text };
+                    result.Data = new { success = false, message = _traductionService.GetTraduction(EnumErrorsMessages.ERR_SIGNIN_FAIL.ToString(), CTX_LANGUAGE_ID).Text };
             }
             return result;
         }
