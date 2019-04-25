@@ -10,12 +10,14 @@ namespace DTO
     public class DisciplineDTO
     {
         [Required]
-        public string Name { get; set; }
+        public string DisciplineKey { get; set; }
+
+        [Required]
+        public string DisciplineName { get; set; }
 
         [Required]
         public string Description { get; set; }
 
-        [Required]
-        public ICollection<PowerDTO> Powers { get; set; }
+        public List<PowerDTO> Powers { get; set; }
     }
 }

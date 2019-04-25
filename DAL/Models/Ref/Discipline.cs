@@ -6,7 +6,10 @@ namespace DAL.Models.Ref
     public class Discipline
     {
         [Key]
-        public string Name { get; set; }
+        public string DisciplineKey { get; set; }
+
+        [Required]
+        public string DisciplineName { get; set; }
 
         [Required]
         public string Description { get; set; }

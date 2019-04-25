@@ -19,6 +19,7 @@ namespace DefenseByNight.IoC
             builder.RegisterType<TraductionRepository>().As<ITraductionRepository>();
             builder.RegisterType<AttributRepository>().As<IAttributRepository>();
             builder.RegisterType<FocusRepository>().As<IFocusRepository>();
+            builder.RegisterType<DisciplineRepository>().As<IDisciplineRepository>();
             #endregion
 
             builder.RegisterType<UserRepository>().As<IUserRepository>();

@@ -12,14 +12,17 @@ namespace DefenseByNight.Controllers
         private readonly ITraductionService _traductionService;
         private readonly IUserService _userService;
         private readonly IAttributService _attributService;
-        private readonly IFocusService _focusService;
+        private readonly IDisciplineService _disciplineService;
 
-        public HomeController(ITraductionService traductionService, IUserService userService, IAttributService attributService, IFocusService focusService)
+        public HomeController(ITraductionService traductionService
+                                , IUserService userService
+                                , IAttributService attributService
+                                , IDisciplineService disciplineService)
         {
             _traductionService = traductionService;
             _userService = userService;
             _attributService = attributService;
-            _focusService = focusService;
+            _disciplineService = disciplineService;
         }
 
         public ActionResult Index()
@@ -34,6 +37,7 @@ namespace DefenseByNight.Controllers
             ViewBag.LastName = currentUser.LastName;
 
             var attributes = _attributService.GetAll(CTX_LANGUAGE_ID);
+            var disciplines = _disciplineService.GetAllWithPowers(CTX_LANGUAGE_ID);
 
             return View(attributes);
         }

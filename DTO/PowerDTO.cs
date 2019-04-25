@@ -5,16 +5,17 @@ namespace DTO
     public class PowerDTO
     {
         [Required]
-        public string Name { get; set; }
+        public string PowerName { get; set; }
+
+        public string DisciplineName { get; set; }
+
+        public string DisciplineKey { get; set; }
 
         [Required]
         public int Level { get; set; }
 
         [Required]
         public string System { get; set; }
-
-        [Required]
-        public DisciplineDTO Discipline { get; set; }
 
         public string Description { get; set; }
 
