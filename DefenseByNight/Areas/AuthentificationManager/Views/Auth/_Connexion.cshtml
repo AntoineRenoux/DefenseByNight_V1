@@ -2,7 +2,7 @@
 
 <div id="ErrLoginFailed" class="alert alert-danger" role="alert" hidden></div>
 
-@using (Ajax.BeginForm("SignIn", "Login", new { area = "LoginManager" }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoginModule.SignIn(data);" }
+@using (Ajax.BeginForm("SignIn", "Login", new { area = "AuthentificationManager" }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "LoginModule.SignIn(data);" }
         , new { @class = "form-horizontal", id = "connexionForm" }))
 {
 

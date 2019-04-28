@@ -68,19 +68,16 @@
     <Compile Include="Enum\Disciplines\EnumVisceratika.cs" />
     <Compile Include="Enum\EnumErrorsMessages.cs" />
     <Compile Include="Enum\EnumRessource.cs" />
-    <Compile Include="Enum\EnumSession.cs" />
     <Compile Include="Enum\Attributs\EnumFocus.cs" />
     <Compile Include="Interfaces\IAttributService.cs" />
     <Compile Include="Interfaces\IDisciplineService.cs" />
     <Compile Include="Interfaces\IFocusService.cs" />
     <Compile Include="Interfaces\ITraductionService.cs" />
-    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AttributService.cs" />
     <Compile Include="Services\DisciplineService.cs" />
     <Compile Include="Services\FocusService.cs" />
     <Compile Include="Services\TraductionService.cs" />
-    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

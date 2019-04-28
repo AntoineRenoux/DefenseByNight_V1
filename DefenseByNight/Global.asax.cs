@@ -19,6 +19,7 @@ namespace DefenseByNight
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
             //Autofac
             ContainerBuilder builder = new ContainerBuilder();
@@ -34,9 +35,7 @@ namespace DefenseByNight
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
-
-            Session[EnumSession.Culture] = currentCulture;
+            Session["culture"] = CultureInfo.CurrentCulture.LCID;
         }
     }
 }

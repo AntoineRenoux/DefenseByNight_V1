@@ -41,15 +41,15 @@ namespace DefenseByNight.App_Start
             #region Login page
 
             bundles.Add(new StyleBundle("~/Content/customLogin").Include(
-                      "~/Areas/LoginManager/Content/custom.css"));
+                      "~/Areas/AuthentificationManager/Content/custom.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/initializeRegister").Include(
-                        "~/Areas/LoginManager/Scripts/InitializationRegisterPage.js",
-                        "~/Areas/LoginManager/Scripts/LoginModule.js"));
+                        "~/Areas/AuthentificationManager/Scripts/InitializationRegisterPage.js",
+                        "~/Areas/AuthentificationManager/Scripts/LoginModule.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom-validator-login").Include(
-                    "~/Areas/LoginManager/Scripts/validation-connexion.js",
-                    "~/Areas/LoginManager/Scripts/validation-registration.js"));
+                    "~/Areas/AuthentificationManager/Scripts/validation-connexion.js",
+                    "~/Areas/AuthentificationManager/Scripts/validation-registration.js"));
             #endregion
 
         }

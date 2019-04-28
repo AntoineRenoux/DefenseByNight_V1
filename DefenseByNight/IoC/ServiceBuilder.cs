@@ -18,8 +18,6 @@ namespace DefenseByNight.IoC
             builder.RegisterType<FocusService>().As<IFocusService>();
             builder.RegisterType<DisciplineService>().As<IDisciplineService>();
             #endregion
-
-            builder.RegisterType<UserService>().As<IUserService>();
         }
     }
 }

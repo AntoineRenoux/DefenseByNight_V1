@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace DefenseByNight.Areas.LoginManager
+namespace DefenseByNight.Areas.AuthentificationManager
 {
-    public class LoginManagerAreaRegistration : AreaRegistration 
+    public class AuthentificationManagerAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "LoginManager";
+                return "AuthentificationManager";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "LoginManager_default",
-                "LoginManager/{controller}/{action}/{id}",
+                "AuthentificationManager_default",
+                "AuthentificationManager/{controller}/{action}/{id}",
                 new { action = "Index", controller = "Login", id = UrlParameter.Optional }
             );
         }

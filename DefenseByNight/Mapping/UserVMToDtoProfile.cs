@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using DefenseByNight.Areas.LoginManager.Models;
+using DefenseByNight.Areas.AuthentificationManager.Models;
 using DTO;
 
 namespace DefenseByNight.Mapping

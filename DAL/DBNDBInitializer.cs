@@ -117,17 +117,6 @@ namespace DAL
 
 
             #region Users
-            var users = new List<User>
-            {
-                new User{Alias="Zesso", FirstName="Antoine", LastName="Renoux", BirthDate = new DateTimeOffset(1992, 2, 13, 0, 0, 0, new TimeSpan(0, 0, 0)), Email = "zesso@gmail.com", Password = "5S5rtlEb$"}
-            };
-
-            users.ForEach(u =>
-            {
-                context.Users.Add(u);
-            });
-
-            context.SaveChanges();
             #endregion
 
         }

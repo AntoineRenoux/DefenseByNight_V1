@@ -1,23 +1,25 @@
-﻿using BLL.Enum;
-using DTO;
-using System.Globalization;
+﻿using BLL.Interfaces;
+using DefenseByNight.Models;
+using Microsoft.AspNet.Identity;
+using System.Security.Claims;
 using System.Web.Mvc;
 
 namespace DefenseByNight.Controllers
 {
-    public class BaseController : Controller
+    public abstract class BaseController : Controller
     {
-        public int CTX_LANGUAGE_ID
+        protected readonly ITraductionService _traductionService;
+        protected readonly UserManager<DAL.Models.AppUser> userManager;
+
+        public BaseController(ITraductionService traductionService)
         {
-            get {
-                return ((CultureInfo)Session[EnumSession.Culture]).LCID;
-            }
+            _traductionService = traductionService;
         }
 
-        public UserDTO CTX_USER_DTO
+        public AppUserModel CurrentUser
         {
             get {
-                return (UserDTO)Session[EnumSession.CurrentUserDto];
+                return new AppUserModel(this.User as ClaimsPrincipal);
             }
         }
     }

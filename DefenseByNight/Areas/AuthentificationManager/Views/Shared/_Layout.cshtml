@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@Model[EnumRessource.GEN_LBL_SITE_NAME] - @Model[EnumRessource.GEN_LBL_CONNEXION]</title>
+    <title>@ViewBag.SiteName - @ViewBag.ActionName </title>
     @Styles.Render("~/Content/fontawesome")
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/customLogin")
+   @* @Styles.Render("~/Content/customLogin")*@
     @RenderSection("head", required: false)
 </head>
 <body id="loginPageBody">
