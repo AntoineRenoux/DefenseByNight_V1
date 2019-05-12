@@ -9,7 +9,6 @@ namespace DefenseByNight.Controllers
     public abstract class BaseController : Controller
     {
         protected readonly ITraductionService _traductionService;
-        protected readonly UserManager<DAL.Models.AppUser> userManager;
 
         public BaseController(ITraductionService traductionService)
         {

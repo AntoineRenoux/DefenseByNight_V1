@@ -84,6 +84,7 @@
     <Compile Include="BaseRepository.cs" />
     <Compile Include="DBNContext.cs" />
     <Compile Include="DBNDBInitializer.cs" />
+    <Compile Include="IdentityContext.cs" />
     <Compile Include="Interfaces\IAttributRepository.cs" />
     <Compile Include="Interfaces\IDisciplineRepository.cs" />
     <Compile Include="Interfaces\IFocusRepository.cs" />

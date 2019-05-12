@@ -7,16 +7,25 @@ using DefenseByNight.Areas.AuthentificationManager.Models;
 using System.Security.Claims;
 using System.Web;
 using Microsoft.AspNet.Identity;
+using DAL.Models;
+using System.Threading.Tasks;
+using Microsoft.Owin.Security;
 
 namespace DefenseByNight.Areas.AuthentificationManager.Controllers
 {
     [AllowAnonymous]
-    public class AuthController : BaseController
+    public class AuthController : Controller
     {
+        private readonly UserManager<AppUser> userManager;
 
-        public AuthController(ITraductionService traductionService) : base(traductionService)
+        public AuthController()
+        : this(Startup.UserManagerFactory.Invoke())
         {
+        }
 
+        public AuthController(UserManager<AppUser> userManager)
+        {
+            this.userManager = userManager;
         }
 
         [HttpGet]
@@ -31,27 +40,20 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(UserConnexionViewModel model)
+        public async Task<ActionResult> Login(UserConnexionViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            // Don't do this in production!
-            if (model.Email == "admin@admin.com" && model.Password == "password")
+            var user = await userManager.FindAsync(model.Email, model.Password);
+
+            if (user != null)
             {
-                var identity = new ClaimsIdentity(new[] {
-                new Claim(ClaimTypes.Name, "Ben"),
-                new Claim(ClaimTypes.Email, "a@b.com"),
-                new Claim(ClaimTypes.Country, "England")
-            },
-                    DefaultAuthenticationTypes.ApplicationCookie);
+                var identity = await userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
 
-                var ctx = Request.GetOwinContext();
-                var authManager = ctx.Authentication;
-
-                authManager.SignIn(identity);
+                GetAuthenticationManager().SignIn(identity);
 
                 return Redirect(GetRedirectUrl(model.ReturnUrl));
             }
@@ -69,6 +71,56 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
             return RedirectToAction("index", "home");
         }
 
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Register(UserRegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var user = new AppUser
+            {
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.MobilePhone,
+                UserName = model.Alias
+            };
+
+            var result = await userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                await SignIn(user);
+                return RedirectToAction("index", "home", new { area = "" });
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+
+            return View();
+        }
+
+        #region Private
+        private async Task SignIn(AppUser user)
+        {
+            var identity = await userManager.CreateIdentityAsync(
+                user, DefaultAuthenticationTypes.ApplicationCookie);
+
+            identity.AddClaim(new Claim(ClaimTypes.MobilePhone, user.PhoneNumber));
+
+            GetAuthenticationManager().SignIn(identity);
+        }
+
         private string GetRedirectUrl(string returnUrl)
         {
             if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
@@ -78,5 +130,21 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
 
             return returnUrl;
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && userManager != null)
+            {
+                userManager.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private IAuthenticationManager GetAuthenticationManager()
+        {
+            var ctx = Request.GetOwinContext();
+            return ctx.Authentication;
+        }
+        #endregion
     }
 }

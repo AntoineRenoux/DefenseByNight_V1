@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using System.Security.Claims;
 using System.Web.Mvc;
 
 namespace DefenseByNight.Controllers

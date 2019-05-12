@@ -20,10 +20,17 @@ namespace DefenseByNight.Models
             }
         }
 
-        public string Country
+        public string Email
         {
             get {
-                return this.FindFirst(ClaimTypes.Country).Value;
+                return this.FindFirst(ClaimTypes.Email).Value;
+            }
+        }
+
+        public string MobilePhone
+        {
+            get {
+                return this.FindFirst(ClaimTypes.MobilePhone).Value;
             }
         }
     }

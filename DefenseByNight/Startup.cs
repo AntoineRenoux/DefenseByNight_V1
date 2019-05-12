@@ -28,7 +28,7 @@ namespace DefenseByNight
             UserManagerFactory = () =>
             {
                 var usermanager = new UserManager<AppUser>(
-                    new UserStore<AppUser>(new DBNContext()));
+                    new UserStore<AppUser>(new IdentityContext()));
                 // allow alphanumeric characters in username
                 usermanager.UserValidator = new UserValidator<AppUser>(usermanager)
                 {

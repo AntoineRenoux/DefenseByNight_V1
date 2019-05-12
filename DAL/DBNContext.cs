@@ -10,16 +10,11 @@ using System.Data.Entity.Validation;
 
 namespace DAL
 {
-    public class DBNContext : IdentityDbContext<ApplicationUser>
+    public class DBNContext : DbContext
     {
         public DBNContext(): base("name=LocalContext")
         {
 
-        }
-
-        public static DBNContext Create()
-        {
-            return new DBNContext();
         }
 
         #region References
