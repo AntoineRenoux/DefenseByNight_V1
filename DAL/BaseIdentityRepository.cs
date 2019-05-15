@@ -1,29 +1,18 @@
-﻿using System;
-using DAL;
-using DAL.Models;
-using DAL.Models.Identity;
+﻿using DAL.Models.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using Owin;
+using System;
 
-[assembly: OwinStartupAttribute(typeof(DefenseByNight.Startup))]
-namespace DefenseByNight
+namespace DAL
 {
-    public partial class Startup
+    public class BaseIdentityRepository<TEntity> where TEntity : class
     {
-
+        protected readonly IdentityContext context;
         public static Func<UserManager<AppUser>> UserManagerFactory { get; private set; }
 
-
-        public void Configuration(IAppBuilder app)
+        public BaseIdentityRepository(IdentityContext context)
         {
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/AuthentificationManager/Auth/Login")
-            });
+            this.context = context;
 
             // configure the user manager
             UserManagerFactory = () =>

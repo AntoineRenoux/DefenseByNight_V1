@@ -2,10 +2,6 @@
 using DAL;
 using DAL.Interfaces;
 using DAL.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace DefenseByNight.IoC
 {

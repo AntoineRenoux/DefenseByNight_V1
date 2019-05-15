@@ -33,5 +33,12 @@ namespace DefenseByNight.Models
                 return this.FindFirst(ClaimTypes.MobilePhone).Value;
             }
         }
+
+        //public string Role
+        //{
+        //    get {
+        //        return this.FindFirst(ClaimTypes.Role).;
+        //    }
+        //}
     }
 }

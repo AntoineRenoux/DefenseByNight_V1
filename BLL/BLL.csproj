@@ -69,6 +69,7 @@
     <Compile Include="Enum\EnumErrorsMessages.cs" />
     <Compile Include="Enum\EnumRessource.cs" />
     <Compile Include="Enum\Attributs\EnumFocus.cs" />
+    <Compile Include="Enum\EnumRoles.cs" />
     <Compile Include="Interfaces\IAttributService.cs" />
     <Compile Include="Interfaces\IDisciplineService.cs" />
     <Compile Include="Interfaces\IFocusService.cs" />

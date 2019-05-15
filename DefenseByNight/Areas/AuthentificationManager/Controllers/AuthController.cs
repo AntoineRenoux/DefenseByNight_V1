@@ -1,15 +1,12 @@
 ﻿using BLL.Enum;
-using BLL.Interfaces;
-using System.Collections.Generic;
 using System.Web.Mvc;
-using DefenseByNight.Controllers;
 using DefenseByNight.Areas.AuthentificationManager.Models;
 using System.Security.Claims;
 using System.Web;
 using Microsoft.AspNet.Identity;
-using DAL.Models;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security;
+using DAL.Models.Identity;
 
 namespace DefenseByNight.Areas.AuthentificationManager.Controllers
 {
@@ -46,7 +43,7 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
             {
                 return View();
             }
-
+            //var toto = await userManager.FindByEmailAsync("toto@toto.com");
             var user = await userManager.FindAsync(model.Email, model.Password);
 
             if (user != null)

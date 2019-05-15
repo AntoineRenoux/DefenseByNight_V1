@@ -81,10 +81,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseIdentityRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="DBNContext.cs" />
     <Compile Include="DBNDBInitializer.cs" />
     <Compile Include="IdentityContext.cs" />
+    <Compile Include="IndentityInitializer.cs" />
     <Compile Include="Interfaces\IAttributRepository.cs" />
     <Compile Include="Interfaces\IDisciplineRepository.cs" />
     <Compile Include="Interfaces\IFocusRepository.cs" />
@@ -95,14 +97,13 @@
     <Compile Include="Mapping\PowerEntityToDtoProfile.cs" />
     <Compile Include="Mapping\TraductionEntityToDtoProfile.cs" />
     <Compile Include="Mapping\UserEntityToDtoProfile.cs" />
-    <Compile Include="Models\AppRole.cs" />
-    <Compile Include="Models\Identity\ApplicationUser.cs" />
+    <Compile Include="Models\Identity\AppRole.cs" />
     <Compile Include="Models\Ref\Attribut.cs" />
     <Compile Include="Models\Ref\Discipline.cs" />
     <Compile Include="Models\Ref\Focus.cs" />
     <Compile Include="Models\Ref\Power.cs" />
     <Compile Include="Models\Ref\Traduction.cs" />
-    <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\Identity\AppUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AttributRepository.cs" />
     <Compile Include="Repository\DisciplineRepository.cs" />

@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using DAL.Models.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL

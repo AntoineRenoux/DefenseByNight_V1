@@ -1,10 +1,6 @@
 ﻿using Autofac;
 using BLL.Interfaces;
 using BLL.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace DefenseByNight.IoC
 {
@@ -12,6 +8,9 @@ namespace DefenseByNight.IoC
     {
         public static void Register(ContainerBuilder builder)
         {
+            #region Identity
+            #endregion
+
             #region Reference
             builder.RegisterType<TraductionService>().As<ITraductionService>();
             builder.RegisterType<AttributService>().As<IAttributService>();
