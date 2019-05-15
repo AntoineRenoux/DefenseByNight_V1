@@ -15,22 +15,19 @@
             e.closest('.help-block').remove();
         },
         rules: {
-            'Email': {
-                required: true,
-                email: true
+            'UserName': {
+                required: true
             },
 
             'Password': {
-                required: true,
-                minlength: 6
+                required: true
             }
         },
         messages: {
-            'Email': $('#err_email_missing').val(),
+            'UserName': $('#err_alias_missing').val(),
 
             'Password': {
-                required: $('#err_password_missing').val(),
-                minlength: $('#err_password_toshort').val(),
+                required: $('#err_password_missing').val()
             }
         }
     });

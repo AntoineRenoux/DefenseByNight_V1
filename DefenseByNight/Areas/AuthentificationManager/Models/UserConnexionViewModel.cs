@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace DefenseByNight.Areas.AuthentificationManager.Models
@@ -12,7 +13,12 @@ namespace DefenseByNight.Areas.AuthentificationManager.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [HiddenInput]
+        [HiddenInput(DisplayValue = false)]
         public string ReturnUrl { get; set; }
+
+        [Required]
+        public DateTimeOffset BirthDay { get; set; }
+
+        public bool RemenberMe { get; set; } = false;
     }
 }

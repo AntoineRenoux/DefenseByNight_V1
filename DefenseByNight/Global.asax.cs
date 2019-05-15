@@ -35,7 +35,6 @@ namespace DefenseByNight
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session["culture"] = CultureInfo.CurrentCulture.LCID;
         }
     }
 }

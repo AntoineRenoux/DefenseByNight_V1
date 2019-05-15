@@ -43,10 +43,6 @@ namespace DefenseByNight.App_Start
             bundles.Add(new StyleBundle("~/Content/customLogin").Include(
                       "~/Areas/AuthentificationManager/Content/custom.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/initializeRegister").Include(
-                        "~/Areas/AuthentificationManager/Scripts/InitializationRegisterPage.js",
-                        "~/Areas/AuthentificationManager/Scripts/LoginModule.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/custom-validator-login").Include(
                     "~/Areas/AuthentificationManager/Scripts/validation-connexion.js",
                     "~/Areas/AuthentificationManager/Scripts/validation-registration.js"));

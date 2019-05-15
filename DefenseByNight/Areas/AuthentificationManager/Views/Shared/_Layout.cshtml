@@ -5,20 +5,21 @@
     <title>@ViewBag.SiteName - @ViewBag.ActionName </title>
     @Styles.Render("~/Content/fontawesome")
     @Styles.Render("~/Content/css")
-   @* @Styles.Render("~/Content/customLogin")*@
+    @Styles.Render("~/Content/customLogin")
     @RenderSection("head", required: false)
 </head>
-<body id="loginPageBody">
-
-    @RenderBody()
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/moment")
-    @Scripts.Render("~/bundles/unbostrusive-ajax")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/custom-validator-login")
-    @Scripts.Render("~/bundles/initializeRegister")
-    @RenderSection("scripts", required: false)
+<body>
+    <div class="center">
+        @RenderBody()
+    </div>
 </body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/moment")
+@Scripts.Render("~/bundles/unbostrusive-ajax")
+@Scripts.Render("~/bundles/bootstrap")
+
+@Scripts.Render("~/bundles/custom-validator-login")
+
+@RenderSection("scripts", required: false)
 </html>

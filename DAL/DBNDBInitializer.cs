@@ -115,10 +115,6 @@ namespace DAL
 
             AnimalismInitializer.Initialize(context, focus);
 
-
-            #region Users
-            #endregion
-
         }
 
         #region Labels

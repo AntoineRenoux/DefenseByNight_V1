@@ -21,7 +21,7 @@ namespace DefenseByNight.Areas.AuthentificationManager.Models
         public string LastName { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 3)]
+        [StringLength(20, MinimumLength = 2)]
         public string Alias { get; set; }
 
         [Required]
