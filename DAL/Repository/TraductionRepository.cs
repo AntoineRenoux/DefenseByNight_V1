@@ -8,7 +8,7 @@ namespace DAL.Repository
 {
     public class TraductionRepository : BaseRepository<Traduction>, ITraductionRepository
     {
-        public TraductionRepository(DBNContext context) : base(context)
+        public TraductionRepository()
         {
         }
 

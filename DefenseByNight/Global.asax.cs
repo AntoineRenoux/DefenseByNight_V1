@@ -1,10 +1,12 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using BLL.Enum;
+using DAL.Ioc;
 using DefenseByNight.App_Start;
 using DefenseByNight.IoC;
 using System;
 using System.Globalization;
+using System.Reflection;
 using System.Threading;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -23,7 +25,7 @@ namespace DefenseByNight
 
             //Autofac
             ContainerBuilder builder = new ContainerBuilder();
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
             RepositoryBuilder.Register(builder);
             ServiceBuilder.Register(builder);
             new AutofacContainer(builder.Build());

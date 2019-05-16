@@ -9,14 +9,11 @@ namespace DefenseByNight.IoC
     {
         public static void Register(ContainerBuilder builder)
         {
-            builder.RegisterType<DBNContext>().InstancePerLifetimeScope();
+            builder.RegisterType<DBNContext>().As<IDataBaseContext>().InstancePerRequest();
 
-            #region Reference
-            builder.RegisterType<TraductionRepository>().As<ITraductionRepository>();
-            builder.RegisterType<AttributRepository>().As<IAttributRepository>();
-            builder.RegisterType<FocusRepository>().As<IFocusRepository>();
-            builder.RegisterType<DisciplineRepository>().As<IDisciplineRepository>();
-            #endregion
+            builder.RegisterAssemblyTypes(typeof(TraductionRepository).Assembly)
+                  .AsImplementedInterfaces()
+                  .InstancePerDependency();
         }
     }
 }

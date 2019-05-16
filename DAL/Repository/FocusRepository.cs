@@ -9,7 +9,7 @@ namespace DAL.Repository
 {
     public class FocusRepository : BaseRepository<Focus>, IFocusRepository
     {
-        public FocusRepository(DBNContext context) : base(context)
+        public FocusRepository()
         {
         }
 

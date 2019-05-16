@@ -13,7 +13,7 @@
             @Html.AntiForgeryToken()
 
             <div class="form-group">
-                @Html.LabelFor(m => m.UserName, new { @class = "col-sm-2 control-label" })
+                <label class="col-sm-2 control-label" for="@Model.UserName">@Translate.GetTraduction(EnumRessource.GEN_LBL_ALIAS).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "MonPseudoDu95" })
                     @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger " })
@@ -21,7 +21,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.Password, new { @class = "col-sm-2 control-label" })
+                <label class="col-sm-2 control-label" for="@Model.Password">@Translate.GetTraduction(EnumRessource.GEN_LBL_PASSWORD).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @type = "password", placeholder = "******" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger " })

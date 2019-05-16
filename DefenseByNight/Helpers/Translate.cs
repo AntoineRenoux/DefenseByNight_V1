@@ -1,4 +1,8 @@
-﻿using BLL.Services;
+﻿using Autofac;
+using BLL.Interfaces;
+using BLL.Services;
+using DAL.Interfaces;
+using DAL.Repository;
 using DTO;
 
 namespace DefenseByNight.Helpers
@@ -16,14 +20,15 @@ namespace DefenseByNight.Helpers
 
             var builder = new ContainerBuilder();
             builder.RegisterType<TraductionService>().As<ITraductionService>();
+            builder.RegisterType<TraductionRepository>().As<ITraductionRepository>();
             var container = builder.Build();
 
             using (var scope = container.BeginLifetimeScope())
             {
                 var service = scope.Resolve<ITraductionService>();
-
-                return service.GetTraduction(key, lang);
+                result = service.GetTraduction(key, lang);
             }
+            return result;
         }
 
     }

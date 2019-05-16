@@ -11,7 +11,7 @@ namespace DAL.Repository
 {
     public class DisciplineRepository : BaseRepository<Discipline>, IDisciplineRepository
     {
-        public DisciplineRepository(DBNContext context) : base(context)
+        public DisciplineRepository()
         {
         }
 

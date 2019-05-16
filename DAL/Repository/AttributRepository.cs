@@ -10,7 +10,7 @@ namespace DAL.Repository
 {
     public class AttributRepository : BaseRepository<Attribute>, IAttributRepository
     {
-        public AttributRepository(DBNContext context) : base(context)
+        public AttributRepository()
         {
         }
 

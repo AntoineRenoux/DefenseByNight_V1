@@ -1,12 +1,15 @@
-﻿namespace DAL
+﻿using Autofac;
+using DAL.Ioc;
+
+namespace DAL
 {
     public class BaseRepository<TEntity> where TEntity : class
     {
         protected readonly DBNContext context;
 
-        public BaseRepository(DBNContext context)
+        public BaseRepository()
         {
-            this.context = context;
+            this.context = AutofacContainer.Instance.Resolve<IDataBaseContext>() as DBNContext;
         }
     }
 }

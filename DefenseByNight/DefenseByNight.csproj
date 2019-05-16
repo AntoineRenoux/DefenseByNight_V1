@@ -218,7 +218,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IoC\AutofacContainer.cs" />
     <Compile Include="IoC\RepositoryBuilder.cs" />
     <Compile Include="IoC\ServiceBuilder.cs" />
     <Compile Include="Mapping\UserVMToDtoProfile.cs" />

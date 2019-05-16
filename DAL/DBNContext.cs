@@ -1,16 +1,10 @@
-﻿using DAL.Models;
-using DAL.Models.Identity;
-using DAL.Models.Ref;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Generic;
+﻿using DAL.Models.Ref;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Data.Entity.Validation;
 
 namespace DAL
 {
-    public class DBNContext : DbContext
+    public class DBNContext : DbContext, IDataBaseContext
     {
         public DBNContext(): base("name=LocalContext")
         {

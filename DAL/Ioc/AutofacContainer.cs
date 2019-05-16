@@ -1,10 +1,7 @@
 ﻿using Autofac;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace DefenseByNight.IoC
+namespace DAL.Ioc
 {
     public class AutofacContainer
     {
@@ -14,6 +11,7 @@ namespace DefenseByNight.IoC
             get {
                 if (_instance == null)
                     throw new ArgumentNullException("Autofac Container Is Null");
+
                 return _instance;
             }
         }
