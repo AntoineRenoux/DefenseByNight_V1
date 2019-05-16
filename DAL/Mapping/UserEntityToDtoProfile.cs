@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
-using DAL.Models;
+using DAL.Models.Identity;
 using DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Mapping
 {
@@ -13,8 +8,8 @@ namespace DAL.Mapping
     {
         public UserEntityToDtoProfile()
         {
-            CreateMap<User, UserDTO>();
-            CreateMap<UserDTO, User>();
+            CreateMap<AppUser, UserDTO>();
+            CreateMap<UserDTO, AppUser>();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using DefenseByNight.Areas.LoginManager.Models;
+using DefenseByNight.Areas.AuthentificationManager.Models;
 using DTO;
 
 namespace DefenseByNight.Mapping
@@ -11,8 +11,8 @@ namespace DefenseByNight.Mapping
             CreateMap<UserDTO, UserConnexionViewModel>();
             CreateMap<UserConnexionViewModel, UserDTO>();
 
-            CreateMap<UserDTO, UserRegistrationViewModel>();
-            CreateMap<UserRegistrationViewModel, UserDTO>();
+            CreateMap<UserDTO, UserRegisterViewModel>();
+            CreateMap<UserRegisterViewModel, UserDTO>();
         }
     }
 }

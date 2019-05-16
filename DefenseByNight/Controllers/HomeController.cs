@@ -1,12 +1,16 @@
-﻿using DefenseByNight.Filters;
+﻿using BLL.Interfaces;
+using System.Security.Claims;
 using System.Web.Mvc;
 
 namespace DefenseByNight.Controllers
 {
-    [UserAuthenticationFilter]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        public ActionResult Index(int userId)
+        public HomeController(ITraductionService traductionService) : base(traductionService)
+        {
+        }
+
+        public ActionResult Index()
         {
             return View();
         }

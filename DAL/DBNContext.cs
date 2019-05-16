@@ -1,11 +1,12 @@
 ﻿using DAL.Models;
-using System;
+using DAL.Models.Identity;
+using DAL.Models.Ref;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity.Validation;
 
 namespace DAL
 {
@@ -18,13 +19,18 @@ namespace DAL
 
         #region References
         public DbSet<Traduction> Traductions { get; set; }
-        #endregion
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Attribut> Attributs { get; set; }
+        public DbSet<Focus> Focus { get; set; }
+
+        public DbSet<Discipline> Disciplines { get; set; }
+        public DbSet<Power> Powers { get; set; }
+        #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
     }
 }

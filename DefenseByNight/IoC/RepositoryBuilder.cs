@@ -2,10 +2,6 @@
 using DAL;
 using DAL.Interfaces;
 using DAL.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace DefenseByNight.IoC
 {
@@ -17,9 +13,10 @@ namespace DefenseByNight.IoC
 
             #region Reference
             builder.RegisterType<TraductionRepository>().As<ITraductionRepository>();
+            builder.RegisterType<AttributRepository>().As<IAttributRepository>();
+            builder.RegisterType<FocusRepository>().As<IFocusRepository>();
+            builder.RegisterType<DisciplineRepository>().As<IDisciplineRepository>();
             #endregion
-
-            builder.RegisterType<UserRepository>().As<IUserRepository>();
         }
     }
 }

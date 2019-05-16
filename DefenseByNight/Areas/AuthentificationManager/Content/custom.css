@@ -1,0 +1,15 @@
+﻿body {
+    background-image: url("../../../Content/Images/Background-Connexion.jpg");
+}
+
+.title {
+    font-family: "Northwood High";
+    font-size: 50px;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%
+}

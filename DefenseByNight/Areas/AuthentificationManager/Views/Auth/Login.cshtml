@@ -1,0 +1,45 @@
+﻿@model UserConnexionViewModel
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 class="title">DefenseByNight</h1>
+    </div>
+    <div class="panel-body">
+
+        @Html.ValidationSummary(true)
+
+        @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-horizontal", id = "connexionForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "MonPseudoDu95" })
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger " })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @type = "password", placeholder = "******" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger " })
+                </div>
+            </div>
+
+
+            <div>
+                @Html.LabelFor(m => m.RemenberMe)
+                @Html.CheckBoxFor(m => m.RemenberMe)
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Log In</button>
+        }
+
+        <p>or</p>
+
+        @Html.ActionLink("Register", "Register")
+    </div>
+</div>
