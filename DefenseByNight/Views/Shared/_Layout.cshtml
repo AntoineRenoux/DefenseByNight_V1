@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Application - @ViewBag.Title</title>
+    <title>@Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text - @ViewBag.Title </title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/fontawesome")
-    @Styles.Render("~/Content/customLogin")
     @RenderSection("head", required: false)
 </head>
 <body>
@@ -18,20 +17,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">@ViewBag.Application</a>
+                <a class="navbar-brand" href="">@Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text</a>
             </div>
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">IL FAUT LE NOM DU PERSONNAGE IIICCCCIIIII !!!! (et changer le Href)</a>
+                    <a href="#">*Nom du person*</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@ViewBag.FirstName @ViewBag.LastName  <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@CurrentUser.Name <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">@ViewBag.Account</a></li>
+                        <li><a href="#">@Translate.GetTraduction(EnumRessource.GEN_LBL_ACCOUNT).Text</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="@Url.Action("Logout", "Auth")">@ViewBag.Disconnect</a></li>
+                        <li><a href="@Url.Action("Logout", "Auth")">@Translate.GetTraduction(EnumRessource.GEN_LBL_DISCONNECT).Text</a></li>
                     </ul>
                 </li>
             </ul>
@@ -51,8 +50,6 @@
     @Scripts.Render("~/bundles/moment")
     @Scripts.Render("~/bundles/unbostrusive-ajax")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/custom-validator-login")
-    @Scripts.Render("~/bundles/initializeRegister")
     @RenderSection("scripts", required: false)
 </body>
 </html>

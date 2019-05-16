@@ -16,7 +16,7 @@ namespace DefenseByNight.Helpers
             var result = new TraductionDTO();
             result.LCID = lang;
             result.Key = key;
-            result.Text = string.Empty;
+            result.Text = "Ma bite";
 
             var builder = new ContainerBuilder();
             builder.RegisterType<TraductionService>().As<ITraductionService>();

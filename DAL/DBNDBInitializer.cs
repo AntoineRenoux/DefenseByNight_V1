@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace DAL
 {
-    public class DBNDBInitializer : DropCreateDatabaseIfModelChanges<DBNContext>
+    public class DBNDBInitializer : DropCreateDatabaseAlways<DBNContext>
     {
         protected override void Seed(DBNContext context)
         {
@@ -132,8 +132,10 @@ namespace DAL
                 new Traduction{LCID = 1036, Key = "GEN_LBL_LASTNAME", Text = "Nom de famille"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_EMAIL", Text = "Adresse mail"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_PASSWORD", Text = "Mot de passe"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_CONFIRM_PASSWORD", Text = "Confirmation du mot de passe"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_BIRTHDATE", Text = "Date de naissance"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_ALIAS", Text = "Pseudo"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_MOBILE_PHONE", Text = "Téléphone portable"},
 
                 new Traduction{LCID = 1036, Key = "GEN_LBL_ACCOUNT", Text = "Mon Compte"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_DISCONNECT", Text = "Déconnexion"},

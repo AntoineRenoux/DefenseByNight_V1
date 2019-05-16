@@ -16,8 +16,10 @@ namespace BLL.Enum
         public readonly static string GEN_LBL_LASTNAME = "GEN_LBL_LASTNAME";
         public readonly static string GEN_LBL_EMAIL = "GEN_LBL_EMAIL";
         public readonly static string GEN_LBL_PASSWORD = "GEN_LBL_PASSWORD";
+        public readonly static string GEN_LBL_CONFIRM_PASSWORD = "GEN_LBL_CONFIRM_PASSWORD";
         public readonly static string GEN_LBL_BIRTHDATE = "GEN_LBL_BIRTHDATE";
         public readonly static string GEN_LBL_ALIAS = "GEN_LBL_ALIAS";
+        public readonly static string GEN_LBL_MOBILE_PHONE = "GEN_LBL_MOBILE_PHONE";
 
         public readonly static string GEN_LBL_ACCOUNT = "GEN_LBL_ACCOUNT";
         public readonly static string GEN_LBL_DISCONNECT = "GEN_LBL_DISCONNECT";

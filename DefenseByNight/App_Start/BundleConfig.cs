@@ -43,7 +43,7 @@ namespace DefenseByNight.App_Start
             bundles.Add(new StyleBundle("~/Content/customLogin").Include(
                       "~/Areas/AuthentificationManager/Content/custom.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/custom-validator-login").Include(
+            bundles.Add(new ScriptBundle("~/bundles/custom-validator-auth").Include(
                     "~/Areas/AuthentificationManager/Scripts/validation-connexion.js",
                     "~/Areas/AuthentificationManager/Scripts/validation-registration.js"));
             #endregion

@@ -1,19 +1,22 @@
 ﻿@model UserConnexionViewModel
 
+@{ 
+    ViewBag.Title = Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text;
+}
+
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h1 class="title">DefenseByNight</h1>
+        <h1 class="title">@Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text</h1>
     </div>
-    <div class="panel-body">
+    @Html.ValidationSummary(true)
 
-        @Html.ValidationSummary(true)
-
-        @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-horizontal", id = "connexionForm" }))
-        {
+    @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-horizontal", id = "connexionForm" }))
+    {
+        <div class="panel-body">
             @Html.AntiForgeryToken()
 
             <div class="form-group">
-                <label class="col-sm-2 control-label" for="@Model.UserName">@Translate.GetTraduction(EnumRessource.GEN_LBL_ALIAS).Text</label>
+                <label class="col-sm-2 control-label">@Translate.GetTraduction(EnumRessource.GEN_LBL_ALIAS).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "MonPseudoDu95" })
                     @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger " })
@@ -21,18 +24,19 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label" for="@Model.Password">@Translate.GetTraduction(EnumRessource.GEN_LBL_PASSWORD).Text</label>
+                <label class="col-sm-2 control-label">@Translate.GetTraduction(EnumRessource.GEN_LBL_PASSWORD).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @type = "password", placeholder = "******" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger " })
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Log In</button>
-        }
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">@Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text</button> |
+            @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION).Text, "Register")
+        </div>
+    }
 
-        <p>or</p>
 
-        @Html.ActionLink("Register", "Register")
-    </div>
 </div>

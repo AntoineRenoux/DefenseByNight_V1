@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.SiteName - @ViewBag.ActionName </title>
+    <title>@Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text - @ViewBag.Title </title>
     @Styles.Render("~/Content/fontawesome")
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/customLogin")
     @RenderSection("head", required: false)
 </head>
-<body>
+<body class="getBackgroundImage">
     <div class="center">
         @RenderBody()
     </div>
@@ -19,7 +19,7 @@
 @Scripts.Render("~/bundles/unbostrusive-ajax")
 @Scripts.Render("~/bundles/bootstrap")
 
-@Scripts.Render("~/bundles/custom-validator-login")
+@Scripts.Render("~/bundles/custom-validator-auth")
 
 @RenderSection("scripts", required: false)
 </html>
