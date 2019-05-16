@@ -123,7 +123,7 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
         {
             if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
             {
-                return Url.Action("index", "home");
+                return Url.Action("index", "home", new { area = ""});
             }
 
             return returnUrl;

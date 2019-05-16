@@ -18,7 +18,5 @@ namespace DefenseByNight.Areas.AuthentificationManager.Models
 
         [Required]
         public DateTimeOffset BirthDay { get; set; }
-
-        public bool RemenberMe { get; set; } = false;
     }
 }
