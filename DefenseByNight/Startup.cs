@@ -33,7 +33,8 @@ namespace DefenseByNight
                 // allow alphanumeric characters in username
                 usermanager.UserValidator = new UserValidator<AppUser>(usermanager)
                 {
-                    AllowOnlyAlphanumericUserNames = false
+                    AllowOnlyAlphanumericUserNames = false,
+                    RequireUniqueEmail = true
                 };
 
                 return usermanager;

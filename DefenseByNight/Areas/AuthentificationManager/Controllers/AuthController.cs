@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using DAL.Models.Identity;
 using DefenseByNight.Controllers;
+using DefenseByNight.Helpers;
 
 namespace DefenseByNight.Areas.AuthentificationManager.Controllers
 {
@@ -56,7 +57,7 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
                 return Redirect(GetRedirectUrl(model.ReturnUrl));
             }
 
-            ModelState.AddModelError("", EnumErrorsMessages.ERR_SIGNIN_FAIL);
+            ModelState.AddModelError("", Translate.GetTraduction(EnumErrorsMessages.ERR_SIGNIN_FAIL).Text);
             return View();
         }
 

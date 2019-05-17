@@ -17,20 +17,17 @@
         rules: {
             'FirstName': {
                 required: true,
-                minlength: 2,
-                maxlenght: 20
+                maxlength: 20
             },
 
             'LastName': {
                 required: true,
-                minlength: 2,
-                maxlenght: 20
+                maxlength: 20
             },
 
             'Alias': {
                 required: true,
-                minlength: 2,
-                maxlenght: 40
+                maxlength: 20
             },
 
             'Email': {
@@ -40,7 +37,7 @@
 
             'Password': {
                 required: true,
-                minlength: 6
+                minlength: 8
             },
 
             'ConfirmPassword': {
@@ -60,27 +57,27 @@
         messages: {
             'FirstName': {
                 required: $('#err_firstname_missing').val(),
-                minlength: $('#err_firstname_to_short').val(),
                 maxlength: $('#err_firstname_to_long').val()
             },
 
             'LastName': {
                 required: $('#err_lastname_missing').val(),
-                minlength: $('#err_lastname_to_short').val(),
                 maxlength: $('#err_lastname_to_long').val()
             },
 
             'Alias': {
                 required: $('#err_alias_missing').val(),
-                minlength: $('#err_alias_to_short').val(),
                 maxlength: $('#err_alias_to_long').val()
             },
 
-            'Email': $('#err_email_missing').val(),
+            'Email': {
+                required: $('#err_email_missing').val(),
+                email: $('#err_email_uncorrect').val()
+            },
 
             'Password': {
                 required: $('#err_password_missing').val(),
-                minlength: $('#err_password_toshort').val(),
+                minlength: $('#err_password_toshort').val()
             },
 
             'ConfirmPassword': {
@@ -94,7 +91,7 @@
 
             'Birthdate': {
                 required: $('#err_birthdate_missing').val(),
-                dateITA: "A traduire",
+                dateITA: "A traduire"
             },
         }
     });

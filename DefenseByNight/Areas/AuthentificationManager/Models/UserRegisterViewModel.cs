@@ -9,19 +9,20 @@ namespace DefenseByNight.Areas.AuthentificationManager.Models
         public string Email { get; set; }
 
         [Required]
+        [MinLength(8)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 3)]
+        [MaxLength(20)]
         public string FirstName { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 3)]
+        [MaxLength(20)]
         public string LastName { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 2)]
+        [MaxLength(20)]
         public string Alias { get; set; }
 
         [Required]

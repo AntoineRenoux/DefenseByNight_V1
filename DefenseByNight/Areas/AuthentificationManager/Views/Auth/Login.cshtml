@@ -1,6 +1,6 @@
 ﻿@model UserConnexionViewModel
 
-@{ 
+@{
     ViewBag.Title = Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text;
 }
 
@@ -8,7 +8,12 @@
     <div class="panel-heading">
         <h1 class="title">@Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text</h1>
     </div>
-    @Html.ValidationSummary(true)
+    @if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
+    {
+        <div class="alert alert-danger">
+            @Html.ValidationSummary(true)
+        </div>
+    }
 
     @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-horizontal", id = "connexionForm" }))
     {
@@ -37,6 +42,8 @@
             @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION).Text, "Register")
         </div>
     }
-
-
 </div>
+
+
+@Html.Hidden("err_alias_missing", Translate.GetTraduction(EnumErrorsMessages.ERR_ALIAS_MISSING).Text)
+@Html.Hidden("err_password_missing", Translate.GetTraduction(EnumErrorsMessages.ERR_PASSWORD_MISSING).Text)

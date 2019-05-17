@@ -8,7 +8,12 @@
     <div class="panel-heading">
         <h1 class="title">@Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text</h1>
     </div>
-    @Html.ValidationSummary(true)
+    @if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
+    {
+        <div class="alert alert-danger">
+            @Html.ValidationSummary(true)
+        </div>
+    }
 
     @using (Html.BeginForm("Register", "Auth", FormMethod.Post, new { @class = "form-horizontal", id = "registrationForm" }))
     {
@@ -19,6 +24,7 @@
                 <label class="col-sm-2 control-label">@Translate.GetTraduction(EnumRessource.GEN_LBL_FIRSTNAME).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Pierre" })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger " })
                 </div>
             </div>
 
@@ -26,6 +32,7 @@
                 <label class="col-sm-2 control-label">@Translate.GetTraduction(EnumRessource.GEN_LBL_LASTNAME).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Poloujak" })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger " })
                 </div>
             </div>
 
@@ -33,6 +40,7 @@
                 <label class="col-sm-2 control-label">@Translate.GetTraduction(EnumRessource.GEN_LBL_ALIAS).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.Alias, new { @class = "form-control", placeholder = "MonPseudoDu95" })
+                    @Html.ValidationMessageFor(m => m.Alias, "", new { @class = "text-danger " })
                 </div>
             </div>
 
@@ -40,6 +48,7 @@
                 <label class="col-sm-2 control-label">@Translate.GetTraduction(EnumRessource.GEN_LBL_EMAIL).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", placeholder = "monemail@fournisseur.com" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger " })
                 </div>
             </div>
 
@@ -47,6 +56,7 @@
                 <label class="col-sm-2 control-label">@Translate.GetTraduction(EnumRessource.GEN_LBL_PASSWORD).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @type = "password", placeholder = "******" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger " })
                 </div>
             </div>
 
@@ -61,6 +71,7 @@
                 <label class="col-sm-2 control-label">@Translate.GetTraduction(EnumRessource.GEN_LBL_MOBILE_PHONE).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.MobilePhone, new { @class = "form-control", placeholder = "0601020304" })
+                    @Html.ValidationMessageFor(m => m.MobilePhone, "", new { @class = "text-danger " })
                 </div>
             </div>
 
@@ -73,16 +84,14 @@
 </div>
 
 @Html.Hidden("err_firstname_missing", Translate.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING).Text)
-@Html.Hidden("err_firstname_to_short", Translate.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING).Text)
-@Html.Hidden("err_firstname_to_long", Translate.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING).Text)
+@Html.Hidden("err_firstname_to_long", Translate.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_TO_LONG).Text)
 @Html.Hidden("err_lastname_missing", Translate.GetTraduction(EnumErrorsMessages.ERR_LASTNAME_MISSING).Text)
-@Html.Hidden("err_lastname_to_short", Translate.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING).Text)
-@Html.Hidden("err_lastname_to_long", Translate.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING).Text)
+@Html.Hidden("err_lastname_to_long", Translate.GetTraduction(EnumErrorsMessages.ERR_LASTNAME_TO_LONG).Text)
 @Html.Hidden("err_alias_missing", Translate.GetTraduction(EnumErrorsMessages.ERR_ALIAS_MISSING).Text)
-@Html.Hidden("err_alias_to_short", Translate.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING).Text)
-@Html.Hidden("err_alias_to_long", Translate.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING).Text)
+@Html.Hidden("err_alias_to_long", Translate.GetTraduction(EnumErrorsMessages.ERR_ALIAS_TO_LONG).Text)
 @Html.Hidden("err_email_missing", Translate.GetTraduction(EnumErrorsMessages.ERR_EMAIL_MISSING).Text)
+@Html.Hidden("err_email_uncorrect", Translate.GetTraduction(EnumErrorsMessages.ERR_EMAIL_UNCORRECT).Text)
 @Html.Hidden("err_password_missing", Translate.GetTraduction(EnumErrorsMessages.ERR_PASSWORD_MISSING).Text)
-@Html.Hidden("err_password_toshort", Translate.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING).Text)
-@Html.Hidden("err_password_not_matching", Translate.GetTraduction(EnumErrorsMessages.ERR_FIRSTNAME_MISSING).Text)
+@Html.Hidden("err_password_toshort", Translate.GetTraduction(EnumErrorsMessages.ERR_PASSWORD_TO_SHORT).Text)
+@Html.Hidden("err_password_not_matching", Translate.GetTraduction(EnumErrorsMessages.ERR_PASSWORD_NOT_MATCHING).Text)
 @Html.Hidden("err_birthdate_missing", Translate.GetTraduction(EnumErrorsMessages.ERR_BIRTHDATE_MISSING).Text)

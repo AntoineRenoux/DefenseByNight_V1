@@ -157,13 +157,22 @@ namespace DAL
                 var errorMessages = new List<Traduction>
                 {
                     new Traduction{LCID = 1036, Key = "ERR_FIRSTNAME_MISSING", Text = "Le prénom n'est pas renseigné."},
-                    new Traduction{LCID = 1036, Key = "ERR_LASTNAME_MISSING", Text = "Le nom de famille n'est pas renseigné."},
-                    new Traduction{LCID = 1036, Key = "ERR_EMAIL_MISSING", Text = "L'adresse mail n'est pas renseignée."},
-                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_MISSING", Text = "Le mot de passe n'est pas renseigné."},
-                    new Traduction{LCID = 1036, Key = "ERR_BIRTHDATE_MISSING", Text = "La date de naissance n'est pas renseignée."},
-                    new Traduction{LCID = 1036, Key = "ERR_ALIAS_MISSING", Text = "Le pseudo n'est pas renseigné."},
+                    new Traduction{LCID = 1036, Key = "ERR_FIRSTNAME_TO_LONG", Text = "Le prénom ne peut pas dépasser les 20 carractères."},
 
-                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_TO_SHORT", Text = "Le mot de passe doit faire au moins 6 carractères."},
+                    new Traduction{LCID = 1036, Key = "ERR_LASTNAME_MISSING", Text = "Le nom de famille n'est pas renseigné."},
+                    new Traduction{LCID = 1036, Key = "ERR_LASTNAME_TO_LONG", Text = "Le nom de famille ne peut pas dépasser les 20 carractères."},
+
+                    new Traduction{LCID = 1036, Key = "ERR_ALIAS_MISSING", Text = "Le pseudo n'est pas renseigné."},
+                    new Traduction{LCID = 1036, Key = "ERR_ALIAS_TO_LONG", Text = "Le pseudo ne peut pas dépasser les 20 carractères."},
+
+                    new Traduction{LCID = 1036, Key = "ERR_EMAIL_MISSING", Text = "L'adresse mail n'est pas renseignée."},
+                    new Traduction{LCID = 1036, Key = "ERR_EMAIL_UNCORRECT", Text = "L'adresse mail n'est pas correcte."},
+
+                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_MISSING", Text = "Le mot de passe n'est pas renseigné."},
+                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_TO_SHORT", Text = "Le mot de passe doit faire au moins 8 caractères."},
+                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_NOT_MATCHING", Text = "Le mot de passe ne correcpond pas à celui renseigné."},
+
+                    new Traduction{LCID = 1036, Key = "ERR_BIRTHDATE_MISSING", Text = "La date de naissance n'est pas renseignée."},
 
                     new Traduction{LCID = 1036, Key = "ERR_SIGNIN_FAIL", Text = "L'adresse mail ou le mot de passe est incorrecte."},
                 };
