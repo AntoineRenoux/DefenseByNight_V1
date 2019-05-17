@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text - @ViewBag.Title </title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/fontawesome")
     @RenderSection("head", required: false)
 </head>
 <body>
@@ -24,12 +24,6 @@
                 <li class="dropdown">
                     @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text, "Login", "Auth", new { area = "AuthentificationManager" }, null)
                 </li>
-                @*<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        @Html.Partial("/Areas/AuthentificationManager/Views/Auth/_Login.cshtml")
-                    </ul>
-                </li>*@
                 <li class="dropdown">
                     @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION).Text, "Register", "Auth", new { area = "AuthentificationManager" }, null)
                 </li>

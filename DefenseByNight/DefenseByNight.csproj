@@ -152,18 +152,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\FondDefenseByNight-01.jpg" />
     <Content Include="Content\site.css" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\Northwood High.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -177,7 +169,6 @@
     <Content Include="Areas\AuthentificationManager\Views\_ViewStart.cshtml" />
     <Content Include="Areas\AuthentificationManager\Views\Auth\Register.cshtml" />
     <Content Include="Areas\Character\Views\web.config" />
-    <Content Include="Areas\AuthentificationManager\Views\Auth\_Login.cshtml" />
     <Content Include="Areas\AuthentificationManager\Views\Auth\Login.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
