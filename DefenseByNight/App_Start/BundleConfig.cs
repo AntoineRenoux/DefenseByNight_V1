@@ -39,10 +39,6 @@ namespace DefenseByNight.App_Start
                         "~/Scripts/moment-with-locales.min.js"));
 
             #region Login page
-
-            bundles.Add(new StyleBundle("~/Content/customLogin").Include(
-                      "~/Areas/AuthentificationManager/Content/custom.css"));
-
             bundles.Add(new ScriptBundle("~/bundles/custom-validator-auth").Include(
                     "~/Areas/AuthentificationManager/Scripts/validation-connexion.js",
                     "~/Areas/AuthentificationManager/Scripts/validation-registration.js"));

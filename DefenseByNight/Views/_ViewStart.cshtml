@@ -1,3 +1,10 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (DefenseByNight.Models.AppUserModel.Current.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LayoutConnected.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutDisconnected.cshtml";
+    }
 }

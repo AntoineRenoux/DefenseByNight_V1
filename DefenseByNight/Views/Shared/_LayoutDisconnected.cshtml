@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,31 +18,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">@Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text</a>
+                @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#">*Nom du person*</a>
-                </li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@CurrentUser.Name <span class="caret"></span></a>
+                    @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text, "Login", "Auth", new { area = "AuthentificationManager" }, null)
+                </li>
+                @*<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">@Translate.GetTraduction(EnumRessource.GEN_LBL_ACCOUNT).Text</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="@Url.Action("Logout", "Auth")">@Translate.GetTraduction(EnumRessource.GEN_LBL_DISCONNECT).Text</a></li>
+                        @Html.Partial("/Areas/AuthentificationManager/Views/Auth/_Login.cshtml")
                     </ul>
+                </li>*@
+                <li class="dropdown">
+                    @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION).Text, "Register", "Auth", new { area = "AuthentificationManager" }, null)
                 </li>
             </ul>
         </div>
     </div>
-
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTimeOffset.Now.Year - @ViewBag.Application - powered by Zesso</p>
+
+        <footer class="navbar-fixed-bottom text-center footer-style">
+            <p>&copy; @DateTimeOffset.Now.Year - @Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text - powered by Zesso</p>
         </footer>
     </div>
 
@@ -50,6 +49,9 @@
     @Scripts.Render("~/bundles/moment")
     @Scripts.Render("~/bundles/unbostrusive-ajax")
     @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/bundles/custom-validator-auth")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

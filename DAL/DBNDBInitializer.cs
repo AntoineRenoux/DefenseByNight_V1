@@ -127,6 +127,7 @@ namespace DAL
                 new Traduction{LCID = 1036, Key = "GEN_LBL_SITE_NAME", Text = "Defense By Night"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_CONNEXION", Text = "Connexion"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_REGISTRATION", Text = "Inscription"},
+                 new Traduction{LCID = 1036, Key = "GEN_LBL_Home", Text = "Accueil"},
 
                 new Traduction{LCID = 1036, Key = "GEN_LBL_FIRSTNAME", Text = "Prénom"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_LASTNAME", Text = "Nom de famille"},
@@ -139,6 +140,10 @@ namespace DAL
 
                 new Traduction{LCID = 1036, Key = "GEN_LBL_ACCOUNT", Text = "Mon Compte"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_DISCONNECT", Text = "Déconnexion"},
+
+                new Traduction{LCID = 1036, Key = "GEN_LBL_CREATE_CHARACTER", Text = "Création de personnage"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_NEXT_GAME", Text = "Prochaine partie"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_WELLCOME", Text = "Bienvenue sur la Cité de Verre !"},
             };
 
                 labels.ForEach(t =>

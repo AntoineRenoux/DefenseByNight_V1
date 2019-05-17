@@ -147,8 +147,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\Background-Connexion.jpg" />
-    <Content Include="Areas\AuthentificationManager\Content\custom.css" />
     <Content Include="Areas\AuthentificationManager\Scripts\validation-connexion.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -156,6 +154,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\FondDefenseByNight-01.jpg" />
     <Content Include="Content\site.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -175,9 +174,11 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\AuthentificationManager\Views\web.config" />
-    <Content Include="Areas\AuthentificationManager\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AuthentificationManager\Views\_ViewStart.cshtml" />
     <Content Include="Areas\AuthentificationManager\Views\Auth\Register.cshtml" />
+    <Content Include="Areas\Character\Views\web.config" />
+    <Content Include="Areas\AuthentificationManager\Views\Auth\_Login.cshtml" />
+    <Content Include="Areas\AuthentificationManager\Views\Auth\Login.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -211,6 +212,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AuthentificationManager\Controllers\AuthController.cs" />
     <Compile Include="Areas\AuthentificationManager\AuthentificationManagerAreaRegistration.cs" />
+    <Compile Include="Areas\Character\CharacterAreaRegistration.cs" />
+    <Compile Include="Areas\Character\Controllers\CreationController.cs" />
     <Compile Include="Helpers\Translate.cs" />
     <Compile Include="Models\AppUserModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -230,11 +233,12 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Areas\AuthentificationManager\Views\Auth\Login.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutConnected.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutDisconnected.cshtml" />
+    <Content Include="Views\Shared\_Countdown.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -244,6 +248,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\AuthentificationManager\Content\" />
+    <Folder Include="Areas\AuthentificationManager\Views\Shared\" />
+    <Folder Include="Areas\Character\Models\" />
+    <Folder Include="Areas\Character\Views\Create\" />
+    <Folder Include="Areas\Character\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

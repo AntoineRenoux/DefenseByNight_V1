@@ -20,12 +20,18 @@
         <div class="panel-body">
             @Html.AntiForgeryToken()
 
-            <div class="form-group">
+            @*<div class="form-group">
                 <label class="col-sm-2 control-label">@Translate.GetTraduction(EnumRessource.GEN_LBL_ALIAS).Text</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "MonPseudoDu95" })
                     @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger " })
                 </div>
+            </div>*@
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa-address-book"></i></span>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = Translate.GetTraduction(EnumRessource.GEN_LBL_ALIAS).Text })
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger " })
             </div>
 
             <div class="form-group">
