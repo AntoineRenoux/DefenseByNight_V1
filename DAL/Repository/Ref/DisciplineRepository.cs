@@ -69,7 +69,7 @@ namespace DAL.Repository.Ref
                 d.Powers.AddRange(powers.Where(p => p.DisciplineKey == d.DisciplineKey));
             });
 
-            return disciplines;
+            return disciplines.OrderBy(x => x.DisciplineName).ToList();
         }
     }
 }

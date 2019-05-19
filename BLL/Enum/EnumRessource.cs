@@ -29,5 +29,6 @@
 
         public readonly static string GEN_LBL_DISCIPLINE = "GEN_LBL_DISCIPLINE";
         public readonly static string GEN_LBL_RULES = "GEN_LBL_RULES";
+        public readonly static string GEN_LBL_TEST_SCORE = "GEN_LBL_TEST_SCORE";
     }
 }
