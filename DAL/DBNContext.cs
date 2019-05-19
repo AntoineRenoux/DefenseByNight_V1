@@ -19,11 +19,23 @@ namespace DAL
 
         public DbSet<Discipline> Disciplines { get; set; }
         public DbSet<Power> Powers { get; set; }
+
+        public DbSet<Clan> Clans { get; set; }
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<Clan>()
+               .HasMany<Discipline>(d => d.Disciplines)
+               .WithMany(c => c.Clans)
+               .Map(cs =>
+               {
+                   cs.MapLeftKey("ClanKey");
+                   cs.MapRightKey("DisciplineKey");
+                   cs.ToTable("ClanDiscipline");
+               });
         }
 
     }

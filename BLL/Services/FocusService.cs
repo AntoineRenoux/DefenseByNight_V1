@@ -21,5 +21,6 @@ namespace BLL.Services
 
         public List<FocusDTO> GetAll(int languageId) => focusRepository.GetAll(languageId);
 
+        public FocusDTO GetByKey(string key, int languageId) => focusRepository.GetByKey(key, languageId);
     }
 }

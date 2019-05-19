@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL.Enum
+﻿namespace BLL.Enum
 {
     public static class EnumRessource
     {
@@ -32,5 +26,8 @@ namespace BLL.Enum
 
         public readonly static string GEN_LBL_NEXT_GAME = "GEN_LBL_NEXT_GAME";
         public readonly static string GEN_LBL_WELLCOME = "GEN_LBL_WELLCOME";
+
+        public readonly static string GEN_LBL_DISCIPLINE = "GEN_LBL_DISCIPLINE";
+        public readonly static string GEN_LBL_RULES = "GEN_LBL_RULES";
     }
 }

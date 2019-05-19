@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
@@ -44,6 +45,13 @@ namespace DefenseByNight.Models
                 if (this.FindFirst(ClaimTypes.MobilePhone) != null)
                     return this.FindFirst(ClaimTypes.MobilePhone).Value;
                 return string.Empty;
+            }
+        }
+
+        public int Lang
+        {
+            get {
+                return CultureInfo.CurrentCulture.LCID;
             }
         }
     }

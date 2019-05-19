@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DAL.Repository
+namespace DAL.Repository.Ref
 {
     public class AttributRepository : BaseRepository<Attribute>, IAttributRepository
     {

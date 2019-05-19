@@ -1,13 +1,10 @@
 ﻿using DAL.Interfaces;
 using DAL.Models.Ref;
 using DTO;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DAL.Repository
+namespace DAL.Repository.Ref
 {
     public class DisciplineRepository : BaseRepository<Discipline>, IDisciplineRepository
     {
@@ -22,12 +19,15 @@ namespace DAL.Repository
                                 on d.DisciplineName equals t.Key
                                join t2 in context.Traductions
                                 on d.Description equals t2.Key
+                               join t3 in context.Traductions
+                                on d.TestScore equals t3.Key
                                where t.LCID == languageId
                                select new DisciplineDTO
                                {
                                    DisciplineKey = d.DisciplineKey,
                                    DisciplineName = t.Text,
-                                   Description = t2.Text
+                                   Description = t2.Text,
+                                   TestScore = t3.Text
                                }).ToList();
 
             var powers = (from p in context.Powers
@@ -49,11 +49,18 @@ namespace DAL.Repository
                               PowerName = t.Text,
                               Description = t2.Text,
                               DisciplineName = t6.Text,
-                              ExceptionalSuccess= t3.Text,
+                              ExceptionalSuccess = t3.Text,
                               Level = p.Level,
                               System = t4.Text,
                               FocusEffect = t5.Text,
-                              DisciplineKey = p.DisciplineKey
+                              DisciplineKey = p.DisciplineKey,
+                              Focus = new FocusDTO
+                              {
+                                  AttributKey = p.Focus.AttributKey,
+                                  FocusKey = p.Focus.FocusKey,
+                                  Description = p.Focus.Description,
+                                  FocusName = p.Focus.FocusName
+                              }
                           }).ToList();
 
 
