@@ -18,6 +18,10 @@ namespace DefenseByNight.App_Start
                 x.AddProfile<UserVMToDtoProfile>();
                 x.AddProfile<UserEntityToDtoProfile>();
                 #endregion
+
+                x.AddProfile<DisciplineVMToDtoProfile>();
+                x.AddProfile<FocusVMToDtoProfile>();
+                x.AddProfile<PowerVMToDtoProfile>(); 
             });
         }
     }

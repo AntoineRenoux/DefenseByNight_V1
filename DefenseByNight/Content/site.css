@@ -3,6 +3,49 @@
     src: url('../fonts/Northwood High.ttf');
 }
 
-body{
-    margin-top : 50px;
+body {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-family: "Northwood High";
+    font-size: 50px;
+    text-align: center;
+}
+
+.footer-style{
+    background-color: black;
+}
+
+#countdown {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 0px;
+}
+
+img.sizable{
+    width:100%;
+}
+
+/*centrage des div*/
+
+.outer {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
 }

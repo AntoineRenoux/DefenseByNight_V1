@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text - @ViewBag.Title </title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/fontawesome")
     @RenderSection("head", required: false)
 </head>
 <body>
@@ -17,11 +17,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">@Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text</a>
+                @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">*Nom du person*</a>
+                    <a href="#">@Translate.GetTraduction(EnumRessource.GEN_LBL_CREATE_CHARACTER).Text</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -37,11 +37,10 @@
         </div>
     </div>
 
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTimeOffset.Now.Year - @ViewBag.Application - powered by Zesso</p>
+        <footer class="navbar-fixed-bottom text-center">
+            &copy; @DateTimeOffset.Now.Year - @Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text - powered by Zesso
         </footer>
     </div>
 

@@ -18,6 +18,8 @@ namespace DTO
         [Required]
         public string Description { get; set; }
 
+        public string TestScore { get; set; }
+
         public List<PowerDTO> Powers { get; set; }
     }
 }

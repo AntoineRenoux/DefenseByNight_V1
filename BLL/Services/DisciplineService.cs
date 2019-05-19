@@ -1,23 +1,36 @@
 ﻿using BLL.Interfaces;
 using DAL.Interfaces;
 using DTO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    public class DisciplineService: IDisciplineService
+    public class DisciplineService : IDisciplineService
     {
         private readonly IDisciplineRepository _disciplineRepository;
+        private readonly IFocusRepository _focusRepository;
 
-        public DisciplineService(IDisciplineRepository disciplineRepository)
+        public DisciplineService(IDisciplineRepository disciplineRepository
+            , IFocusRepository focusRepository)
         {
             _disciplineRepository = disciplineRepository;
+            _focusRepository = focusRepository;
         }
 
-        public List<DisciplineDTO> GetAllWithPowers(int languageId) => _disciplineRepository.GetAllWithPowers(languageId);
+        public List<DisciplineDTO> GetAllWithPowers(int languageId)
+        {
+            var disciplines = _disciplineRepository.GetAllWithPowers(languageId);
+
+            disciplines.ForEach(d =>
+            {
+                d.Powers.ForEach(p =>
+                {
+                    p.Focus = _focusRepository.GetByKey(p.Focus.FocusKey, languageId);
+                });
+            });
+
+            return disciplines;
+        }
+
     }
 }

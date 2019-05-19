@@ -45,7 +45,6 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
             {
                 return View();
             }
-            //var toto = await userManager.FindByEmailAsync("toto@toto.com");
             var user = await userManager.FindAsync(model.UserName, model.Password);
 
             if (user != null)

@@ -14,6 +14,10 @@ namespace DAL.Models.Ref
         [Required]
         public string Description { get; set; }
 
+        public string TestScore { get; set; }
+
         public ICollection<Power> Powers { get; set; }
+
+        public virtual ICollection<Clan> Clans { get; set; }
     }
 }

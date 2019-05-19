@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
@@ -13,24 +14,44 @@ namespace DefenseByNight.Models
         {
         }
 
+        public bool Connected
+        {
+            get {
+                return (FindFirst(ClaimTypes.Name) != null);
+            }
+        }
+
         public string Name
         {
             get {
-                return this.FindFirst(ClaimTypes.Name).Value;
+                if (this.FindFirst(ClaimTypes.Name) != null)
+                    return this.FindFirst(ClaimTypes.Name).Value;
+                return string.Empty;
             }
         }
 
         public string Email
         {
             get {
-                return this.FindFirst(ClaimTypes.Email).Value;
+                if (this.FindFirst(ClaimTypes.Email) != null)
+                    return this.FindFirst(ClaimTypes.Email).Value;
+                return string.Empty;
             }
         }
 
         public string MobilePhone
         {
             get {
-                return this.FindFirst(ClaimTypes.MobilePhone).Value;
+                if (this.FindFirst(ClaimTypes.MobilePhone) != null)
+                    return this.FindFirst(ClaimTypes.MobilePhone).Value;
+                return string.Empty;
+            }
+        }
+
+        public int Lang
+        {
+            get {
+                return CultureInfo.CurrentCulture.LCID;
             }
         }
     }

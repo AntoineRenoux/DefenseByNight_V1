@@ -2,7 +2,7 @@
 using BLL.Interfaces;
 using BLL.Services;
 using DAL.Interfaces;
-using DAL.Repository;
+using DAL.Repository.Ref;
 using DTO;
 
 namespace DefenseByNight.Helpers

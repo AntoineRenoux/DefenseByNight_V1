@@ -4,7 +4,7 @@ using DAL.Models.Ref;
 using DTO;
 using System.Linq;
 
-namespace DAL.Repository
+namespace DAL.Repository.Ref
 {
     public class TraductionRepository : BaseRepository<Traduction>, ITraductionRepository
     {
