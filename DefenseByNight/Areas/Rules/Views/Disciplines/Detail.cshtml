@@ -9,7 +9,9 @@
 
     <div class="row">
         <div class="col-md-12">
-            <p>@Html.Raw(Model.Description)</p>
+            <p class="text-justify">
+                @Html.Raw(Model.Description)
+            </p>
         </div>
     </div>
 
@@ -23,29 +25,35 @@
             </div>
 
             <div class="col-md-12">
-                <div class="text-justified">
-                    <p>@Html.Raw(power.Description)</p>
-                </div>
+                <p class="text-justify">
+                    @Html.Raw(power.Description)
+                </p>
             </div>
             <hr />
 
             <div class="col-md-12">
                 <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_SYSTEM).Text</h4>
-                <p>@Html.Raw(power.System)</p>
+                <p class="text-justify">
+                    @Html.Raw(power.System)
+                </p>
             </div>
 
             @if (power.ExceptionalSuccess != null)
             {
                 <div class="col-md-12">
                     <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_EXEPTIONNAL_SUCCESS).Text</h4>
-                    <p>@Html.Raw(power.ExceptionalSuccess)</p>
+                    <p class="text-justify">
+                        @Html.Raw(power.ExceptionalSuccess)
+                    </p>
                 </div>
             }
 
 
             <div class="col-md-12">
                 <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_FOCUS).Text : @power.Focus.FocusName</h4>
-                <p>@Html.Raw(power.FocusEffect)</p>
+                <p class="text-justify">
+                    @Html.Raw(power.FocusEffect)
+                </p>
             </div>
         </div>
     }
