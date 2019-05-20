@@ -8,8 +8,8 @@ namespace DefenseByNight.Mapping
     {
         public FocusVMToDtoProfile()
         {
-            CreateMap<FocusViewModel, FocusDTO>();
-            CreateMap<FocusDTO, FocusViewModel>();
+            CreateMap<FocusViewModel, FocusDto>();
+            CreateMap<FocusDto, FocusViewModel>();
         }
     }
 }

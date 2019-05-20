@@ -13,8 +13,8 @@ namespace DAL.Mapping
     {
         public DisciplineEntityToDtoProfile()
         {
-            CreateMap<Discipline,DisciplineDTO>();
-            CreateMap<DisciplineDTO, Discipline>();
+            CreateMap<Discipline,DisciplineDto>();
+            CreateMap<DisciplineDto, Discipline>();
         }
     }
 }

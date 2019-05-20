@@ -8,8 +8,8 @@ namespace DAL.Mapping
     {
         public UserEntityToDtoProfile()
         {
-            CreateMap<AppUser, UserDTO>();
-            CreateMap<UserDTO, AppUser>();
+            CreateMap<AppUser, UserDto>();
+            CreateMap<UserDto, AppUser>();
         }
     }
 }

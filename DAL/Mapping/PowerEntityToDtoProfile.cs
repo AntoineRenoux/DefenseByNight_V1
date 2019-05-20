@@ -13,8 +13,8 @@ namespace DAL.Mapping
     {
         public PowerEntityToDtoProfile()
         {
-            CreateMap<PowerDTO, Power>();
-            CreateMap<Power, PowerDTO>();
+            CreateMap<PowerDto, Power>();
+            CreateMap<Power, PowerDto>();
         }
     }
 }

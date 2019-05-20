@@ -8,8 +8,8 @@ namespace DefenseByNight.Mapping
     {
         public PowerVMToDtoProfile()
         {
-            CreateMap<PowerDTO, PowerViewModel>();
-            CreateMap<PowerViewModel, PowerDTO>();
+            CreateMap<PowerDto, PowerViewModel>();
+            CreateMap<PowerViewModel, PowerDto>();
         }
     }
 }

@@ -8,8 +8,8 @@ namespace DefenseByNight.Mapping
     {
         public DisciplineVMToDtoProfile()
         {
-            CreateMap<DisciplineViewModel, DisciplineDTO>();
-            CreateMap<DisciplineDTO, DisciplineViewModel>();
+            CreateMap<DisciplineViewModel, DisciplineDto>();
+            CreateMap<DisciplineDto, DisciplineViewModel>();
         }
     }
 }

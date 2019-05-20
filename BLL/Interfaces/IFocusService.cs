@@ -15,13 +15,13 @@ namespace BLL.Interfaces
         /// </summary>
         /// <param name="languageId">CTX_LANGUAGE_ID</param>
         /// <returns></returns>
-        List<FocusDTO> GetAll(int languageId);
+        List<FocusDto> GetAll(int languageId);
 
         /// <summary>
         /// Récupére et traduit un Focus
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        FocusDTO GetByKey(string key, int languageId);
+        FocusDto GetByKey(string key, int languageId);
     }
 }

@@ -30,5 +30,9 @@
         public readonly static string GEN_LBL_DISCIPLINE = "GEN_LBL_DISCIPLINE";
         public readonly static string GEN_LBL_RULES = "GEN_LBL_RULES";
         public readonly static string GEN_LBL_TEST_SCORE = "GEN_LBL_TEST_SCORE";
+        public readonly static string GEN_LBL_SYSTEM = "GEN_LBL_SYSTEM";
+        public readonly static string GEN_LBL_FOCUS = "GEN_LBL_FOCUS";
+        public readonly static string GEN_TXT_DETAIL_DISCIPLINE = "GEN_TXT_DETAIL_DISCIPLINE";
+        public readonly static string GEN_LBL_EXEPTIONNAL_SUCCESS = "GEN_LBL_EXEPTIONNAL_SUCCESS";
     }
 }

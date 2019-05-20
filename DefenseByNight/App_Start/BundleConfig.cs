@@ -1,4 +1,6 @@
-﻿using System.Web.Optimization;
+﻿using DefenseByNight.Areas.AuthentificationManager;
+using DefenseByNight.Areas.Rules;
+using System.Web.Optimization;
 
 namespace DefenseByNight.App_Start
 {
@@ -38,12 +40,8 @@ namespace DefenseByNight.App_Start
                         "~/Scripts/moment.min.js",
                         "~/Scripts/moment-with-locales.min.js"));
 
-            #region Login page
-            bundles.Add(new ScriptBundle("~/bundles/custom-validator-auth").Include(
-                    "~/Areas/AuthentificationManager/Scripts/validation-connexion.js",
-                    "~/Areas/AuthentificationManager/Scripts/validation-registration.js"));
-            #endregion
-
+            LoginBundleConfig.RegisterBundles(bundles);
+            RulesBundleConfig.RegisterBundles(bundles);
         }
     }
 }

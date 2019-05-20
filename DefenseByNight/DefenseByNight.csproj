@@ -148,6 +148,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AuthentificationManager\Scripts\validation-connexion.js" />
+    <Content Include="Areas\Rules\Content\disciplines.css" />
+    <Content Include="Areas\Rules\Scripts\Disciplines\disciplineModule.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -175,8 +177,8 @@
     <Content Include="Areas\Character\Views\Create\Index.cshtml" />
     <Content Include="Areas\Rules\Views\web.config" />
     <Content Include="Areas\Rules\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Rules\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Rules\Views\Disciplines\Index.cshtml" />
+    <Content Include="Areas\Rules\Views\Disciplines\Detail.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -210,6 +212,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AuthentificationManager\Controllers\AuthController.cs" />
     <Compile Include="Areas\AuthentificationManager\AuthentificationManagerAreaRegistration.cs" />
+    <Compile Include="Areas\AuthentificationManager\LoginBundleConfig.cs" />
     <Compile Include="Areas\Character\CharacterAreaRegistration.cs" />
     <Compile Include="Areas\Character\Controllers\CreationController.cs" />
     <Compile Include="Areas\Character\Models\Character.cs" />
@@ -218,6 +221,7 @@
     <Compile Include="Areas\Rules\Models\FocusViewModel.cs" />
     <Compile Include="Areas\Rules\Models\PowerViewModel.cs" />
     <Compile Include="Areas\Rules\RulesAreaRegistration.cs" />
+    <Compile Include="Areas\Rules\RulesBundleConfig.cs" />
     <Compile Include="Helpers\Translate.cs" />
     <Compile Include="Mapping\DisciplineVMToDtoProfile.cs" />
     <Compile Include="Mapping\FocusVMToDtoProfile.cs" />
@@ -257,6 +261,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AuthentificationManager\Content\" />
     <Folder Include="Areas\AuthentificationManager\Views\Shared\" />
+    <Folder Include="Areas\Rules\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

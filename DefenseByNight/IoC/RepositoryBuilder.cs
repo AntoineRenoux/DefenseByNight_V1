@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using DAL;
-using DAL.Interfaces;
 using DAL.Repository.Ref;
 
 namespace DefenseByNight.IoC

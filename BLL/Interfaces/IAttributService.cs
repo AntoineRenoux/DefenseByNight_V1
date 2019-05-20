@@ -9,6 +9,6 @@ namespace BLL.Interfaces
 {
     public interface IAttributService
     {
-        List<AttributDTO> GetAll(int languageId);
+        List<AttributDto> GetAll(int languageId);
     }
 }

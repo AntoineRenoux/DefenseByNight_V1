@@ -13,8 +13,8 @@ namespace DAL.Mapping
     {
         public FocusEntityToDtoProfile()
         {
-            CreateMap<Focus, FocusDTO>();
-            CreateMap<FocusDTO, Focus>();
+            CreateMap<Focus, FocusDto>();
+            CreateMap<FocusDto, Focus>();
         }
     }
 }

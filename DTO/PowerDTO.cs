@@ -2,7 +2,7 @@
 
 namespace DTO
 {
-    public class PowerDTO
+    public class PowerDto
     {
         [Required]
         public string PowerName { get; set; }
@@ -19,7 +19,7 @@ namespace DTO
 
         public string Description { get; set; }
 
-        public FocusDTO Focus { get; set; }
+        public FocusDto Focus { get; set; }
 
         public string FocusEffect { get; set; }
 

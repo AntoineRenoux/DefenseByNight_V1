@@ -18,6 +18,6 @@ namespace BLL.Services
             _attributRepository = attributRepository;
         }
 
-        public List<AttributDTO> GetAll(int languageId) => _attributRepository.GetAll(languageId);
+        public List<AttributDto> GetAll(int languageId) => _attributRepository.GetAll(languageId);
     }
 }
