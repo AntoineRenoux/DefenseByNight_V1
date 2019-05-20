@@ -12,7 +12,7 @@ namespace DAL.Repository.Ref
         {
         }
 
-        public List<DisciplineDTO> GetAllWithPowers(int languageId)
+        public List<DisciplineDto> GetAll(int languageId)
         {
             var disciplines = (from d in context.Disciplines
                                join t in context.Traductions
@@ -22,7 +22,28 @@ namespace DAL.Repository.Ref
                                join t3 in context.Traductions
                                 on d.TestScore equals t3.Key
                                where t.LCID == languageId
-                               select new DisciplineDTO
+                               select new DisciplineDto
+                               {
+                                   DisciplineKey = d.DisciplineKey,
+                                   DisciplineName = t.Text,
+                                   Description = t2.Text,
+                                   TestScore = t3.Text
+                               }).ToList();
+
+            return disciplines;
+        }
+
+        public List<DisciplineDto> GetAllWithPowers(int languageId)
+        {
+            var disciplines = (from d in context.Disciplines
+                               join t in context.Traductions
+                                on d.DisciplineName equals t.Key
+                               join t2 in context.Traductions
+                                on d.Description equals t2.Key
+                               join t3 in context.Traductions
+                                on d.TestScore equals t3.Key
+                               where t.LCID == languageId
+                               select new DisciplineDto
                                {
                                    DisciplineKey = d.DisciplineKey,
                                    DisciplineName = t.Text,
@@ -44,7 +65,7 @@ namespace DAL.Repository.Ref
                           join t6 in context.Traductions
                             on p.DisciplineName equals t6.Key
                           where t.LCID == languageId
-                          select new PowerDTO
+                          select new PowerDto
                           {
                               PowerName = t.Text,
                               Description = t2.Text,
@@ -54,7 +75,7 @@ namespace DAL.Repository.Ref
                               System = t4.Text,
                               FocusEffect = t5.Text,
                               DisciplineKey = p.DisciplineKey,
-                              Focus = new FocusDTO
+                              Focus = new FocusDto
                               {
                                   AttributKey = p.Focus.AttributKey,
                                   FocusKey = p.Focus.FocusKey,
@@ -65,11 +86,33 @@ namespace DAL.Repository.Ref
 
 
             disciplines.ForEach(d => {
-                d.Powers = new List<PowerDTO>();
+                d.Powers = new List<PowerDto>();
                 d.Powers.AddRange(powers.Where(p => p.DisciplineKey == d.DisciplineKey));
             });
 
             return disciplines.OrderBy(x => x.DisciplineName).ToList();
+        }
+
+        public DisciplineDto GetByKey(string key, int languageId)
+        {
+            var discipline = (from d in context.Disciplines
+                              join t in context.Traductions
+                                on d.DisciplineName equals t.Key
+                              join t2 in context.Traductions
+                                on d.Description equals t2.Key
+                              join t3 in context.Traductions
+                                on d.TestScore equals t3.Key
+                              where d.DisciplineKey == key
+                              && t.LCID == languageId
+                              select new DisciplineDto
+                              {
+                                   DisciplineKey = key,
+                                   DisciplineName = t.Text,
+                                   Description = t2.Text,
+                                   TestScore = t3.Text
+                              }).FirstOrDefault();
+
+            return discipline;
         }
     }
 }

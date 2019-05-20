@@ -7,30 +7,33 @@ namespace BLL.Services
 {
     public class DisciplineService : IDisciplineService
     {
-        private readonly IDisciplineRepository _disciplineRepository;
-        private readonly IFocusRepository _focusRepository;
+        private readonly IDisciplineRepository disciplineRepository;
+        private readonly IFocusRepository focusRepository;
 
         public DisciplineService(IDisciplineRepository disciplineRepository
             , IFocusRepository focusRepository)
         {
-            _disciplineRepository = disciplineRepository;
-            _focusRepository = focusRepository;
+            this.disciplineRepository = disciplineRepository;
+            this.focusRepository = focusRepository;
         }
 
-        public List<DisciplineDTO> GetAllWithPowers(int languageId)
+        public List<DisciplineDto> GetAll(int languageId) => disciplineRepository.GetAll(languageId);
+
+        public List<DisciplineDto> GetAllWithPowers(int languageId)
         {
-            var disciplines = _disciplineRepository.GetAllWithPowers(languageId);
+            var disciplines = disciplineRepository.GetAllWithPowers(languageId);
 
             disciplines.ForEach(d =>
             {
                 d.Powers.ForEach(p =>
                 {
-                    p.Focus = _focusRepository.GetByKey(p.Focus.FocusKey, languageId);
+                    p.Focus = focusRepository.GetByKey(p.Focus.FocusKey, languageId);
                 });
             });
 
             return disciplines;
         }
 
+        public DisciplineDto GetByKey(string key, int languageId) => disciplineRepository.GetByKey(key, languageId);
     }
 }

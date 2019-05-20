@@ -2,6 +2,7 @@
 using BLL.Interfaces;
 using BLL.Services;
 using DAL.Interfaces;
+using DAL.Interfaces.Ref;
 using DAL.Repository.Ref;
 using DTO;
 
@@ -9,14 +10,14 @@ namespace DefenseByNight.Helpers
 {
     public static class Translate
     {
-        public static TraductionDTO GetTraduction(string key)
+        public static TraductionDto GetTraduction(string key)
         {
             int lang = System.Globalization.CultureInfo.CurrentCulture.LCID;
 
-            var result = new TraductionDTO();
+            var result = new TraductionDto();
             result.LCID = lang;
             result.Key = key;
-            result.Text = "Ma bite";
+            result.Text = string.Empty;
 
             var builder = new ContainerBuilder();
             builder.RegisterType<TraductionService>().As<ITraductionService>();

@@ -8,11 +8,11 @@ namespace DefenseByNight.Mapping
     {
         public UserVMToDtoProfile()
         {
-            CreateMap<UserDTO, UserConnexionViewModel>();
-            CreateMap<UserConnexionViewModel, UserDTO>();
+            CreateMap<UserDto, UserConnexionViewModel>();
+            CreateMap<UserConnexionViewModel, UserDto>();
 
-            CreateMap<UserDTO, UserRegisterViewModel>();
-            CreateMap<UserRegisterViewModel, UserDTO>();
+            CreateMap<UserDto, UserRegisterViewModel>();
+            CreateMap<UserRegisterViewModel, UserDto>();
         }
     }
 }

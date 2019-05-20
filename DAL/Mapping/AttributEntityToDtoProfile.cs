@@ -13,8 +13,8 @@ namespace DAL.Mapping
     {
         public AttributEntityToDtoProfile()
         {
-            CreateMap<Attribut, AttributDTO>();
-            CreateMap<AttributDTO, Attribut>();
+            CreateMap<Attribut, AttributDto>();
+            CreateMap<AttributDto, Attribut>();
         }
     }
 }

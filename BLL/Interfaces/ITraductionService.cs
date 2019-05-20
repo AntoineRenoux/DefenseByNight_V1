@@ -10,6 +10,6 @@ namespace BLL.Interfaces
 {
     public interface ITraductionService
     {
-        TraductionDTO GetTraduction(string key, int lang);
+        TraductionDto GetTraduction(string key, int lang);
     }
 }

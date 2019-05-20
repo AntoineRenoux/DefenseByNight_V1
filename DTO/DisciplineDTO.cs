@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DisciplineDTO
+    public class DisciplineDto
     {
         [Required]
         public string DisciplineKey { get; set; }
@@ -20,6 +20,6 @@ namespace DTO
 
         public string TestScore { get; set; }
 
-        public List<PowerDTO> Powers { get; set; }
+        public List<PowerDto> Powers { get; set; }
     }
 }

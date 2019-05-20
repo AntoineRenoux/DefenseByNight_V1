@@ -2,7 +2,7 @@
 
 namespace DTO
 {
-    public class FocusDTO
+    public class FocusDto
     {
         [Required]
         public string FocusKey { get; set; }

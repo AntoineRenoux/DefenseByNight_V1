@@ -14,8 +14,8 @@ namespace DAL.Mapping
     {
         public TraductionEntityToDtoProfile()
         {
-            CreateMap<Traduction, TraductionDTO>();
-            CreateMap<TraductionDTO, Traduction>();
+            CreateMap<Traduction, TraductionDto>();
+            CreateMap<TraductionDto, Traduction>();
         }
     }
 }

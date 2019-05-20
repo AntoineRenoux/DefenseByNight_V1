@@ -1,0 +1,11 @@
+﻿/*Gére la taille de div des disciplines*/
+.overflowed-text {
+    white-space: normal;
+    overflow-x: auto;
+    text-overflow: ellipsis;
+    height : 400px;
+}
+
+.overflowed-footer {
+    height: 110px;
+}

@@ -12,6 +12,13 @@ body {
     font-family: "Northwood High";
     font-size: 50px;
     text-align: center;
+    color: #990000;
+}
+
+a.title {
+    cursor: pointer;
+    text-decoration: none;
+    color: #990000;
 }
 
 .footer-style{
@@ -27,6 +34,8 @@ body {
 img.sizable{
     width:100%;
 }
+
+
 
 /*centrage des div*/
 

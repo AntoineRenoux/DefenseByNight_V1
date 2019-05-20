@@ -13,7 +13,7 @@ namespace DAL.Repository.Ref
         {
         }
 
-        public List<FocusDTO> GetAll(int languageId)
+        public List<FocusDto> GetAll(int languageId)
         {
             var focusList = (from f in context.Focus
                              join t in context.Traductions
@@ -21,7 +21,7 @@ namespace DAL.Repository.Ref
                              join t2 in context.Traductions
                                 on f.Description equals t2.Key
                              where t.LCID == languageId
-                             select new FocusDTO {
+                             select new FocusDto {
                                  FocusKey = f.FocusKey,
                                  FocusName = t.Text,
                                  Description = t2.Text,
@@ -31,7 +31,7 @@ namespace DAL.Repository.Ref
             return focusList;
         }
 
-        public FocusDTO GetByKey(string key, int languageId)
+        public FocusDto GetByKey(string key, int languageId)
         {
             var focus = (from f in context.Focus
                          join t in context.Traductions
@@ -40,7 +40,7 @@ namespace DAL.Repository.Ref
                             on f.FocusName equals t2.Key
                          where f.FocusKey == key
                          && t.LCID == languageId
-                         select new FocusDTO {
+                         select new FocusDto {
                              FocusKey = f.FocusKey,
                              AttributKey = f.AttributKey,
                              Description = t.Text,

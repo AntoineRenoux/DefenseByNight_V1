@@ -14,7 +14,7 @@ namespace DAL.Repository.Ref
         {
         }
 
-        public List<AttributDTO> GetAll(int languageId)
+        public List<AttributDto> GetAll(int languageId)
         {
             var attribute = (from a in context.Attributs
                              join t in context.Traductions
@@ -22,7 +22,7 @@ namespace DAL.Repository.Ref
                              join t2 in context.Traductions
                                  on a.Description equals t2.Key
                              where t.LCID == languageId
-                             select new AttributDTO
+                             select new AttributDto
                              {
                                  AttributKey = a.AttributKey,
                                  Description = t2.Text,
@@ -35,7 +35,7 @@ namespace DAL.Repository.Ref
                          join t2 in context.Traductions
                             on f.Description equals t2.Key
                          where t.LCID == languageId
-                         select new FocusDTO
+                         select new FocusDto
                          {
                              AttributKey = f.AttributKey,
                              FocusKey = f.FocusKey,
@@ -44,7 +44,7 @@ namespace DAL.Repository.Ref
                          }).ToList();
 
             attribute.ForEach(a => {
-                a.Focus = new List<FocusDTO>();
+                a.Focus = new List<FocusDto>();
                 a.Focus.AddRange(focus.Where(f => f.AttributKey == a.AttributKey));
             });
 

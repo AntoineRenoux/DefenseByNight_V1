@@ -9,6 +9,6 @@ namespace DAL.Interfaces
 {
     public interface IAttributRepository
     {
-        List<AttributDTO> GetAll(int languageId);
+        List<AttributDto> GetAll(int languageId);
     }
 }
