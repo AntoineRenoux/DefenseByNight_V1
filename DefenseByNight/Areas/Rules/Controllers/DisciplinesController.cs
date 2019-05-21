@@ -30,16 +30,5 @@ namespace DefenseByNight.Areas.Rules.Controllers
             
             return View(model);
         }
-
-        public ActionResult Detail(string disciplineKey)
-        {
-            var discipline = disciplineService.GetByKey(disciplineKey, CurrentUser.Lang);
-            var model = Mapper.Map<DisciplineDto, DisciplineViewModel>(discipline);
-
-            var powerFromDiscipline = powerService.GetPowersByDiscipline(disciplineKey, CurrentUser.Lang);
-            model.Powers = Mapper.Map<List<PowerDto>, List<PowerViewModel>>(powerFromDiscipline);
-
-            return View(model);
-        }
     }
 }
