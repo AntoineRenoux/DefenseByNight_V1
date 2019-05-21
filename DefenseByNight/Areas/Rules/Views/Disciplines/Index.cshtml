@@ -1,4 +1,5 @@
 ﻿
+
 @model List<DisciplineViewModel>
 
 @{
@@ -8,14 +9,28 @@
 <div class="container">
     <h1 class="title well">@Translate.GetTraduction(EnumRessource.GEN_LBL_DISCIPLINE).Text</h1>
 
-    <div class="alert alert-info">@Translate.GetTraduction(EnumRessource.GEN_TXT_DETAIL_DISCIPLINE).Text</div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            @Translate.GetTraduction(EnumRessource.GEN_TXT_DETAIL_DISCIPLINE).Text
+        </div>
+    </div>
+	<br />
+
+    <div class="row well">
+        @foreach (var discipline in Model)
+        {
+            <div class="col-md-2">
+                <a href="#@discipline.DisciplineKey">@discipline.DisciplineName</a>
+            </div>
+        }
+    </div>
 
     @foreach (var discipline in Model)
     {
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
-                    @Html.ActionLink(discipline.DisciplineName, "Detail", "Disciplines", new { area = "Rules", disciplineKey = discipline.DisciplineKey }, new { @class = "title" })
+                    @Html.ActionLink(discipline.DisciplineName, "Detail", "Disciplines", new { area = "Rules", disciplineKey = discipline.DisciplineKey }, new { @class = "title", @name = discipline.DisciplineKey })
                 </div>
                 <div class="panel-body overflowed-text">
                     <p class="text-justify">
@@ -39,4 +54,5 @@
     @Styles.Render("~/Content/Rules")
     @Scripts.Render("~/bundle/Rules/Discipline")
 }
+
 
