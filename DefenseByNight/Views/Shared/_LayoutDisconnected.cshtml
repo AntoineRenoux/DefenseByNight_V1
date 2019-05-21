@@ -20,7 +20,7 @@
                 </button>
                 @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <ul class="nav navbar-nav navbar-left">
+            <ul class="nav navbar-nav navbar-left navbar-collapse collapse">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Translate.GetTraduction(EnumRessource.GEN_LBL_RULES).Text <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -30,7 +30,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right navbar-collapse collapse">
                 <li class="dropdown">
                     @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text, "Login", "Auth", new { area = "AuthentificationManager" }, null)
                 </li>
