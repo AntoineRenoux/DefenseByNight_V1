@@ -4,48 +4,52 @@
     ViewBag.Title = Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text;
 }
 
-<div class="outer">
-    <div class="middle">
-        <div class="inner">
+<div class="container">
+    <div class="row">
+        <div class="outer">
+            <div class="middle">
+                <div class="inner">
 
-            <div class="row">
-                <h1 class="title">@Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text</h1>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h1 class="title">@Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text</h1>
+                    </div>
+                    @if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
+                    {
+                        <div class="alert alert-danger">
+                            @Html.ValidationSummary(true)
+                        </div>
+                    }
+
+                    @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-horizontal", id = "connexionForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="well">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-address-card"></i></span>
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = Translate.GetTraduction(EnumRessource.GEN_LBL_ALIAS).Text })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger " })
+                            </div>
+
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                                @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password", placeholder = Translate.GetTraduction(EnumRessource.GEN_LBL_PASSWORD).Text })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger " })
+                            </div>
+
+
+                            <hr />
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">@Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text</button>
+                            </div>
+                        </div>
+                    }
+
+                </div>
             </div>
-            @if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
-            {
-                <div class="alert alert-danger">
-                    @Html.ValidationSummary(true)
-                </div>
-            }
-
-            @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-horizontal", id = "connexionForm" }))
-            {
-                @Html.AntiForgeryToken()
-
-                <div class="well">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fas fa-address-card"></i></span>
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = Translate.GetTraduction(EnumRessource.GEN_LBL_ALIAS).Text })
-                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger " })
-                    </div>
-
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fas fa-key"></i></span>
-                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password", placeholder = Translate.GetTraduction(EnumRessource.GEN_LBL_PASSWORD).Text })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger " })
-                    </div>
-                </div>
-
-                <hr />
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">@Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text</button>
-                </div>
-            }
-
         </div>
     </div>
 </div>
-
 
 @Html.Hidden("err_alias_missing", Translate.GetTraduction(EnumErrorsMessages.ERR_ALIAS_MISSING).Text)
 @Html.Hidden("err_password_missing", Translate.GetTraduction(EnumErrorsMessages.ERR_PASSWORD_MISSING).Text)

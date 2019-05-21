@@ -8,6 +8,14 @@ body {
     margin-bottom: 30px;
 }
 
+.dotPower {
+    padding-bottom: 15px;
+}
+
+    .dotPower > i {
+        font-size: 10px;
+    }
+
 div.toptop {
     position: fixed;
     bottom: 0;
@@ -17,7 +25,6 @@ div.toptop {
 
 .title {
     font-family: "Northwood High";
-    font-size: 50px;
     text-align: center;
     color: #990000;
 }
@@ -28,7 +35,7 @@ a.title {
     color: #990000;
 }
 
-.footer-style{
+.footer-style {
     background-color: black;
 }
 
@@ -38,8 +45,8 @@ a.title {
     margin-top: 0px;
 }
 
-img.sizable{
-    width:100%;
+img.sizable {
+    width: 100%;
 }
 
 

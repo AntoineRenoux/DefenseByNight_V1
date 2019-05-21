@@ -17,7 +17,9 @@
 <div class="container">
     <h1 class="title well">
         <a name="top"></a>
+        <i class="fas fa-ankh"></i>
         @Translate.GetTraduction(EnumRessource.GEN_LBL_DISCIPLINE).Text
+        <i class="fas fa-ankh"></i>
     </h1>
 
     <div class="row well">
@@ -37,7 +39,10 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <h2 class="title"><a name="@discipline.DisciplineKey"></a>@discipline.DisciplineName</h2>
+                        <h2 class="title">
+                            <a name="@discipline.DisciplineKey"></a>
+                            @discipline.DisciplineName
+                        </h2>
                     </div>
                     <div class="panel-body">
                         <div>
@@ -68,7 +73,16 @@
                         {
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h2 class="title"><a name="@power.PowerName"></a> @power.PowerName</h2>
+                                    <h2 class="title">
+                                        <a name="@power.PowerName"></a>
+                                        <span class="dotPower">
+                                            @for (int i = 0; i < power.Level; i++)
+                                            {
+                                                <i class="fas fa-circle"></i>
+                                            }
+                                        </span>
+                                        @power.PowerName
+                                    </h2>
                                 </div>
 
                                 <div class="col-md-12">
