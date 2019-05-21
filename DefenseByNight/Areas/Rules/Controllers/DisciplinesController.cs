@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace DefenseByNight.Areas.Rules.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class DisciplinesController : BaseController
     {
         private readonly IPowerServices powerService;

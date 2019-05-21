@@ -176,10 +176,10 @@
     <Content Include="Areas\Rules\Views\web.config" />
     <Content Include="Areas\Rules\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Rules\Views\Disciplines\Index.cshtml" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\AuthentificationManager\Scripts\validation-registration.js" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
