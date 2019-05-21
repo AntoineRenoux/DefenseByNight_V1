@@ -25,7 +25,7 @@ namespace DefenseByNight.Areas.Rules.Controllers
         // GET: Rules/Disciplines
         public ActionResult Index()
         {
-            var disciplines = disciplineService.GetAll(CurrentUser.Lang);
+            var disciplines = disciplineService.GetAllWithPowers(CurrentUser.Lang);
             var model = Mapper.Map<List<DisciplineDto>, List<DisciplineViewModel>>(disciplines);
             
             return View(model);

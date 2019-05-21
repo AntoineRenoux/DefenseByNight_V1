@@ -148,8 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AuthentificationManager\Scripts\validation-connexion.js" />
-    <Content Include="Areas\Rules\Content\disciplines.css" />
-    <Content Include="Areas\Rules\Scripts\Disciplines\disciplineModule.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -178,7 +176,6 @@
     <Content Include="Areas\Rules\Views\web.config" />
     <Content Include="Areas\Rules\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Rules\Views\Disciplines\Index.cshtml" />
-    <Content Include="Areas\Rules\Views\Disciplines\Detail.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

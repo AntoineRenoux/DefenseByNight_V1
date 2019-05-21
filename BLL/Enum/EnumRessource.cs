@@ -34,5 +34,7 @@
         public readonly static string GEN_LBL_FOCUS = "GEN_LBL_FOCUS";
         public readonly static string GEN_TXT_DETAIL_DISCIPLINE = "GEN_TXT_DETAIL_DISCIPLINE";
         public readonly static string GEN_LBL_EXEPTIONNAL_SUCCESS = "GEN_LBL_EXEPTIONNAL_SUCCESS";
+
+        public readonly static string GEN_LBL_DISCIPLINE_POWER = "GEN_LBL_DISCIPLINE_POWER";
     }
 }

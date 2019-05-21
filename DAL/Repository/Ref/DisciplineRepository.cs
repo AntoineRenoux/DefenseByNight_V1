@@ -82,8 +82,7 @@ namespace DAL.Repository.Ref
                                   Description = p.Focus.Description,
                                   FocusName = p.Focus.FocusName
                               }
-                          }).ToList();
-
+                          }).ToList().OrderBy(x => x.Level);
 
             disciplines.ForEach(d => {
                 d.Powers = new List<PowerDto>();

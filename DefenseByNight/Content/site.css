@@ -8,6 +8,13 @@ body {
     margin-bottom: 30px;
 }
 
+div.toptop {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 60px;
+    z-index: 1;
+}
+
 .title {
     font-family: "Northwood High";
     font-size: 50px;
