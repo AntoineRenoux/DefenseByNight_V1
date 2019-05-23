@@ -134,6 +134,16 @@ namespace DAL
             VisceratikaInitializer.Initializer(context, focus);
             SerpentisInitializer.Initializer(context, focus);
             SepulcherInitializer.Initializer(context, focus);
+            BonesInitializer.Initializer(context, focus);
+            AschesInitializer.Initializer(context, focus);
+            MortisInitializer.Initializer(context, focus);
+            BloodInitializer.Initializer(context, focus);
+            ConjurationInitializer.Initializer(context, focus);
+            CorruptionInitializer.Initializer(context, focus);
+            ElementsInitializer.Initializer(context, focus);
+            FireInitializer.Initializer(context, focus);
+            SpiritInitializer.Initializer(context, focus);
+            WeatherInitializer.Initializer(context, focus);
             #endregion
 
             //ClanInitilizer.Initializer(context);
@@ -2121,6 +2131,874 @@ namespace DAL
             }
         }
 
+        private static class BonesInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+                {
+                    new Power { Level = 1, PowerName = "BONES_POWER_1_NAME", Description = "BONES_POWER_1_DESCRIPTION", System = "BONES_POWER_1_SYSTEM", Focus = focus[5], FocusEffect = "BONES_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "BONES_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "BONES_NAME" },
+                    new Power { Level = 2, PowerName = "BONES_POWER_2_NAME", Description = "BONES_POWER_2_DESCRIPTION", System = "BONES_POWER_2_SYSTEM", Focus = focus[3], FocusEffect = "BONES_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "BONES_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "BONES_NAME" },
+                    new Power { Level = 3, PowerName = "BONES_POWER_3_NAME", Description = "BONES_POWER_3_DESCRIPTION", System = "BONES_POWER_3_SYSTEM", Focus = focus[3], FocusEffect = "BONES_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "BONES_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "BONES_NAME" },
+                    new Power { Level = 4, PowerName = "BONES_POWER_4_NAME", Description = "BONES_POWER_4_DESCRIPTION", System = "BONES_POWER_4_SYSTEM", Focus = focus[5], FocusEffect = "BONES_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "BONES_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "BONES_NAME" },
+                    new Power { Level = 5, PowerName = "BONES_POWER_5_NAME", Description = "BONES_POWER_5_DESCRIPTION", System = "BONES_POWER_5_SYSTEM", Focus = focus[3], FocusEffect = "BONES_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "BONES_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "BONES_NAME" }
+                };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+    {
+        new Traduction{LCID = 1036, Key = "BONES_NAME", Text = "La Voie des Ossements"},
+        new Traduction{LCID = 1036, Key = "BONES_DESCRIPTION", Text = "<i>L'étude de la Voie des ossements est l’étude des corps physiques ; chair pourrie et os poussiéreux. En maîtrisant la Voie des Ossements, un nécromancien obtient la capacité de créer et de détruire des zombies comme les hordes croulantes des non-morts. Ces créatures sans conscience obéissent aux ordres du nécromancien.</i>"},
+
+        new Traduction{LCID = 1036, Key = "BONES_POWER_1_NAME", Text = "Regard des Morts"},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_1_DESCRIPTION", Text = "<i>Vous n’êtes pas étranger aux corps et aux restes de chairs découpés. Vos expériences et votre talent de Nécromancie vous donnent la possibilité d’observer un corps et de comprendre de quelle façon il est mort.</i>"},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_1_SYSTEM", Text = "Ciblez un Vrai Corps dans votre ligne de vue et dépensez une action simple. Vous savez aussitôt de quelle façon cette créature est morte, aussi bien que l’heure de la mort et si le corps a été déplacé ou altéré. De plus, en dépensant une action standard et en vous concentrant, vous pouvez sentir la présence de corps dans les 90 m (100 yards) et découvrir leur emplacement."},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_1_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_1_FOCUS_DESCRIPTION", Text = "En dépensant 1 Point de Sang, vous pouvez déguiser les causes de la mort d’un corps, modifiant toutes les traces et les blessures sur celui-ci. Une fois que vous avez modifié un corps de cette façon, les utilisations supplémentaires de Regard des Morts n’indiqueront pas que le corps a été modifié."},
+
+        new Traduction{LCID = 1036, Key = "BONES_POWER_2_NAME", Text = "Détruire la Coquille"},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_2_DESCRIPTION", Text = "<i>Les philosophes disent qu’il est plus facile de détruire que de créer. Vos pouvoirs de nécromancie prouvent que cet adage est vrai. En ciblant un corps animé, vous pouvez couper les fils qui le maintiennent, dissipant son élan.</i>"},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_2_SYSTEM", Text = "Dépensez un point de Sang et une action standard pour cibler un seul Vrai Corps, une partie d’un Vrai Corps ou un zombie dans votre ligne de vue, même s'il s'agit d’un zombie que vous ne contrôlez pas. Ce pouvoir détruit la cible complètement. Il ne reste même pas de cendres. <br /> Vous ne pouvez pas utiliser ce pouvoir sur des vampires ou d’autres êtres surnaturels mais vous pouvez détruire le Vrai Corps qui est actuellement habité par un spectre ou par un autre vampire. Si vous le faites, vous forcez l’esprit à repartir dans les Terres des ombres ou leur corps d’origine et vous détruisez le Vrai Corps."},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_2_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_2_FOCUS_DESCRIPTION", Text = "Vous pouvez Détruire la Coquille d’une action simple au lieu d’une action standard."},
+
+        new Traduction{LCID = 1036, Key = "BONES_POWER_3_NAME", Text = "Horde Putréfiée"},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_3_DESCRIPTION", Text = "<i>En invoquant votre puissance nécromantique, vous infusez l’essence pure des Terres des Ombres dans un corps décédé, animant ainsi un tas de chair pourrissante. Aussi longtemps que le corps reste en un seul morceau, il peut ignorer les dégâts physiques - comme une jambe brisée ou voir malgré des orbites vides - afin d’obéir à vos volontés.</i>"},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_3_SYSTEM", Text = "Dépensez un point de Sang et une action standard pour forcer un Vrai Corps à se lever et obéir à vos ordres verbaux. Vous devez posséder (et avoir avec vous) un corps convenable afin de le réanimer avec ce pouvoir. A n’importe quel moment, vous pouvez contrôler un maximum de zombies équivalent à votre niveau en Occulte. Chaque zombie doit être animé séparément.<br />Vous pouvez animer les corps directement à partir de leurs tombes, et ce même si vous ne les voyez pas, tant que vous êtes sûr que des corps sont dans la zone, comme en utilisant Regard des Morts. Il peut falloir aux zombies plusieurs tours pour vous atteindre, s'ils doivent creuser à travers la terre ou soulever leur caveau. <br />Les créatures animées avec ce pouvoir sont des zombies, avec très peu de sensibilité et aucune créativité. Ils doivent obéir à toutes vos requêtes et suivre vos ordres. Ces zombies sont relativement permanents. Ils durent le temps que vous les relâchiez ou qu’ils subissent un nombre de dégâts équivalent a leur niveau de PNJ Type. <br />Les zombies créés par Horde Putréfiée sont des PNJ Type de niveau 2. Chaque zombie obtient la spécialisation Puissance ou Force d’Âme ainsi que la spécialisation Mêlée ou Bagarre. Un zombie ne peut pas faire d’actions d’influence ou agir indépendamment, mais il peut accomplir des tâches simples quand il n’est pas supervisé, comme nettoyer le sol ou attaquer toute personne qui entre dans une pièce."},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_3_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_3_FOCUS_DESCRIPTION", Text = "Les zombies créés avec ce pouvoir sont de niveau 3 et non de niveau 2. Ils disposent aussi de la spécialisation Puissance et Force d’Âme ainsi qu’au choix, la spécialisation Mêlée ou Bagarre."},
+
+        new Traduction{LCID = 1036, Key = "BONES_POWER_4_NAME", Text = "Morbidité"},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_4_DESCRIPTION", Text = "<i>Les spectres et les zombies sont des créatures relativement fragiles, faciles à détruire ou découper en petits morceaux. En concentrant votre puissance nécromantique, vous pouvez modifier une créature morte-vivante, réparant sa chair pourrissante ou fortifiant son esprit, à travers votre magie.</i>"},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_4_SYSTEM", Text = "Dépensez un Point de Sang et une action standard pour cibler un zombie, un spectre ou un autre serviteur mort-vivant. Ce pouvoir a différentes utilisations : <br/> <strong>Zombies : </strong> Soigner un zombie à moins de trois pas de 3 points de dégâts. Vous pouvez faire des réparations cosmétiques. Altérer un zombie de cette façon le rendra moins pourrissant ou décrépit ; il ressemblera beaucoup plus à ce qu’il était de son vivant. Ensuite, le corps recommencera à pourrir comme d’habitude. En utilisant ce pouvoir sur un zombie toutes les quelques semaines, il pourrait presque passer pour humain. <br />Si un zombie se trouve dans les trois pas, vous pouvez lui donner trois niveaux de vie supplémentaires. Ces niveaux disparaissent en premier s'il subit des dégâts et disparaissent après cinq minutes, que des dégâts aient été subits ou non. On ne peut appliquer cet effet plusieurs fois sur un zombie, il n’est pas cumulable. <br /> <strong>Spectres :</strong>Vous pouvez augmenter le niveau de PNJ Type du spectre de 1, jusqu'à un maximum de 6. Cet effet dure une heure. Aucun fantôme ne peut être sous les effets de plusieurs utilisations de ce pouvoir à la fois.<br />Vous pouvez aussi changer l’apparence cosmétique d’un spectre, modifiant son apparence générale. Vous ne pouvez changer son genre ou ses aspects naturels, mais vous pouvez changer ses vêtements, sa coiffure et tout autre qualité superficielle. Beaucoup de nécromants utilisent ce pouvoir pour mettre à jour leurs suivants spectraux à un style plus moderne."},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_4_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_4_FOCUS_DESCRIPTION", Text = "Vous pouvez utiliser les effets spécifiques aux zombies de ce pouvoir sur un vampire, lui permettant temporairement d’apparaître plus humain. L’utilisation de ce pouvoir de cette façon peut faire qu’un vampire sur une voie autre que celle de l’humanité apparaisse comme un suivant de cette voie pour une courte période de temps. Un tel usage de Morbidité dure 10 minutes. Vous ne pouvez pas utiliser ce pouvoir sur un vampire plus d’une fois par nuit."},
+
+        new Traduction{LCID = 1036, Key = "BONES_POWER_5_NAME", Text = "Marionnette Macabre"},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_5_DESCRIPTION", Text = "<i>Le pouvoir le plus terrifiant d’un nécromancien cadavérique est sa capacité à occuper un corps, prenant spirituellement le contrôle de la forme physique de votre cible et portant son corps comme votre propre chair. Tant que vous êtes au contrôle de son corps, vous pouvez faire toutes les actions physiques dont celui-ci était capable.</i>"},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_5_SYSTEM", Text = "Pour utiliser Marionnette Macabre, vous devez dépenser votre action standard et cibler un Vrai Corps ou un zombie dans votre ligne de vue, incluant les zombies qui ne sont pas sous votre contrôle. Votre conscience est transférée dans le corps ciblé comme si ce corps était le votre. Votre corps originel tombe alors en état de torpeur et ne peut se défendre ou agir de lui-même. Il conserve quand même tous les effets des niveaux de Force d’Âme que vous possédez.<br /> Les corps n’ont aucune discipline et ne peuvent dépenser de sang. De plus, un personnage ne peut faire usage de ses propres disciplines quand il utilise Marionnette macabre. Tant qu’il possède ce corps, un personnage utilise ses propres attributs et focus mentaux, sociaux, compétences et historiques. Vous devez utiliser l’attribut physique du corps au lieu du vôtre. Si vous utilisez Marionnette Macabre sur un PNJ Type, le physique est égal au double de son niveau. Vous ne pouvez utiliser le Focus du corps possédé. Tant que vous possédez un zombie, vous ne pouvez pas dépenser de Points de Sang mais vous pouvez utiliser ses niveaux de Force d’Âme ou de Puissance.<br /> Marionnette Macabre dure jusqu’au prochain lever de soleil ou jusqu’à ce que vous dépensiez une action simple pour retourner à votre corps originel. Marionnette Macabre s'arrête aussi immédiatement si vous voyagez à plus de 16 km (10 miles) de votre corps originel, si le corps originel prend des dégâts ou si le corps que vous possédez est détruit.<br /> En possession d’un zombie, vous ne pouvez pas dépenser de points de Sang, mais pouvez utiliser la Force d’Âme et/ou la Puissance de ce dernier."},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_5_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "BONES_POWER_5_FOCUS_DESCRIPTION", Text = "Vous pouvez posséder n’importe quel zombie que vous contrôlez, comme ceux créés par le pouvoir de Horde Putréfiée. Vous pouvez activer ce pouvoir même si vous ne pouvez pas voir ces zombies, tant qu’ils sont à moins de 1,6 km de votre position (1 mile). Vous devez toujours payer le coût de ce pouvoir."},
+
+        new Traduction{LCID = 1036, Key = "BONES_TEST_SCORE", Text = "Il n'y a pas de challenge standard pour La Voie des Ossements"},
+
+    };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "BONES_KEY",
+                    DisciplineName = "BONES_NAME",
+                    Description = "BONES_DESCRIPTION",
+                    TestScore = "BONES_TEST_SCORE",
+                    Powers = powers
+                };
+
+                context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+        }
+
+        private static class AschesInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+                {
+                    new Power { Level = 1, PowerName = "ASCHES_POWER_1_NAME", Description = "ASCHES_POWER_1_DESCRIPTION", System = "ASCHES_POWER_1_SYSTEM", Focus = focus[4], FocusEffect = "ASCHES_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "ASCHES_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "ASCHES_NAME" },
+                    new Power { Level = 2, PowerName = "ASCHES_POWER_2_NAME", Description = "ASCHES_POWER_2_DESCRIPTION", System = "ASCHES_POWER_2_SYSTEM", Focus = focus[4], FocusEffect = "ASCHES_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "ASCHES_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "ASCHES_NAME" },
+                    new Power { Level = 3, PowerName = "ASCHES_POWER_3_NAME", Description = "ASCHES_POWER_3_DESCRIPTION", System = "ASCHES_POWER_3_SYSTEM", Focus = focus[3], FocusEffect = "ASCHES_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "ASCHES_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "ASCHES_NAME" },
+                    new Power { Level = 4, PowerName = "ASCHES_POWER_4_NAME", Description = "ASCHES_POWER_4_DESCRIPTION", System = "ASCHES_POWER_4_SYSTEM", Focus = focus[3], FocusEffect = "ASCHES_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "ASCHES_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "ASCHES_NAME" },
+                    new Power { Level = 5, PowerName = "ASCHES_POWER_5_NAME", Description = "ASCHES_POWER_5_DESCRIPTION", System = "ASCHES_POWER_5_SYSTEM", Focus = focus[4], FocusEffect = "ASCHES_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "ASCHES_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "ASCHES_NAME" }
+                };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+    {
+        new Traduction{LCID = 1036, Key = "ASCHES_NAME", Text = "La Voie des Cendres"},
+        new Traduction{LCID = 1036, Key = "ASCHES_DESCRIPTION", Text = "<i>L'étude de la Voie des Cendre est l’étude des Terres des Ombres : le monde des morts. A travers des recherches sur le passage d’une âme de ce monde à l’autre, un nécromancien apprend à renforcer ou affaiblir le Voile et même à passer dans et vers chacun des mondes.</i>"},
+
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_1_NAME", Text = "Perception au-delà du Voile"},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_1_DESCRIPTION", Text = "Les Terres des Ombres sont superposées sur le monde réel, comme un écho des choses du lointain passé. Les bâtiments qui ont été détruits sont toujours debout ; des carrioles foncent à travers des rues fantomatiques ; des murs, des objets et même des zones forestières sont toujours là où le monde moderne ne montre plus signe de leur existence. A travers l’usage de la Perception au-delà du Voile, vous pouvez voir dans les Terres des Ombres aussi facilement que dans le monde réel."},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_1_SYSTEM", Text = "Une fois acheté, ce pouvoir est toujours actif. Vous pouvez voir et ressentir les Terres des Ombres autour de vous, percevant l’écho du passé qui s'accroche encore à notre monde. Vous pouvez voir les spectres présents dans les Terres des Ombres mais vous ne gagnez aucune capacité pour communiquer avec eux. Si un spectre parle une langue que vous connaissez, vous pouvez discuter avec lui."},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_1_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_1_FOCUS_DESCRIPTION", Text = "Vous pouvez dépenser une action standard pour étudier un mortel vivant et déterminer s'il a des chances de devenir un spectre. Ceux-ci sont créés quand des personnes meurent avec des problèmes non résolus, des connexions émotionnelles particulièrement fortes ou d’autres liens puissants. Vous pouvez aussi regarder un objet dans le monde physique et savoir s'il s'agit d’une forme d’entrave spectrale : un objet de grande importance pour un spectre particulier, qui pourrait être utilisé pour le faire venir ou le lier."},
+
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_2_NAME", Text = "Maîtrise du Voile"},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_2_DESCRIPTION", Text = "Vous vous tenez entre les deux mondes et pouvez contrôler le flux d’énergie qui circule entre le monde des morts et celui des vivants. Avec de la concentration, vous pouvez manipuler le Voile entre les mondes afin de le rendre plus difficile à franchir - ou plus facile à ignorer."},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_2_SYSTEM", Text = "En dépensant un point de sang et en vous concentrant pendant trois tours complets, vous pouvez augmenter ou diminuer le Voile d’un niveau dans une zone de la taille d’une grande pièce. Cet effet dure pendant le reste de la nuit. Un voile plus fort rend les interactions avec le monde physique plus difficiles pour les spectres tandis qu’un Voile plus faible a l’effet opposé. Il y a trois niveau de Voile : faible, moyen et fort. Le Voile habituel est moyen, sauf dans des lieux particulièrement \"lugubres\", comme des cimetières ou des maisons hantées ; ou des lieux émotionnellement stériles, comme un laboratoire ou une pièce neuve, qui ont un Voile fort. <br /> <strong>Faible :</strong> Cette zone est particulièrement lugubre, remplie de sons inhabituels, d’odeurs et d’apparitions occasionnelles. Les spectres trouvent les interactions avec le monde physique particulièrement faciles dans ces endroits. Les fantômes n’ont pas besoin de dépenser de Pathos pour se manifester. Quand ils le font, les fantômes gagnent un nombre de niveaux de santé équivalent au nombre de tours qu’il prend pour se manifester, avec un maximum de 5. De plus, la vision du monde réel par les fantômes est particulièrement claire et ils peuvent communiquer dans des murmures même avec des personnes n’ayant pas l’atout Medium (ou toute autre capacité à voir ou communiquer avec les spectres). Une âme qui est en dehors de son corps suite à l’usage de Vol d’Âme peut dépenser un point de volonté pour se manifester quand le Voile est si faible. Une telle apparition a accès à tous ses pouvoirs incluant les pouvoirs physiques ainsi qu’un niveau de santé.<br /> <strong>Moyen : </strong> Il s'agit du niveau normal. Les fantômes doivent dépenser la quantité normale de Pathos pour traverser le Voile. <br /> <strong>Fort : Les spectres trouvent la traversée du Voile extrêmement difficile comme les interactions avec le monde physique. Les fantômes doivent dépenser le double du Pathos normal pour pouvoir se manifester.</strong>"},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_2_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_2_FOCUS_DESCRIPTION", Text = "En dépensant un point de sang et en se concentrant pendant trois tours complets, vous pouvez augmenter ou diminuer le niveau du Voile d’un niveau. Cela dure pour un mois lunaire entier (28 jours) et vous pouvez délimiter une zone de la taille d’une grande maison."},
+
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_3_NAME", Text = "Main Morte"},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_3_DESCRIPTION", Text = "Percevoir le Monde des ombres n’est que le premier pas dans la compréhension de la transition entre la vie et la mort. Ensuite, vous devez maîtriser la capacité de passer à travers le Voile. En utilisant ce pouvoir, vous pouvez saisir des artefacts fantomatiques de l’autre coté du Voile et les apporter dans le monde physique."},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_3_SYSTEM", Text = "En dépensant un Point de Sang et une action standard, vous pouvez atteindre le Monde des Ombres et en retirer un objet commun. Les objets rapportés par ce pouvoir doivent être assez petits pour qu’une personne normale puisse les tenir à deux mains. Ce pouvoir peut être utilisé pour récupérer des choses qui se trouvent naturellement dans le Monde des Ombres à cet endroit, des échos des objets qui se trouvaient là dans le passé. De tels objets sont toujours normaux même s'ils apparaissent anciens et doivent logiquement être présents dans l’environnement local des Terres des ombres. <br /> Vous pouvez aussi utiliser ce pouvoir de façon similaire en transférant des objets physiques vers le Monde des Ombres. De cette façon, l’utilisateur de ce pouvoir peut, par exemple, transporter à travers le Voile une arme à feu et la donner à son Suivant fantomatique (qui le suivra partout) et se tiendra prêt à rendre l’arme. <br /> Les objets provenant du Monde des Ombres restent dans le monde physique pour une heure, après quoi ils se dissolvent dans le brouillard et retournent dans leur plan d’origine."},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_3_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_3_FOCUS_DESCRIPTION", Text = "Les objets que vous ramenez du Monde des Ombres restent sur le plan physique jusqu'à la fin de la nuit et non plus pour seulement une heure."},
+
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_4_NAME", Text = "Lance Stygienne"},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_4_DESCRIPTION", Text = "Au plus profond des Terres des Ombres, de puissants orages et de puissantes tempêtes ravagent le paysage au ton sépia, allant de pluies de plasma jusqu'à des éclairs d’âme en flammes. Vous pouvez libérer cette puissance, projetant une lance faite de pur oubli en direction de vos ennemis."},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_4_SYSTEM", Text = "Dépensez un point de sang et une action standard afin de lancer un trait de plasma provenant des tempêtes des Terres des Ombres. Faites un challenge opposé de <i>Social + Occulte</i> contre le <i>Physique + Esquive</i> de votre cible. Si vous réussissez, vous infligez 3 points de dégâts normaux. Cette attaque peut frapper des personnes se trouvant dans les Terres des Ombres - incluant les spectres, les voyageurs et les personnes dont l’âme a été volée - aussi bien que sur le plan physique."},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_4_EXCEPTIONALSUCCESS", Text = "Votre Lance Stygienne inflige 4 points de dégâts normaux au lieu de 3."},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_4_FOCUS_DESCRIPTION", Text = "Les dégâts infligés par votre Lance Stygienne ne peuvent être encaissés ou réduits mais peuvent être soignés normalement."},
+
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_5_NAME", Text = "Ex Nihilo"},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_5_DESCRIPTION", Text = "Le nécromancien qui maîtrise la Voie des Cendres a aussi maîtrisé le Voile. Vous pouvez traverser la frontière entre les Terres des Ombres et le monde physique aussi facilement que d’autres peuvent ouvrir une porte et passer à travers."},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_5_SYSTEM", Text = "En se concentrant sur une destination familière, avec l’utilisation d’un Point de Sang et en incantant pendant cinq tours complets, vous pouvez voyager dans et à travers le Monde des Ombres. Vous pouvez emporter avec vous jusqu'à trois de vos suivants zombies (Horde Putréfiée ou autre suivant) pour ce voyage.<br /> Le temps et les distances étant subjectives dans les Terres des Ombres, il faut toujours 4 heures pour arriver à votre destination, quelle que soit la distance qu’il aurait facilement parcourue dans le monde réel. Vous pouvez raccourcir le temps qu’il faut pour atteindre votre destination en sacrifiant des serviteurs morts-vivants (zombies ou spectres) à la Tempête après votre entrée dans l’Ex Nihilo. Pour chaque suivant ainsi sacrifié, votre voyage prend une heure de moins à se compléter. Si vous sacrifiez vos trois zombies ou spectres, votre voyage ne prendra qu’une heure.<br />Alternativement, vous pouvez entrer dans les Terres des Ombres sans intention de voyager. A la place, vous errez derrière le Voile et espionnez le monde des vivants. Tant que vous êtes dans le Monde des Morts, vous voyez le monde réel comme une ombre floue de lui-même. Cela vous permet d’avoir une idée générale des évènements mais il est très difficile de percevoir des détails ou d’entendre des conversations. L’Atout Médium ne fonctionne pas en sens inverse et ne vous permet pas de voir ou d’écouter le monde réel depuis les Terres des Ombres. Un personnage peut revenir dans le monde physique en se concentrant 5 tours. Cette transition est lente et observable, le personnage revenant lentement et progressivement, gagnant de la solidité au fur et à mesure qu’il traverse le Voile.<br /> Vous ne pouvez emmener qui que ce soit avec vous dans les Terres des Ombres à part vos suivants zombies. Ce pouvoir peut être particulièrement dangereux s'il se trouve des fantômes hostiles comme des spectres dans les Terres des Ombres. De telles créatures peuvent vous attaquer quand vous vous trouvez sur leur plan. La rencontre est alors traitée comme un conflit normal. Tant que vous êtes dans les Terres des Ombres, vous ne pouvez pas utiliser de pouvoirs (Nécromancie incluse) sur des cibles se trouvant dans le monde réel."},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_5_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "ASCHES_POWER_5_FOCUS_DESCRIPTION", Text = "En plus de l’usage normal de ce pouvoir, vous pouvez dépenser un Point de Sang et votre action standard pour effectuer une transition dans le Monde des Ombres durant un battement de cil. Vous passez le tour complet suivant vous déplaçant à travers les Terres des Ombres et vous vous retrouvez ensuite dans n’importe quelle direction de votre emplacement d’origine et dans un rayon de 20 pas."},
+
+        new Traduction{LCID = 1036, Key = "ASCHES_TEST_SCORE", Text = "Il n'y a pas de Score standard pour La Voie des Cendres"},
+
+    };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "ASCHES_KEY",
+                    DisciplineName = "ASCHES_NAME",
+                    Description = "ASCHES_DESCRIPTION",
+                    TestScore = "ASCHES_TEST_SCORE",
+                    Powers = powers
+                };
+
+                context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+        }
+
+        private static class MortisInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+                {
+                    new Power { Level = 1, PowerName = "MORTIS_POWER_1_NAME", Description = "MORTIS_POWER_1_DESCRIPTION", System = "MORTIS_POWER_1_SYSTEM", Focus = focus[5], FocusEffect = "MORTIS_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "MORTIS_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "MORTIS_NAME" },
+                    new Power { Level = 2, PowerName = "MORTIS_POWER_2_NAME", Description = "MORTIS_POWER_2_DESCRIPTION", System = "MORTIS_POWER_2_SYSTEM", Focus = focus[4], FocusEffect = "MORTIS_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "MORTIS_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "MORTIS_NAME" },
+                    new Power { Level = 3, PowerName = "MORTIS_POWER_3_NAME", Description = "MORTIS_POWER_3_DESCRIPTION", System = "MORTIS_POWER_3_SYSTEM", Focus = focus[4], FocusEffect = "MORTIS_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "MORTIS_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "MORTIS_NAME" },
+                    new Power { Level = 4, PowerName = "MORTIS_POWER_4_NAME", Description = "MORTIS_POWER_4_DESCRIPTION", System = "MORTIS_POWER_4_SYSTEM", Focus = focus[4], FocusEffect = "MORTIS_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "MORTIS_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "MORTIS_NAME" },
+                    new Power { Level = 5, PowerName = "MORTIS_POWER_5_NAME", Description = "MORTIS_POWER_5_DESCRIPTION", System = "MORTIS_POWER_5_SYSTEM", Focus = focus[5], FocusEffect = "MORTIS_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "MORTIS_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "MORTIS_NAME" }
+                };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+    {
+        new Traduction{LCID = 1036, Key = "MORTIS_NAME", Text = "La Voie de Mortis"},
+        new Traduction{LCID = 1036, Key = "MORTIS_DESCRIPTION", Text = "La Voie de Mortis est en rapport avec les processus physiques et les manifestations de la mort qui affectent le corps physique. Cette Voie provient d’une profonde compréhension nécromantique de la forme de mort-vivant et sa philosophie se base sur la nature du corps en tant que passerelle entre la vie et la mort.<br /> Dans les temps anciens, les membres du clan Cappadocien étaient les nécromants proéminents de la société vampirique mais, au fil des siècles, leur propriété sur cette discipline s'est estompée. Maintenant, seule la Voie de Mortis subsiste en tant que Voie exclusive de Necromancie pratiquée par cet ancien clan. Seuls les Cappadociens et les membres de la lignée Cappadocienne des Lamias peuvent apprendre cette Voie de nécromancie. Aucun Giovanni ou membre de la lignée Samedi n’a un accès inné à cette Voie."},
+
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_1_NAME", Text = "Masque de Mort"},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_1_DESCRIPTION", Text = "Ce pouvoir aide le vampire à la fois à tromper et à mieux comprendre les différences entre un Vrai Corps et un membre des morts-vivants animé par nécromancie. En utilisant les capacités accordées par ce pouvoir, vous transformez votre corps pour une période de temps, pouvant même utiliser ce pouvoir pour vous cacher au milieu des autres corps durant des périodes étendues de torpeur."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_1_SYSTEM", Text = "Dépensez un Point de Sang et une action standard pour transformer votre forme physique en celle d’un cadavre normal. Tant que Masque de Mort est actif, vous êtes considéré comme un cadavre ordinaire. Vous ne pouvez bouger, vous n’avez pas d’aura, vous perdez accès à tous vos pouvoirs vampiriques (excepté celui-ci), vous ne prenez aucun dégât des rayons du soleil et vous apparaissez comme un simple corps sans vie, non magique. Une personne utilisant Masque de la mort n’est pas un Vrai Corps et ne peut être ciblé par un effet affectant ceux-ci. <br /> Tant que Masque de Mort est actif, vous êtes conscient de tout ce qui se passe dans les cinq pas autour de votre corps. Vous ne prenez pas de blessure avec les dégâts occasionnés à votre corps tant que vous êtes dans cet état et êtes immunisé au pieutage. Vous pouvez quand même être tué si votre tête est séparée du corps ou si celui-ci est détruit. Détruire votre corps ou vous décapiter de cette façon nécessite d’utiliser trois actions standards, durant lesquelles vous pouvez mettre fin à Masque de Mort et revenir instantanément à votre forme réelle. Durant ce retour à votre état d’origine, vous soignez tous les dégâts qui ont été infligés à votre corps durant l’usage de Masque de Mort et votre corps éjecte automatiquement tout pieu ou matière étrangère.<br /> Masque de Mort dure jusqu'à ce que vous décidiez d’annuler ce pouvoir. Si vous l’utilisez durant une longue période de temps, votre corps pourrira et se décomposera normalement mais ne perdra jamais sa cohésion. De cette façon, vous devenez aussi pourri et décrépit que n’importe quel corps dans sa tombe jusqu'à ce que vous vous réveilliez."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_1_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_1_FOCUS_DESCRIPTION", Text = "Une fois par tour, lorsque vous utilisez Masque de Mort, vous pouvez dépensez un Point de Sang pour effectuer une seule action simple, incluant le mouvement dans ces actions. De plus, masque de Mort s'active automatiquement si vous entrez en torpeur due aux dégâts subis ou en cas de pieutage. Dans ces circonstances, vous n’avez pas à dépenser un Point de Sang pour l’activation de ce pouvoir."},
+
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_2_NAME", Text = "Remonter la Pendule"},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_2_DESCRIPTION", Text = "Ce pouvoir subtil vous permet de vaincre le sommeil profond qu’est la torpeur, permettant à vous-même ou un autre vampire de se relever de ces profondeurs."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_2_SYSTEM", Text = "Dépensez un Point de Sang et une action standard pour toucher un vampire en torpeur. La cible s'éveille immédiatement de sa torpeur. Une cible qui s'éveille de torpeur par ce pouvoir dispose du même nombre de niveaux de vie qu’avant d’être entré dans cet état. Ce pouvoir peut être utilisé pour vous réveiller vous-même de torpeur. C'est une exception à la règle qui interdit aux personnages d’utiliser leurs pouvoirs dans cet état."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_2_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_2_FOCUS_DESCRIPTION", Text = "Dépensez un Point de Sang et une action standard pour toucher le Vrai Corps d’un individu mort depuis moins de 24 heures. La cible se relève instantanément des morts. Son corps étant réanimé, son âme revient et elle peut aussitôt agir normalement pendant la durée de ce pouvoir. Elle n’a aucune mémoire de ce qui s'est passé après sa mort ni de ce qui se trouve de l’autre coté du Voile. Tant que ce pouvoir dure, la cible ne peut être tuée, sauf si son corps est détruit. Ce pouvoir dure tant que vous dépensez un Point de Sang par tour. Quand ce pouvoir s’arrête, la cible meurt alors de façon irrémédiable et ne peut plus être réussite (ou éteinte) par aucun moyen. Les vampires, qu’ils soient morts-vivants ou ayant subi la mort ultime, ne peuvent être ciblés par ce pouvoir."},
+
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_3_NAME", Text = "Fléau"},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_3_DESCRIPTION", Text = "A travers la maîtrise de ce pouvoir, vous pouvez infecter le corps de votre victime, lui donnant une terrible maladie ressemblant à la peste noire. Des bubons se forment sur sa peau, sa chair pourrit et se détache, une gangrène noire se répand à travers son corps."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_3_SYSTEM", Text = "Dépensez un Point de Sang et une action standard en pointant dramatiquement du doigt votre cible puis faites un challenge opposé en utilisant le challenge de Nécromancie. Si vous réussissez, votre cible contracte une terrible maladie. La victime de Fléau subit aussitôt un point de dégât aggravé tandis que sa chair pourrit et tombe en lambeaux. Ce dégât ne peut être réduit ou annulé. Après une heure, votre cible doit faire un nouveau challenge statique utilisant ses attributs Physique + Survie contre votre Mental + Occulte. Étant donné qu’il s'agit d’un challenge statique, vous ne pouvez pas utiliser votre volonté pour re-test même si votre cible peut le faire. Si ce challenge a échoué, la cible prend un nouveau dégât aggravé qui ne peut être réduit ou annulé. Répéter ce process toutes les heures jusqu’à ce que la cible réussisse un challenge (indiquant que son corps a vaincu la maladie), meurt ou tombe en torpeur.<br /> Les personnes vivantes peuvent mourir à cause de Fléau mais les vampires arrêtent de subir des dégâts de ce pouvoir une fois entrés en torpeur. Si un vampire se met volontairement en torpeur avant de ne plus avoir de niveaux de santé, il continue de subir les dégâts même durant la torpeur jusqu'à ce qu’il n’ait plus de niveaux de santé."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_3_EXCEPTIONALSUCCESS", Text = "Quand vous activez ce pouvoir, la cible subit 2 points de dégâts aggravés au lieu d’un seul. De plus, la victime subit 2 points de dégâts aggravés à chaque fois qu’elle échoue à un des challenges statiques. Ces dégâts ne peuvent être prévenus ou annulés."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_3_FOCUS_DESCRIPTION", Text = "Les challenges statiques pour éviter les dégâts supplémentaires doivent se faire toutes les 10 minutes et non toutes les heures."},
+
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_4_NAME", Text = "Passage de la Faucheuse"},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_4_DESCRIPTION", Text = "L'effrayante forme de la faucheuse n’est jamais loin de l’âme d’un vampire et ceux qui sont forcés de regarder la réalité de l’éternité en face se trouveront emplis de la durable menace de la mort. Même les mortels ont peur de la venue de leur fin inexorable."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_4_SYSTEM", Text = "Dépensez un Point de Sang et une action standard pour faire un challenge opposé de Nécromancie. Si vous réussissez, votre cible expérimente une vision fugitive de la mort. Quelques rares chanceux ont un aperçu momentané du paradis, mais la plupart expérimentent les horreurs de l’enfer ou les terreurs du vide absolu. Quelle que soit la forme que prend ce pouvoir, la victime se retrouve brièvement neutralisée par son aperçu de la mort. La cible perd sa prochaine action standard.<br /> Si ce pouvoir est utilisé deux fois sur la même cible, les effets sont diminués, car la personne s'habitue au choc subi. Si la cible affectée par ce pouvoir l’a déjà subi il y a trois tours ou moins, la seconde utilisation de ce pouvoir n’a aucun effet."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_4_EXCEPTIONALSUCCESS", Text = "Si vous réussissez un succès exceptionnel avec le Passage de la Faucheuse contre une cible mortelle, celle-ci décède instantanément. Les être surnaturels survivent mais subissent 3 points de dégâts aggravés en plus des effets normaux de ce pouvoir. Ces dégâts ne peuvent être diminués ou annulés."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_4_FOCUS_DESCRIPTION", Text = "Les victimes du Passage de la Faucheuse perdent à la fois leur prochaine action standard et action simple. Si la cible a déjà subi ce pouvoir depuis 3 tours ou moins, elle perd simplement son action simple sur une nouvelle utilisation de ce pouvoir."},
+
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_5_NAME", Text = "Le Quatrième Cavalier"},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_5_DESCRIPTION", Text = "A travers l’invocation du pouvoir du Voile et le transfert de ces énergies en lui-même, l’utilisateur de ce pouvoir se transforme en une incarnation littérale de la Mort. La plupart des utilisateurs de ce pouvoir apparaissent comme des squelettes humains dans une robe noire, élimée avec des points de lueurs étincelants dans ses orbites vides et entouré des murmures incessants des damnés. D’autres prennent une forme plus personnelle, reliée à leur historique culturel ou leur idées personnelles mais, dans tous les cas, cette forme est toujours reconnaissable comme l’avatar de la Mort."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_5_SYSTEM", Text = "Dépensez un Point de Sang et votre action simple pour vous transformer de façon dramatique en un avatar physique de la Mort. Cette transformation doit se nourrir, se rechargeant en absorbant les forces vitales de ce qui l’entoure. Si elle ne peut drainer de la puissance d’autres sources, elle dévore l’utilisateur de l’intérieur, l’amenant lentement vers sa mort.<br /> Au début de chaque tour durant lequel le Quatrième Cavalier est actif, tout être vivant dans les deux pas subit 2 points de dégâts normaux pendant que sa force vitale est corrompue et détruite. Ces dégâts ne peuvent être réduits ou annulés d’aucune façon. <br /> Les Vampires se trouvant dans le même rayon perdent un Point de Sang, pendant que la force vitale qu’ils avaient volée à d’autres leur est volée à son tour. Le Sang se trouvant dans les veines des vampires se change littéralement en cendres. Les vampires qui n’ont pas de Sang dans leur organisme ne subissent pas d’autres effets.<br /> Si le Quatrième Cavalier n’a pas de sources sur laquelle se nourrir, que ce soit en transformant du sang de vampire en cendres ou en infligeant des dégâts à un humain, il se retourne alors sur lui-même et transforme deux Points de Sang de l’invocateur de ce pouvoir. Celui-ci s'arrête immédiatement si l’utilisateur n’a plus de Sang, tombe en torpeur ou dépense une action simple pour le désactiver.<br /> Tant que le personnage est sous l’effet de ce pouvoir, ses attaques de mêlée ou à mains nues infligent un point de dégât supplémentaire.<br /> Le Quatrième cavalier est un pouvoir de transformation et ne peut pas être combiné avec les autres pouvoirs de transformation. Vous pouvez utiliser des armes dans cette forme."},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_5_EXCEPTIONALSUCCESS", Text = null},
+        new Traduction{LCID = 1036, Key = "MORTIS_POWER_5_FOCUS_DESCRIPTION", Text = "Tant que vous êtes transformé en Quatrième Cavalier, vos poings ou vos armes sont entourés d’une énergie nécromantique visible. Toutes vos attaques de Mêlée ou de Bagarre infligent des dégâts aggravés. Cette énergie se manifeste comme des nuages tourbillonnants de fumée noire, des insectes bourdonnants ou de toute autre manière appropriée à votre forme."},
+
+        new Traduction{LCID = 1036, Key = "MORTIS_TEST_SCORE", Text = "Il n'y a pas de Score standard pour La Voie de Mortis"},
+
+    };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "MORTIS_KEY",
+                    DisciplineName = "MORTIS_NAME",
+                    Description = "MORTIS_DESCRIPTION",
+                    TestScore = "MORTIS_TEST_SCORE",
+                    Powers = powers
+                };
+
+                context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+        }
+
+        private static class BloodInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+            {
+                new Power { Level = 1, PowerName = "BLOOD_POWER_1_NAME", Description = "BLOOD_POWER_1_DESCRIPTION", System = "BLOOD_POWER_1_SYSTEM", Focus = focus[6], FocusEffect = "BLOOD_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "BLOOD_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "BLOOD_NAME" },
+                new Power { Level = 2, PowerName = "BLOOD_POWER_2_NAME", Description = "BLOOD_POWER_2_DESCRIPTION", System = "BLOOD_POWER_2_SYSTEM", Focus = focus[6], FocusEffect = "BLOOD_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "BLOOD_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "BLOOD_NAME" },
+                new Power { Level = 3, PowerName = "BLOOD_POWER_3_NAME", Description = "BLOOD_POWER_3_DESCRIPTION", System = "BLOOD_POWER_3_SYSTEM", Focus = focus[7], FocusEffect = "BLOOD_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "BLOOD_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "BLOOD_NAME" },
+                new Power { Level = 4, PowerName = "BLOOD_POWER_4_NAME", Description = "BLOOD_POWER_4_DESCRIPTION", System = "BLOOD_POWER_4_SYSTEM", Focus = focus[7], FocusEffect = "BLOOD_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "BLOOD_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "BLOOD_NAME" },
+                new Power { Level = 5, PowerName = "BLOOD_POWER_5_NAME", Description = "BLOOD_POWER_5_DESCRIPTION", System = "BLOOD_POWER_5_SYSTEM", Focus = focus[7], FocusEffect = "BLOOD_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "BLOOD_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "BLOOD_NAME" }
+            };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+            {
+                new Traduction{LCID = 1036, Key = "BLOOD_NAME", Text = "La Voie du Sang"},
+                new Traduction{LCID = 1036, Key = "BLOOD_DESCRIPTION", Text = "Les initiés sur la Voie du Sang apprennent à quantifier et évaluer les éléments uniques présents dans une goutte de vitae vampirique. En goûtant une goutte de la vitae du sujet, vous pouvez déterminer des informations importantes concernant sa nature."},
+
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_1_NAME", Text = "Goût du Sang"},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_1_DESCRIPTION", Text = "Les initiés sur la Voie du Sang apprennent à quantifier et évaluer les éléments uniques présents dans une goutte de vitae vampirique. En goûtant une goutte de la vitae du sujet, vous pouvez déterminer des informations importantes concernant sa nature."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_1_SYSTEM", Text = "En ingérant une goutte du sang de votre victime et en utilisant une action simple, vous pouvez discerner des informations concernant le sujet. Ce pouvoir peut être dangereux si le sang est contaminé par des maladies ou d’autres substances nocives. Néanmoins, le pouvoir protège le thaumaturge des effets du lien de sang avec sa cible lorsqu’il utilise ce pouvoir.<br />Le goût du sang donne accès à l’ensemble de ces informations :<br /> • Des informations médicales telles que le groupe sanguin et l’état de santé <br /> • Combien de sang il reste dans le métabolisme de la cible.<br /> • De quel type de créature vient le sang. Si la créature n’est pas un mortel, une goule ou un vampire, le conteur peut demander un test de Mystère pour identifier le type exact de créature.<br /> Si le sang est celui d’un vampire, le thaumaturge peut aussi déterminer :<br /> • la génération du sujet <br />• si celui-ci a commis la diablerie<br />• et depuis combien de temps le vampire s’est nourri."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_1_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_1_FOCUS_DESCRIPTION", Text = "Vous pouvez évaluer le nombre et la force des liens de sang, même partiels, que possède le sujet, incluant ceux dus à la Vaulderie. Vous ne savez pas à qui la cible est liée, ni si les liens sont mutuels, vous connaissez juste le nombre, et l’importance des liens de sang présents."},
+
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_2_NAME", Text = "Rage Sanguinaire"},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_2_DESCRIPTION", Text = "Vous pouvez pousser le sujet à utiliser sa vitae comme bon vous semble. Un vampire subissant ce pouvoir ressent comme une poussée d’adrénaline et a conscience automatiquement que l’on a utilisé une discipline sur lui."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_2_SYSTEM", Text = "Dépensez 1 point de Sang et faites un challenge en opposition en utilisant votre Mental + Occulte contre le Mental + Volonté de la cible. La cible doit se trouver à 1 pas de vous. Si vous réussissez, la cible doit dépenser 1 point de sang comme vous le souhaitez : (effet a choisir dans la liste)<br />• Augmenter son attribut physique<br /> • Activer une discipline comme célérité <br /> • Soigner une blessure <br /> • S’éveiller de torpeur<br /> • Suer du sang de ses pores.<br /> La dépense peut excéder la limite de génération. Le pouvoir permet de dépenser le sang mais ne permet pas de forcer le sujet à dépenser une action à moins qu’il ne le veuille sciemment. Par exemple, vous pouvez forcer votre cible à dépenser du sang pour passer en \"forme ténébreuse\" mais la victime ne se transformera pas, à moins de le vouloir."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_2_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_2_FOCUS_DESCRIPTION", Text = "Vous pouvez utiliser ce pouvoir à 10 pas de votre cible au lieu d’être à 1 pas."},
+
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_3_NAME", Text = "Puissance du Sang"},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_3_DESCRIPTION", Text = "Vous maîtrisez votre Vitae à un point tel que vous pouvez la rendre plus épaisse de façon temporaire, faisant que votre forme vampirique manifeste une génération plus puissante."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_3_SYSTEM", Text = "Utilisez une action simple pour activer ce pouvoir. L’effet dure 1 heure. Alors que Sang Puissant est actif, votre réserve maximale de sang augmente de la moitié de sa capacité normale (arrondi au supérieur). De plus, vous pouvez utiliser 2 points de sang par tour lorsque ce pouvoir est actif. Vous êtes considéré comme ayant 3 générations au-dessus de la vôtre pendant toute la durée du pouvoir afin de réveiller quelqu’un de torpeur. Vous ne pouvez utiliser ce pouvoir qu’une seule fois par nuit. Lorsque le pouvoir prend fin, le sang excédentaire dans votre métabolisme se dilue et vous retrouvez votre réserve normale de sang.<br /> Si vous êtes diablé lorsque vous avez activé ce pouvoir, on prend en compte votre génération normale et non la génération virtuelle et temporaire."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_3_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_3_FOCUS_DESCRIPTION", Text = "Vous pouvez utiliser ce pouvoir 2 fois par nuit au lieu d’une seule fois."},
+
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_4_NAME", Text = "Vol de VL'un des principes de base de la magie sympathique est le concept que les choses identiques s'attirent. En transformant de façon mystique le sang de votre corps en un aimant Thaumaturgique, vous pouvez littéralement siphonner le sang de votre cible, le faisant dégouliner de ses pores jusque dans votre main avant d’être absorbé dans votre corps."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_4_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez une action standard pour effectuer un challenge en opposition utilisant votre attribut Mental + Occulte contre le Mental + Volonté de votre cible qui devra se situer à 25 pas de vous. Si vous réussissez, vous pouvez drainer mystiquement jusqu’à 3 points de sang de votre victime. Ce sang s’extirpe au travers des pores de la victime, plane dans les airs jusqu'à votre main avant d’être absorbé magiquement par votre corps. Le sang substitué de cette façon conserve ses propriétés normales - ingérer du sang de vampire crée un lien de sang, du sang empoisonné vous rend malade, un sang malade transmet ses infections, etc. Inutile de préciser que ce pouvoir aux propriétés incroyables est considéré comme un bris de la Mascarade lorsqu’il est utilisé publiquement.<br />Vous pouvez utiliser ce pouvoir de façon répétée sur votre cible même si vous ratez l’un de vos challenges. Il s'agit d’une exception à la règle sur l’utilisation répétée de challenge mentaux sur la même cible."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_4_EXCEPTIONALSUCCESS", Text = "Vous volez 4 points de sang de votre victime au lieu de 3."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_4_FOCUS_DESCRIPTION", Text = "Lorsque vous utilisez Vol de Vitae sur un vampire, votre pouvoir neutralise les propriétés du sang vampirique jusqu'à un certain degré. Le sang récupéré de cette façon ne peut créer un lien de sang avec vous, ne peut vous rendre malade ou vous infecter. Les disciplines affectant le sang d’un vampire tel que le Sang Acide de Vicissitude continuent à produire leurs effets."},
+
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_5_NAME", Text = "Chaudron de Sang"},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_5_DESCRIPTION", Text = "En touchant votre opposant, vous pouvez faire bouillir le sang dans ses veines, lui infligeant une incroyable souffrance. Une vapeur écarlate s'élève tout autour du corps de votre victime tandis que son sang bouillonne en sortant de ses pores et de chacun de ses orifices. Peu de vampires peuvent supporter cette fournaise intérieure et les mortels sont inévitablement tués par une telle attaque."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_5_SYSTEM", Text = "Utilisez une action standard pour Agripper votre cible. si vous réussissez, dépensez 1 point de Sang pour infliger le “chaudron de sang” à votre victime, en plus de lui infliger les effets standard d’un agrippement. Le chaudron de sang bout 2 points de sang de votre cible, lui infligeant ainsi 2 dégâts aggravés. Les dégâts causés par ce pouvoir ne peuvent être réduits ou annulés.<br /> La première fois que vous utilisez Chaudron de Sang sur votre cible, vous devez réussir une Manœuvre de Combat “Agripper” contre votre cible. Si vous avez déjà agrippé votre cible, vous pouvez activer ce pouvoir en dépensant 1 Point de Sang et en utilisant votre action standard.<br />Ce pouvoir ne convertit pas le dommage normal causé par l’agrippement en dégât aggravé et ce dommage peut, quant à lui, être réduit ou annulé normalement. La technique d’agrippement ne réduit pas les dommages causés par le Chaudron de Sang.<br />Les mortels qui subissent ce pouvoir meurent instantanément."},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_5_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "BLOOD_POWER_5_FOCUS_DESCRIPTION", Text = "Vous pouvez dépenser 1 point de sang supplémentaire et faire bouillir jusqu’à 3 points de sang, causant ainsi 3 dommages aggravés par utilisation de ce pouvoir."},
+
+                new Traduction{LCID = 1036, Key = "BLOOD_TEST_SCORE", Text = "Il n'y a pas de Score standard pour La Voie du Sang"},
+
+            };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "BLOOD_KEY",
+                    DisciplineName = "BLOOD_NAME",
+                    Description = "BLOOD_DESCRIPTION",
+                    TestScore = "BLOOD_TEST_SCORE",
+                    Powers = powers
+                };
+
+                context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+        }
+
+        private static class ConjurationInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+            {
+                new Power { Level = 1, PowerName = "CONJURATION_POWER_1_NAME", Description = "CONJURATION_POWER_1_DESCRIPTION", System = "CONJURATION_POWER_1_SYSTEM", Focus = focus[7], FocusEffect = "CONJURATION_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "CONJURATION_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "CONJURATION_NAME" },
+                new Power { Level = 2, PowerName = "CONJURATION_POWER_2_NAME", Description = "CONJURATION_POWER_2_DESCRIPTION", System = "CONJURATION_POWER_2_SYSTEM", Focus = focus[7], FocusEffect = "CONJURATION_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "CONJURATION_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "CONJURATION_NAME" },
+                new Power { Level = 3, PowerName = "CONJURATION_POWER_3_NAME", Description = "CONJURATION_POWER_3_DESCRIPTION", System = "CONJURATION_POWER_3_SYSTEM", Focus = focus[6], FocusEffect = "CONJURATION_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "CONJURATION_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "CONJURATION_NAME" },
+                new Power { Level = 4, PowerName = "CONJURATION_POWER_4_NAME", Description = "CONJURATION_POWER_4_DESCRIPTION", System = "CONJURATION_POWER_4_SYSTEM", Focus = focus[6], FocusEffect = "CONJURATION_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "CONJURATION_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "CONJURATION_NAME" },
+                new Power { Level = 5, PowerName = "CONJURATION_POWER_5_NAME", Description = "CONJURATION_POWER_5_DESCRIPTION", System = "CONJURATION_POWER_5_SYSTEM", Focus = focus[7], FocusEffect = "CONJURATION_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "CONJURATION_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "CONJURATION_NAME" }
+            };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+            {
+                new Traduction{LCID = 1036, Key = "CONJURATION_NAME", Text = "La Voie de la Conjuration"},
+                new Traduction{LCID = 1036, Key = "CONJURATION_DESCRIPTION", Text = "La voie de la conjuration vous permet de créer des objets ou des créatures à partir de rien, entièrement issus de l’imagination et de la magie de ceux qui les façonnent. Les objets créés par l’entremise de la voie de la conjuration sont entièrement génériques et ne portent aucune marque ou signe distinctif. De plus, les objets conjurés sont en parfait état ne portent aucune trace d’usure ou de rayures. Vous pouvez créer tout ce que vous imaginez tout en étant limité par votre taille physique ; en effet, vous ne pouvez pas créer d’objets qui soient plus grands ou plus lourds que vous.<br />Vous devez être familier avec le type d’objet que vous souhaitez conjurer. Par exemple, vous devez posséder la compétence “Arme à feu” pour conjurer un Revolver, tout comme vous devez posséder des points dans la compétence “Science” ou “Médecine” afin de créer des médicaments. Votre conteur a le dernier mot concernant les compétences que vous devez posséder pour créer certains objets."},
+
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_1_NAME", Text = "Invoquer la Forme Simple"},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_1_DESCRIPTION", Text = "Les initiés dans la Voie de la conjuration possèdent la capacité de créer un objet constitué d’un seul et unique matériau. Ces objets ne peuvent pas être constitués de plusieurs parties et sont exempts de toute forme de mécanisme complexe. A l’aide de ce pouvoir, vous pouvez conjurer un morceau de roche, un pieu en bois ou une barre de fer."},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_1_SYSTEM", Text = "En dépensant une action standard et 1 point de sang, vous pouvez conjurer un objet inanimé qu’une personne peut tenir dans une main. Les objets créés par ce pouvoir doivent avoir une forme simple et sont dénués d’éléments électroniques ou de parties amovibles. Les objets créés par ce niveau de pouvoir apparaissent toujours dans votre main. Vous ne pouvez pas conjurer des créatures vivantes ou non mortes. Une fois que vous avez conjuré l’objet, vous devez dépenser un point de sang pour chaque minute supplémentaire où vous souhaitez maintenir sa forme sur le plan matériel. La première minute ne nécessite pas de dépense de sang supplémentaire. Si vous ne dépensez pas le point de sang supplémentaire, l’objet disparaît."},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_1_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_1_FOCUS_DESCRIPTION", Text = "\"Invoquer la forme Simple\" peut être conjuré avec une action simple au lieu d’une action standard."},
+
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_2_NAME", Text = "Magie de la Forge"},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_2_DESCRIPTION", Text = "Vous possédez la capacité de conjurer tout objet complexe composé de divers éléments et de parties amovibles dans lesquelles vous avez une compréhension générale."},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_2_SYSTEM", Text = "En dépensant 1 Sang et en vous concentrant pendant 5 tours entiers, et en n’engageant aucune autre action que celle se déplacer, vous pouvez créer un objet complexe avec ce pouvoir. A partir du moment où vous êtes familier avec l’objet désiré et que vous possédez les compétences nécessaires, vous pouvez créer des objets avec des parties amovibles et des composants électroniques. En possédant les compétences spécifiques, vous pouvez conjurer un revolver, un téléphone portable, un ordinateur portable, une batterie, un petit moteur et tout autre objet du quotidien. Ces objets sont limités en taille, une personne normale doit pouvoir les utiliser d’une seule main. Les objets créés par ce niveau de pouvoir apparaissent toujours dans votre main.<br />Les objets créés par l’entremise de ce pouvoir peuvent nécessiter une aide extérieure pour fonctionner totalement. Ainsi, un téléphone portable aura besoin d’un fournisseur de réseau (ou d’un hacker très doué) afin que vous puissiez passer un appel, et la plupart des objets électroniques auront besoin d’électricité pour fonctionner. Les objets créés par ce pouvoir possèdent tout ce qu’il faut pour fonctionner parfaitement. Ainsi, un revolver créé par ce pouvoir aura un chargeur rempli de munitions et un téléphone portable aura une batterie pleine. Une fois que vous avez conjuré l’objet, vous devez dépenser un point de sang pour chaque minute supplémentaire où vous souhaitez maintenir sa forme sur le plan matériel physique. La première minute ne nécessite pas de dépense de sang supplémentaire. Si vous ne dépensez pas le point de sang supplémentaire, l’objet disparaît.<br />Ce pouvoir peut être utilisé pour créer une pièce normale d’équipement. Pour plus d’informations à ce sujet, se référer au Système de génération de l’équipement."},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_2_EXCEPTIONALSUCCESS", Text = ""},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_2_FOCUS_DESCRIPTION", Text = "\"Magie de la Forge\" peut être utilisé pour créer un objet faisant jusqu'à 3 mètres cube. Si vous créez un objet trop grand ou trop encombrant à transporter, l’objet apparaîtra directement en face de vous, au bout de vos doigts tendus."},
+
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_3_NAME", Text = "Permanence"},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_3_DESCRIPTION", Text = "Les objets que vous créez sont réels et permanents, ne nécessitant aucune dépense additionnelle de sang afin de rester sur notre plan d’existence."},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_3_SYSTEM", Text = "Après avoir créé un objet en utilisant “Invoquer la forme simple” ou “Magie de la Forge”, vous pouvez dépenser un point de sang et utiliser une action simple pour rendre cet objet permanent. L’objet ne disparaît pas à moins d’être banni à l’aide d’un pouvoir tel que “Inverser la Conjuration”"},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_3_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_3_FOCUS_DESCRIPTION", Text = "Lorsque vous créez un objet par l’entremise de “Invoquer la forme simple” ou de “Magie de la Forge”, vous pouvez choisir de rendre l’objet permanent sans avoir à dépenser de sang ou à utiliser une action supplémentaire."},
+
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_4_NAME", Text = "Inverser la conjuration"},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_4_DESCRIPTION", Text = "Vous pouvez détruire les objets conjurés - même ceux créés par vous, ou un autre thaumaturge - les dissipant ainsi dans le néant magique dont ils sont issus."},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_4_SYSTEM", Text = "Dépensez un point de sang et utilisez votre action standard pour tenter de dissiper un objet créé par la voie de la conjuration. Vous pouvez bannir n’importe laquelle de vos créations sans aucun test. Pour bannir un objet créé par un autre thaumaturge, vous devez faire un challenge statique en utilisant votre attribut Mental + Occulte dont le seuil de difficulté est égal au score en Mental + Occulte du Créateur. Vous pouvez cibler n’importe quel objet que vous voyez ou ressentez avec ce pouvoir. Cependant, vous ne disposez d’aucun moyen de distinguer les objets conjurés des objets fabriqués naturellement.<br />Vous pouvez utiliser ce pouvoir pour bannir les objets et certaines créatures conjurées par d’autre voies de thaumaturgie, tels que les élémentaires conjurés par la “Voie de la maîtrise élémentaire”. Bannir un élémentaire nécessite que vous réussissiez un test en opposition contre l’élémentaire en utilisant votre groupement de Thaumaturgie."},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_4_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_4_FOCUS_DESCRIPTION", Text = "Vous pouvez utiliser une action simple pour déterminer si un objet dans votre champ de vision est naturel ou conjuré à l’aide de thaumaturgie. Après avoir déterminé si l’objet est naturel ou conjuré, vous pouvez dépenser 1 point de Sang et utiliser une action standard pour tenter de le dissiper, en utilisant le système de règles ci-dessus."},
+
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_5_NAME", Text = "Pouvoir Sur la Vie"},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_5_DESCRIPTION", Text = "Bien que les thaumaturges ne puissent créer la Vie, avec ce pouvoir vous avez la capacité de conjurer des créations qui possèdent un semblant d’existence. Ces créatures ne sont pas vraiment “conscientes”, possèdent une forme d’intelligence limitée et ne disposent d’aucune créativité. Ces créatures obéissent aveuglément à vos ordres et ne possèdent aucune volonté qui leur soit propre."},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_5_SYSTEM", Text = "Concentrez-vous pendant 5 tours entiers en dépensant 1 point de sang par tour, en n’entreprenant aucune autre action pour conjurer un “Simulacre”, un être vivant qui obéit à vos ordres mentaux. Ce pouvoir peut être utilisé pour créer un fac-similé de tout animal ou type de personne normal. Votre “Simulacre” possède les caractéristiques générales propres aux types de personnes ou à l’animal que vous créez, et il ne peut être créé pour dupliquer ou copier une créature ou un animal en particulier.<br />Le simulacre n’est pas vraiment vivant et n’entreprend aucune action sans recevoir vos instructions. Le “Sang” provenant d’une telle créature n’est d’aucune utilité et ne dispose d’aucune propriété naturelle ou surnaturelle. Les vampires ne peuvent pas se nourrir sur ces créatures, pas plus qu’ils ne peuvent leur donner L’Étreinte. Un simulacre dure jusqu’au lever du soleil, après quoi il se dissout de lui-même et retourne dans l’éther mystique dont il provient. Un simulacre qui est “tué” se dissipe de la même façon, il en va de même pour les membres potentiellement arrachés de la créature. Vous ne pouvez posséder qu’un seul simulacre “actif” à la fois. Si vous créez un nouveau Simulacre, le précédent se désincarne aussitôt.<br />Votre création possède un attribut physique compris entre 1 et 8 (à votre convenance), un score de 1 en attribut mental ainsi qu’en attribut social. Il ne dispose d’aucune compétence, d’aucun focus et d’aucune discipline. Votre simulacre peut être ciblé par des disciplines ou des pouvoirs surnaturels et peut être la cible de pouvoirs de Domination tels que la “Possession”. Il est possible de transformer en goule votre création, lui permettant ainsi de transporter 5 points de sang vampirique, cependant votre simulacre n’apprendra jamais de pouvoirs surnaturels."},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_5_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "CONJURATION_POWER_5_FOCUS_DESCRIPTION", Text = "Lorsque vous invoquez ce pouvoir, vous pouvez créer une réplique spécifique de créature, au lieu d’une création générique. Faire une réplique de vous-même ne nécessite aucun pré-requis, cependant vous devez posséder 2 points dans la compétence “subterfuge” pour créer une réplique d’une personne. Si vous utilisez le pouvoir pour cloner une créature surnaturelle, le résultat apparaît identique, mais le clone ne dispose d’aucun pouvoir surnaturel d’aucune sorte et il reste une créature tout à fait ordinaire."},
+
+                new Traduction{LCID = 1036, Key = "CONJURATION_TEST_SCORE", Text = "Il n'y a pas de Score standard pour La Voie de la Conjuration"},
+
+            };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "CONJURATION_KEY",
+                    DisciplineName = "CONJURATION_NAME",
+                    Description = "CONJURATION_DESCRIPTION",
+                    TestScore = "CONJURATION_TEST_SCORE",
+                    Powers = powers
+                };
+
+            context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+    }
+
+        private static class CorruptionInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+            {
+                new Power { Level = 1, PowerName = "CORRUPTION_POWER_1_NAME", Description = "CORRUPTION_POWER_1_DESCRIPTION", System = "CORRUPTION_POWER_1_SYSTEM", Focus = focus[8], FocusEffect = "CORRUPTION_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "CORRUPTION_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "CORRUPTION_NAME" },
+                new Power { Level = 2, PowerName = "CORRUPTION_POWER_2_NAME", Description = "CORRUPTION_POWER_2_DESCRIPTION", System = "CORRUPTION_POWER_2_SYSTEM", Focus = focus[8], FocusEffect = "CORRUPTION_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "CORRUPTION_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "CORRUPTION_NAME" },
+                new Power { Level = 3, PowerName = "CORRUPTION_POWER_3_NAME", Description = "CORRUPTION_POWER_3_DESCRIPTION", System = "CORRUPTION_POWER_3_SYSTEM", Focus = focus[7], FocusEffect = "CORRUPTION_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "CORRUPTION_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "CORRUPTION_NAME" },
+                new Power { Level = 4, PowerName = "CORRUPTION_POWER_4_NAME", Description = "CORRUPTION_POWER_4_DESCRIPTION", System = "CORRUPTION_POWER_4_SYSTEM", Focus = focus[7], FocusEffect = "CORRUPTION_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "CORRUPTION_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "CORRUPTION_NAME" },
+                new Power { Level = 5, PowerName = "CORRUPTION_POWER_5_NAME", Description = "CORRUPTION_POWER_5_DESCRIPTION", System = "CORRUPTION_POWER_5_SYSTEM", Focus = focus[8], FocusEffect = "CORRUPTION_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "CORRUPTION_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "CORRUPTION_NAME" }
+            };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+            {
+                new Traduction{LCID = 1036, Key = "CORRUPTION_NAME", Text = "La Voie de la Corruption"},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_DESCRIPTION", Text = "La Voie de la Corruption vous accorde la possibilité de subtilement influencer, par une torsion mystique, la moralité, les désirs et les processus cognitifs de la victime. Vous pouvez employer ces pouvoirs pour corrompre avec subtilité la psyché de votre personnage en la faisant glisser vers la bête. Profiter correctement de cette voie nécessite une connaissance intime de la tromperie, du vice et des endroits sombres cachés dans le cœur.<br />Si vous perdez dans un challenge en utilisant la Voie de la Corruption, vous ne pouvez pas utiliser le même pouvoir contre votre cible pendant 10 minutes.<br />Lancer la Voie de la Corruption est un art subtil, à l’opposé des autres voies de la Thaumaturgie. Vous n’avez pas besoin de parler pour donner force aux pouvoirs de la Voie de la Corruption et il n’est pas immédiatement évident que vous êtes la source de vos pouvoirs de la Voie de la Corruption. Pour plus de règles sur les pouvoirs en utilisation, consultez le Chapitre 6: Remarquer une Attaque.La Voie de la Corruption ne peut pas être utilisée sans briser l’invisibilité accordée par Occultation."},
+
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_1_NAME", Text = "Contre-Pied"},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_1_DESCRIPTION", Text = "Vous avez le pouvoir de tordre les processus cognitifs et les perceptions de votre cible, la forçant à inverser sa dernière décision en quelque chose de plus sombre et destructeur."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_1_SYSTEM", Text = "Dépensez 1 point de Sang, utilisez votre action standard et faites un Challenge opposé en utilisant le Score de Test de la Thaumaturgie pour utiliser Contre-Pied. Si vous réussissez, l’action ou la décision que votre cible est sur le point d’entreprendre devient son opposé négatif, beaucoup plus sombre. La cible détermine les détails de cette décision et doit la jouer, bien que le Conteur puisse intervenir et fournir des instructions spécifiques. Vous ne pouvez pas prédire le résultat exact de Contre-Pied à l’avance, mais il prend toujours la forme d’une action plus négative que celle que le sujet avait initialement prévu d’exécuter.<br />Vous pouvez utiliser Contre-Pied contre n’importe quelle cible dans votre ligne de vue. Contre-Pied ne peut pas être utilisé en combat, ni pour affecter des actions qui sont principalement physiques ou réflexives."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_1_EXCEPTIONALSUCCESS", Text = "L'utilisation de Contre-Pied est subtile et ne peut pas être détectée avec un Challenge de Vigilance. Ceci est une exception à la règle qui permet d’utiliser Vigilance pour détecter les utilisations de pouvoirs surnaturels."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_1_FOCUS_DESCRIPTION", Text = "L'adversaire reçoit une pénalité de -5 à Vigilance pour découvrir vos utilisations de Contre-Pied."},
+
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_2_NAME", Text = "Subversion"},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_2_DESCRIPTION", Text = "La Subversion pousse votre victime à succomber aux sombres tentations auxquelles sa moralité pourrait normalement la décourager de se livrer dans des circonstances normales."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_2_SYSTEM", Text = "Lorsque vous êtes témoin d’un autre personnage entreprenant une action qui satisfait un désir ou résistant à la tentation d’agir sur ses désirs, vous pouvez dépenser 1 point de Sang, utiliser votre action standard et faire un Challenge opposé pour activer la Subversion. Si vous réussissez, l’action de la cible change et elle succombe à ses désirs. La Subversion affecte toutes les actions d’un sujet avec des degrés variés de subtilité. Si une autre occasion se présente pour succomber à ses désirs, la victime doit dépenser un point de Volonté pour surmonter cet effet pendant cinq minutes. La Subversion dure une heure."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_2_EXCEPTIONALSUCCESS", Text = "Votre Subversion dure pour le reste de la nuit."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_2_FOCUS_DESCRIPTION", Text = "Les personnages sous les effets de votre Subversion souffrent d’une pénalité de -2 pour résister à vos autres utilisations de la Voie de la Corruption."},
+
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_3_NAME", Text = "Dissocier"},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_3_DESCRIPTION", Text = "Vous avez la capacité de couper métaphoriquement dans le cœur de votre victime et de dissocier son lien affectif avec les autres, la laissant comme une coquille vide. Votre victime se sépare des amants passionnés et des ennemis amers de la même manière."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_3_SYSTEM", Text = "Dépensez 1 point de Sang, utilisez votre action standard et faites un Challenge opposé en utilisant le Score de Test de la Thaumaturgie pour activer Dissocier. Si vous réussissez, la victime de ce pouvoir devient renfermée, suspicieuse et émotionnellement distante. Pendant l’heure suivante, votre cible subit une pénalité de -3 à ses Challenges Sociaux dans lesquels elle doit interagir de manière plaisante ou amicale. Cette pénalité ne s'applique pas au Score de Test défensif.<br />Tous les liens de sang de la victime sont baissés d’une étape pendant une heure. Si vous utilisez ce pouvoir sur un personnage qui a participé à un Vaulderie ou un rituel similaire, ses scores de vinculum sont réduits d’une étape pour la durée des effets. Une victime peut céder à ce pouvoir, mais si elle le fait dans l’espoir de renverser temporairement des liens de sang, elle doit dépenser 1 point de volonté pour céder. De la même manière, vous devez dépenser un point de sang pour utiliser ce pouvoir sur vous-même dans l’espoir de surmonter un lien de sang."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_3_EXCEPTIONALSUCCESS", Text = "Les effets de Dissocier durent pour le reste de la nuit."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_3_FOCUS_DESCRIPTION", Text = "Les liens de sang et les scores de vinculum sont réduits à zéro pour la prochaine heure."},
+
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_4_NAME", Text = "Dépendance"},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_4_DESCRIPTION", Text = "Vous avez le pouvoir de déclencher une faim incontrôlable dans votre victime, créant une dépendance physique et psychologique qui anime toutes ses pensées et ses motivations. Cette dépendance doit avoir une cible particulière, comme une sensation, une substance ou une action spécifique normalement considérée tabou."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_4_SYSTEM", Text = "Si vous souhaitez rendre addict un sujet à une sensation, substance ou action, elle doit d’abord en faire l’expérience. Le Thaumaturge dépense alors un point de Sang, utilise son action standard et fait un challenge opposé pour utiliser la Dépendance.<br />Si vous réussissez, la victime gagne un dérangement de Compulsion ou Obsession pour le reste de la nuit ; vous déterminez le déclencheur de ce dérangement basé sur la manière dont vous avez amené la tentation. Si un personnage est sujet à une seconde utilisation de ce pouvoir, les nouveaux effets effacent la précédente application. Pour plus d’informations sur les Dérangements, consultez le Dérangements[Chapitre 5: Atouts et Handicaps.<br />Aucun individu ne peut être rendu dépendant à quelque chose qui cause des dégâts (normaux ou aggravés) avec l’utilisation de ce pouvoir."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_4_EXCEPTIONALSUCCESS", Text = "La Dépendance infligée par ce pouvoir dure pendant deux sessions de jeu ou un mois, selon le plus long."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_4_FOCUS_DESCRIPTION", Text = "Les cibles affectées par votre Dépendance gagnent un trait de Dérangement. De plus, vos addictions ne peuvent être écrasées par d’autres Thaumaturges, à moins que l’autre Thaumaturge n’ait aussi un Focus sur Intelligence. D’autres utilisations de ce pouvoir échouent simplement quand elles ciblent un sujet que vous avez déjà rendu dépendant."},
+
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_5_NAME", Text = "Assuétude"},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_5_DESCRIPTION", Text = "Vous êtes l’addiction ultime. Avec votre culte de la personnalité et une maîtrise approfondie de la Voie de la Corruption, vous pouvez forcer vos victimes à avoir une obsession de votre présence."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_5_SYSTEM", Text = "Vous devez engager votre cible dans une conversation et parler avec elle pendant au moins une minute pour activer ce pouvoir. Après avoir rempli les prérequis, dépensez 1 point de Sang, utilisez votre action standard et faites un Challenge opposé pour activer l’Assuétude.<br />Si vous réussissez, la psyché de la victime se lie à la vôtre pendant le reste de la nuit, alors qu’elle souffre d’un Dérangement d’Obsession.<br />Une victime liée n’est pas moins susceptible de vous attaquer et ne se sent aucune affection particulière envers vous. Cependant, elle est psychologiquement rendue addict à vôtre présence. Pour la durée de ce pouvoir, elle souffre d’une pénalité de -2 à tous ses Scores de Test quand vous n’êtes pas présent. De plus, vous gagnez un bonus de +5 dans les Scores de Test Social contre votre victime pour la durée de ce pouvoir.<br />Les pénalités de ce pouvoir ne sont pas soustraites aux Scores de Test défensifs."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_5_EXCEPTIONALSUCCESS", Text = "La durée d’Assuétude s'étend à deux sessions de jeu ou un mois, selon le plus long des deux."},
+                new Traduction{LCID = 1036, Key = "CORRUPTION_POWER_5_FOCUS_DESCRIPTION", Text = "La victime ne peut pas tenter de vous blesser tant que ce pouvoir est actif."},
+
+                new Traduction{LCID = 1036, Key = "CORRUPTION_TEST_SCORE", Text = "Il n'y a pas de Score général pour La Voie de la Corruption"},
+
+            };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "CORRUPTION_KEY",
+                    DisciplineName = "CORRUPTION_NAME",
+                    Description = "CORRUPTION_DESCRIPTION",
+                    TestScore = "CORRUPTION_TEST_SCORE",
+                    Powers = powers
+                };
+
+            context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+    }
+
+        private static class ElementsInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+            {
+                new Power { Level = 1, PowerName = "ELEMENTS_POWER_1_NAME", Description = "ELEMENTS_POWER_1_DESCRIPTION", System = "ELEMENTS_POWER_1_SYSTEM", Focus = focus[7], FocusEffect = "ELEMENTS_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "ELEMENTS_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "ELEMENTS_NAME" },
+                new Power { Level = 2, PowerName = "ELEMENTS_POWER_2_NAME", Description = "ELEMENTS_POWER_2_DESCRIPTION", System = "ELEMENTS_POWER_2_SYSTEM", Focus = focus[6], FocusEffect = "ELEMENTS_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "ELEMENTS_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "ELEMENTS_NAME" },
+                new Power { Level = 3, PowerName = "ELEMENTS_POWER_3_NAME", Description = "ELEMENTS_POWER_3_DESCRIPTION", System = "ELEMENTS_POWER_3_SYSTEM", Focus = focus[6], FocusEffect = "ELEMENTS_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "ELEMENTS_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "ELEMENTS_NAME" },
+                new Power { Level = 4, PowerName = "ELEMENTS_POWER_4_NAME", Description = "ELEMENTS_POWER_4_DESCRIPTION", System = "ELEMENTS_POWER_4_SYSTEM", Focus = focus[7], FocusEffect = "ELEMENTS_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "ELEMENTS_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "ELEMENTS_NAME" },
+                new Power { Level = 5, PowerName = "ELEMENTS_POWER_5_NAME", Description = "ELEMENTS_POWER_5_DESCRIPTION", System = "ELEMENTS_POWER_5_SYSTEM", Focus = focus[7], FocusEffect = "ELEMENTS_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "ELEMENTS_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "ELEMENTS_NAME" }
+            };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+            {
+                new Traduction{LCID = 1036, Key = "ELEMENTS_NAME", Text = "La Voie des Éléments"},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_DESCRIPTION", Text = "Les Grecs d’antan croyaient que les quatre éléments - terre, eau, air et feu - étaient les briques fondamentales de l’univers. En utilisant les techniques de La Maîtrise des Éléments, vous pouvez communiquer avec ces forces élémentaires et autres objets inanimés pour les commander à faire vos volontés. La Maîtrise des Éléments ne peut être utilisée que sur de la matière inanimée."},
+
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_1_NAME", Text = "Force Élémentaire"},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_1_DESCRIPTION", Text = "En s'appuyant sur la force intemporelle et l’endurance de la terre et de la pierre environnante, vous pouvez forcer votre corps à prendre une de leurs propriétés pour une courte durée."},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_1_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action simple pour activer la Force Élémentaire. Pendant les cinq prochaines minutes, vous gagnez, soit le Focus en Force, soit le Focus d’Endurance (au choix).<br />Vous ne pouvez bénéficier que d’une seule application de Force Élémentaire à n’importe quel moment donné."},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_1_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_1_FOCUS_DESCRIPTION", Text = "Quand la Force Élémentaire est activée, vous recevez un bonus de +2 aux Challenges pour Agripper."},
+
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_2_NAME", Text = "Langue de Bois"},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_2_DESCRIPTION", Text = "Vous avez la capacité d’écouter les esprits sauvages qui habitent les objets inanimés. De tels esprit sont souvent pédants et uniquement concernés par ce qui les intéresse. Si vous pouvez les convaincre de faire attention, vous pouvez apprendre une bonne quantité d’informations sur les activités dont l’esprit a été témoin. Gardez à l’esprit que les expériences qui vous intéressent n’intéressent pas forcément une machine à café."},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_2_SYSTEM", Text = "Dépensez 1 point de sang et utilisez votre action standard pour activer Langue de Bois. Pendant les cinq minutes suivantes, vous avez la capacité de communiquer avec les esprits qui vivent dans des objets de tous les jours et vous pouvez leur proposer de communiquer avec vous. La nature de l’objet déterminé la personnalité de l’esprit ; un couteau peut avoir une personnalité tranchante, alors qu’une machine à café pourrait être très excitée.<br />Un esprit répondra aux questions basiques honnêtement, mais des concepts étrangers peuvent le rendre confus. Vous pouvez raisonnablement vous attendre à des réponses avec le type de questions suivantes :<br /> • Quelle est ta fonction ?<br />• Est-ce que quelque chose d’intéressant s'est produit près de toi ?<br />• A quoi ressemblait la personne qui est passée en courant il y a un moment ?<br />• Quelqu'un s'est battu ici récemment?<br />Les objets inanimés auxquels on accède avec ce pouvoir ne peuvent pas détecter les personnages cachés par des pouvoirs surnaturels."},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_2_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_2_FOCUS_DESCRIPTION", Text = "Votre utilisation de Langue de Bois dure pendant une heure plutôt que cinq minutes. De plus, vous pouvez entendre le murmure des conversations tenues entre les objets inanimés autour de vous, ce qui vous avertit lorsqu'un autre individu s'approche. Tant que vous êtes capables d’entendre, vous êtes conscients de quiconque s'approche à cinq pas de vous. Même si vous ne pouvez pas directement voir le personnage, vous pouvez estimer son emplacement en écoutant le papotage ambiant qui vous entoure. Cet effet ne peut être utilisé pour détecter les personnages cachés par des moyens surnaturels."},
+
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_3_NAME", Text = "Animer l’Immobile"},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_3_DESCRIPTION", Text = "Vous avez le pouvoir d’animer des objets et les commander selon vos souhaits pour un temps limité. Ces objets se plient et se déplacent selon vos ordres, mais leurs fonctions sont limitées par leur forme."},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_3_SYSTEM", Text = "Dépensez 1 point de sang et utilisez votre action standard pour animer un objet dans votre ligne de vue. L’objet gagne une mobilité limitée et obéit à tous vos ordres au mieux de ses capacités pendant une heure. Vous pouvez donner des ordres simples à ces objets, comme \"Poursuis cet homme,\" ou \"Attaque quiconque entre\". Les objets ne sont pas très intelligents et ont une capacité de raisonnement limitée. Les objet animés ne peuvent pas utiliser d’armes ou tirer parti des qualités d’une arme. Un ordre qui décrit \"Amène-moi le pistolet quand tu verras une voiture rouge passer dehors\", pourrait aboutir à un tabouret très confus.<br />Vous avez la capacité d’animer et de contrôler simultanément un nombre d’objets égal à votre score dans la compétence Occultisme, mais chaque objet doit être animé séparément. Ils restent animés tant qu’ils sont dans votre champ de vision, ou jusqu'à une heure.<br />Traitez les objets animés par ce pouvoir comme des PNJs type à 2 points. Les objets animés avec des roues ou jambes, bougent à une vitesse normale. Les objets sans roues ou jambes se déplacent à un rythme d’un pas par action. Les objets animés ne peuvent pas être la cible de pouvoirs Mentaux ou Sociaux, mais ils ne peuvent attaquer les personnes que le Thaumaturge ne peut pas attaquer lui-même. Par exemple, si le thaumaturge est affecté avec succès par le pouvoir de Transe, ses animations sont incapables d’attaquer le Vampire qui a plongé leur maître en Transe."},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_3_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_3_FOCUS_DESCRIPTION", Text = "La durée de votre capacité à animer les objets s'étend jusqu'à la fin de la soirée. De plus, vous avez une vague idée de ce que vos animations sont en train de faire et ce qu’il se passe dans les deux pas de chaque animation. Vous pouvez savoir que quelqu'un est en train d’attaquer votre tabouret de bar avec une hachette, mais vous ne pouvez pas exactement savoir qui est en train de balancer la hache."},
+
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_4_NAME", Text = "Forme Élémentaire"},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_4_DESCRIPTION", Text = "D'anciennes légendes décrivent des sorciers avec la capacité de transfigurer leur allure en la forme d’objets ordinaires. Vous avez le pouvoir de transformer votre corps en n’importe quel objet avec une masse grossièrement égale à la vôtre."},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_4_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action standard pour adopter la forme de n’importe quel objet dont la taille est grossièrement égale à la vôtre. Vous gardez vos sens, mais vous êtes incapable de bouger sous les effets de votre propre pouvoir. L’objet en lequel vous vous transformez fonctionne exactement comme un véritable objet de son type - devenir une télévision veut dire que vous pouvez être branché et allumé, sans que cela ne vous inflige de dommages. Ce pouvoir dure pour le reste de la nuit.<br />Vous n’avez pas accès aux disciplines tant que vous êtes dans cette forme. En utilisant Forme Élémentaire, vos attributs et vos niveaux de santé restent les mêmes, mais il peut être plus difficile ou plus facile de vous nuire, à la discrétion du conteur. Si vous vous transformez en un vase en verre, un coup de marteau pourrait infliger 10 points de dégâts normaux au lieu de 1 standard. A l’inverse, si vous vous transformez en rocher, vous êtes probablement immunisé aux attaques du Toreador qui manie une dague. Se transformer en un objet inanimé n’accorde aucune protection contre les pouvoirs Mentaux ou Sociaux.<br />Les personnages qui utilisent la Forme Élémentaire ne possèdent pas la capacité mystique de rester cohésif. Si un individu se transforme en poussières, air ou eau, il sera probablement dispersé et mourra en quelques tours.<br />Forme Élémentaire est un pouvoir de transformation et ne peut pas être utilisé en combinaison d’autres pouvoirs de transformation. Vous pouvez mettre fin à cette transformation à n’importe quel moment en dépensant une action simple."},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_4_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_4_FOCUS_DESCRIPTION", Text = "Quand vous endossez la Forme Élémentaire, vous pouvez devenir un objet aussi petit que la moitié de votre taille normale ou aussi grand que le double que votre taille normale."},
+
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_5_NAME", Text = "Invoquer les Élémentaires"},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_5_DESCRIPTION", Text = "Vous avez le pouvoir d’invoquer et commander l’un des esprits élémentaires du monde. Ces élémentaires sont des esprits animés par l’un des éléments primaire : feu, terre, eau ou air.De telles créatures ne sont pas d’amicaux alliés, mais des esclaves de votre volonté."},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_5_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action standard pour invoquer un élémentaire. Une fois invoqué, l’esprit élémentaire suit les commandes mentales du Thaumaturge pour les trois prochains tours, agissant sur l’initiative de l’invocateur. Après que le durée a expiré, l’élémentaire retourne dans son foyer en paix, à moins qu’il n’ait été abusé lors de sa convocation. Abuser l’esprit le pousse à vous attaquer une fois la durée expirée.<br />Un élémentaire invoqué n’est pas subtil et représente une énorme violation potentielle de la Mascarade. Par défaut, un esprit élémentaire est un PNJ Type à 6 points sans pouvoirs ni compétences. Quand vous invoquez un élémentaire, vous pouvez choisir l’une des capacités spéciales suivantes :<br /><strong>Élémentaire de Feu:</strong>  Votre élémentaire a le focus de compétence \"Attaque à Distance : Boule de Feu\" et peut envoyer des boules de feu, qui infligent 2 points de dégâts aggravés à quiconque elles touchent. Quiconque touche votre élémentaire prend 1 point de dégâts aggravés. Tout ce qui touche votre élémentaire qui est inflammable s'enflamme.<br /><strong>Élémentaire de Terre : </strong> Votre élémentaire a la compétence focus Bagarre et a 5 points en Force d’âme.<br /><strong>Élémentaire d’Eau :</strong>Votre élémentaire est immunisé aux dégâts Physiques. Quiconque frappé par votre élémentaire ne prend aucun dégât, mais est étendu face contre terre. Votre élémentaire se déplace au double de sa vitesse tant qu’il est dans l’eau. <br /><strong>Élémentaire d’Air : </strong>Votre élémentaire peut voler à une vitesse normale et est immunisé aux dégâts aggravés. Quiconque frappé par votre élémentaire ne prend aucun dégât, mais est étendu face contre terre.<br /> Vous ne pouvez contrôler qu’un seul élémentaire à la fois. Si vous réutilisez ce pouvoir avant que la durée du précédent n’expire, votre contrôle se transfère au nouvel élémentaire et le précédent élémentaire invoqué est libre d’agir de son propre chef. Les élémentaires relâchés attaquent souvent leurs invocateurs avant de retourner dans leur propre plan d’existence."},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_5_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "ELEMENTS_POWER_5_FOCUS_DESCRIPTION", Text = "La durée de Invoquer les Élémentaires s'étend à cinq minutes."},
+
+                new Traduction{LCID = 1036, Key = "ELEMENTS_TEST_SCORE", Text = "Il n'y a pas de Score standard."},
+
+            };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "ELEMENTS_KEY",
+                    DisciplineName = "ELEMENTS_NAME",
+                    Description = "ELEMENTS_DESCRIPTION",
+                    TestScore = "ELEMENTS_TEST_SCORE",
+                    Powers = powers
+                };
+
+                context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+        }
+
+        private static class FireInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+            {
+                new Power { Level = 1, PowerName = "FIRE_POWER_1_NAME", Description = "FIRE_POWER_1_DESCRIPTION", System = "FIRE_POWER_1_SYSTEM", Focus = focus[8], FocusEffect = "FIRE_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "FIRE_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "FIRE_NAME" },
+                new Power { Level = 2, PowerName = "FIRE_POWER_2_NAME", Description = "FIRE_POWER_2_DESCRIPTION", System = "FIRE_POWER_2_SYSTEM", Focus = focus[8], FocusEffect = "FIRE_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "FIRE_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "FIRE_NAME" },
+                new Power { Level = 3, PowerName = "FIRE_POWER_3_NAME", Description = "FIRE_POWER_3_DESCRIPTION", System = "FIRE_POWER_3_SYSTEM", Focus = focus[7], FocusEffect = "FIRE_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "FIRE_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "FIRE_NAME" },
+                new Power { Level = 4, PowerName = "FIRE_POWER_4_NAME", Description = "FIRE_POWER_4_DESCRIPTION", System = "FIRE_POWER_4_SYSTEM", Focus = focus[8], FocusEffect = "FIRE_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "FIRE_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "FIRE_NAME" },
+                new Power { Level = 5, PowerName = "FIRE_POWER_5_NAME", Description = "FIRE_POWER_5_DESCRIPTION", System = "FIRE_POWER_5_SYSTEM", Focus = focus[7], FocusEffect = "FIRE_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "FIRE_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "FIRE_NAME" }
+            };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+            {
+                new Traduction{LCID = 1036, Key = "FIRE_NAME", Text = "Le Voie des flammes"},
+                new Traduction{LCID = 1036, Key = "FIRE_DESCRIPTION", Text = "La foi a souvent été liée au feu, puisqu'il symbolise la pureté et la divinité. Peut-être s'agit-il de la raison pour laquelle l’Inquisition a trouvé que c'était une arme efficace il y a longtemps. En exploitant les techniques mystiques du Piège des flammes, vous avez appris à invoquer et contrôler le feu. Les flammes conjurées par Le Piège des flammes sont de nature mystique. Vous devez relâcher le feu de votre contrôle avant que cela n’affecte l’environnement.<br />Par exemple, si vous activez la Main de Feu, elle ne brûle pas votre main ni ne provoque votre frénésie. Cependant, si vous touchez un autre individu avec cette main et qu’il s'enflamme, ces flammes peuvent vous brûler ou provoquer votre frénésie.<br />Le feu déclenche la frénésie chez les Vampires. L’utiliser comme une arme est l’une des méthodes les plus faciles pour amener un Vampire à la Mort Finale."},
+
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_1_NAME", Text = "Main de Feu"},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_1_DESCRIPTION", Text = "Les initiés du Piège des flammes apprennent à invoquer une flamme dansante et chatoyante sur leur(s) main(s). Ce feu projette une vive lumière et vous fournit une arme terrifiante contre un autre vampire."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_1_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action standard pour conjurer un feu mystique qui recouvre votre main (ou vos mains). La Main de Feu projette de la lumière et vous permet de frapper avec votre main pour brûler vos adversaires, provoquant des dégâts aggravés. Vous pouvez même l’utiliser en conjonction avec d’autres pouvoirs, comme Célérité et Puissance, pour devenir un formidable combattant.<br />Une fois lancée, la Main de Feu persiste jusqu'à ce que vous dépensiez une action simple pour la souffler. Vous ne souffrez d’aucun dégât ou gêne à cause de la Main de Feu ; en effet, vous pouvez même porter des gants ou d’autres vêtements qui ne seront pas affectés par le feu. Cependant, si vous faites s'enflammer quelque chose d’autre, ces flammes secondaires peuvent vous blesser."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_1_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_1_FOCUS_DESCRIPTION", Text = "Vous pouvez convoquer votre Main de Feu à n’importe quel moment sans que cela ne nécessite la dépense d’une action. De plus, vous êtes hautement entraîné quand vous combattez avec des flammes en combat à mains nues. Quand vous utilisez Main de Feu en combat, vous recevez un bonus de +1 à vos scores de tests avec Bagarre."},
+
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_2_NAME", Text = "Boule de Feu"},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_2_DESCRIPTION", Text = "Vous avez le pouvoir d’invoquer une boule de feu dans la paume de votre main et de la lancer sur un ennemi. La boule flamboyante brille à travers l’air pour frapper votre cible en un souffle dévastateur et explosif."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_2_SYSTEM", Text = "Dépensez 1 point de Sang, utilisez votre action standard et faites un challenge opposé pour lancer Boule de Feu sur un ennemi à moins de 20 pas de votre emplacement. Une Boule de Feu qui réussit inflige 2 points de dégâts aggravés de feu quand elle touche, puis s'éteint dans un souffle de de feu mystique. Si votre Boule de Feu frappe un objet inflammable, comme un tas de foin ou de papiers, mais pas les vêtements portés par des ennemis, la cible prend feu."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_2_EXCEPTIONALSUCCESS", Text = "Votre Boule de Feu inflige un point supplémentaire de dégâts aggravés, pour un total de 3 dégâts aggravés pour chaque frappe réussie."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_2_FOCUS_DESCRIPTION", Text = "Vous n’avez pas besoin de dépenser du Sang pour utiliser Boule de Feu, bien que vous deviez toujours utiliser votre action standard."},
+
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_3_NAME", Text = "Pilier de Feu"},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_3_DESCRIPTION", Text = "D'un geste, vous pouvez invoquer d’imposants piliers de flammes intenses sur la position d’une cible de votre choix."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_3_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action standard pour conjurer un pilier de flammes qui est approximativement de 1,8 mètres (Six pieds) de diamètre et de la même hauteur. Vous devez placer ce Pilier de Feu à moins de 20 pas de votre emplacement. N’importe qui, à part vous, qui reste dans ou passe au travers de ce diamètre prend 2 points de dégâts aggravés. Vous êtes immunisé aux dégâts de votre Pilier de Feu, mais si vous deviez provoquer la combustion de quelque chose d’autre, ces flammes secondaires peuvent vous blesser.<br />S'il est dirigé vers une victime, le feu jaillit d’en-dessous de la victime. Vous devez faire mieux que votre cible dans un Challenge opposé en utilisant vos traits d’attributs Mental + Occultisme contre les traits d’attributs Physique + Esquive de la cible. Si vous réussissez, la cible prend 2 points de dégâts aggravés, sinon elle s'écarte avant que le pilier ne se soit formé. Les effets normaux de la compétence Esquive ne réduisent pas les dégâts de cette attaque.<br />Pilier de Feu provoque des dégâts aux personnages dans la zone d’effet à la fin de leur initiative de round commun. Si une cible reste dans le Pilier de Feu pendant plus d’un tour, elle continue à prendre des dégâts à la fin de son initiative de round commun jusqu'à ce qu’elle quitte la zone d’effet.<br />Les dégâts du Pilier de Feu ne se cumulent pas entre eux ou avec d’autres pouvoirs à zone d’effet. Si vous avez plus d’un tel pouvoir qui affecte la même zone, seul l’effet avec les dégâts les plus hauts s'applique.<br />La colonne de feu reste pendant cinq minutes, jusqu'à ce que vous décidiez de l’éteindre en dépensant une action simple, tombiez en torpeur ou mouriez."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_3_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_3_FOCUS_DESCRIPTION", Text = "Quiconque se tient ou passe au travers de votre Pilier de Feu prend 3 points de dégâts aggravés chaque tour."},
+
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_4_NAME", Text = "Immoler"},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_4_DESCRIPTION", Text = "D'un geste, vous pouvez mystiquement embraser une cible, provoquant la combustion spontanée de votre victime. Ce feu déchirant continuer de brûler jusqu'à ce que la victime arrive à entreprendre des actions spécifiques pour l’éteindre."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_4_SYSTEM", Text = "Dépensez 1 point de Sang, utilisez votre action standard et faites un Challenge opposé pour Immoler une cible qui est à moins de 20 pas de votre emplacement. Si vous réussissez, la cible s'enflamme, subissant 2 points de dégâts aggravés. De plus, la victime est en feu, prend 2 point supplémentaires de dégâts aggravés à la fin de chaque tour successif jusqu'à ce que la victime utilise 2 actions (simple ou standard) pour étouffer les flammes. Tout ce que touche la victime alors qu’elle est en feu peut potentiellement s'enflammer, à la discrétion du conteur.<br />Vous pouvez immoler une cible plusieurs fois lors de tours successifs, provoquant des dégâts qui se cumulent alors que la cible subit la brûlure de manière répétée. Cependant, quel que soit le nombre de fois qu’une victime subit des utilisations individuelles d’Immoler, elle ne prend toujours que 2 points de dégâts aggravés à cause du feu lors des tours suivants."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_4_EXCEPTIONALSUCCESS", Text = "Votre utilisation d’Immoler inflige un niveau supplémentaire de dégâts aggravés, pour un total de 3 points de dégâts aggravés par frappe. Un succès exceptionnel n’accroît pas les dégâts de brûlure que prend votre cible lors des rounds suivants."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_4_FOCUS_DESCRIPTION", Text = "Trois actions (standard ou simple) sont requises pour étouffer les flammes provoquées par l’immolation."},
+
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_5_NAME", Text = "Tempête de Feu"},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_5_DESCRIPTION", Text = "Les Maîtres de la Voie des flammes ont la capacité de projeter leur fureur intérieur en une terrifiante tempête de feu, brûlant et consumant tout dans son passage."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_5_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action standard pour convoquer une Tempête de Feu destructrice. Tempête de Feu fonctionne comme Pilier de Feu, mais affecte une zone allant jusqu'à 20 pas de diamètre sur un emplacement allant jusqu'à 40 pas. A la différence de Pilier de Feu, Tempête de Feu dure pendant cinq tours ou jusqu'à ce que vous décidiez de l’éteindre, bougiez à plus de 50 pas, tombiez en torpeur ou mouriez.<br />Les dégâts de Tempête de Feu ne se cumulent pas avec eux-même ou avec ceux d’autres pouvoirs à zone d’effet. Si vous avez plus d’un tel pouvoir qui affecte la même zone, seul l’effet avec les dégâts les plus hauts s'applique."},
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_5_EXCEPTIONALSUCCESS", Text = null },
+                new Traduction{LCID = 1036, Key = "FIRE_POWER_5_FOCUS_DESCRIPTION", Text = "Votre Tempête de Feu provoque un point supplémentaire de dégâts aggravés par tour, pour un total de 3 points de dégâts aggravés."},
+
+                new Traduction{LCID = 1036, Key = "FIRE_TEST_SCORE", Text = "Il n'y a pas de Score standard."},
+
+            };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "FIRE_KEY",
+                    DisciplineName = "FIRE_NAME",
+                    Description = "FIRE_DESCRIPTION",
+                    TestScore = "FIRE_TEST_SCORE",
+                    Powers = powers
+                };
+
+                context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+        }
+
+        private static class SpiritInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+            {
+                new Power { Level = 1, PowerName = "SPIRIT_POWER_1_NAME", Description = "SPIRIT_POWER_1_DESCRIPTION", System = "SPIRIT_POWER_1_SYSTEM", Focus = focus[8], FocusEffect = "SPIRIT_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "SPIRIT_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "SPIRIT_NAME" },
+                new Power { Level = 2, PowerName = "SPIRIT_POWER_2_NAME", Description = "SPIRIT_POWER_2_DESCRIPTION", System = "SPIRIT_POWER_2_SYSTEM", Focus = focus[6], FocusEffect = "SPIRIT_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "SPIRIT_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "SPIRIT_NAME" },
+                new Power { Level = 3, PowerName = "SPIRIT_POWER_3_NAME", Description = "SPIRIT_POWER_3_DESCRIPTION", System = "SPIRIT_POWER_3_SYSTEM", Focus = focus[6], FocusEffect = "SPIRIT_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "SPIRIT_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "SPIRIT_NAME" },
+                new Power { Level = 4, PowerName = "SPIRIT_POWER_4_NAME", Description = "SPIRIT_POWER_4_DESCRIPTION", System = "SPIRIT_POWER_4_SYSTEM", Focus = focus[8], FocusEffect = "SPIRIT_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "SPIRIT_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "SPIRIT_NAME" },
+                new Power { Level = 5, PowerName = "SPIRIT_POWER_5_NAME", Description = "SPIRIT_POWER_5_DESCRIPTION", System = "SPIRIT_POWER_5_SYSTEM", Focus = focus[7], FocusEffect = "SPIRIT_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "SPIRIT_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "SPIRIT_NAME" }
+            };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+            {
+                new Traduction{LCID = 1036, Key = "SPIRIT_NAME", Text = "La Voie de l’Esprit"},
+                new Traduction{LCID = 1036, Key = "SPIRIT_DESCRIPTION", Text = "Les pratiquants du Mouvement de l’Esprit se sont entraînés à pousser, saisir, déplacer des objets ainsi que des personnes à l’aide de la Télékinésie. À partir du moment où vous voyez votre cible, vous pouvez la soulever ou la manipuler aussi bien que si vous la portiez physiquement. Le contrôle télékinétique sur un objet via le Mouvement de l’esprit ne vous procure aucune sensation tactile, et vous ne pouvez pas sentir si un objet est chaud, rugueux ou glissant."},
+
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_1_NAME", Text = "Poussée de Force"},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_1_DESCRIPTION", Text = "Les initiés au Mouvement de L’esprit ont la capacité de projeter un choc de force télékinétique, étourdissant et renversant les objets ou leurs opposants."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_1_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez une action standard, puis faites un challenge en opposition pour produire une Poussée de Force sur n’importe quelle cible située a 20 pas de vous. Un succès à l’encontre d’une créature ou personne pousse la victime de 5 pas dans la direction de votre choix. Une Poussée réussie à l’encontre d’un objet peut affecter celui-ci si son poids n’excède pas 90 Kilos. Si l’objet n’est pas retenu, il peut être projeté de 5 pas dans n’importe quelle direction. Un objet détenu par quelqu’un d’autre peut être arraché de ses mains à la condition de battre le porteur de l’objet dans un challenge en opposition."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_1_EXCEPTIONALSUCCESS", Text = "Votre Poussée touche votre adversaire dans une partie sensible et l’étourdit. La victime perd sa prochaine action standard."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_1_FOCUS_DESCRIPTION", Text = "En plus de l’effet standard du pouvoir, une personne subit 2 points de dommages normaux dus à l’impact. Le choc causé par ce pouvoir propulse la victime ou l’objet à 6 pas au lieu de 5."},
+
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_2_NAME", Text = "Manipuler"},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_2_DESCRIPTION", Text = "Vous avez appris à contrôler vos capacités télékinétiques et vous pouvez soulever et manipuler un petit objet, situé dans votre champ de vision, avec la même dextérité que si vous le teniez dans votre main."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_2_SYSTEM", Text = "Dépensez 1 point de sang et une action standard pour manipuler un objet pesant jusqu'à 20 kilos. Les objets hissés à l’aide de ce pouvoir peuvent être déplacés à votre vitesse de marche et doivent pouvoir être soulevés par une personne normale à l’aide de ses mains. Vous pouvez déplacer et utiliser l’objet comme vous le souhaitez et avec la même facilité que si vous utilisiez vos mains. Ainsi, vous pouvez décrocher un objet, appuyer sur un bouton, ou déclencher une arme à feu en utilisant ce pouvoir.<br />Après avoir activé Manipulation, vous pouvez contrôler l’objet ciblé pendant 5 minutes ou jusqu'à ce que vous le perdiez de vue. Contrôler un objet à distance vous demande une grande concentration et nécessite de dépenser une action standard. De plus, la Manipulation précise d’un objet à distance ajoute une pénalité de -3 points à chacun de vos Scores de test.<br />Ce pouvoir ne peut cibler les objets possédés par d’autres personnages à moins qu’ils ne soient inconscients ou immobilisés."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_2_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_2_FOCUS_DESCRIPTION", Text = "Vous pouvez manipuler des objets inanimés pesant jusqu’à 50 kilos. Vous êtes tellement adroit avec ce pouvoir que vous ne subissez pas le malus de -3 en contrôlant un objet à distance"},
+
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_3_NAME", Text = "Vol"},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_3_DESCRIPTION", Text = "Vous avez appris à projeter votre puissance télékinétique vers l’intérieur vous libérant ainsi des contraintes de la gravité pour vous élever dans les airs."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_3_SYSTEM", Text = "Dépensez 1 point de sang et utilisez votre action standard pour activer ce pouvoir. Pendant les 5 prochaines minutes, vous pouvez voler à vitesse normale. Vous pouvez transporter jusqu'à 5 kilos supplémentaires d’équipement pour chaque point que vous possédez en “ Mouvement de l’esprit”. Le Vol est un pouvoir mental et ne peut être utilisé pour vous mouvoir durant les rounds de Célérité."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_3_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_3_FOCUS_DESCRIPTION", Text = "Si vous utilisez votre action Standard et Simple pour vous déplacer, vous pouvez voler jusqu'à 9 pas au lieu des 6 pas habituels."},
+
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_4_NAME", Text = "Répulsion"},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_4_DESCRIPTION", Text = "Vous maîtrisez désormais la capacité de projeter une puissante vague télékinétique qui repousse violemment les personnes (vos ennemis aussi bien que vos alliés) ainsi que les objets autour de vous."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_4_SYSTEM", Text = "Dépensez une action standard pour Repousser tout ce qui pèse jusqu'à 250 kilos et qui se trouve à moins de 5 pas de votre position. Tout personnage situé a 5 pas dont le score en physique est inférieur à votre score en mental est projeté jusqu'à 6 pas en arrière, s’éloignant ainsi de vous. Les personnages possédant un score d’attribut physique égal ou supérieur à votre score en mental sont repoussés de 3 pas seulement.<br />Les objets pesant jusqu'à 100 kilos sont repoussés de 6 pas. Les objets pesant jusqu’à 250 kilos sont repoussés de 3 pas. Les objets de plus de 250 Kilos ne sont pas affectés.<br />Les personnages vous ayant agrippé ou mordu perdent automatiquement leur Manœuvre de combat et sont repoussés. Les personnages dont la trajectoire les oblige a heurter un objet solide ou bien ceux qui sont frappés par des débris volants subissent 1 point de dommage de par l’utilisation de ce pouvoir.<br />Vous ne pouvez pas choisir les cibles de votre Répulsion. Tous les personnages sont affectés."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_4_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_4_FOCUS_DESCRIPTION", Text = "Vous projetez vos cibles de 6 pas en arrière, peu importe leur score en attribut physique."},
+
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_5_NAME", Text = "Contrôle"},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_5_DESCRIPTION", Text = "Les maîtres du Mouvement de L’Esprit possèdent la capacité d’imposer leur volonté à travers la puissance de leur esprit afin d’exercer un contrôle Télékinétique complet sur une cible. D’un seul geste, vous pouvez contrôler totalement un sujet, le forçant à se mouvoir et à agir physiquement selon votre gré."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_5_SYSTEM", Text = "Vous pouvez désormais utiliser le pouvoir de « Manipulation » sur des objets pesant jusqu'à 1 tonne et vous pouvez cibler des créatures vivantes en réussissant un challenge en opposition en utilisant votre Score de Test de Thaumaturgie. Les personnages sur lesquels vous réussissez à exercer votre pouvoir de Contrôle sont considérés comme “Agrippés”. Lorsqu’un personnage Agrippé tente de s’échapper de votre emprise, il doit réussir un challenge en opposition en utilisant son attribut Physique + Bagarre contre votre Attribut Mental + Occulte.<br />Ce pouvoir ne vous permet pas l’utilisation d’autres pouvoirs sur votre cible une fois que celle-ci est “agrippée”. Par exemple, vous ne pouvez pas utiliser “Contrôle” pour maintenir une cible à distance afin de lui infliger un Chaudron de Sang. Pour utiliser Chaudron de sang (ou tout autre pouvoir nécessitant d’agripper sa cible), vous devez Agripper physiquement votre cible.<br />Les personnes ou objets “Agrippés” peuvent être déplacés de 3 pas par tour dans n’importe quelle direction. Le Contrôle dure pendant 10 tours, ou jusqu'à ce que votre cible parvienne à se défaire de son emprise. Si vous utilisez ce pouvoir pour soulever une cible dans les airs et ensuite la laisser tomber ou si la cible parvient à se libérer alors qu’elle est dans les airs, elle subit des dommages dus à la chute. Pour toute information sur les dégâts de chute, reportez-vous au Chapitre Six : Dégâts de Chute.<br />Si vous utilisez ce pouvoir pour lancer un objet lourd sur votre adversaire, la cible doit effectuer un challenge statique en utilisant son score d’attribut physique + Esquive contre une difficulté de 10. Si elle échoue, la cible encaisse de 1 à 6 points de dommages, dépendant de la taille de l’objet. Un parpaing peut infliger 1 point de dégât, tandis qu’un gros camion peut infliger 6 points de dégâts. Essayer de lâcher un objet sur votre victime la place automatiquement comme la cible d’un challenge physique."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_5_EXCEPTIONALSUCCESS", Text = "Votre victime ne peut s'échapper de votre “agrippement” pendant 2 tours : Le tour où elle est saisie et le tour d’après."},
+                new Traduction{LCID = 1036, Key = "SPIRIT_POWER_5_FOCUS_DESCRIPTION", Text = "Vous avez la possibilité de soulever jusqu’à 10 tonnes."},
+
+                new Traduction{LCID = 1036, Key = "SPIRIT_TEST_SCORE", Text = "Il n'y a pas de Score standard pour Le Mouvement de l’Esprit"},
+
+            };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "SPIRIT_KEY",
+                    DisciplineName = "SPIRIT_NAME",
+                    Description = "SPIRIT_DESCRIPTION",
+                    TestScore = "SPIRIT_TEST_SCORE",
+                    Powers = powers
+                };
+
+                context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+        }
+
+        private static class TechnologieInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+            {
+                new Power { Level = 1, PowerName = "TECHNOLOGIE_POWER_1_NAME", Description = "TECHNOLOGIE_POWER_1_DESCRIPTION", System = "TECHNOLOGIE_POWER_1_SYSTEM", Focus = focus[7], FocusEffect = "TECHNOLOGIE_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "TECHNOLOGIE_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "TECHNOLOGIE_NAME" },
+                new Power { Level = 2, PowerName = "TECHNOLOGIE_POWER_2_NAME", Description = "TECHNOLOGIE_POWER_2_DESCRIPTION", System = "TECHNOLOGIE_POWER_2_SYSTEM", Focus = focus[8], FocusEffect = "TECHNOLOGIE_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "TECHNOLOGIE_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "TECHNOLOGIE_NAME" },
+                new Power { Level = 3, PowerName = "TECHNOLOGIE_POWER_3_NAME", Description = "TECHNOLOGIE_POWER_3_DESCRIPTION", System = "TECHNOLOGIE_POWER_3_SYSTEM", Focus = focus[7], FocusEffect = "TECHNOLOGIE_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "TECHNOLOGIE_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "TECHNOLOGIE_NAME" },
+                new Power { Level = 4, PowerName = "TECHNOLOGIE_POWER_4_NAME", Description = "TECHNOLOGIE_POWER_4_DESCRIPTION", System = "TECHNOLOGIE_POWER_4_SYSTEM", Focus = focus[8], FocusEffect = "TECHNOLOGIE_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "TECHNOLOGIE_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "TECHNOLOGIE_NAME" },
+                new Power { Level = 5, PowerName = "TECHNOLOGIE_POWER_5_NAME", Description = "TECHNOLOGIE_POWER_5_DESCRIPTION", System = "TECHNOLOGIE_POWER_5_SYSTEM", Focus = focus[7], FocusEffect = "TECHNOLOGIE_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "TECHNOLOGIE_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "TECHNOLOGIE_NAME" }
+            };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+            {
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_NAME", Text = "La Voie de la Technomancie"},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_DESCRIPTION", Text = "La Technomancie est l’art thaumaturgique de divination et de contrôle des machines ou des systèmes technologiques. En ces temps modernes, la technologie est aussi essentielle que ne le furent la forge de l’acier ou la récolte de céréales au Moyen-Age. Ainsi, de jeunes vampires dont les années mortelles leur permirent de baigner dans une “Révolution industrielle” ou une “ère informatique”, ont découvert qu’ils pouvaient étendre le pouvoir de la Magie de leur sang à travers ces curieuses inventions. Leur sang est semble-t-il devenu assez flexible pour s’adapter aux composants électroniques alors que le monde évolue dans une génération numérique.<br />Certains érudits occultes pensent que la Technomancie se base sur un principe de magie sympathique, similaire au Vaudou. D’autres estiment que les dispositifs technologiques inclus dans cette forme de Magie ne sont rien de plus que des talismans qui influent sur la volonté du pratiquant. Quelle que soit la vérité, les jeunes vampires qui disposent de cette nouvelle voie possèdent une compréhension et une foi dans les possibilités de la technologie et parviennent à distiller cette dévotion dans leur magie."},
+
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_1_NAME", Text = "Analyse"},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_1_DESCRIPTION", Text = "Les initiés de la Voie de la Technomancie apprennent à exploiter la vérité fondamentale de chaque appareil. D’un simple contact, vous pouvez projeter vos perceptions dans un appareil et glaner une compréhension de son usage, les principes technologiques qui le composent et savoir comment le manipuler. Ce pouvoir n’octroie pas un savoir permanent, simplement un flash momentané de lucidité, qui s’estompe au bout de quelques heures."},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_1_SYSTEM", Text = "Pour activer le pouvoir, vous devez toucher un appareil technologique, dépenser 1 point de Sang et utiliser votre action standard. Peu après, vous projetez votre conscience dans l’appareil, vous permettant, temporairement, de mieux comprendre son utilité, son principe de fonctionnement ainsi que la façon de le manipuler. De cette façon, vous pouvez toucher un ordinateur et apprendre ses spécifications, déterminer les circonstances du déclenchement d’une alarme en la touchant, ou bien toucher une voiture et connaître sa condition, sa vitesse de pointe, etc.<br />Toutes les connaissances acquises grâce à l’utilisation de ce pouvoir disparaissent à l’aube à moins que le thaumaturge ne possède “Souvenir parfait” ou “Mémoire Expansée”. Un thaumaturge peut conserver les informations sur le fonctionnement d’un appareil en prenant le temps et l’effort de les coucher par écrit."},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_1_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_1_FOCUS_DESCRIPTION", Text = "Analyser peut également être utilisé pour comprendre un fichier numérique innovant, vous permettant de lire les programmes ainsi que les fichiers électroniques. Par exemple, vous pouvez lire le contenu d’une clé USB, connaître tous les logiciels installés sur un ordinateur, ou bien consulter la liste des appels récents sur un téléphone portable - tout cela sans avoir besoin d’allumer l’appareil."},
+
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_2_NAME", Text = "Circuits Grillés"},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_2_DESCRIPTION", Text = "Vous avez le pouvoir de détruire n’importe quel appareil électronique dans votre champ de vision en provoquant une surtension dans la batterie interne ou externe et provoquer ainsi la surchauffe des circuits."},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_2_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action standard pour utiliser ce pouvoir sur n’importe quel appareil électronique situé dans votre champ de vision. L’appareil ciblé est ainsi détruit sans possibilité de réparation. Ce pouvoir ne peut être utilisé pour blesser directement un individu, cependant la destruction soudaine de la puce de régulation d’un moteur à injection peut provoquer des dégâts à la discrétion du conteur."},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_2_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_2_FOCUS_DESCRIPTION", Text = "Ce pouvoir peut être utilisé pour cibler un appareil électronique de stockage de données et effacer son contenu sans possibilité de récupération ordinaire. Si vous provoquez cet effet, il n’existe aucun signe prouvant que cette panne est due à autre chose qu’une simple défaillance de l’appareil."},
+
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_3_NAME", Text = "Crypter/Décrypter"},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_3_DESCRIPTION", Text = "Vous avez la possibilité de protéger et de déverrouiller des appareils électroniques ou des fichiers numériques."},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_3_SYSTEM", Text = "D’un simple toucher, vous pouvez crypter tout appareil, brouillant ainsi ses commandes de façon mystique afin qu’il ne fonctionne que pour vous. De plus, vous pouvez aussi protéger tout fichier électronique auquel vous accédez, sécurisant le fichier afin qu’il ne puisse être ouvert que par vous-même. Vous avez également la possibilité d’inverser l’opération et ainsi décrypter les appareils chiffrés afin d’accéder aux données en outrepassant les protocoles de protection.<br />Les personnages essayant d’accéder à un fichier/appareil que vous avez crypté subissent une pénalité sur leurs Scores de Test du nombre de points égal à votre score dans la compétence Informatique. Toute personne essayant d’accéder à l’appareil en utilisant la Voie de la Technomancie doit faire un jet en opposition en utilisant son Score de Test de Technomancie. Notez bien que ce challenge n’est pas nécessaire si le technomancien hostile souhaite simplement détruire l’appareil ou les fichiers concernés."},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_3_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_3_FOCUS_DESCRIPTION", Text = "Cracker votre encryptage avec un équipement ordinaire est impossible. Seul un autre utilisateur de la voie de la Technomancie peut réussir à décrypter vos protocoles. Cependant, les technomanciens subissent une pénalité sur leur Score de Test égale au nombre de points que vous possédez dans la compétence Informatique lorsqu’ils essaient d’influer ou de lire des données que vous avez cryptées."},
+
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_4_NAME", Text = "Accès à Distance"},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_4_DESCRIPTION", Text = "Vous possédez désormais un tel degré de connexion innée avec la technologie que, d’un simple coup d’œil, vous pouvez contrôler et utiliser tout appareil électronique comme si vous le manipuliez physiquement."},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_4_SYSTEM", Text = "Dépensez 1 point de sang, utilisez votre action standard, et ciblez n’importe quel appareil électronique situé dans votre champ de vision. Pendant la prochaine heure, vous pouvez utiliser votre action simple ou standard pour interagir avec l’appareil, de façon tout à fait normale, même si vous n’êtes pas situé à proximité de l’appareil. Vous pouvez donc entrer des données dans votre téléphone mobile sans avoir à le sortir de votre poche, lire un message sur un écran même si vous ne voyez pas l’appareil, réinitialiser l’alarme sur la montre d’une autre personne, ou reprogrammer entièrement un ordinateur sans même le toucher."},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_4_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_4_FOCUS_DESCRIPTION", Text = "Vous franchissez automatiquement toute sécurité ordinaire sur l’appareil que vous ciblez, mais vous devez néanmoins faire un challenge pour affecter l’équipement d’un autre technomancien. Avec ce pouvoir, vous pouvez automatiquement accéder au contenu d’un ordinateur, même si vous ne connaissez pas le mot de passe."},
+
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_5_NAME", Text = "Télétravail"},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_5_DESCRIPTION", Text = "Vous possédez la capacité de ressentir tout appareil électronique situé à 300 mètres et pouvez y accéder en utilisant “Accès Distant” via ce pouvoir."},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_5_SYSTEM", Text = "Dépensez 1 sang et utilisez votre action simple pour activer “Télétravail”. Pendant les 5 prochaines minutes, vous pouvez sentir tous les objets électroniques et leur emplacement général à proximité immédiate de votre position. Vous pouvez utiliser n’importe lequel de vos pouvoirs de Technomancie sur ces objets sans avoir besoin de les voir ou les toucher, aussi longtemps que vous resterez à 300 mètres de ceux-ci.<br />"},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_5_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_POWER_5_FOCUS_DESCRIPTION", Text = "Une fois activé, le pouvoir dure 1 heure au lieu de 5 minutes."},
+
+                new Traduction{LCID = 1036, Key = "TECHNOLOGIE_TEST_SCORE", Text = "Il n'y a pas de Score Standard pour la Voie de la Technomancie"},
+
+            };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "TECHNOLOGIE_KEY",
+                    DisciplineName = "TECHNOLOGIE_NAME",
+                    Description = "TECHNOLOGIE_DESCRIPTION",
+                    TestScore = "TECHNOLOGIE_TEST_SCORE",
+                    Powers = powers
+                };
+
+                context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+        }
+
+        private static class WeatherInitializer
+        {
+            public static void Initializer(DBNContext context, List<Focus> focus)
+            {
+                var powers = new List<Power>
+            {
+                new Power { Level = 1, PowerName = "WEATHER_POWER_1_NAME", Description = "WEATHER_POWER_1_DESCRIPTION", System = "WEATHER_POWER_1_SYSTEM", Focus = focus[6], FocusEffect = "WEATHER_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "WEATHER_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "WEATHER_NAME" },
+                new Power { Level = 2, PowerName = "WEATHER_POWER_2_NAME", Description = "WEATHER_POWER_2_DESCRIPTION", System = "WEATHER_POWER_2_SYSTEM", Focus = focus[7], FocusEffect = "WEATHER_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "WEATHER_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "WEATHER_NAME" },
+                new Power { Level = 3, PowerName = "WEATHER_POWER_3_NAME", Description = "WEATHER_POWER_3_DESCRIPTION", System = "WEATHER_POWER_3_SYSTEM", Focus = focus[7], FocusEffect = "WEATHER_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "WEATHER_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "WEATHER_NAME" },
+                new Power { Level = 4, PowerName = "WEATHER_POWER_4_NAME", Description = "WEATHER_POWER_4_DESCRIPTION", System = "WEATHER_POWER_4_SYSTEM", Focus = focus[7], FocusEffect = "WEATHER_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "WEATHER_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "WEATHER_NAME" },
+                new Power { Level = 5, PowerName = "WEATHER_POWER_5_NAME", Description = "WEATHER_POWER_5_DESCRIPTION", System = "WEATHER_POWER_5_SYSTEM", Focus = focus[6], FocusEffect = "WEATHER_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "WEATHER_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "WEATHER_NAME" }
+            };
+
+                powers.ForEach(p =>
+                {
+                    context.Powers.Add(p);
+                });
+
+                #region Traduction
+                var trad = new List<Traduction>
+            {
+                new Traduction{LCID = 1036, Key = "WEATHER_NAME", Text = "Le Contrôle du Climat"},
+                new Traduction{LCID = 1036, Key = "WEATHER_DESCRIPTION", Text = "Les contes ont longtemps raconté l’histoire de sorciers qui pouvaient contrôler la météo. On dit que les pouvoirs de cette Voie sont antérieurs au clan Tremere de plusieurs siècles, comme les sorciers des Assamites et les Disciples de Set ont exercé de tels pouvoirs pour aider leurs troupeaux avec les récoltes pendant les périodes de famine.<br />En utilisant le Contrôle du Climat, vous avez appris à manipuler subtilement la météo ou convoquer la fureur des tempêtes et des éclairs.<br />Notez que les pouvoirs suivants doivent commencer sur un point dans la ligne de vue du thaumaturge."},
+
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_1_NAME", Text = "Brouillard"},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_1_DESCRIPTION", Text = "Les initiés du Contrôle du Climat peuvent convoquer un brouillard pour couvrir une zone ou un paysage."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_1_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action Standard pour convoquer Brouillard. Pendant la prochaine heure, un brouillard se forme sur une large zone, jusqu'à 1,60 km de diamètre (1 mile) pour chaque point que vous possédez dans la compétence Occultisme. Quiconque pris dans le brouillard est incapable de voir à plus de 15 pas. La quantité d’humidité naturelle dans l’air détermine la densité du brouillard.<br />Votre conteur a le dernier mot sur le temps exact qu’il faut pour que le brouillard se forme et à quel point il bloque agressivement la vue. Le brouillard dure une heure pour chaque point que vous possédez dans la compétence Occultisme, à moins que vous ne choisissez de terminer le pouvoir plus tôt. Une fois que brouillard prend fin, ses effets se dissipent lentement, s'évaporant sur l’heure suivante."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_1_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_1_FOCUS_DESCRIPTION", Text = "En plus de l’utilisation standard de Brouillard, vous pouvez dépensez 1 point de Sang et votre action standard pour remplir instantanément une zone d’une taille allant jusqu'à celle d’une large salle de bal avec un épais brouillard. Si utilisé dehors, votre brouillard s'étend de 50 pas dans toutes les directions, avec vous au centre.<br />Les individus dans votre brouillard instantanément créé ne peuvent pas voir au-delà de trois pas. Les personnages qui souhaitent attaquer ou utiliser un pouvoir au-delà de trois pas doivent utiliser la manœuvre de combat Combat en Aveugle. Les pouvoirs qui vous permettent de voir dans l’obscurité complète, comme les yeux de la Bête, ne peuvent pas être utilisés pour contourner Brouillard, mais les pouvoirs qui permettent de compenser votre perte de vue, comme Sens Accrus peuvent contourner cette restriction. Le Brouillard dure une minute pour chaque point que vous possédez dans la compétence Occultisme, mais vous pouvez le dissiper plus tôt en dépensant une action simple. Pour plus d’informations sur le combat en aveugle."},
+
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_2_NAME", Text = "Fluctuation"},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_2_DESCRIPTION", Text = "Vous avez appris à subtilement façonner la météo locale, fluctuant doucement la température vers le haut ou le bas selon vos besoins."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_2_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action standard pour altérer la température dans un rayon de 1,6 km (1 mile). Vous pouvez faire monter ou descendre la température de 5 degrés Fahrenheit (3,80 degrés Celsius) pour chaque point que vous possédez dans la compétence Occultisme. Ce changement de température s'opère lentement, changeant d’un degré (0,55 degré Celsius) toutes les heures jusqu'à ce que le niveau voulu soit atteint. Une fois arrivé à ce niveau, le pouvoir persiste pendant une heure pour chaque point que vous possédez dans la compétence Occultisme, avant que la température ne remonte doucement à la normale."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_2_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_2_FOCUS_DESCRIPTION", Text = "En plus des effets standards de Fluctuation, vous pouvez dépensez 1 point de Sang et utiliser votre action standard pour augmenter ou diminuer la température dans une zone d’une taille allant jusqu'à celle d’une large salle de bal. Vous pouvez fixer la température n’importe où entre -20 degrés Fahrenheit et 120 degrés Fahrenheit (-28,88 à 48 degrés Celsius). A son plus froid, ce pouvoir peut geler l’eau en trois tours. A son plus chaud, il peut provoquer des coups de chaleurs chez des mortels pas préparés, dessécher les plantes et dessécher les objets inanimés en quelques minutes."},
+
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_3_NAME", Text = "Grands Vents"},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_3_DESCRIPTION", Text = "Grâce au pouvoir de votre sang, vous avez la capacité de commander de puissantes bourrasques de vent d’une force terrifiante."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_3_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action standard pour appeler de grands vents dans un rayon de 1,60 km (1 mile) pour chaque point que vous possédez dans la compétence Occultisme. Vous pouvez invoquer des vents qui peuvent souffler jusqu'à 48,28 kilomètres par heure (30 miles par heure), avec des rafales de vent au double de cette vitesse. Cet accroissement du vent arrive lentement. Le vent augmente de 1,6 km par heure(1 mile par heure) toutes les dix minutes, jusqu'à ce que la vitesse désirée soit atteinte. Une fois que le vent atteint sa vitesse désirée, le pouvoir dure 10 minutes pour chaque point que vous possédez dans la compétence Occultisme, avant de doucement revenir à la normale. Grands Vents peut provoquer des black-out aléatoires, blocages routiers, avions cloués au sol et des dégâts matériels à la discrétion du conteur."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_3_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_3_FOCUS_DESCRIPTION", Text = "En plus des effets standards de Grand Vents, vous pouvez dépenser 1 Point de Sang, utiliser votre action standard et faire un challenge opposé en utilisant le Score de Test de Thaumaturgie pour envoyer un souffle d’air à votre cible. Si votre cible échoue à esquiver, elle est martelée par une violente rafale de vent, renversée en arrière jusqu'à 6 pas et atterrit face contre terre. Si votre cible impacte une surface solide, elle prend 2 points de dégâts normaux."},
+
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_4_NAME", Text = "Tempête"},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_4_DESCRIPTION", Text = "Vous avez appris à invoquer et contrôler de puissantes tempêtes avec un grand pouvoir de destruction, qui peuvent semer le chaos indifféremment sur vos ennemis et les biens matériels."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_4_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action standard pour appeler une Tempête. Cette Tempête couvre un large rayon avec de grands vents et de la pluie ou de la neige, si la température est assez basse. La vitesse du vent augmente dans la zone d’effet jusqu'à ce qu’elle atteigne 32,12 km/h (20 miles par heure). Votre aire d’effet est de 1,6 km (1 mile) pour chaque point que vous possédez dans la compétence Occultisme. Les rafales de vent peuvent atteindre jusqu'à 64,37 km/h (40 miles par heure). Cet accroissement du vent se produit lentement. Les vents grandissent à une vitesse de 1,6 km/h (1 mile) toutes les 10 minutes jusqu'à ce que la vitesse désirée soit atteinte. Une fois que le vent a atteint la vitesse désirée, le pouvoir dure pendant 10 minutes pour chaque point que vous possédez dans la compétence <i>Occultisme</i>.<br /> En vous concentrant et en n’entreprenant aucune autre action pendant 10 minutes, vous pouvez, en outre, ravager un rayon de la taille d’un pâté de maisons, intensifiant la tempête dans cette zone. Pour ce faire, vous n’avez pas à voir la zone affectée, mais vous devez être familier avec cette zone. Si vous employez cet effet, la zone cible souffre de coupures de courants, inondations et de dégâts matériels. Les routes deviennent impraticables, bloquées par des arbres tombés ou d’autres débris."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_4_EXCEPTIONALSUCCESS", Text = null},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_4_FOCUS_DESCRIPTION", Text = "En plus de l’effet standard de la Tempête, vous pouvez dépensez 1 point de Sang et utiliser votre action simple pour vous entourer d’une tempête tourbillonnante. Ce maelström miniature dure un tour complet pour chaque point que vous possédez dans la compétence Occultisme. Une fois par tour, tant que ce pouvoir est actif, vous pouvez dépensez une action standard pour employer l’effet du Focus de Grands Vents, sans avoir à dépenser de point de Sang."},
+
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_5_NAME", Text = "Éclairs"},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_5_DESCRIPTION", Text = "L'arme même des dieux, la foudre, est à vos ordres, frappant vos ennemis."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_5_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez votre action standard pour faire un Challenge opposé. Si vous réussissez, vous pouvez frapper votre cible avec un éclair. Les individus frappés par la foudre souffrent de 4 points de dégâts normaux. <br /> Un éclair peut émaner de votre main tendue ou, si vous êtes dehors quand vous utilisez ce pouvoir, il peut frapper depuis les nuages au dessus."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_5_EXCEPTIONALSUCCESS", Text = "Votre éclair inflige 5 points de dégâts normaux, au lieu des 4 standards."},
+                new Traduction{LCID = 1036, Key = "WEATHER_POWER_5_FOCUS_DESCRIPTION", Text = "Quand vous frappez un adversaire avec Éclairs, vous pouvez choisir soit d’aveugler une cible pendant un tour complet soit de l’étourdir, provoquant la perte de sa prochaine action simple. Si un personnage est frappé par plus d’un éclair en un seul tour, il peut souffrir des deux effets, mais il ne peut pas être sujet au même effet deux fois en un seul tour."},
+
+                new Traduction{LCID = 1036, Key = "WEATHER_TEST_SCORE", Text = "il n'y a pas de Score standard pour Le Contrôle du Climat"},
+
+            };
+
+                trad.ForEach(t =>
+                {
+                    context.Traductions.Add(t);
+                });
+                #endregion
+                context.SaveChanges();
+
+                var discipline = new Discipline
+                {
+                    DisciplineKey = "WEATHER_KEY",
+                    DisciplineName = "WEATHER_NAME",
+                    Description = "WEATHER_DESCRIPTION",
+                    TestScore = "WEATHER_TEST_SCORE",
+                    Powers = powers
+                };
+
+                context.Disciplines.Add(discipline);
+                context.SaveChanges();
+            }
+        }
+
         //private static class PresenceInitializer
         //{
         //    public static void Initializer(DBNContext context, List<Focus> focus)
@@ -2175,6 +3053,8 @@ namespace DAL
         //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_5_EXCEPTIONALSUCCESS", Text = ""},
         //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_5_FOCUS_DESCRIPTION", Text = ""},
 
+        //        new Traduction{LCID = 1036, Key = "PRESENCE_TEST_SCORE", Text = ""},
+
         //    };
 
         //        trad.ForEach(t =>
@@ -2189,6 +3069,7 @@ namespace DAL
         //            DisciplineKey = "PRESENCE_KEY",
         //            DisciplineName = "PRESENCE_NAME",
         //            Description = "PRESENCE_DESCRIPTION",
+        //            TestScore = "PRESENCE_TEST_SCORE",
         //            Powers = powers
         //        };
 

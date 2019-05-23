@@ -6,17 +6,34 @@
     ViewBag.Title = Translate.GetTraduction(EnumRessource.GEN_LBL_RULES).Text;
 }
 
-<div class="row">
-    <div class="text-center">
-        <div class="col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 col-xs-offset-10 col-xs-2 toptop">
-            <a class="btn btn-lg btn-primary" href="#top"><i class="fas fa-arrow-up"></i></a>
+@if (Request.Browser.IsMobileDevice)
+{
+    <div class="row">
+        <div class="text-center">
+            <div class="col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 col-xs-offset-10 col-xs-2 toptop">
+                <a class="btn btn-lg btn-primary" href="#"><i class="fas fa-arrow-up"></i></a>
+            </div>
         </div>
     </div>
-</div>
+
+}
+else
+{
+    <div class="row">
+        <div class="col-md-2 topDisciplines">
+            <a href="#">@Translate.GetTraduction(EnumRessource.GEN_LBL_DISCIPLINE).Text</a>
+            @foreach (var discipline in Model)
+            {
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <a href="#@discipline.DisciplineKey">@discipline.DisciplineName</a>
+                </div>
+            }
+        </div>
+    </div>
+}
 
 <div class="container">
     <h1 class="title well">
-        <a name="top"></a>
         <i class="fas fa-ankh"></i>
         @Translate.GetTraduction(EnumRessource.GEN_LBL_DISCIPLINE).Text
         <i class="fas fa-ankh"></i>
@@ -40,7 +57,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
                         <h2 class="title">
-                            <a name="@discipline.DisciplineKey"></a>
+                            <a class="anchor" name="@discipline.DisciplineKey"></a>
                             @discipline.DisciplineName
                         </h2>
                     </div>
@@ -74,7 +91,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h2 class="title">
-                                        <a name="@power.PowerName"></a>
+                                        <a class="anchor" name="@power.PowerName"></a>
                                         <span class="dotPower">
                                             @for (int i = 0; i < power.Level; i++)
                                             {
@@ -90,7 +107,6 @@
                                         @Html.Raw(power.Description)
                                     </p>
                                 </div>
-                                <hr />
 
                                 <div class="col-md-12">
                                     <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_SYSTEM).Text</h4>
