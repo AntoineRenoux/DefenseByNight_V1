@@ -179,6 +179,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\AuthentificationManager\Scripts\validation-registration.js" />
+    <Content Include="Areas\Rules\Views\Clans\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -213,16 +214,19 @@
     <Compile Include="Areas\Character\CharacterAreaRegistration.cs" />
     <Compile Include="Areas\Character\Controllers\CreationController.cs" />
     <Compile Include="Areas\Character\Models\Character.cs" />
+    <Compile Include="Areas\Rules\Controllers\ClansController.cs" />
     <Compile Include="Areas\Rules\Controllers\DisciplinesController.cs" />
+    <Compile Include="Areas\Rules\Models\ClanViewModel.cs" />
     <Compile Include="Areas\Rules\Models\DisciplineViewModel.cs" />
     <Compile Include="Areas\Rules\Models\FocusViewModel.cs" />
     <Compile Include="Areas\Rules\Models\PowerViewModel.cs" />
     <Compile Include="Areas\Rules\RulesAreaRegistration.cs" />
     <Compile Include="Areas\Rules\RulesBundleConfig.cs" />
     <Compile Include="Helpers\Translate.cs" />
-    <Compile Include="Mapping\DisciplineVMToDtoProfile.cs" />
-    <Compile Include="Mapping\FocusVMToDtoProfile.cs" />
-    <Compile Include="Mapping\PowerVMToDtoProfile.cs" />
+    <Compile Include="Mapping\ClanVmToDtoProfile.cs" />
+    <Compile Include="Mapping\DisciplineVmToDtoProfile.cs" />
+    <Compile Include="Mapping\FocusVmToDtoProfile.cs" />
+    <Compile Include="Mapping\PowerVmToDtoProfile.cs" />
     <Compile Include="Models\AppUserModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -231,7 +235,7 @@
     </Compile>
     <Compile Include="IoC\RepositoryBuilder.cs" />
     <Compile Include="IoC\ServiceBuilder.cs" />
-    <Compile Include="Mapping\UserVMToDtoProfile.cs" />
+    <Compile Include="Mapping\UserVmToDtoProfile.cs" />
     <Compile Include="Areas\AuthentificationManager\Models\UserConnexionViewModel.cs" />
     <Compile Include="Areas\AuthentificationManager\Models\UserRegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -272,6 +276,10 @@
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{b20bd84e-7f40-44d7-9103-5033cd75dad5}</Project>
       <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{55e86e50-4cc6-4215-8bf9-a8a7fb005dfe}</Project>
+      <Name>Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

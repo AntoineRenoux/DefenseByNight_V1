@@ -21,6 +21,7 @@ namespace DAL
         public DbSet<Power> Powers { get; set; }
 
         public DbSet<Clan> Clans { get; set; }
+        public DbSet<Atout> Atouts { get; set; }
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

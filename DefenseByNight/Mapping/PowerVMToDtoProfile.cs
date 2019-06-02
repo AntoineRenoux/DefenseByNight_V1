@@ -4,9 +4,9 @@ using DTO;
 
 namespace DefenseByNight.Mapping
 {
-    public class PowerVMToDtoProfile : Profile
+    public class PowerVmToDtoProfile : Profile
     {
-        public PowerVMToDtoProfile()
+        public PowerVmToDtoProfile()
         {
             CreateMap<PowerDto, PowerViewModel>();
             CreateMap<PowerViewModel, PowerDto>();

@@ -15,13 +15,13 @@ namespace DefenseByNight.App_Start
                 #endregion
 
                 #region User
-                x.AddProfile<UserVMToDtoProfile>();
+                x.AddProfile<UserVmToDtoProfile>();
                 x.AddProfile<UserEntityToDtoProfile>();
                 #endregion
 
-                x.AddProfile<DisciplineVMToDtoProfile>();
-                x.AddProfile<FocusVMToDtoProfile>();
-                x.AddProfile<PowerVMToDtoProfile>(); 
+                x.AddProfile<DisciplineVmToDtoProfile>();
+                x.AddProfile<FocusVmToDtoProfile>();
+                x.AddProfile<PowerVmToDtoProfile>(); 
             });
         }
     }

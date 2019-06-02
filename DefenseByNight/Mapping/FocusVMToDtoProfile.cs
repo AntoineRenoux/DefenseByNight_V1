@@ -4,9 +4,9 @@ using DefenseByNight.Areas.Rules.Models;
 
 namespace DefenseByNight.Mapping
 {
-    public class FocusVMToDtoProfile: Profile
+    public class FocusVmToDtoProfile: Profile
     {
-        public FocusVMToDtoProfile()
+        public FocusVmToDtoProfile()
         {
             CreateMap<FocusViewModel, FocusDto>();
             CreateMap<FocusDto, FocusViewModel>();

@@ -4,9 +4,9 @@ using DTO;
 
 namespace DefenseByNight.Mapping
 {
-    public class DisciplineVMToDtoProfile : Profile
+    public class DisciplineVmToDtoProfile : Profile
     {
-        public DisciplineVMToDtoProfile()
+        public DisciplineVmToDtoProfile()
         {
             CreateMap<DisciplineViewModel, DisciplineDto>();
             CreateMap<DisciplineDto, DisciplineViewModel>();

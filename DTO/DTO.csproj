@@ -41,13 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AtoutDto.cs" />
     <Compile Include="AttributDto.cs" />
+    <Compile Include="ClanDto.cs" />
     <Compile Include="DisciplineDto.cs" />
     <Compile Include="FocusDto.cs" />
     <Compile Include="PowerDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TraductionDto.cs" />
     <Compile Include="UserDto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{55e86e50-4cc6-4215-8bf9-a8a7fb005dfe}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

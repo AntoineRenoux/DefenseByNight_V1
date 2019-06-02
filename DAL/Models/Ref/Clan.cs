@@ -20,6 +20,10 @@ namespace DAL.Models.Ref
         [Required]
         public string Organisation { get; set; }
 
+        [Required]
+        public string Weakness { get; set; }
+
         public virtual ICollection<Discipline> Disciplines { get; set; }
+        public virtual ICollection<Atout> Atouts { get; set; }
     }
 }

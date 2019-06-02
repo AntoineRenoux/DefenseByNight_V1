@@ -4,9 +4,9 @@ using DTO;
 
 namespace DefenseByNight.Mapping
 {
-    public class UserVMToDtoProfile : Profile
+    public class UserVmToDtoProfile : Profile
     {
-        public UserVMToDtoProfile()
+        public UserVmToDtoProfile()
         {
             CreateMap<UserDto, UserConnexionViewModel>();
             CreateMap<UserConnexionViewModel, UserDto>();
