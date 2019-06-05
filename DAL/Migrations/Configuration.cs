@@ -1,6 +1,9 @@
 ﻿namespace DAL.Migrations
 {
+    using DAL.Models.Identity;
     using DAL.Models.Ref;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -8,15 +11,48 @@
     using System.Linq;
     using Tools;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DAL.DBNContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DbnContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(DAL.DBNContext context)
+        protected override void Seed(DbnContext context)
         {
+            #region Identity
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var userManager = new UserManager<AppUser>(new UserStore<AppUser>(context));
+
+            if (!roleManager.RoleExists("Admin"))
+            {
+                var role = new IdentityRole();
+                role.Name = "Admin";
+                roleManager.Create(role);
+            }
+
+            if (!roleManager.RoleExists("Organizer"))
+            {
+                var role = new IdentityRole();
+                role.Name = "Organizer";
+                roleManager.Create(role);
+            }
+
+            if (!roleManager.RoleExists("Player"))
+            {
+                var role = new IdentityRole();
+                role.Name = "Player";
+                roleManager.Create(role);
+            }
+
+            if (!roleManager.RoleExists("Member"))
+            {
+                var role = new IdentityRole();
+                role.Name = "Member";
+                roleManager.Create(role);
+            }
+            #endregion
+
             LabelInitializer.Initializer(context);
             ErrorMessageInitializer.Initializer(context);
 
@@ -159,7 +195,7 @@
         #region Labels
         private static class LabelInitializer
         {
-            public static void Initializer(DBNContext context)
+            public static void Initializer(DbnContext context)
             {
                 var labels = new List<Traduction>
             {
@@ -212,7 +248,7 @@
         #region Messages d'erreurs
         private static class ErrorMessageInitializer
         {
-            public static void Initializer(DBNContext context)
+            public static void Initializer(DbnContext context)
             {
                 var errorMessages = new List<Traduction>
                 {
@@ -251,7 +287,7 @@
 
         private static class AnimalismInitializer
         {
-            public static void Initialize(DBNContext context, List<Focus> focus)
+            public static void Initialize(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -329,7 +365,7 @@
 
         private static class AuspexInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -408,7 +444,7 @@
 
         private static class CelerityInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -486,7 +522,7 @@
 
         private static class ChimestryInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -565,7 +601,7 @@
 
         private static class DaimoinonInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -644,7 +680,7 @@
 
         private static class DementationInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -723,7 +759,7 @@
 
         private static class DominateInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -801,7 +837,7 @@
 
         private static class FortitudeInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -880,7 +916,7 @@
 
         private static class MelpomineeInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -959,7 +995,7 @@
 
         private static class MytherceriaInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1037,7 +1073,7 @@
 
         private static class ObeahInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1116,7 +1152,7 @@
 
         private static class ObfuscateInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1195,7 +1231,7 @@
 
         private static class ObtenebrationInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1274,7 +1310,7 @@
 
         private static class PotenceInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1353,7 +1389,7 @@
 
         private static class PresenceInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1432,7 +1468,7 @@
 
         private static class ProteanInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1511,7 +1547,7 @@
 
         private static class QuietusInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1590,7 +1626,7 @@
 
         private static class SerpentisInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1669,7 +1705,7 @@
 
         private static class TemporisInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1748,7 +1784,7 @@
 
         private static class ThanatosisInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1827,7 +1863,7 @@
 
         private static class ValerenInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1905,7 +1941,7 @@
 
         private static class VicissitudeInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -1983,7 +2019,7 @@
 
         private static class VisceratikaInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -2062,7 +2098,7 @@
 
         private static class SepulcherInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -2141,7 +2177,7 @@
 
         private static class BonesInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
                 {
@@ -2220,7 +2256,7 @@
 
         private static class AschesInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
                 {
@@ -2299,7 +2335,7 @@
 
         private static class MortisInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
                 {
@@ -2378,7 +2414,7 @@
 
         private static class BloodInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -2456,7 +2492,7 @@
 
         private static class ConjurationInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -2535,7 +2571,7 @@
 
         private static class CorruptionInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -2614,7 +2650,7 @@
 
         private static class ElementsInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -2693,7 +2729,7 @@
 
         private static class FireInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -2772,7 +2808,7 @@
 
         private static class SpiritInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -2851,7 +2887,7 @@
 
         private static class TechnologieInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -2930,7 +2966,7 @@
 
         private static class WeatherInitializer
         {
-            public static void Initializer(DBNContext context, List<Focus> focus)
+            public static void Initializer(DbnContext context, List<Focus> focus)
             {
                 var powers = new List<Power>
             {
@@ -3093,7 +3129,7 @@
         #region Atouts
         private static class AtoutInitializer
         {
-            public static void Initializer(DBNContext context)
+            public static void Initializer(DbnContext context)
             {
                 var atouts = new List<Atout>
                 {
@@ -3428,7 +3464,7 @@
         #region Clan
         private static class ClanInitilizer
         {
-            public static void Initializer(DBNContext context)
+            public static void Initializer(DbnContext context)
             {
                 List<Clan> clans = new List<Clan>
                 {

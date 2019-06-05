@@ -7,10 +7,10 @@ namespace DAL
 {
     public class BaseIdentityRepository<TEntity> where TEntity : class
     {
-        protected readonly IdentityContext context;
+        protected readonly DbnContext context;
         public static Func<UserManager<AppUser>> UserManagerFactory { get; private set; }
 
-        public BaseIdentityRepository(IdentityContext context)
+        public BaseIdentityRepository(DbnContext context)
         {
             this.context = context;
 
@@ -18,7 +18,7 @@ namespace DAL
             UserManagerFactory = () =>
             {
                 var usermanager = new UserManager<AppUser>(
-                    new UserStore<AppUser>(new IdentityContext()));
+                    new UserStore<AppUser>(new DbnContext()));
                 // allow alphanumeric characters in username
                 usermanager.UserValidator = new UserValidator<AppUser>(usermanager)
                 {

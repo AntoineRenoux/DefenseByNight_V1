@@ -1,12 +1,14 @@
-﻿using DAL.Models.Ref;
+﻿using DAL.Models.Identity;
+using DAL.Models.Ref;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace DAL
 {
-    public class DBNContext : DbContext, IDataBaseContext
+    public class DbnContext : IdentityDbContext<AppUser>, IDataBaseContext
     {
-        public DBNContext(): base("name=LocalContext")
+        public DbnContext(): base("name=LocalContext")
         {
 
         }
@@ -22,13 +24,22 @@ namespace DAL
 
         public DbSet<Clan> Clans { get; set; }
         public DbSet<Atout> Atouts { get; set; }
-        public object Discipline { get; internal set; }
-        public object Traduction { get; internal set; }
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<IdentityUserRole>()
+                .HasKey(role => role.UserId)
+                .ToTable("AspNetRoles");
+
+            modelBuilder.Entity<IdentityUserLogin>()
+                .HasKey(login => login.UserId)
+                .ToTable("AspNetLogins");
+
+            modelBuilder.Entity<IdentityUser>()
+               .ToTable("AspNetUsers");
 
             modelBuilder.Entity<Clan>()
                .HasMany<Discipline>(d => d.Disciplines)

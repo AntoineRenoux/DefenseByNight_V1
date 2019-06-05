@@ -5,11 +5,11 @@ namespace DAL
 {
     public class BaseRepository<TEntity> where TEntity : class
     {
-        protected readonly DBNContext context;
+        protected readonly DbnContext context;
 
         public BaseRepository()
         {
-            this.context = AutofacContainer.Instance.Resolve<IDataBaseContext>() as DBNContext;
+            this.context = AutofacContainer.Instance.Resolve<IDataBaseContext>() as DbnContext;
         }
     }
 }

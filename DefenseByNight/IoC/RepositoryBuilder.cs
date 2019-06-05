@@ -8,7 +8,7 @@ namespace DefenseByNight.IoC
     {
         public static void Register(ContainerBuilder builder)
         {
-            builder.RegisterType<DBNContext>().As<IDataBaseContext>().InstancePerRequest();
+            builder.RegisterType<DbnContext>().As<IDataBaseContext>().InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(TraductionRepository).Assembly)
                   .AsImplementedInterfaces()

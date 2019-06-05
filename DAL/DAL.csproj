@@ -111,10 +111,8 @@
   <ItemGroup>
     <Compile Include="BaseIdentityRepository.cs" />
     <Compile Include="BaseRepository.cs" />
-    <Compile Include="DBNContext.cs" />
+    <Compile Include="DbnContext.cs" />
     <Compile Include="IDataBaseContext.cs" />
-    <Compile Include="IdentityContext.cs" />
-    <Compile Include="IndentityInitializer.cs" />
     <Compile Include="Interfaces\Ref\IAtoutRepository.cs" />
     <Compile Include="Interfaces\Ref\IAttributRepository.cs" />
     <Compile Include="Interfaces\Ref\IClanRepository.cs" />
@@ -130,9 +128,9 @@
     <Compile Include="Mapping\PowerEntityToDtoProfile.cs" />
     <Compile Include="Mapping\TraductionEntityToDtoProfile.cs" />
     <Compile Include="Mapping\UserEntityToDtoProfile.cs" />
-    <Compile Include="Migrations\201906051829400_InitialCreate.cs" />
-    <Compile Include="Migrations\201906051829400_InitialCreate.Designer.cs">
-      <DependentUpon>201906051829400_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201906052111054_Initial.cs" />
+    <Compile Include="Migrations\201906052111054_Initial.Designer.cs">
+      <DependentUpon>201906052111054_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AppRole.cs" />
@@ -170,8 +168,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906051829400_InitialCreate.resx">
-      <DependentUpon>201906051829400_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906052111054_Initial.resx">
+      <DependentUpon>201906052111054_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
