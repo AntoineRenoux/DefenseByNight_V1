@@ -12,9 +12,25 @@ namespace Tools
         {
             Clan,
             General,
-            Morality
+            Morality,
+            Rarity
         }
 
+        #region Clan Rarity
+        public readonly static string ATOUT_UNCOMMUN_CLAN_KEY = "ATOUT_UNCOMMUN_CLAN_KEY";
+        public readonly static string ATOUT_UNCOMMUN_CLAN_NAME = "ATOUT_UNCOMMUN_CLAN_NAME";
+        public readonly static string ATOUT_UNCOMMUN_CLAN_DESCRIPTION = "ATOUT_UNCOMMUN_CLAN_DESCRIPTION";
+
+        public readonly static string ATOUT_RARE_CLAN_KEY = "ATOUT_RARE_CLAN_KEY";
+        public readonly static string ATOUT_RARE_CLAN_NAME = "ATOUT_RARE_CLAN_NAME";
+        public readonly static string ATOUT_RARE_CLAN_DESCRIPTION = "ATOUT_RARE_CLAN_DESCRIPTION";
+
+        public readonly static string ATOUT_RESTRAINED_CLAN_KEY = "ATOUT_RESTRAINED_CLAN_KEY";
+        public readonly static string ATOUT_RESTRAINED_CLAN_NAME = "ATOUT_RESTRAINED_CLAN_NAME";
+        public readonly static string ATOUT_RESTRAINED_CLAN_DESCRIPTION = "ATOUT_RESTRAINED_CLAN_DESCRIPTION";
+        #endregion
+
+        #region General
         public readonly static string ATOUT_AMBIDEXTROUS_KEY = "ATOUT_AMBIDEXTROUS_KEY";
         public readonly static string ATOUT_AMBIDEXTROUS_NAME = "ATOUT_AMBIDEXTROUS_NAME";
         public readonly static string ATOUT_AMBIDEXTROUS_DESCRIPTION = "ATOUT_AMBIDEXTROUS_DESCRIPTION";
@@ -146,6 +162,124 @@ namespace Tools
         public readonly static string ATOUT_IRON_WILL_KEY = "ATOUT_IRON_WILL_KEY";
         public readonly static string ATOUT_IRON_WILL_NAME = "ATOUT_IRON_WILL_NAME";
         public readonly static string ATOUT_IRON_WILL_DESCRIPTION = "ATOUT_IRON_WILL_DESCRIPTION";
+
+        #endregion
+
+        #region Assamite
+        public readonly static string ATOUT_ASSAMITE_SURPRISE_KEY = "ATOUT_ASSAMITE_SURPRISE_KEY";
+        public readonly static string ATOUT_ASSAMITE_SURPRISE_NAME = "ATOUT_ASSAMITE_SURPRISE_NAME";
+        public readonly static string ATOUT_ASSAMITE_SURPRISE_DESCRIPTION = "ATOUT_ASSAMITE_SURPRISE_DESCRIPTION";
+
+        public readonly static string ATOUT_ASSAMITE_VIZIR_KEY = "ATOUT_ASSAMITE_VIZIR_KEY";
+        public readonly static string ATOUT_ASSAMITE_VIZIR_NAME = "ATOUT_ASSAMITE_VIZIR_NAME";
+        public readonly static string ATOUT_ASSAMITE_VIZIR_DESCRIPTION = "ATOUT_ASSAMITE_VIZIR_DESCRIPTION";
+
+        public readonly static string ATOUT_ASSAMITE_STEAL_KEY = "ATOUT_ASSAMITE_STEAL_KEY";
+        public readonly static string ATOUT_ASSAMITE_STEAL_NAME = "ATOUT_ASSAMITE_STEAL_NAME";
+        public readonly static string ATOUT_ASSAMITE_STEAL_DESCRIPTION = "ATOUT_ASSAMITE_STEAL_DESCRIPTION";
+
+        public readonly static string ATOUT_ASSAMITE_WARLOCK_KEY = "ATOUT_ASSAMITE_WARLOCK_KEY";
+        public readonly static string ATOUT_ASSAMITE_WARLOCK_NAME = "ATOUT_ASSAMITE_WARLOCK_NAME";
+        public readonly static string ATOUT_ASSAMITE_WARLOCK_DESCRIPTION = "ATOUT_ASSAMITE_WARLOCK_DESCRIPTION";
+        #endregion
+
+        #region Brujah
+        public readonly static string ATOUT_BRUJAH_BROTHERHOOD_KEY = "ATOUT_BRUJAH_BROTHERHOOD_KEY";
+        public readonly static string ATOUT_BRUJAH_BROTHERHOOD_NAME = "ATOUT_BRUJAH_BROTHERHOOD_NAME";
+        public readonly static string ATOUT_BRUJAH_BROTHERHOOD_DESCRIPTION = "ATOUT_BRUJAH_BROTHERHOOD_DESCRIPTION";
+
+        public readonly static string ATOUT_BRUJAH_ANGER_KEY = "ATOUT_BRUJAH_ANGER_KEY";
+        public readonly static string ATOUT_BRUJAH_ANGER_NAME = "ATOUT_BRUJAH_ANGER_NAME";
+        public readonly static string ATOUT_BRUJAH_ANGER_DESCRIPTION = "ATOUT_BRUJAH_ANGER_DESCRIPTION";
+
+        public readonly static string ATOUT_BRUJAH_ALECTO_KEY = "ATOUT_BRUJAH_ALECTO_KEY";
+        public readonly static string ATOUT_BRUJAH_ALECTO_NAME = "ATOUT_BRUJAH_ALECTO_NAME";
+        public readonly static string ATOUT_BRUJAH_ALECTO_DESCRIPTION = "ATOUT_BRUJAH_ALECTO_DESCRIPTION";
+
+        public readonly static string ATOUT_BRUJAH_TRUE_KEY = "ATOUT_BRUJAH_TRUE_KEY";
+        public readonly static string ATOUT_BRUJAH_TRUE_NAME = "ATOUT_BRUJAH_TRUE_NAME";
+        public readonly static string ATOUT_BRUJAH_TRUE_DESCRIPTION = "ATOUT_BRUJAH_TRUE_DESCRIPTION";
+        #endregion
+
+        #region Set
+        public readonly static string ATOUT_SET_PERSONNAL_KULT_KEY = "ATOUT_SET_PERSONNAL_KULT_KEY";
+        public readonly static string ATOUT_SET_PERSONNAL_KULT_NAME = "ATOUT_SET_PERSONNAL_KULT_NAME";
+        public readonly static string ATOUT_SET_PERSONNAL_KULT_DESCRIPTION = "ATOUT_SET_PERSONNAL_KULT_DESCRIPTION";
+                                            
+        public readonly static string ATOUT_SET_TLACIQUE_KEY = "ATOUT_SET_TLACIQUE_KEY";
+        public readonly static string ATOUT_SET_TLACIQUE_NAME = "ATOUT_SET_TLACIQUE_NAME";
+        public readonly static string ATOUT_SET_TLACIQUE_DESCRIPTION = "ATOUT_SET_TLACIQUE_DESCRIPTION";
+                                            
+        public readonly static string ATOUT_SET_VIPERS_KEY = "ATOUT_SET_VIPERS_KEY";
+        public readonly static string ATOUT_SET_VIPERS_NAME = "ATOUT_SET_VIPERS_NAME";
+        public readonly static string ATOUT_SET_VIPERS_DESCRIPTION = "ATOUT_SET_VIPERS_DESCRIPTION";
+                                            
+        public readonly static string ATOUT_SET_BLOOD_KEY = "ATOUT_SET_BLOOD_KEY";
+        public readonly static string ATOUT_SET_BLOOD_NAME = "ATOUT_SET_BLOOD_NAME";
+        public readonly static string ATOUT_SET_BLOOD_DESCRIPTION = "ATOUT_SET_BLOOD_DESCRIPTION";
+
+        public readonly static string ATOUT_SET_WITCHCRAFT_KEY = "ATOUT_SET_WITCHCRAFT_KEY";
+        public readonly static string ATOUT_SET_WITCHCRAFT_NAME = "ATOUT_SET_WITCHCRAFT_NAME";
+        public readonly static string ATOUT_SET_WITCHCRAFT_DESCRIPTION = "ATOUT_SET_WITCHCRAFT_DESCRIPTION";
+        #endregion
+
+        #region Gangrel
+        public readonly static string ATOUT_GANGREL_BLOOD_KEY = "ATOUT_GANGREL_BLOOD_KEY";
+        public readonly static string ATOUT_GANGREL_BLOOD_NAME = "ATOUT_GANGREL_BLOOD_NAME";
+        public readonly static string ATOUT_GANGREL_BLOOD_DESCRIPTION = "ATOUT_GANGREL_BLOOD_DESCRIPTION";
+
+        public readonly static string ATOUT_GANGREL_COYOTE_KEY = "ATOUT_GANGREL_COYOTE_KEY";
+        public readonly static string ATOUT_GANGREL_COYOTE_NAME = "ATOUT_GANGREL_COYOTE_NAME";
+        public readonly static string ATOUT_GANGREL_COYOTE_DESCRIPTION = "ATOUT_GANGREL_COYOTE_DESCRIPTION";
+
+        public readonly static string ATOUT_GANGREL_NOIAD_KEY = "ATOUT_GANGREL_NOIAD_KEY";
+        public readonly static string ATOUT_GANGREL_NOIAD_NAME = "ATOUT_GANGREL_NOIAD_NAME";
+        public readonly static string ATOUT_GANGREL_NOIAD_DESCRIPTION = "ATOUT_GANGREL_NOIAD_DESCRIPTION";
+
+        public readonly static string ATOUT_GANGREL_BEAST_ANGER_KEY = "ATOUT_GANGREL_BEAST_ANGER_KEY";
+        public readonly static string ATOUT_GANGREL_BEAST_ANGER_NAME = "ATOUT_GANGREL_BEAST_ANGER_NAME";
+        public readonly static string ATOUT_GANGREL_BEAST_ANGER_DESCRIPTION = "ATOUT_GANGREL_BEAST_ANGER_DESCRIPTION";
+
+        public readonly static string ATOUT_GANGREL_AHRIMANES_KEY = "ATOUT_GANGREL_AHRIMANES_ANGER_KEY";
+        public readonly static string ATOUT_GANGREL_AHRIMANES_NAME = "ATOUT_GANGREL_AHRIMANES_ANGER_NAME";
+        public readonly static string ATOUT_GANGREL_AHRIMANES_DESCRIPTION = "ATOUT_GANGREL_AHRIMANES_ANGER_DESCRIPTION";
+        #endregion
+
+        #region Giovanni
+        public readonly static string ATOUT_GIOVANNI_NECROMANCY_KEY = "ATOUT_GIOVANNI_NECROMANCY_KEY";
+        public readonly static string ATOUT_GIOVANNI_NECROMANCY_NAME = "ATOUT_GIOVANNI_NECROMANCY_NAME";
+        public readonly static string ATOUT_GIOVANNI_NECROMANCY_DESCRIPTION = "ATOUT_GIOVANNI_NECROMANCY_DESCRIPTION";
+
+        public readonly static string ATOUT_GIOVANNI_BIG_ARMS_KEY = "ATOUT_GIOVANNI_BIG_ARMS_KEY";
+        public readonly static string ATOUT_GIOVANNI_BIG_ARMS_NAME = "ATOUT_GIOVANNI_BIG_ARMS_NAME";
+        public readonly static string ATOUT_GIOVANNI_BIG_ARMS_DESCRIPTION = "ATOUT_GIOVANNI_BIG_ARMS_DESCRIPTION";
+
+        public readonly static string ATOUT_GIOVANNI_GHOST_KEY = "ATOUT_GIOVANNI_GHOST_KEY";
+        public readonly static string ATOUT_GIOVANNI_GHOST_NAME = "ATOUT_GIOVANNI_GHOST_NAME";
+        public readonly static string ATOUT_GIOVANNI_GHOST_DESCRIPTION = "ATOUT_GIOVANNI_GHOST_DESCRIPTION";
+
+        public readonly static string ATOUT_GIOVANNI_PREMASCINE_KEY = "ATOUT_GIOVANNI_PREMASCINE_KEY";
+        public readonly static string ATOUT_GIOVANNI_PREMASCINE_NAME = "ATOUT_GIOVANNI_PREMASCINE_NAME";
+        public readonly static string ATOUT_GIOVANNI_PREMASCINE_DESCRIPTION = "ATOUT_GIOVANNI_PREMASCINE_DESCRIPTION";
+        #endregion
+
+        #region Lasombra
+        public readonly static string ATOUT_LASOMBRA_ANGEL_FACE_KEY = "ATOUT_LASOMBRA_ANGEL_FACE_KEY";
+        public readonly static string ATOUT_LASOMBRA_ANGEL_FACE_NAME = "ATOUT_LASOMBRA_ANGEL_FACE_NAME";
+        public readonly static string ATOUT_LASOMBRA_ANGEL_FACE_DESCRIPTION = "ATOUT_LASOMBRA_ANGEL_FACE_DESCRIPTION";
+
+        public readonly static string ATOUT_LASOMBRA_BORN_IN_SHADOWS_KEY = "ATOUT_LASOMBRA_BORN_IN_SHADOWS_KEY";
+        public readonly static string ATOUT_LASOMBRA_BORN_IN_SHADOWS_NAME = "ATOUT_LASOMBRA_BORN_IN_SHADOWS_NAME";
+        public readonly static string ATOUT_LASOMBRA_BORN_IN_SHADOWS_DESCRIPTION = "ATOUT_LASOMBRA_BORN_IN_SHADOWS_DESCRIPTION";
+
+        public readonly static string ATOUT_LASOMBRA_ABYSS_KEY = "ATOUT_LASOMBRA_ABYSS_KEY";
+        public readonly static string ATOUT_LASOMBRA_ABYSS_NAME = "ATOUT_LASOMBRA_ABYSS_NAME";
+        public readonly static string ATOUT_LASOMBRA_ABYSS_DESCRIPTION = "ATOUT_LASOMBRA_ABYSS_DESCRIPTION";
+
+        public readonly static string ATOUT_LASOMBRA_KIASYDE_KEY = "ATOUT_LASOMBRA_KIASYDE_KEY";
+        public readonly static string ATOUT_LASOMBRA_KIASYDE_NAME = "ATOUT_LASOMBRA_KIASYDE_NAME";
+        public readonly static string ATOUT_LASOMBRA_KIASYDE_DESCRIPTION = "ATOUT_LASOMBRA_KIASYDE_DESCRIPTION";
+        #endregion
 
         public enum TypeFlaw
         {

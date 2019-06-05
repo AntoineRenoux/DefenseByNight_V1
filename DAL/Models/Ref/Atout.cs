@@ -19,6 +19,5 @@ namespace DAL.Models.Ref
 
         [Required]
         public int Cost { get; set; }
-
     }
 }

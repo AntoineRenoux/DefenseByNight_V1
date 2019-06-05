@@ -112,7 +112,6 @@
     <Compile Include="BaseIdentityRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="DBNContext.cs" />
-    <Compile Include="DBNDBInitializer.cs" />
     <Compile Include="IDataBaseContext.cs" />
     <Compile Include="IdentityContext.cs" />
     <Compile Include="IndentityInitializer.cs" />
@@ -131,6 +130,10 @@
     <Compile Include="Mapping\PowerEntityToDtoProfile.cs" />
     <Compile Include="Mapping\TraductionEntityToDtoProfile.cs" />
     <Compile Include="Mapping\UserEntityToDtoProfile.cs" />
+    <Compile Include="Migrations\201906051829400_InitialCreate.cs" />
+    <Compile Include="Migrations\201906051829400_InitialCreate.Designer.cs">
+      <DependentUpon>201906051829400_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AppRole.cs" />
     <Compile Include="Models\Ref\Atout.cs" />
@@ -166,6 +169,10 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201906051829400_InitialCreate.resx">
+      <DependentUpon>201906051829400_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,6 +22,8 @@ namespace DAL
 
         public DbSet<Clan> Clans { get; set; }
         public DbSet<Atout> Atouts { get; set; }
+        public object Discipline { get; internal set; }
+        public object Traduction { get; internal set; }
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

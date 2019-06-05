@@ -47,6 +47,7 @@
     <Compile Include="Enum\Clans\EnumBrujah.cs" />
     <Compile Include="Enum\Clans\EnumCacophonie.cs" />
     <Compile Include="Enum\Clans\EnumCapadocien.cs" />
+    <Compile Include="Enum\Clans\EnumClan.cs" />
     <Compile Include="Enum\Clans\EnumGangrel.cs" />
     <Compile Include="Enum\Clans\EnumGargouille.cs" />
     <Compile Include="Enum\Clans\EnumGiovanni.cs" />
