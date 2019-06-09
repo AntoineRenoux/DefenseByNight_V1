@@ -27,8 +27,6 @@ namespace DefenseByNight.Areas.Rules.Controllers
         {
             var model = Mapper.Map<List<ClanDto>, List<ClanViewModel>>(clanService.GetAll());
 
-            var model2 = atoutService.GetAll();
-
             return View();
         }
     }
