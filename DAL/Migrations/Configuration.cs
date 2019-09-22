@@ -190,6 +190,8 @@
             #endregion
 
             AtoutInitializer.Initializer(context);
+
+
         }
 
         #region Labels
