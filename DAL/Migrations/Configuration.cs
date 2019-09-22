@@ -3450,6 +3450,164 @@
                 });
                 #endregion
 
+                #region Malkavian Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_NAME, Text = "Conscience Étendue" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_DESCRIPTION, Text = "Vous pouvez choisir un deuxième Focus d’attribut Mental." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_NAME, Text = "Lignée de Sang: Ananke" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_DESCRIPTION, Text = "Vous êtes un membre de la lignée de sang des Ananke, pratiquant de l’haruspicine, obsédés par les corps récents des morts. Vos disciplines de clans sont : Auspex, Aliénation et Présence." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_NAME, Text = "Lignée de Sang: Chevaliers de la Lune" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_DESCRIPTION, Text = "Vous êtes un membre de la lignée de sang des Chevaliers de la Lune, qui ne manifeste pas l’Aliénation. Vos disciplines de clans sont Auspex, Domination et Occultation." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_NAME, Text = "Esprit Labyrinthique" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_DESCRIPTION, Text = "Vous recevez un bonus pour résister aux pouvoirs qui altèrent l’esprit. Ceux qui tentent de vous lire l’esprit courent le risque de gagner un dérangement." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_NAME, Text = "Sophistique" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_DESCRIPTION, Text = "De temps en temps, vous pouvez prédire des attaques avant qu’elles ne surviennent et utiliser cette perspicacité pour éviter le danger." },
+                });
+                #endregion
+
+                #region Nosferatu Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_NAME, Text = "L’œil aveugle" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_DESCRIPTION, Text = "Vous ne pouvez pas être la cible de pouvoirs tels que Clairvoyance." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_NAME, Text = "Avantage caché" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_DESCRIPTION, Text = " Il est plus difficile que la normale de voir à travers votre Occultation et vos pouvoirs d’invisibilité persistent même lorsque vous dormez." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_NAME, Text = "Sang malléable" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_DESCRIPTION, Text = "Vous avez une quatrième discipline de clan." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_NAME, Text = "Adaptation non-naturelle" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_DESCRIPTION, Text = "Vous avez une mutation inhabituelle qui peut être utilisée à votre avantage." },
+                });
+                #endregion
+
+                #region Toréador Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_NAME, Text = "Bénédiction de l’Artiste" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_DESCRIPTION, Text = "Vous pouvez acheter jusqu’à 7 points de Artisanats et Représentation et vous gagnez 3 points gratuits sur une compétence Artisanats ou Représentation." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_NAME, Text = "Lignée de Sang: Ishtarri" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_DESCRIPTION, Text = "Vous êtes un membre de la lignée des Ishtarri, qui se dévoue à la perfection des mouvements, qu’ils soient dans la danse ou dans la bataille. Vos disciplines de clan sont Célérité, Force d’Âme et Présence." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_NAME, Text = "Lignée de Sang: Volgirre" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_DESCRIPTION, Text = "Vous êtes un membre de la lignée des Volgirre, une lignée secrète d’anti-tribus revenue au sein de la Camarilla. Vous avez les disciplines de clan des Toreadors, mais vous pouvez acheter les 2 premiers points de Vicissitude sans mentor." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_NAME, Text = "Influence Absente" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_DESCRIPTION, Text = "Votre art laisse une empreinte émotionnelle durable sur ceux qui l’observent." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_NAME, Text = "La Grâce du Danseur" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_DESCRIPTION, Text = "Votre corps est la forme ultime de la perfection physique et incarne la grâce et la dextérité du clan Toreador. Vous gagnez un re-test gratuit lorsque vous esquivez." },
+                });
+                #endregion
+
+                #region Trémére Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_NAME, Text = "Expertise Thaumaturgique" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_DESCRIPTION, Text = "Vous pouvez acheter une voie additionnelle de Thaumaturgie, autre que la Voie du Sang." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_NAME, Text = "Lignée : Telyav" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_DESCRIPTION, Text = "Vous êtes un membre de la Lignée de sang Telyav, un groupe de Tremeres païens de Lituanie que l’on croit éteint – et c’est préférable ainsi, car les autres Tremeres détruiraient tout Telyav qu’ils découvrent. Vos disciplines de clan sont Auspex, Présence et Thaumaturgie : La Voie du Sang." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_NAME, Text = "Talisman" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_DESCRIPTION, Text = "Vous possédez un talisman magique qui vous accorde un bonus quand vous utilisez la Thaumaturgie." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_NAME, Text = "Contre-magie" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_DESCRIPTION, Text = "Vous êtes incroyablement doué pour la magie et pouvez dissiper les effets Thaumaturgiques." },
+                });
+                #endregion
+
+                #region Tzimisce Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_NAME, Text = "Sang du Tzimisce" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_DESCRIPTION, Text = "Vous gagnez des connaissances grâce à votre connexion avec la terre et vos ancêtres." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_NAME, Text = "Szlachta" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_DESCRIPTION, Text = "Vous pouvez transformer vos serviteurs en des abominations difformes." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_NAME, Text = "Lignée de Sang: Carpatique" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_DESCRIPTION, Text = "Vous êtes un membre de la lignée de sang Carpatique. Vos disciplines de clans sont Animalisme, Auspex et Domination. Les Carpatiques ne peuvent jamais apprendre Vicissitude mais ils peuvent apprendre Protéisme sans mentor." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_NAME, Text = "Lignée de Sang: Koldun" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_DESCRIPTION, Text = "Vous êtes un Koldun, un Tzimisce étudiant une ancienne magie du sang. Vos disciplines de clan sont Animalisme, Auspex et Thaumaturgie: La Maîtrise des Éléments." },
+                });
+                #endregion
+
+                #region Ventrue Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3 },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_ROYAL_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_NAME, Text = "Aura de commandement" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_DESCRIPTION, Text = "Les mortels ne peuvent résister à vos pouvoirs de Domination et Présence." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_NAME, Text = "Lignée : Croisé" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_DESCRIPTION, Text = " Vous êtes un membre d’une lignée stricte et exigeante du Clan Ventrue. Autrefois honnie comme une aberration, les Croisés ont commencé à obtenir plus de respect des aînés dans les nuits modernes. Vos disciplines de clan sont Auspex, Domination et Force d’Âme." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_NAME, Text = "Parangon" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_DESCRIPTION, Text = "Vous avez un serviteur vampirique qui a juré de vous servir au sein de la hiérarchie du clan. Cela permet certains avantages supplémentaires avec certains Historiques." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_VENTRUE_ROYAL_NAME, Text = "Allure royale" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_VENTRUE_ROYAL_DESCRIPTION, Text = "Une fois par session de jeu, vous pouvez utiliser un pouvoir de Présence sans avoir à utiliser une action pour cela." },
+                });
+                #endregion
+
                 context.Atouts.AddRange(atouts);
 
                 atoutTrad.ForEach(t =>
@@ -3461,109 +3619,6 @@
             }
         }
 
-        #endregion
-
-        #region Clan
-        private static class ClanInitilizer
-        {
-            public static void Initializer(DbnContext context)
-            {
-                List<Clan> clans = new List<Clan>
-                {
-                   new Clan {ClanKey = EnumAssamite.CLAN_ASSAMITE, Name = EnumAssamite.CLAN_ASSAMITE_NAME, Surname = EnumAssamite.CLAN_ASSAMITE_SURNAME, History = EnumAssamite.CLAN_ASSAMITE_HISTORY, Organisation = EnumAssamite.CLAN_ASSAMITE_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumBrujah.CLAN_BRUJAH, Name = EnumBrujah.CLAN_BRUJAH_NAME, Surname = EnumBrujah.CLAN_BRUJAH_SURNAME, History = EnumBrujah.CLAN_BRUJAH_HISTORY, Organisation = EnumBrujah.CLAN_BRUJAH_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumSet.CLAN_SET, Name = EnumSet.CLAN_SET_NAME, Surname = EnumSet.CLAN_SET_SURNAME, History = EnumSet.CLAN_SET_HISTORY, Organisation = EnumSet.CLAN_SET_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumGangrel.CLAN_GANGREL, Name = EnumGangrel.CLAN_GANGREL_NAME, Surname = EnumGangrel.CLAN_GANGREL_SURNAME, History = EnumGangrel.CLAN_GANGREL_HISTORY, Organisation = EnumGangrel.CLAN_GANGREL_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumGiovanni.CLAN_GIOVANNI, Name = EnumGiovanni.CLAN_GIOVANNI_NAME, Surname = EnumGiovanni.CLAN_GIOVANNI_SURNAME, History = EnumGiovanni.CLAN_GIOVANNI_HISTORY, Organisation = EnumGiovanni.CLAN_GIOVANNI_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumLasombra.CLAN_LASOMBRA, Name = EnumLasombra.CLAN_LASOMBRA_NAME, Surname = EnumLasombra.CLAN_LASOMBRA_SURNAME, History = EnumLasombra.CLAN_LASOMBRA_HISTORY, Organisation = EnumLasombra.CLAN_LASOMBRA_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumMalkavian.CLAN_MALKAVIAN, Name = EnumMalkavian.CLAN_MALKAVIAN_NAME, Surname = EnumMalkavian.CLAN_MALKAVIAN_SURNAME, History = EnumMalkavian.CLAN_MALKAVIAN_HISTORY, Organisation = EnumMalkavian.CLAN_MALKAVIAN_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumNosferatu.CLAN_NOSFERATU, Name = EnumNosferatu.CLAN_NOSFERATU_NAME, Surname = EnumNosferatu.CLAN_NOSFERATU_SURNAME, History = EnumNosferatu.CLAN_NOSFERATU_HISTORY, Organisation = EnumNosferatu.CLAN_NOSFERATU_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumRavnos.CLAN_RAVNOS, Name = EnumRavnos.CLAN_RAVNOS_NAME, Surname = EnumRavnos.CLAN_RAVNOS_SURNAME, History = EnumRavnos.CLAN_RAVNOS_HISTORY, Organisation = EnumRavnos.CLAN_RAVNOS_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumToreador.CLAN_TOREADOR, Name = EnumToreador.CLAN_TOREADOR_NAME, Surname = EnumToreador.CLAN_TOREADOR_SURNAME, History = EnumToreador.CLAN_TOREADOR_HISTORY, Organisation = EnumToreador.CLAN_TOREADOR_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumTremere.CLAN_TREMERE, Name = EnumTremere.CLAN_TREMERE_NAME, Surname = EnumTremere.CLAN_TREMERE_SURNAME, History = EnumTremere.CLAN_TREMERE_HISTORY, Organisation = EnumTremere.CLAN_TREMERE_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumTzimisce.CLAN_TZIMISCE, Name = EnumTzimisce.CLAN_TZIMISCE_NAME, Surname = EnumTzimisce.CLAN_TZIMISCE_SURNAME, History = EnumTzimisce.CLAN_TZIMISCE_HISTORY, Organisation = EnumTzimisce.CLAN_TZIMISCE_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumVentrue.CLAN_VENTRUE, Name = EnumVentrue.CLAN_VENTRUE_NAME, Surname = EnumVentrue.CLAN_VENTRUE_SURNAME, History = EnumVentrue.CLAN_VENTRUE_HISTORY, Organisation = EnumVentrue.CLAN_VENTRUE_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumBaali.CLAN_BAALI, Name = EnumBaali.CLAN_BAALI_NAME, Surname = EnumBaali.CLAN_BAALI_SURNAME, History = EnumBaali.CLAN_BAALI_HISTORY, Organisation = EnumBaali.CLAN_BAALI_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumCapadocien.CLAN_CAPPADOCIEN, Name = EnumCapadocien.CLAN_CAPPADOCIEN_NAME, Surname = EnumCapadocien.CLAN_CAPPADOCIEN_SURNAME, History = EnumCapadocien.CLAN_CAPPADOCIEN_HISTORY, Organisation = EnumCapadocien.CLAN_CAPPADOCIEN_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumSalubrien.CLAN_SALUBRIEN, Name = EnumSalubrien.CLAN_SALUBRIEN_NAME, Surname = EnumSalubrien.CLAN_SALUBRIEN_SURNAME, History = EnumSalubrien.CLAN_SALUBRIEN_HISTORY, Organisation = EnumSalubrien.CLAN_SALUBRIEN_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumCacophonie.CLAN_CACOPHONIE, Name = EnumCacophonie.CLAN_CACOPHONIE_NAME, Surname = EnumCacophonie.CLAN_CACOPHONIE_SURNAME, History = EnumCacophonie.CLAN_CACOPHONIE_HISTORY, Organisation = EnumCacophonie.CLAN_CACOPHONIE_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                   new Clan {ClanKey = EnumGargouille.CLAN_GRAGOUILLE, Name = EnumGargouille.CLAN_GRAGOUILLE_NAME, Surname = EnumGargouille.CLAN_GRAGOUILLE_SURNAME, History = EnumGargouille.CLAN_GRAGOUILLE_HISTORY, Organisation = EnumGargouille.CLAN_GRAGOUILLE_ORGANIZATION
-                            , Disciplines = new List<Discipline> {context.Disciplines.Find("QUIESTUS_KEY"), context.Disciplines.Find("CELERITY_KEY"), context.Disciplines.Find("CELERITY_KEY") } },
-                };
-
-                #region Traduction
-
-                var clanTraductions = new List<Traduction>
-            {
-                    #region Assamite
-                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE, Text = "ASSAMITE_KEY"},
-                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE_NAME, Text = "Assamite"},
-                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE_SURNAME, Text = "Assassins"},
-                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE_HISTORY, Text = "Les Assamites, aussi connus comme Les Enfants d’Haqim, sont originaires du Moyen-Orient. Talentueux assassins et guerriers agiles, la majeure partie du clan réside dans une forteresse de montagne appelée Alamut. Ces guerriers sont toujours prêts à accomplir de dangereuses missions, si la dîme de Sang est assez élevée. Leur soif de sang est légendaire, tout comme leur tendance à juger les autres vampires selon les lois de leur fondateur. Ceux qui sont trouvés en défaut doivent être détruits.<br />Le Clan Assamite n’a prêté allégeance à aucune secte. Bien que quelques éléments épars ont rejoint soit la Camarilla soit le Sabbat, le clan refuse catégoriquement de courber l’échine face à n’importe quelle hiérarchie vampirique. A cette fin, ses membres n’acceptent jamais de contrats à long terme, restant plutôt indépendants dans le grand Jyhad. C’est pourquoi le clan fait peur et n’inspire pas confiance, étant donné que les vampire savent que la loyauté des Assamites va au plus offrant. Certains Assamites suivent une Voie d’Illumination très religieuse qui codifie la dévotion fanatique du clan à la Montagne. Nommée Voie du Sang, elle prône la diablerie et insiste sur une vénération fanatique du fondateur du clan, Haqim.<br />Par le passé, les Assamites étaient de vicieux diabolistes, contraints d’arrêter cette pratique uniquement parce que les Tremeres leur jetèrent une puissante malédiction à la demande du Cercle Intérieur de la Camarilla. Cette malédiction transforma la Vitae vampirique en un poison pour les Assamites, brûlant leurs veines. A cause de cela, les Assamites (et plus particulièrement les plus anciens) détestent les Tremere par dessus tout. Quand L’Ancien s’éleva et prit le contrôle du clan, il brisa la malédiction avec sa propre sorcellerie, faisant tomber les entraves des Tremere et jurant que le clan se vengerait.<br />Les vieux Assamites ont tendance à être issus de la culture du Moyen-Orient ou d’Afrique du Nord, alors que les plus jeunes reçoivent l’Étreinte quelle que soit leur origine humaine. La peau d’un Assamite devient plus foncée avec l’âge, à l’inverse des autres vampires qui pâlissent. A cause de cela, les plus vieux Assamites ont une peau d’un noir surnaturel proche de l’onyx, comme sculptée dans l’ébène le plus sombre.<br />La majorité des Enfants d’Haqim sont des guerriers, entraînés à devenir des tueurs, des espions et des agents secrets. Ils prennent des contrats et retournent à Alamut avec leur paiement une fois qu’ils ont réussi. Le reste du clan - une minorité significative - fait partie des deux autres castes : les Sorciers et les Vizirs.Les Sorciers restent cachés à Alamut, servant l’ancien le plus puissant de leur clan, un vampire appelé L’Ancien.Les Vizirs, autrefois de confiance, ont défié la Montagne dans un schisme idéologique, refusant de se plier à la volonté de L’Ancien.Pour ce crime, ils sont chassés par les leurs. La Montagne n’a de cesse que de pourchasser jusqu’au dernier ceux qu’elle considère comme des traîtres.<br />"},
-                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE_ORGANIZATION, Text = "Le clan Assamite a une culture isolée et structurée. Tous les Assamites se doivent de suivre les diktats de L’Ancien, qu’ils traitent avec un mélange de vénération et de peur. De petits groupes de deux ou trois Assamites (appelés falaqi) peuvent résider hors de la Montagne, tant qu’ils adhèrent à la foi d’Haqim et aux diktats de L’Ancien. Bien qu’autrefois le clan avait un respect marqué envers la foi musulmane, le culte d’Allah a été interdit par L’Ancien. Tous les Assamites doivent croire uniquement en Haqim ou être détruits pour leur manque de loyauté."},
-	                #endregion
-
-                    #region Brujah
-                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH, Text = "BRUJAH_KEY"},
-                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH_NAME, Text = "Brujah"},
-                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH_SURNAME, Text = "La Plèbe, La Populace"},
-                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH_HISTORY, Text = "Il y a longtemps, les vampires du Clan Brujah furent des érudits en quête de sagesse. Ils inspirèrent la gloire de l’ancienne Carthage, une cité grandiose où mortels et vampires vivaient ensemble en paix. Cependant, la traîtrise des Ventrues et les armées de l’ancienne Rome abattirent Carthage et brisèrent pour toujours le clan Brujah. Au fil des siècles, des divisions internes ont profondément secoué le clan Brujah, la nature du clan passant d’un groupe de philosophes stoïques à une armée de guerriers passionnés. Les Brujahs ne sont plus les créatures qu’ils étaient à Carthage.<br />En ces nuits, les Brujahs sont un groupe d’ardents guerriers, individualistes et rebelles, conduits à la fois au succès et à l’échec par leur nature tempétueuse. Ils ressentent les passions mortelles plus profondément que les autres vampires et sont enclins à frapper avant de poser toute question. Les membres de ce clan aiment les causes et agiront impulsivement contre quoi que ce soit qu’ils perçoivent comme une injustice. Ils se réunissent en de violentes assemblées appelées rants où ils engagent des débats passionnés, défient leurs rivaux au combat, ou suscitent le soutien de croisades contre le status quo. Ils savent mieux que tous que la capacité de ressentir des émotions peut aussi être une voie sombre. De nombreux Brujahs sont emportés par la frénésie et la folie s’ils n’arrivent pas à contrôler leurs passions.<br />Les membres du clan Brujah sont étreints au sein de nombreuses cultures, régions et religions. Les Brujahs n’ont jamais été sélectifs – ils choisissent leurs Infants sur la base de la pulsion et du désir d’un individu de corriger les torts. Lorsqu’il s’agit de s’adapter au monde moderne, les Brujahs le font mieux que la plupart des vampires. Ils adoptent aisément les symboles de rébellion : crânes rasés, motos, vestes en cuir, clous ou t - shirts aux slogans provocateurs."},
-                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH_ORGANIZATION, Text = "Les Brujahs expérimentés tendent à inspirer leurs frères de clan, mais il est attendu d’un frère de clan qu’il prouve sa valeur plus qu’il ne se tourne vers ses anciens pour résoudre ses problèmes ; ainsi la hiérarchie du clan est au mieux peu structurée. Les Brujahs tendent à se regrouper en factions philosophiques se réclamant souvent des Idéalistes, des Individualistes ou des Iconoclastes. Les Iconoclastes sont passionnés par la mise à bas de la société et la construction de quelque chose de neuf, tandis que les Idéalistes préfèrent résoudre les problèmes de la société plutôt que de recommencer depuis le début.Les Individualistes sont plus solitaires, travaillant sur une base d’une personne à la fois plutôt que de se concentrer sur la société dans son ensemble."},
-	                #endregion
-
-                    #region Set
-                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET, Text = "SET_KEY"},
-                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET_NAME, Text = ""},
-                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET_SURNAME, Text = ""},
-                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET_HISTORY, Text = ""},
-                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET_ORGANIZATION, Text = ""},
-	                #endregion
-
-                     #region Gangrel
-                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL, Text = "GANGREL_KEY"},
-                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL_NAME, Text = ""},
-                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL_SURNAME, Text = ""},
-                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL_HISTORY, Text = ""},
-                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL_ORGANIZATION, Text = ""},
-	                #endregion
-
-                    #region Giovanni
-                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI, Text = "GIOVANNI_KEY"},
-                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI_NAME, Text = ""},
-                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI_SURNAME, Text = ""},
-                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI_HISTORY, Text = ""},
-                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI_ORGANIZATION, Text = ""},
-	                #endregion
-
-                    
-
-            };
-
-                clanTraductions.ForEach(t =>
-                {
-                    context.Traductions.AddOrUpdate(t);
-                });
-
-                #endregion
-            }
-        }
         #endregion
     }
 }
