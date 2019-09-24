@@ -13,5 +13,6 @@ namespace Tools
         public static readonly string CLAN_BAALI_SURNAME = "CLAN_BAALI_SURNAME";
         public static readonly string CLAN_BAALI_HISTORY = "CLAN_BAALI_HISTORY";
         public static readonly string CLAN_BAALI_ORGANIZATION = "CLAN_BAALI_ORGANIZATION";
+        public static readonly string CLAN_BAALI_WEAKNESS = "CLAN_BAALI_WEAKNESS";
     }
 }

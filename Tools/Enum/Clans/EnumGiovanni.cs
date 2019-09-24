@@ -13,5 +13,6 @@ namespace Tools
         public static readonly string CLAN_GIOVANNI_SURNAME = "CLAN_GIOVANNI_SURNAME";
         public static readonly string CLAN_GIOVANNI_HISTORY = "CLAN_GIOVANNI_HISTORY";
         public static readonly string CLAN_GIOVANNI_ORGANIZATION = "CLAN_GIOVANNI_ORGANIZATION";
+        public static readonly string CLAN_GIOVANNI_WEAKNESS = "CLAN_GIOVANNI_WEAKNESS";
     }
 }

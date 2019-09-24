@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static Tools.EnumAtoutFlaw;
 
 namespace DAL.Models.Ref
@@ -16,6 +17,8 @@ namespace DAL.Models.Ref
 
         [Required]
         public TypeAtout Type { get; set; }
+
+        public string ClanKey { get; set; }
 
         [Required]
         public int Cost { get; set; }

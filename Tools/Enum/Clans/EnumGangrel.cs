@@ -13,5 +13,6 @@ namespace Tools
         public static readonly string CLAN_GANGREL_SURNAME = "CLAN_GANGREL_SURNAME";
         public static readonly string CLAN_GANGREL_HISTORY = "CLAN_GANGREL_HISTORY";
         public static readonly string CLAN_GANGREL_ORGANIZATION = "CLAN_GANGREL_ORGANIZATION";
+        public static readonly string CLAN_GANGREL_WEAKNESS = "CLAN_GANGREL_WEAKNESS";
     }
 }

@@ -3,7 +3,7 @@ namespace DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -15,12 +15,10 @@ namespace DAL.Migrations
                         Name = c.String(nullable: false),
                         Description = c.String(nullable: false),
                         Type = c.Int(nullable: false),
+                        ClanKey = c.String(),
                         Cost = c.Int(nullable: false),
-                        Clan_ClanKey = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.Key)
-                .ForeignKey("dbo.Clan", t => t.Clan_ClanKey)
-                .Index(t => t.Clan_ClanKey);
+                .PrimaryKey(t => t.Key);
             
             CreateTable(
                 "dbo.Attribut",
@@ -198,7 +196,6 @@ namespace DAL.Migrations
             DropForeignKey("dbo.ClanDiscipline", "ClanKey", "dbo.Clan");
             DropForeignKey("dbo.Power", "DisciplineKey", "dbo.Discipline");
             DropForeignKey("dbo.Power", "Focus_FocusKey", "dbo.Focus");
-            DropForeignKey("dbo.Atout", "Clan_ClanKey", "dbo.Clan");
             DropForeignKey("dbo.Focus", "AttributKey", "dbo.Attribut");
             DropIndex("dbo.ClanDiscipline", new[] { "DisciplineKey" });
             DropIndex("dbo.ClanDiscipline", new[] { "ClanKey" });
@@ -209,7 +206,6 @@ namespace DAL.Migrations
             DropIndex("dbo.Power", new[] { "Focus_FocusKey" });
             DropIndex("dbo.Power", new[] { "DisciplineKey" });
             DropIndex("dbo.Focus", new[] { "AttributKey" });
-            DropIndex("dbo.Atout", new[] { "Clan_ClanKey" });
             DropTable("dbo.ClanDiscipline");
             DropTable("dbo.AspNetLogins");
             DropTable("dbo.IdentityUserClaim");

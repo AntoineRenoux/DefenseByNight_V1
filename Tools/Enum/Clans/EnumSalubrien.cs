@@ -13,5 +13,6 @@ namespace Tools
         public static readonly string CLAN_SALUBRIEN_SURNAME = "CLAN_SALUBRIEN_SURNAME";
         public static readonly string CLAN_SALUBRIEN_HISTORY = "CLAN_SALUBRIEN_HISTORY";
         public static readonly string CLAN_SALUBRIEN_ORGANIZATION = "CLAN_SALUBRIEN_ORGANIZATION";
+        public static readonly string CLAN_SALUBRIEN_WEAKNESS = "CLAN_SALUBRIEN_WEAKNESS";
     }
 }

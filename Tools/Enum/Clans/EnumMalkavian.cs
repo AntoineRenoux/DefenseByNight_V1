@@ -13,5 +13,6 @@ namespace Tools
         public static readonly string CLAN_MALKAVIAN_SURNAME = "CLAN_MALKAVIAN_SURNAME";
         public static readonly string CLAN_MALKAVIAN_HISTORY = "CLAN_MALKAVIAN_HISTORY";
         public static readonly string CLAN_MALKAVIAN_ORGANIZATION = "CLAN_MALKAVIAN_ORGANIZATION";
+        public static readonly string CLAN_MALKAVIAN_WEAKNESS = "CLAN_MALKAVIAN_WEAKNESS";
     }
 }

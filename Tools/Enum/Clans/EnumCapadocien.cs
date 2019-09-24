@@ -13,5 +13,6 @@ namespace Tools
         public static readonly string CLAN_CAPPADOCIEN_SURNAME = "CLAN_CAPPADOCIEN_SURNAME";
         public static readonly string CLAN_CAPPADOCIEN_HISTORY = "CLAN_CAPPADOCIEN_HISTORY";
         public static readonly string CLAN_CAPPADOCIEN_ORGANIZATION = "CLAN_CAPPADOCIEN_ORGANIZATION";
+        public static readonly string CLAN_CAPPADOCIEN_WEAKNESS = "CLAN_CAPPADOCIEN_WEAKNESS";
     }
 }

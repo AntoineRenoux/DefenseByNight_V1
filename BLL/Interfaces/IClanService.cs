@@ -9,6 +9,6 @@ namespace BLL.Interfaces
         /// Récupère tout les Clans.
         /// </summary>
         /// <returns></returns>
-        List<ClanDto> GetAll();
+        List<ClanDto> GetAll(int languageId);
     }
 }

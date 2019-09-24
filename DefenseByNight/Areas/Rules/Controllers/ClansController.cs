@@ -25,9 +25,8 @@ namespace DefenseByNight.Areas.Rules.Controllers
         // GET: Rules/Clans
         public ActionResult Index()
         {
-            var model = Mapper.Map<List<ClanDto>, List<ClanViewModel>>(clanService.GetAll());
-
-            var model2 = atoutService.GetAll();
+            var clans = clanService.GetAll(1036);
+            var model = Mapper.Map<List<ClanDto>, List<ClanViewModel>>(clans);
 
             return View();
         }

@@ -47,6 +47,7 @@
     <Compile Include="Enum\Clans\EnumBaali.cs" />
     <Compile Include="Enum\Clans\EnumBrujah.cs" />
     <Compile Include="Enum\Clans\EnumCacophonie.cs" />
+    <Compile Include="Enum\Clans\EnumCaitiff.cs" />
     <Compile Include="Enum\Clans\EnumCapadocien.cs" />
     <Compile Include="Enum\Clans\EnumClan.cs" />
     <Compile Include="Enum\Clans\EnumGangrel.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Enum\Clans\EnumVentrue.cs" />
     <Compile Include="Enum\Disciplines\EnumAnimalism.cs" />
     <Compile Include="Enum\Disciplines\EnumAuspex.cs" />
+    <Compile Include="Enum\Disciplines\EnumBlood.cs" />
     <Compile Include="Enum\Disciplines\EnumCelerity.cs" />
     <Compile Include="Enum\Disciplines\EnumChimerstry.cs" />
     <Compile Include="Enum\Disciplines\EnumDaimonion.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Enum\Disciplines\EnumPresence.cs" />
     <Compile Include="Enum\Disciplines\EnumProtean.cs" />
     <Compile Include="Enum\Disciplines\EnumQuietus.cs" />
+    <Compile Include="Enum\Disciplines\EnumSepulcher.cs" />
     <Compile Include="Enum\Disciplines\EnumSerpentis.cs" />
     <Compile Include="Enum\Disciplines\EnumTemporis.cs" />
     <Compile Include="Enum\Disciplines\EnumThanatosis.cs" />
@@ -87,6 +90,7 @@
     <Compile Include="Enum\Disciplines\EnumValeren.cs" />
     <Compile Include="Enum\Disciplines\EnumVicissitude.cs" />
     <Compile Include="Enum\Disciplines\EnumVisceratika.cs" />
+    <Compile Include="Enum\EnumAffiliate.cs" />
     <Compile Include="Enum\EnumAtout.cs" />
     <Compile Include="Enum\EnumErrorsMessages.cs" />
     <Compile Include="Enum\EnumRessource.cs" />

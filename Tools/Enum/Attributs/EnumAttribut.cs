@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Enum.Attributs
+namespace Tools
 {
     public class EnumAttribut
     {
+        public static readonly string PHYSICAL_KEY = "PHYSICAL_KEY";
+        public static readonly string SOCIAL_KEY = "SOCIAL_KEY";
+        public static readonly string MENTAL_KEY = "MENTAL_KEY";
+
         public static readonly string PHYSICAL_NAME = "PHYSICAL_NAME";
         public static readonly string SOCIAL_NAME = "SOCIAL_NAME";
         public static readonly string MENTAL_NAME = "MENTAL_NAME";

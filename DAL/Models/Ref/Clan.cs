@@ -27,6 +27,9 @@ namespace DAL.Models.Ref
         [Required]
         public EnumRarityClan RarityClan { get; set; }
 
+        [Required]
+        public string Affiliate { get; set; }
+
         public virtual ICollection<Discipline> Disciplines { get; set; }
         public virtual ICollection<Atout> Atouts { get; set; }
     }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Tools;
 
 namespace DTO
 {
@@ -13,7 +10,11 @@ namespace DTO
         public string Surname { get; set; }
         public string History { get; set; }
         public string Organisation { get; set; }
+        public string Weakness { get; set; }
+        public EnumRarityClan RarityClan { get; set; }
+        public string Affiliate { get; set; }
 
         public List<DisciplineDto> Disciplines { get; set; }
+        public List<AtoutDto> Atouts { get; set; }
     }
 }

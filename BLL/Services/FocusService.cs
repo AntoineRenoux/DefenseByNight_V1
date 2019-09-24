@@ -1,12 +1,7 @@
-﻿using BLL.Enum.Attributs;
-using BLL.Interfaces;
+﻿using BLL.Interfaces;
 using DAL.Interfaces;
 using DTO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Services
 {

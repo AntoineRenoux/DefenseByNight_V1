@@ -5,6 +5,6 @@ namespace DAL.Interfaces.Ref
 {
     public interface IClanRepository
     {
-        List<ClanDto> GetAll();
+        List<ClanDto> GetAll(int languageId);
     }
 }

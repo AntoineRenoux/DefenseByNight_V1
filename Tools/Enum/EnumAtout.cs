@@ -397,6 +397,30 @@ namespace Tools
         public readonly static string ATOUT_VENTRUE_ROYAL_DESCRIPTION = "ATOUT_VENTRUE_ROYAL_DESCRIPTION";
         #endregion
 
+        #region Caïtiff
+        public readonly static string ATOUT_CAITIFF_PROPICE_KEY = "ATOUT_CAITIFF_PROPICE_KEY";
+        public readonly static string ATOUT_CAITIFF_PROPICE_NAME = "ATOUT_CAITIFF_PROPICE_NAME";
+        public readonly static string ATOUT_CAITIFF_PROPICE_DESCRIPTION = "ATOUT_CAITIFF_PROPICE_DESCRIPTION";
+
+        public readonly static string ATOUT_CAITIFF_SANG_ECLIPSE_KEY = "ATOUT_CAITIFF_SANG_ECLIPSE_KEY";
+        public readonly static string ATOUT_CAITIFF_SANG_ECLIPSE_NAME = "ATOUT_CAITIFF_SANG_ECLIPSE_NAME";
+        public readonly static string ATOUT_CAITIFF_SANG_ECLIPSE_DESCRIPTION = "ATOUT_CAITIFF_SANG_ECLIPSE_DESCRIPTION";
+
+        public readonly static string ATOUT_CAITIFF_VESTIGES_GRANDEUR_KEY = "ATOUT_CAITIFF_VESTIGES_GRANDEUR_KEY";
+        public readonly static string ATOUT_CAITIFF_VESTIGES_GRANDEUR_NAME = "ATOUT_CAITIFF_VESTIGES_GRANDEUR_NAME";
+        public readonly static string ATOUT_CAITIFF_VESTIGES_GRANDEUR_DESCRIPTION = "ATOUT_CAITIFF_VESTIGES_GRANDEUR_DESCRIPTION";
+        #endregion
+
+        #region Baali
+        public readonly static string ATOUT_BAALI_INFERNAL_LEGACY_KEY = "ATOUT_BAALI_INFERNAL_LEGACY_KEY";
+        public readonly static string ATOUT_BAALI_INFERNAL_LEGACY_NAME = "ATOUT_BAALI_INFERNAL_LEGACY_NAME";
+        public readonly static string ATOUT_BAALI_INFERNAL_LEGACY_DESCRIPTION = "ATOUT_BAALI_INFERNAL_LEGACY_DESCRIPTION";
+                                           
+        public readonly static string ATOUT_BAALI_ANGELLIS_ATER_KEY = "ATOUT_BAALI_ANGELLIS_ATER_KEY";
+        public readonly static string ATOUT_BAALI_ANGELLIS_ATER_NAME = "ATOUT_BAALI_ANGELLIS_ATER_NAME";
+        public readonly static string ATOUT_BAALI_ANGELLIS_ATER_DESCRIPTION = "ATOUT_BAALI_ANGELLIS_ATER_DESCRIPTION";
+        #endregion
+
         public enum TypeFlaw
         {
             Clan,

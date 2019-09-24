@@ -13,5 +13,6 @@ namespace Tools
         public static readonly string CLAN_ASSAMITE_SURNAME = "CLAN_ASSAMITE_SURNAME";
         public static readonly string CLAN_ASSAMITE_HISTORY = "CLAN_ASSAMITE_HISTORY";
         public static readonly string CLAN_ASSAMITE_ORGANIZATION = "CLAN_ASSAMITE_ORGANIZATION";
+        public static readonly string CLAN_ASSAMITE_WEAKNESS = "CLAN_ASSAMITE_WEAKNESS";
     }
 }

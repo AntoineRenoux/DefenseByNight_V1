@@ -16,6 +16,7 @@ namespace DAL
         #region References
         public DbSet<Traduction> Traductions { get; set; }
 
+        public DbSet<Affiliate> Affiliates { get; set; }
         public DbSet<Attribut> Attributs { get; set; }
         public DbSet<Focus> Focus { get; set; }
 
@@ -42,14 +43,7 @@ namespace DAL
                .ToTable("AspNetUsers");
 
             modelBuilder.Entity<Clan>()
-               .HasMany<Discipline>(d => d.Disciplines)
-               .WithMany(c => c.Clans)
-               .Map(cs =>
-               {
-                   cs.MapLeftKey("ClanKey");
-                   cs.MapRightKey("DisciplineKey");
-                   cs.ToTable("ClanDiscipline");
-               });
+               .HasMany<Discipline>(d => d.Disciplines);
         }
 
     }

@@ -11,7 +11,7 @@
     using System.Linq;
     using Tools;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DbnContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DAL.DbnContext>
     {
         public Configuration()
         {
@@ -56,103 +56,10 @@
             LabelInitializer.Initializer(context);
             ErrorMessageInitializer.Initializer(context);
 
-            #region Focus
-            var focus = new List<Focus>
-            {
-              /*0*/ new Focus{FocusKey = "PHYSICAL_STRENGTH", FocusName = "PHYSICAL_STRENGTH_NAME", Description = "PHYSICAL_STRENGTH_DESCRIPTION" },
-              /*1*/ new Focus{FocusKey = "PHYSICAL_DEXTERITY", FocusName = "PHYSICAL_DEXTERITY_NAME", Description = "PHYSICAL_DEXTERITY_DESCRIPTION" },
-              /*2*/ new Focus{FocusKey = "PHYSICAL_STAMINA", FocusName = "PHYSICAL_STAMINA_NAME", Description = "PHYSICAL_STAMINA_DESCRIPTION" },
-              /*3*/ new Focus{FocusKey = "SOCIAL_CHARISMA", FocusName = "SOCIAL_CHARISMA_NAME", Description = "SOCIAL_CHARISMA_DESCRIPTION" },
-              /*4*/ new Focus{FocusKey = "SOCIAL_MANIPULATION", FocusName = "SOCIAL_MANIPULATION_NAME", Description = "SOCIAL_MANIPULATION_DESCRIPTION" },
-              /*5*/ new Focus{FocusKey = "SOCIAL_APPEARANCE", FocusName = "SOCIAL_APPEARANCE_NAME", Description = "SOCIAL_APPEARANCE_DESCRIPTION" },
-              /*6*/ new Focus{FocusKey = "MENTAL_PERCEPTION", FocusName = "MENTAL_PERCEPTION_NAME", Description = "MENTAL_PERCEPTION_DESCRIPTION" },
-              /*7*/ new Focus{FocusKey = "MENTAL_INTELLIGENCE", FocusName = "MENTAL_INTELLIGENCE_NAME", Description = "MENTAL_INTELLIGENCE_DESCRIPTION" },
-              /*8*/ new Focus{FocusKey = "MENTAL_WITZ", FocusName = "MENTAL_WITZ_NAME", Description = "MENTAL_WITZ_DESCRIPTION" },
-            };
+            AffiliateInitializer.Initializer(context);
+            var focus = FocusInitializer.Initializer(context);
+            AttributeInitializer.Initializer(context, focus);
 
-            focus.ForEach(f =>
-            {
-                context.Focus.AddOrUpdate(f);
-            });
-
-            context.SaveChanges();
-
-            #region Traduction
-            var focusTraductions = new List<Traduction>
-            {
-                new Traduction{LCID = 1036, Key = "PHYSICAL_STRENGTH_NAME", Text = "Force"},
-                new Traduction{LCID = 1036, Key = "PHYSICAL_DEXTERITY_NAME", Text = "Dextérité"},
-                new Traduction{LCID = 1036, Key = "PHYSICAL_STAMINA_NAME", Text = "Endurance"},
-
-                new Traduction{LCID = 1036, Key = "PHYSICAL_STRENGTH_DESCRIPTION", Text = "Un personnage focalisé sur la Force est costaud et musclé. Une fois par combat, de tels personnages peuvent utiliser gratuitement une manœuvre de combat basée sur la Force (Désarmer, Agripper, Assommer ou Percer le Cœur)."},
-                new Traduction{LCID = 1036, Key = "PHYSICAL_DEXTERITY_DESCRIPTION", Text = "Un personnage focalisé sur la Dextérité est rapide et agile. Une fois par combat, de tels personnages peuvent utiliser gratuitement une manœuvre de combat basée sur la Dextérité (Accélération, Désarmer, Combat à l’Aveugle ou Dégainage rapide)."},
-                new Traduction{LCID = 1036, Key = "PHYSICAL_STAMINA_DESCRIPTION", Text = "Un personnage focalisé sur l’Endurance est coriace et robuste. De tels personnages ne subissent pas les pénalités de blessure. De plus, ils ne peuvent être ni assommés ni mis à terre par une manœuvre de combat à moins que l’attaquant ait un attribut Physique supérieur à celui de votre personnage."},
-
-                new Traduction{LCID = 1036, Key = "SOCIAL_CHARISMA_NAME", Text = "Charisme"},
-                new Traduction{LCID = 1036, Key = "SOCIAL_MANIPULATION_NAME", Text = "Manipulation"},
-                new Traduction{LCID = 1036, Key = "SOCIAL_APPEARANCE_NAME", Text = "Apparence"},
-
-                new Traduction{LCID = 1036, Key = "SOCIAL_CHARISMA_DESCRIPTION", Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Social de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Parallèlement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple flagorner tous les avocats de la ville, votre conteur peut diviser le temps de réalisation par deux."},
-                new Traduction{LCID = 1036, Key = "SOCIAL_MANIPULATION_DESCRIPTION", Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Social de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Parallèlement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple flagorner tous les avocats de la ville, votre conteur peut diviser le temps de réalisation par deux."},
-                new Traduction{LCID = 1036, Key = "SOCIAL_APPEARANCE_DESCRIPTION", Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Social de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Parallèlement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple flagorner tous les avocats de la ville, votre conteur peut diviser le temps de réalisation par deux."},
-
-                new Traduction{LCID = 1036, Key = "MENTAL_PERCEPTION_NAME", Text = "Perception"},
-                new Traduction{LCID = 1036, Key = "MENTAL_INTELLIGENCE_NAME", Text = "Intelligence"},
-                new Traduction{LCID = 1036, Key = "MENTAL_WITZ_NAME", Text = "Astuce"},
-
-                new Traduction{LCID = 1036, Key = "MENTAL_PERCEPTION_DESCRIPTION", Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Mental de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Alternativement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple traduire un texte ancien en français, votre conteur peut diviser le temps de réalisation par deux."},
-                new Traduction{LCID = 1036, Key = "MENTAL_INTELLIGENCE_DESCRIPTION", Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Mental de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Alternativement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple traduire un texte ancien en français, votre conteur peut diviser le temps de réalisation par deux."},
-                new Traduction{LCID = 1036, Key = "MENTAL_WITZ_DESCRIPTION", Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Mental de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Alternativement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple traduire un texte ancien en français, votre conteur peut diviser le temps de réalisation par deux."}
-            };
-
-            focusTraductions.ForEach(t =>
-            {
-                context.Traductions.AddOrUpdate(t);
-            });
-
-            context.SaveChanges();
-            #endregion
-
-            #endregion
-
-            #region Attributs
-            var attributs = new List<Attribut>
-            {
-                new Attribut {AttributKey = "PHYSICAL_KEY", AttributName = "PHYSICAL_NAME", Description = "PHYSICAL_DESCRIPTION", Focus = new List<Focus> { focus[0], focus[1], focus[2] } },
-                new Attribut {AttributKey = "SOCIAL_KEY", AttributName = "SOCIAL_NAME", Description = "SOCIAL_DESCRIPTION", Focus = new List<Focus> { focus[3], focus[4], focus[5] } },
-                new Attribut {AttributKey = "MENTAL_KEY", AttributName = "MENTAL_NAME", Description = "MENTAL_DESCRIPTION", Focus = new List<Focus> { focus[6], focus[7], focus[8] } }
-            };
-
-            attributs.ForEach(a =>
-            {
-                context.Attributs.AddOrUpdate(a);
-            });
-
-            context.SaveChanges();
-
-            #region Traduction
-            var attributsTraductions = new List<Traduction>
-            {
-                new Traduction{LCID = 1036, Key = "PHYSICAL_NAME", Text = "Physique"},
-                new Traduction{LCID = 1036, Key = "SOCIAL_NAME", Text = "Social"},
-                new Traduction{LCID = 1036, Key = "MENTAL_NAME", Text = "Mental"},
-
-                new Traduction{LCID = 1036, Key = "PHYSICAL_DESCRIPTION", Text = "Les attributs physiques quantifient de manière générale la force, l’agilité et la vigueur d’un personnage. Un personnage avec de modestes attributs physiques n’est pas très athlétique, tandis qu’un personnage avec des attributs physiques élevés est exceptionnellement fort, dextre ou robuste. Les vampires peuvent dépenser des points de Sang pour augmenter surnaturellement leurs attributs Physiques (et seulement leur Physique) pour une courte période. Pour davantage d’informations sur la manière de dépenser ainsi du Sang, voyez le chapitre Le sang."},
-                new Traduction{LCID = 1036, Key = "SOCIAL_DESCRIPTION", Text = "Les vampires sont des créatures manipulatrices, usant des humains (et réciproquement) comme des composantes de leurs tentatives afin de faire avancer leurs objectifs personnels. Les attributs sociaux décrivent l’apparence, le charme et la capacité à interagir avec autrui d’un personnage. Si votre personnage a peu d’attribut en Social, il est maladroit, timide ou encore commun. Un personnage avec un haut niveau dans l’attribut Social est séduisant, fascinant et doux, doué pour convaincre autrui d’aller dans son sens."},
-                new Traduction{LCID = 1036, Key = "MENTAL_DESCRIPTION", Text = "Les attributs mentaux indiquent la capacité du personnage à résoudre des problèmes, apprendre, déduire et à être attentif. Un personnage avec un attribut Mental élevé est vigilant, logique ou intuitif. D’autre part, si l’attribut Mental du personnage est faible, il n’est pas aussi doué. Un tel personnage peut avoir fait peu d’études, être naïf ou lent à la détente."}
-            };
-
-            attributsTraductions.ForEach(t =>
-            {
-                context.Traductions.AddOrUpdate(t);
-            });
-
-            context.SaveChanges();
-            #endregion
-
-            #endregion
-
-            #region Disciplines
             AnimalismInitializer.Initialize(context, focus);
             AuspexInitializer.Initializer(context, focus);
             CelerityInitializer.Initializer(context, focus);
@@ -187,14 +94,13 @@
             FireInitializer.Initializer(context, focus);
             SpiritInitializer.Initializer(context, focus);
             WeatherInitializer.Initializer(context, focus);
-            #endregion
+
+            ClanInitializer.Initializer(context);
 
             AtoutInitializer.Initializer(context);
 
-
         }
 
-        #region Labels
         private static class LabelInitializer
         {
             public static void Initializer(DbnContext context)
@@ -245,9 +151,7 @@
                 });
             }
         }
-        #endregion
 
-        #region Messages d'erreurs
         private static class ErrorMessageInitializer
         {
             public static void Initializer(DbnContext context)
@@ -283,7 +187,123 @@
                 context.SaveChanges();
             }
         }
-        #endregion
+
+        public static class AffiliateInitializer
+        {
+            public static void Initializer(DbnContext context)
+            {
+                var affiliations = new List<Affiliate> {
+                    new Affiliate{AffiliateKey = EnumAffiliate.CAMARILLA},
+                    new Affiliate{AffiliateKey = EnumAffiliate.SABBAT},
+                    new Affiliate{AffiliateKey = EnumAffiliate.INDEPENDENT_ALLIANCE},
+                    new Affiliate{AffiliateKey = EnumAffiliate.INDEPENDENT_CLAN},
+                    new Affiliate{AffiliateKey = EnumAffiliate.ANARCH}
+                };
+
+                affiliations.ForEach(a =>
+                {
+                    context.Affiliates.AddOrUpdate(a);
+                });
+
+                context.SaveChanges();
+            }
+        }
+
+        private static class FocusInitializer
+        {
+            public static List<Focus> Initializer(DbnContext context)
+            {
+                var focus = new List<Focus>
+                    {
+                      /*0*/ new Focus{FocusKey = EnumFocus.PHYSICAL_STRENGTH_KEY, FocusName = EnumFocus.PHYSICAL_STRENGTH_NAME, Description = EnumFocus.PHYSICAL_STRENGTH_DESCRIPTION },
+                      /*1*/ new Focus{FocusKey = EnumFocus.PHYSICAL_DEXTERITY_KEY, FocusName = EnumFocus.PHYSICAL_DEXTERITY_NAME, Description = EnumFocus.PHYSICAL_DEXTERITY_DESCRIPTION },
+                      /*2*/ new Focus{FocusKey = EnumFocus.PHYSICAL_STAMINA_KEY, FocusName = EnumFocus.PHYSICAL_STAMINA_NAME, Description = EnumFocus.PHYSICAL_STAMINA_DESCRIPTION },
+                      /*3*/ new Focus{FocusKey = EnumFocus.SOCIAL_CHARISMA_KEY, FocusName = EnumFocus.SOCIAL_CHARISMA_NAME, Description = EnumFocus.SOCIAL_CHARISMA_DESCRIPTION },
+                      /*4*/ new Focus{FocusKey = EnumFocus.SOCIAL_MANIPULATION_KEY, FocusName = EnumFocus.SOCIAL_MANIPULATION_NAME, Description = EnumFocus.SOCIAL_MANIPULATION_DESCRIPTION },
+                      /*5*/ new Focus{FocusKey = EnumFocus.SOCIAL_APPEARANCE_KEY, FocusName = EnumFocus.SOCIAL_APPEARANCE_NAME, Description = EnumFocus.SOCIAL_APPEARANCE_DESCRIPTION },
+                      /*6*/ new Focus{FocusKey = EnumFocus.MENTAL_PERCEPTION_KEY, FocusName = EnumFocus.MENTAL_PERCEPTION_NAME, Description = EnumFocus.MENTAL_PERCEPTION_DESCRIPTION },
+                      /*7*/ new Focus{FocusKey = EnumFocus.MENTAL_INTELLIGENCE_KEY, FocusName = EnumFocus.MENTAL_INTELLIGENCE_NAME, Description = EnumFocus.MENTAL_INTELLIGENCE_DESCRIPTION },
+                      /*8*/ new Focus{FocusKey = EnumFocus.MENTAL_WITZ_KEY, FocusName = EnumFocus.MENTAL_WITZ_NAME, Description = EnumFocus.MENTAL_WITZ_DESCRIPTION },
+                    };
+
+                var focusTraductions = new List<Traduction>
+                {
+                     new Traduction{LCID = 1036, Key = EnumFocus.PHYSICAL_STRENGTH_NAME, Text = "Force"},
+                     new Traduction{LCID = 1036, Key = EnumFocus.PHYSICAL_DEXTERITY_NAME, Text = "Dextérité"},
+                     new Traduction{LCID = 1036, Key = EnumFocus.PHYSICAL_STAMINA_NAME, Text = "Endurance"},
+
+                     new Traduction{LCID = 1036, Key = EnumFocus.PHYSICAL_STRENGTH_DESCRIPTION, Text = "Un personnage focalisé sur la Force est costaud et musclé. Une fois par combat, de tels personnages peuvent utiliser gratuitement une manœuvre de combat basée sur la Force (Désarmer, Agripper, Assommer ou Percer le Cœur)."},
+                     new Traduction{LCID = 1036, Key = EnumFocus.PHYSICAL_DEXTERITY_DESCRIPTION, Text = "Un personnage focalisé sur la Dextérité est rapide et agile. Une fois par combat, de tels personnages peuvent utiliser gratuitement une manœuvre de combat basée sur la Dextérité (Accélération, Désarmer, Combat à l’Aveugle ou Dégainage rapide)."},
+                     new Traduction{LCID = 1036, Key = EnumFocus.PHYSICAL_STAMINA_DESCRIPTION, Text = "Un personnage focalisé sur l’Endurance est coriace et robuste. De tels personnages ne subissent pas les pénalités de blessure. De plus, ils ne peuvent être ni assommés ni mis à terre par une manœuvre de combat à moins que l’attaquant ait un attribut Physique supérieur à celui de votre personnage."},
+
+                     new Traduction{LCID = 1036, Key = EnumFocus.SOCIAL_CHARISMA_NAME, Text = "Charisme"},
+                     new Traduction{LCID = 1036, Key = EnumFocus.SOCIAL_MANIPULATION_NAME, Text = "Manipulation"},
+                     new Traduction{LCID = 1036, Key = EnumFocus.SOCIAL_APPEARANCE_NAME, Text = "Apparence"},
+
+                     new Traduction{LCID = 1036, Key = EnumFocus.SOCIAL_CHARISMA_DESCRIPTION, Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Social de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Parallèlement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple flagorner tous les avocats de la ville, votre conteur peut diviser le temps de réalisation par deux."},
+                     new Traduction{LCID = 1036, Key = EnumFocus.SOCIAL_MANIPULATION_DESCRIPTION, Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Social de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Parallèlement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple flagorner tous les avocats de la ville, votre conteur peut diviser le temps de réalisation par deux."},
+                     new Traduction{LCID = 1036, Key = EnumFocus.SOCIAL_APPEARANCE_DESCRIPTION, Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Social de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Parallèlement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple flagorner tous les avocats de la ville, votre conteur peut diviser le temps de réalisation par deux."},
+
+                     new Traduction{LCID = 1036, Key = EnumFocus.MENTAL_PERCEPTION_NAME, Text = "Perception"},
+                     new Traduction{LCID = 1036, Key = EnumFocus.MENTAL_INTELLIGENCE_NAME, Text = "Intelligence"},
+                     new Traduction{LCID = 1036, Key = EnumFocus.MENTAL_WITZ_NAME, Text = "Astuce"},
+
+                     new Traduction{LCID = 1036, Key = EnumFocus.MENTAL_PERCEPTION_DESCRIPTION, Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Mental de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Alternativement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple traduire un texte ancien en français, votre conteur peut diviser le temps de réalisation par deux."},
+                     new Traduction{LCID = 1036, Key = EnumFocus.MENTAL_INTELLIGENCE_DESCRIPTION, Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Mental de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Alternativement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple traduire un texte ancien en français, votre conteur peut diviser le temps de réalisation par deux."},
+                     new Traduction{LCID = 1036, Key = EnumFocus.MENTAL_WITZ_DESCRIPTION, Text = "Quand vous faites un challenge non basé sur un pouvoir en lien avec le focus Mental de votre personnage, le conteur peut décider de vous donner un bonus de +3 pour ce challenge. Alternativement, quand votre personnage tente une action d’une durée significative, non basée sur un pouvoir et en lien avec son focus, comme par exemple traduire un texte ancien en français, votre conteur peut diviser le temps de réalisation par deux."}
+                };
+
+                focus.ForEach(f =>
+                {
+                    context.Focus.AddOrUpdate(f);
+                });
+
+                focusTraductions.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.SaveChanges();
+
+                return focus;
+            }
+        }
+
+        private static class AttributeInitializer
+        {
+            public static void Initializer(DbnContext context, List<Focus> focus)
+            {
+                var attributs = new List<Attribut>
+                     {
+                         new Attribut {AttributKey = EnumAttribut.PHYSICAL_KEY, AttributName = EnumAttribut.PHYSICAL_NAME, Description = EnumAttribut.PHYSICAL_DESCRIPTION, Focus = new List<Focus> { focus[0], focus[1], focus[2] } },
+                         new Attribut {AttributKey = EnumAttribut.SOCIAL_KEY, AttributName = EnumAttribut.SOCIAL_NAME, Description = EnumAttribut.SOCIAL_DESCRIPTION, Focus = new List<Focus> { focus[3], focus[4], focus[5] } },
+                         new Attribut {AttributKey = EnumAttribut.MENTAL_KEY, AttributName = EnumAttribut.MENTAL_NAME, Description = EnumAttribut.MENTAL_DESCRIPTION, Focus = new List<Focus> { focus[6], focus[7], focus[8] } }
+                     };
+
+                var attributsTraductions = new List<Traduction>
+                     {
+                         new Traduction{LCID = 1036, Key = EnumAttribut.PHYSICAL_NAME, Text = "Physique"},
+                         new Traduction{LCID = 1036, Key = EnumAttribut.SOCIAL_NAME, Text = "Social"},
+                         new Traduction{LCID = 1036, Key = EnumAttribut.MENTAL_NAME, Text = "Mental"},
+
+                         new Traduction{LCID = 1036, Key = EnumAttribut.PHYSICAL_DESCRIPTION, Text = "Les attributs physiques quantifient de manière générale la force, l’agilité et la vigueur d’un personnage. Un personnage avec de modestes attributs physiques n’est pas très athlétique, tandis qu’un personnage avec des attributs physiques élevés est exceptionnellement fort, dextre ou robuste. Les vampires peuvent dépenser des points de Sang pour augmenter surnaturellement leurs attributs Physiques (et seulement leur Physique) pour une courte période. Pour davantage d’informations sur la manière de dépenser ainsi du Sang, voyez le chapitre Le sang."},
+                         new Traduction{LCID = 1036, Key = EnumAttribut.SOCIAL_DESCRIPTION, Text = "Les vampires sont des créatures manipulatrices, usant des humains (et réciproquement) comme des composantes de leurs tentatives afin de faire avancer leurs objectifs personnels. Les attributs sociaux décrivent l’apparence, le charme et la capacité à interagir avec autrui d’un personnage. Si votre personnage a peu d’attribut en Social, il est maladroit, timide ou encore commun. Un personnage avec un haut niveau dans l’attribut Social est séduisant, fascinant et doux, doué pour convaincre autrui d’aller dans son sens."},
+                         new Traduction{LCID = 1036, Key = EnumAttribut.MENTAL_DESCRIPTION, Text = "Les attributs mentaux indiquent la capacité du personnage à résoudre des problèmes, apprendre, déduire et à être attentif. Un personnage avec un attribut Mental élevé est vigilant, logique ou intuitif. D’autre part, si l’attribut Mental du personnage est faible, il n’est pas aussi doué. Un tel personnage peut avoir fait peu d’études, être naïf ou lent à la détente."}
+                     };
+
+                attributs.ForEach(a =>
+                {
+                    context.Attributs.AddOrUpdate(a);
+                });
+
+                attributsTraductions.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.SaveChanges();
+            }
+        }
 
         #region Disciplines Initializer
 
@@ -2104,11 +2124,11 @@
             {
                 var powers = new List<Power>
             {
-                new Power { Level = 1, PowerName = "SEPULCHER_POWER_1_NAME", Description = "SEPULCHER_POWER_1_DESCRIPTION", System = "SEPULCHER_POWER_1_SYSTEM", Focus = focus[5], FocusEffect = "SEPULCHER_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "SEPULCHER_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "SEPULCHER_NAME" },
-                new Power { Level = 2, PowerName = "SEPULCHER_POWER_2_NAME", Description = "SEPULCHER_POWER_2_DESCRIPTION", System = "SEPULCHER_POWER_2_SYSTEM", Focus = focus[4], FocusEffect = "SEPULCHER_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "SEPULCHER_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "SEPULCHER_NAME" },
-                new Power { Level = 3, PowerName = "SEPULCHER_POWER_3_NAME", Description = "SEPULCHER_POWER_3_DESCRIPTION", System = "SEPULCHER_POWER_3_SYSTEM", Focus = focus[5], FocusEffect = "SEPULCHER_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "SEPULCHER_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "SEPULCHER_NAME" },
-                new Power { Level = 4, PowerName = "SEPULCHER_POWER_4_NAME", Description = "SEPULCHER_POWER_4_DESCRIPTION", System = "SEPULCHER_POWER_4_SYSTEM", Focus = focus[4], FocusEffect = "SEPULCHER_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "SEPULCHER_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "SEPULCHER_NAME" },
-                new Power { Level = 5, PowerName = "SEPULCHER_POWER_5_NAME", Description = "SEPULCHER_POWER_5_DESCRIPTION", System = "SEPULCHER_POWER_5_SYSTEM", Focus = focus[5], FocusEffect = "SEPULCHER_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "SEPULCHER_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "SEPULCHER_NAME" }
+                new Power { Level = 1, PowerName = EnumSepulcher.SEPULCHER_POWER_1_NAME, Description = EnumSepulcher.SEPULCHER_POWER_1_DESCRIPTION, System = EnumSepulcher.SEPULCHER_POWER_1_SYSTEM, Focus = focus[5], FocusEffect = EnumSepulcher.SEPULCHER_POWER_1_FOCUS_DESCRIPTION, ExceptionalSuccess = EnumSepulcher.SEPULCHER_POWER_1_EXCEPTIONALSUCCESS, DisciplineName = EnumSepulcher.SEPULCHER_NAME },
+                new Power { Level = 2, PowerName = EnumSepulcher.SEPULCHER_POWER_2_NAME, Description = EnumSepulcher.SEPULCHER_POWER_2_DESCRIPTION, System = EnumSepulcher.SEPULCHER_POWER_2_SYSTEM, Focus = focus[4], FocusEffect = EnumSepulcher.SEPULCHER_POWER_2_FOCUS_DESCRIPTION, ExceptionalSuccess = EnumSepulcher.SEPULCHER_POWER_2_EXCEPTIONALSUCCESS, DisciplineName = EnumSepulcher.SEPULCHER_NAME },
+                new Power { Level = 3, PowerName = EnumSepulcher.SEPULCHER_POWER_3_NAME, Description = EnumSepulcher.SEPULCHER_POWER_3_DESCRIPTION, System = EnumSepulcher.SEPULCHER_POWER_3_SYSTEM, Focus = focus[5], FocusEffect = EnumSepulcher.SEPULCHER_POWER_3_FOCUS_DESCRIPTION, ExceptionalSuccess = EnumSepulcher.SEPULCHER_POWER_3_EXCEPTIONALSUCCESS, DisciplineName = EnumSepulcher.SEPULCHER_NAME },
+                new Power { Level = 4, PowerName = EnumSepulcher.SEPULCHER_POWER_4_NAME, Description = EnumSepulcher.SEPULCHER_POWER_4_DESCRIPTION, System = EnumSepulcher.SEPULCHER_POWER_4_SYSTEM, Focus = focus[4], FocusEffect = EnumSepulcher.SEPULCHER_POWER_4_FOCUS_DESCRIPTION, ExceptionalSuccess = EnumSepulcher.SEPULCHER_POWER_4_EXCEPTIONALSUCCESS, DisciplineName = EnumSepulcher.SEPULCHER_NAME },
+                new Power { Level = 5, PowerName = EnumSepulcher.SEPULCHER_POWER_5_NAME, Description = EnumSepulcher.SEPULCHER_POWER_5_DESCRIPTION, System = EnumSepulcher.SEPULCHER_POWER_5_SYSTEM, Focus = focus[5], FocusEffect = EnumSepulcher.SEPULCHER_POWER_5_FOCUS_DESCRIPTION, ExceptionalSuccess = EnumSepulcher.SEPULCHER_POWER_5_EXCEPTIONALSUCCESS, DisciplineName = EnumSepulcher.SEPULCHER_NAME }
             };
 
                 powers.ForEach(p =>
@@ -2119,40 +2139,40 @@
                 #region Traduction
                 var trad = new List<Traduction>
             {
-                new Traduction{LCID = 1036, Key = "SEPULCHER_NAME", Text = "La Voie du Sépulcre"},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_DESCRIPTION", Text = "<i>La Voie du Sépulcre inclut l’étude des esprits, des fantômes et des entités intangibles. A travers la pratique de cette Voie, un vampire peut invoquer et contrôler les spectres, les obligeant à obéir à la volonté du Nécromancien. Sauf exception indiquée, les pouvoirs qui affectent les fantômes, les spectres ne peuvent être utilisés que sur les esprits des morts. Ces pouvoirs ne peuvent pas être utilisés sur des projections psychiques, Umbrale ou d’autres entités intangibles.</i>"},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_NAME, Text = "La Voie du Sépulcre"},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_DESCRIPTION, Text = "<i>La Voie du Sépulcre inclut l’étude des esprits, des fantômes et des entités intangibles. A travers la pratique de cette Voie, un vampire peut invoquer et contrôler les spectres, les obligeant à obéir à la volonté du Nécromancien. Sauf exception indiquée, les pouvoirs qui affectent les fantômes, les spectres ne peuvent être utilisés que sur les esprits des morts. Ces pouvoirs ne peuvent pas être utilisés sur des projections psychiques, Umbrale ou d’autres entités intangibles.</i>"},
 
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_1_NAME", Text = "Témoin de la Mort"},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_1_DESCRIPTION", Text = "La première astuce qu’apprennent ceux qui négocient avec les morts est la capacité de sentir et d’interagir avec ces esprits. En apprenant cette capacité, un nécromancien peu découvrir et communique avec les spectres proches."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_1_SYSTEM", Text = "Une fois acheté, ce pouvoir est toujours actif. Vous pouvez voir, entendre et parler aux spectres, en communiquant avec eux que vous ayez ou non un langage commun. Il faut noter que, contrairement à l’avantage Médium, vous ne voyez que le fantôme lui-même et non les environs fantomatiques du Monde des Ombres."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_1_EXCEPTIONALSUCCESS", Text = null},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_1_FOCUS_DESCRIPTION", Text = "Vous pouvez aussi reconnaître et identifier les pouvoirs, les sorts des spectres et les effets visibles de la Nécromancie vampirique, ainsi que les objets enchantés par Nécromancie (mais pas les entraves spectrales, si ces objets ne sont pas spécifiquement enchantés). Vous n’avez pas la capacité de voir les utilisations non visibles de magie mais uniquement de reconnaître ce que vous pouvez percevoir. Vous ne pouvez identifier les pouvoirs et sorts que vous ne possédez pas mais vous les reconnaissez comme d’origine nécromantique."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_1_NAME, Text = "Témoin de la Mort"},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_1_DESCRIPTION, Text = "La première astuce qu’apprennent ceux qui négocient avec les morts est la capacité de sentir et d’interagir avec ces esprits. En apprenant cette capacité, un nécromancien peu découvrir et communique avec les spectres proches."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_1_SYSTEM, Text = "Une fois acheté, ce pouvoir est toujours actif. Vous pouvez voir, entendre et parler aux spectres, en communiquant avec eux que vous ayez ou non un langage commun. Il faut noter que, contrairement à l’avantage Médium, vous ne voyez que le fantôme lui-même et non les environs fantomatiques du Monde des Ombres."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_1_EXCEPTIONALSUCCESS, Text = null},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_1_FOCUS_DESCRIPTION, Text = "Vous pouvez aussi reconnaître et identifier les pouvoirs, les sorts des spectres et les effets visibles de la Nécromancie vampirique, ainsi que les objets enchantés par Nécromancie (mais pas les entraves spectrales, si ces objets ne sont pas spécifiquement enchantés). Vous n’avez pas la capacité de voir les utilisations non visibles de magie mais uniquement de reconnaître ce que vous pouvez percevoir. Vous ne pouvez identifier les pouvoirs et sorts que vous ne possédez pas mais vous les reconnaissez comme d’origine nécromantique."},
 
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_2_NAME", Text = "Tourment"},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_2_DESCRIPTION", Text = "Les esprits récalcitrants ne peuvent échapper à votre pouvoir ni ne peuvent survivre longtemps à votre colère. En concentrant votre puissante magie nécromantique, vous pouvez vous engager dans des batailles ectoplasmiques à travers la barrière du Monde des Ombres."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_2_SYSTEM", Text = "Dépensez un point de Sang et une action standard en désignant votre cible. Faites ensuite un challenge d’opposition de Nécromancie avec le spectre ciblé. Si vous réussissez, vous infligez trois dégâts normaux à ce fantôme."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_2_EXCEPTIONALSUCCESS", Text = "Vous infligez une perte de 4 points de dégâts normaux au lieu de trois."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_2_FOCUS_DESCRIPTION", Text = "Votre cible perd aussi un point de Pathos en cas d’attaque réussie."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_2_NAME, Text = "Tourment"},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_2_DESCRIPTION, Text = "Les esprits récalcitrants ne peuvent échapper à votre pouvoir ni ne peuvent survivre longtemps à votre colère. En concentrant votre puissante magie nécromantique, vous pouvez vous engager dans des batailles ectoplasmiques à travers la barrière du Monde des Ombres."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_2_SYSTEM, Text = "Dépensez un point de Sang et une action standard en désignant votre cible. Faites ensuite un challenge d’opposition de Nécromancie avec le spectre ciblé. Si vous réussissez, vous infligez trois dégâts normaux à ce fantôme."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_2_EXCEPTIONALSUCCESS, Text = "Vous infligez une perte de 4 points de dégâts normaux au lieu de trois."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_2_FOCUS_DESCRIPTION, Text = "Votre cible perd aussi un point de Pathos en cas d’attaque réussie."},
 
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_3_NAME", Text = "Invocation d’une Âme"},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_3_DESCRIPTION", Text = "<i>En accédant au Monde des Ombres, vous pouvez invoquer un fantôme et le forcer à obéir à votre volonté. Vous appelez l’esprit le plus proche de votre emplacement actuel et, à moins que vous ne connaissiez le vrai nom de ce spectre spécifique, vous n’avez pas de contrôle sur le genre d’individu qui répondra à votre pouvoir. Cependant, ce spectre est contraint à la loyauté et doit faire de son mieux pour obéir à vos demandes - ou il subirait une douleur à détruire son âme.</i>"},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_3_SYSTEM", Text = "Dépensez un point de Sang et une action standard pour invoquer un spectre. Les spectres sont invisibles aux personnes qui n’ont pas l’avantage Médium, Témoin de la Mort ou d’autres pouvoirs de ce genre. Invocation d’une Âme peut être utilisé pour invoquer un fantôme spécifique si vous connaissez le nom qu’il avait dans la vie. Autrement, vous invoquez le spectre incontrôlé le plus proche. Normalement, le spectre apparaît dans les cinq prochaines minutes, tant qu’il est capable d’atteindre votre localisation. Les spectres peuvent passer à travers les murs mais ne peuvent pas voler ni traverser des obstacles enchantés contre leur passage.<br /> Les spectres invoqués feront tout leur possible pour suivre les ordres que vous leur donnez jusqu'à l’aube ou jusqu'à ce qu’ils aient pris un nombre de dégâts équivalent à leur niveau de PNJ Type. Plusieurs utilisations d’Invocation d’une Âme ne vous permettent pas d’invoquer de spectres supplémentaires tant que vous contrôlez le premier ; si vous utilisez Invocation d’une Âme, tous les spectres que vous contrôlez avec ce pouvoir sont libérés en faveur du nouvellement invoqué.Cependant, si votre premier spectre est libéré(par dégâts, fuite ou si vous le révoquez), vous pouvez utiliser ce pouvoir à nouveau pour invoquer un second spectre. De plus, Invocation d’une Âme ne peut être utilisé pour contrôler des spectres qui sont actuellement sous l’effet de l’utilisation d’un pouvoir de Nécromancie d’un autre pratiquant.<br /> Les spectres invoqués avec ce pouvoir sont créés comme des PNJ Type de niveau 2.Ils ne peuvent faire d’actions inter-parties, mais peuvent agir avec une indépendance relative.Pour plus d’informations sur les spectres, voir le chapitre 12 : alliés et antagonistes."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_3_EXCEPTIONALSUCCESS", Text = null},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_3_FOCUS_DESCRIPTION", Text = "Les spectres invoqués avec ce pouvoir sont de niveau 3 et non de niveau 2."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_3_NAME, Text = "Invocation d’une Âme"},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_3_DESCRIPTION, Text = "<i>En accédant au Monde des Ombres, vous pouvez invoquer un fantôme et le forcer à obéir à votre volonté. Vous appelez l’esprit le plus proche de votre emplacement actuel et, à moins que vous ne connaissiez le vrai nom de ce spectre spécifique, vous n’avez pas de contrôle sur le genre d’individu qui répondra à votre pouvoir. Cependant, ce spectre est contraint à la loyauté et doit faire de son mieux pour obéir à vos demandes - ou il subirait une douleur à détruire son âme.</i>"},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_3_SYSTEM, Text = "Dépensez un point de Sang et une action standard pour invoquer un spectre. Les spectres sont invisibles aux personnes qui n’ont pas l’avantage Médium, Témoin de la Mort ou d’autres pouvoirs de ce genre. Invocation d’une Âme peut être utilisé pour invoquer un fantôme spécifique si vous connaissez le nom qu’il avait dans la vie. Autrement, vous invoquez le spectre incontrôlé le plus proche. Normalement, le spectre apparaît dans les cinq prochaines minutes, tant qu’il est capable d’atteindre votre localisation. Les spectres peuvent passer à travers les murs mais ne peuvent pas voler ni traverser des obstacles enchantés contre leur passage.<br /> Les spectres invoqués feront tout leur possible pour suivre les ordres que vous leur donnez jusqu'à l’aube ou jusqu'à ce qu’ils aient pris un nombre de dégâts équivalent à leur niveau de PNJ Type. Plusieurs utilisations d’Invocation d’une Âme ne vous permettent pas d’invoquer de spectres supplémentaires tant que vous contrôlez le premier ; si vous utilisez Invocation d’une Âme, tous les spectres que vous contrôlez avec ce pouvoir sont libérés en faveur du nouvellement invoqué.Cependant, si votre premier spectre est libéré(par dégâts, fuite ou si vous le révoquez), vous pouvez utiliser ce pouvoir à nouveau pour invoquer un second spectre. De plus, Invocation d’une Âme ne peut être utilisé pour contrôler des spectres qui sont actuellement sous l’effet de l’utilisation d’un pouvoir de Nécromancie d’un autre pratiquant.<br /> Les spectres invoqués avec ce pouvoir sont créés comme des PNJ Type de niveau 2.Ils ne peuvent faire d’actions inter-parties, mais peuvent agir avec une indépendance relative.Pour plus d’informations sur les spectres, voir le chapitre 12 : alliés et antagonistes."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_3_EXCEPTIONALSUCCESS, Text = null},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_3_FOCUS_DESCRIPTION, Text = "Les spectres invoqués avec ce pouvoir sont de niveau 3 et non de niveau 2."},
 
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_4_NAME", Text = "Contrainte d’une Âme"},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_4_DESCRIPTION", Text = "La plupart des Nécromanciens doivent se contenter d’alliés invoqués temporairement mais la puissance de votre Nécromancie a grandi, au point que vous pouvez forcer un fantôme à résider à un emplacement de façon quasi permanente - ou de libérer un spectre qui a été subjugué par une autre utilisation de ce pouvoir."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_4_SYSTEM", Text = "Dépensez un point de Sang et concentrez votre volonté pour lier un fantôme à votre localisation. Vous ne pouvez lier un spectre à une personne ou à un objet de cette manière. Un spectre affecté par Contrainte d’une Âme compte comme un suivant à trois points et ne peut pas quitter de plus de 10 pas l’endroit ou il est lié.<br /> Vous ne pouvez avoir qu’un seul spectre lié de cette façon à un moment donné. Si vous liez un nouveau spectre, le précédent est libéré. Pour libérer un spectre lié par un autre nécromancien, vous devez battre l’autre nécromancien dans un challenge opposé de Nécromancie."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_4_EXCEPTIONALSUCCESS", Text = null},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_4_FOCUS_DESCRIPTION", Text = "Vous pouvez lier un nombre de spectres égal à votre niveau en occulte. Vous devez les lier individuellement."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_4_NAME, Text = "Contrainte d’une Âme"},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_4_DESCRIPTION, Text = "La plupart des Nécromanciens doivent se contenter d’alliés invoqués temporairement mais la puissance de votre Nécromancie a grandi, au point que vous pouvez forcer un fantôme à résider à un emplacement de façon quasi permanente - ou de libérer un spectre qui a été subjugué par une autre utilisation de ce pouvoir."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_4_SYSTEM, Text = "Dépensez un point de Sang et concentrez votre volonté pour lier un fantôme à votre localisation. Vous ne pouvez lier un spectre à une personne ou à un objet de cette manière. Un spectre affecté par Contrainte d’une Âme compte comme un suivant à trois points et ne peut pas quitter de plus de 10 pas l’endroit ou il est lié.<br /> Vous ne pouvez avoir qu’un seul spectre lié de cette façon à un moment donné. Si vous liez un nouveau spectre, le précédent est libéré. Pour libérer un spectre lié par un autre nécromancien, vous devez battre l’autre nécromancien dans un challenge opposé de Nécromancie."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_4_EXCEPTIONALSUCCESS, Text = null},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_4_FOCUS_DESCRIPTION, Text = "Vous pouvez lier un nombre de spectres égal à votre niveau en occulte. Vous devez les lier individuellement."},
 
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_5_NAME", Text = "Vol d’Âme"},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_5_DESCRIPTION", Text = "Le pouvoir le plus terrifiant d’un nécromancien est sa capacité à arracher une âme d’un corps, le rendant inconscient ou en torpeur tandis que que l’esprit désincarné est sous votre contrôle. Même les créatures qui n’ont théoriquement pas d’âme sont affectées par votre pouvoir, menant à de nombreux débats philosophiques à propos de la nature du monde éphémère."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_5_SYSTEM", Text = "Dépensez un point de sang et une action standard pour faire un challenge opposé de Nécromancie avec votre cible. Si vous réussissez, elle doit aussitôt dépenser un point de Volonté pour résister aux effets de votre Vol d’Âme. Si votre cible ne veut (ou ne peut) pas dépenser ce point de volonté, vous avez réussi à arracher l’âme de son corps. Le corps originel tombe alors dans un état de torpeur et ne peut plus se défendre ou agir de lui-même. Tant que l’âme est en dehors de son corps, la personne affectée sait où se trouve son corps, même si elle n’a plus aucun moyen surnaturel de percevoir ce qui l’entoure si l’âme n’est pas physiquement au même endroit que son corps. <br />Une âme retirée du corps d’une créature se retrouve dans les Terres des Ombres. Elle peut voir et entendre ce qui se passe autour de son corps, mais ne peut communiquer ou interagir avec le monde physique, sauf avec les individus possédant l’atout Médium, de la Nécromancie ou tout autre pouvoir de communication avec les fantômes. L’Âme n’étant pas un vrai spectre, elle ne bénéficie d’aucun Pathos et ne peut se manifester dans le monde réel.<br /> Une âme arrachée à un corps par ce pouvoir ne peut être ciblée avec des pouvoirs ou des effets qui ne ciblent que les fantômes. Une personne qui subit ce pouvoir a neufs niveaux de santé tant qu’elle est prise au piège des Terres des Ombres. Si l’âme volée d’une personne perd tous ses niveaux de santé, elle est dispersée et ne peut plus agir tant qu’elle ne retourne pas à son corps. Si la cible était une créature surnaturelle, elle a toujours accès à ses pouvoirs surnaturels mais ne peut dépenser de sang ou attaquer des cibles qui ne sont pas dans les Terres des Ombres. Les personnes dans les Terres des Ombres peuvent attaquer ou être attaquées par une âme qui a subi ce pouvoir. Après une heure, l’âme arrachée retourne à son corps originel. Cette récupération se produit même si d’autres pouvoirs ou effets pourraient empêcher ce retour. <br />Tant que l’âme est absente du corps, celui-ci garde les pouvoirs physiques passifs activés, comme Force d’Âme mais se retrouve autrement sans défenses. <br />Si une personne utilisant Possession ou un pouvoir similaire est ciblée par Vol d’Âme, l’esprit qui contrôle le corps est celui qui est affecté et non l’esprit dormant. Si Vol d’Âme réussit, l’esprit dominant est retiré du corps et l’esprit dormant reprend le contrôle de son corps. Quand l’effet du vol d’âme s'estompe, l’esprit éjecté du corps revient à son corps originel et non à celui qu’il possédait."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_5_EXCEPTIONALSUCCESS", Text = "Une cible doit dépenser trois points de volonté pour résister à votre pouvoir au lieu d’un seul."},
-                new Traduction{LCID = 1036, Key = "SEPULCHER_POWER_5_FOCUS_DESCRIPTION", Text = "En plus de ses effets normaux, l’usage réussi du Vol d’Âme inflige un point de dégât normal à votre cible alors que son âme tord son corps physique à cause de la souffrance extrême. Ce point de dégât ne peut être réduit ou nié."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_5_NAME, Text = "Vol d’Âme"},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_5_DESCRIPTION, Text = "Le pouvoir le plus terrifiant d’un nécromancien est sa capacité à arracher une âme d’un corps, le rendant inconscient ou en torpeur tandis que que l’esprit désincarné est sous votre contrôle. Même les créatures qui n’ont théoriquement pas d’âme sont affectées par votre pouvoir, menant à de nombreux débats philosophiques à propos de la nature du monde éphémère."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_5_SYSTEM, Text = "Dépensez un point de sang et une action standard pour faire un challenge opposé de Nécromancie avec votre cible. Si vous réussissez, elle doit aussitôt dépenser un point de Volonté pour résister aux effets de votre Vol d’Âme. Si votre cible ne veut (ou ne peut) pas dépenser ce point de volonté, vous avez réussi à arracher l’âme de son corps. Le corps originel tombe alors dans un état de torpeur et ne peut plus se défendre ou agir de lui-même. Tant que l’âme est en dehors de son corps, la personne affectée sait où se trouve son corps, même si elle n’a plus aucun moyen surnaturel de percevoir ce qui l’entoure si l’âme n’est pas physiquement au même endroit que son corps. <br />Une âme retirée du corps d’une créature se retrouve dans les Terres des Ombres. Elle peut voir et entendre ce qui se passe autour de son corps, mais ne peut communiquer ou interagir avec le monde physique, sauf avec les individus possédant l’atout Médium, de la Nécromancie ou tout autre pouvoir de communication avec les fantômes. L’Âme n’étant pas un vrai spectre, elle ne bénéficie d’aucun Pathos et ne peut se manifester dans le monde réel.<br /> Une âme arrachée à un corps par ce pouvoir ne peut être ciblée avec des pouvoirs ou des effets qui ne ciblent que les fantômes. Une personne qui subit ce pouvoir a neufs niveaux de santé tant qu’elle est prise au piège des Terres des Ombres. Si l’âme volée d’une personne perd tous ses niveaux de santé, elle est dispersée et ne peut plus agir tant qu’elle ne retourne pas à son corps. Si la cible était une créature surnaturelle, elle a toujours accès à ses pouvoirs surnaturels mais ne peut dépenser de sang ou attaquer des cibles qui ne sont pas dans les Terres des Ombres. Les personnes dans les Terres des Ombres peuvent attaquer ou être attaquées par une âme qui a subi ce pouvoir. Après une heure, l’âme arrachée retourne à son corps originel. Cette récupération se produit même si d’autres pouvoirs ou effets pourraient empêcher ce retour. <br />Tant que l’âme est absente du corps, celui-ci garde les pouvoirs physiques passifs activés, comme Force d’Âme mais se retrouve autrement sans défenses. <br />Si une personne utilisant Possession ou un pouvoir similaire est ciblée par Vol d’Âme, l’esprit qui contrôle le corps est celui qui est affecté et non l’esprit dormant. Si Vol d’Âme réussit, l’esprit dominant est retiré du corps et l’esprit dormant reprend le contrôle de son corps. Quand l’effet du vol d’âme s'estompe, l’esprit éjecté du corps revient à son corps originel et non à celui qu’il possédait."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_5_EXCEPTIONALSUCCESS, Text = "Une cible doit dépenser trois points de volonté pour résister à votre pouvoir au lieu d’un seul."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_POWER_5_FOCUS_DESCRIPTION, Text = "En plus de ses effets normaux, l’usage réussi du Vol d’Âme inflige un point de dégât normal à votre cible alors que son âme tord son corps physique à cause de la souffrance extrême. Ce point de dégât ne peut être réduit ou nié."},
 
-                 new Traduction{LCID = 1036, Key = "SEPULCHER_TEST_SCORE", Text = "Il n'y a pas de Score général pour La Voie du Sépulcre."},
+                new Traduction{LCID = 1036, Key = EnumSepulcher.SEPULCHER_TEST_SCORE, Text = "Il n'y a pas de Score général pour La Voie du Sépulcre."},
 
             };
 
@@ -2420,11 +2440,11 @@
             {
                 var powers = new List<Power>
             {
-                new Power { Level = 1, PowerName = "BLOOD_POWER_1_NAME", Description = "BLOOD_POWER_1_DESCRIPTION", System = "BLOOD_POWER_1_SYSTEM", Focus = focus[6], FocusEffect = "BLOOD_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "BLOOD_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "BLOOD_NAME" },
-                new Power { Level = 2, PowerName = "BLOOD_POWER_2_NAME", Description = "BLOOD_POWER_2_DESCRIPTION", System = "BLOOD_POWER_2_SYSTEM", Focus = focus[6], FocusEffect = "BLOOD_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "BLOOD_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "BLOOD_NAME" },
-                new Power { Level = 3, PowerName = "BLOOD_POWER_3_NAME", Description = "BLOOD_POWER_3_DESCRIPTION", System = "BLOOD_POWER_3_SYSTEM", Focus = focus[7], FocusEffect = "BLOOD_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "BLOOD_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "BLOOD_NAME" },
-                new Power { Level = 4, PowerName = "BLOOD_POWER_4_NAME", Description = "BLOOD_POWER_4_DESCRIPTION", System = "BLOOD_POWER_4_SYSTEM", Focus = focus[7], FocusEffect = "BLOOD_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "BLOOD_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "BLOOD_NAME" },
-                new Power { Level = 5, PowerName = "BLOOD_POWER_5_NAME", Description = "BLOOD_POWER_5_DESCRIPTION", System = "BLOOD_POWER_5_SYSTEM", Focus = focus[7], FocusEffect = "BLOOD_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "BLOOD_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "BLOOD_NAME" }
+                new Power { Level = 1, PowerName = EnumBlood.BLOOD_POWER_1_NAME, Description = EnumBlood.BLOOD_POWER_1_DESCRIPTION, System = EnumBlood.BLOOD_POWER_1_SYSTEM, Focus = focus[6], FocusEffect = EnumBlood.BLOOD_POWER_1_FOCUS_DESCRIPTION, ExceptionalSuccess = EnumBlood.BLOOD_POWER_1_EXCEPTIONALSUCCESS, DisciplineName = EnumBlood.BLOOD_NAME },
+                new Power { Level = 2, PowerName = EnumBlood.BLOOD_POWER_2_NAME, Description = EnumBlood.BLOOD_POWER_2_DESCRIPTION, System = EnumBlood.BLOOD_POWER_2_SYSTEM, Focus = focus[6], FocusEffect = EnumBlood.BLOOD_POWER_2_FOCUS_DESCRIPTION, ExceptionalSuccess = EnumBlood.BLOOD_POWER_2_EXCEPTIONALSUCCESS, DisciplineName = EnumBlood.BLOOD_NAME },
+                new Power { Level = 3, PowerName = EnumBlood.BLOOD_POWER_3_NAME, Description = EnumBlood.BLOOD_POWER_3_DESCRIPTION, System = EnumBlood.BLOOD_POWER_3_SYSTEM, Focus = focus[7], FocusEffect = EnumBlood.BLOOD_POWER_3_FOCUS_DESCRIPTION, ExceptionalSuccess = EnumBlood.BLOOD_POWER_3_EXCEPTIONALSUCCESS, DisciplineName = EnumBlood.BLOOD_NAME },
+                new Power { Level = 4, PowerName = EnumBlood.BLOOD_POWER_4_NAME, Description = EnumBlood.BLOOD_POWER_4_DESCRIPTION, System = EnumBlood.BLOOD_POWER_4_SYSTEM, Focus = focus[7], FocusEffect = EnumBlood.BLOOD_POWER_4_FOCUS_DESCRIPTION, ExceptionalSuccess = EnumBlood.BLOOD_POWER_4_EXCEPTIONALSUCCESS, DisciplineName = EnumBlood.BLOOD_NAME },
+                new Power { Level = 5, PowerName = EnumBlood.BLOOD_POWER_5_NAME, Description = EnumBlood.BLOOD_POWER_5_DESCRIPTION, System = EnumBlood.BLOOD_POWER_5_SYSTEM, Focus = focus[7], FocusEffect = EnumBlood.BLOOD_POWER_5_FOCUS_DESCRIPTION, ExceptionalSuccess = EnumBlood.BLOOD_POWER_5_EXCEPTIONALSUCCESS, DisciplineName = EnumBlood.BLOOD_NAME }
             };
 
                 powers.ForEach(p =>
@@ -2435,39 +2455,39 @@
                 #region Traduction
                 var trad = new List<Traduction>
             {
-                new Traduction{LCID = 1036, Key = "BLOOD_NAME", Text = "La Voie du Sang"},
-                new Traduction{LCID = 1036, Key = "BLOOD_DESCRIPTION", Text = "Les initiés sur la Voie du Sang apprennent à quantifier et évaluer les éléments uniques présents dans une goutte de vitae vampirique. En goûtant une goutte de la vitae du sujet, vous pouvez déterminer des informations importantes concernant sa nature."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_NAME, Text = "La Voie du Sang"},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_DESCRIPTION, Text = "Les initiés sur la Voie du Sang apprennent à quantifier et évaluer les éléments uniques présents dans une goutte de vitae vampirique. En goûtant une goutte de la vitae du sujet, vous pouvez déterminer des informations importantes concernant sa nature."},
 
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_1_NAME", Text = "Goût du Sang"},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_1_DESCRIPTION", Text = "Les initiés sur la Voie du Sang apprennent à quantifier et évaluer les éléments uniques présents dans une goutte de vitae vampirique. En goûtant une goutte de la vitae du sujet, vous pouvez déterminer des informations importantes concernant sa nature."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_1_SYSTEM", Text = "En ingérant une goutte du sang de votre victime et en utilisant une action simple, vous pouvez discerner des informations concernant le sujet. Ce pouvoir peut être dangereux si le sang est contaminé par des maladies ou d’autres substances nocives. Néanmoins, le pouvoir protège le thaumaturge des effets du lien de sang avec sa cible lorsqu’il utilise ce pouvoir.<br />Le goût du sang donne accès à l’ensemble de ces informations :<br /> • Des informations médicales telles que le groupe sanguin et l’état de santé <br /> • Combien de sang il reste dans le métabolisme de la cible.<br /> • De quel type de créature vient le sang. Si la créature n’est pas un mortel, une goule ou un vampire, le conteur peut demander un test de Mystère pour identifier le type exact de créature.<br /> Si le sang est celui d’un vampire, le thaumaturge peut aussi déterminer :<br /> • la génération du sujet <br />• si celui-ci a commis la diablerie<br />• et depuis combien de temps le vampire s’est nourri."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_1_EXCEPTIONALSUCCESS", Text = null},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_1_FOCUS_DESCRIPTION", Text = "Vous pouvez évaluer le nombre et la force des liens de sang, même partiels, que possède le sujet, incluant ceux dus à la Vaulderie. Vous ne savez pas à qui la cible est liée, ni si les liens sont mutuels, vous connaissez juste le nombre, et l’importance des liens de sang présents."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_1_NAME, Text = "Goût du Sang"},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_1_DESCRIPTION, Text = "Les initiés sur la Voie du Sang apprennent à quantifier et évaluer les éléments uniques présents dans une goutte de vitae vampirique. En goûtant une goutte de la vitae du sujet, vous pouvez déterminer des informations importantes concernant sa nature."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_1_SYSTEM, Text = "En ingérant une goutte du sang de votre victime et en utilisant une action simple, vous pouvez discerner des informations concernant le sujet. Ce pouvoir peut être dangereux si le sang est contaminé par des maladies ou d’autres substances nocives. Néanmoins, le pouvoir protège le thaumaturge des effets du lien de sang avec sa cible lorsqu’il utilise ce pouvoir.<br />Le goût du sang donne accès à l’ensemble de ces informations :<br /> • Des informations médicales telles que le groupe sanguin et l’état de santé <br /> • Combien de sang il reste dans le métabolisme de la cible.<br /> • De quel type de créature vient le sang. Si la créature n’est pas un mortel, une goule ou un vampire, le conteur peut demander un test de Mystère pour identifier le type exact de créature.<br /> Si le sang est celui d’un vampire, le thaumaturge peut aussi déterminer :<br /> • la génération du sujet <br />• si celui-ci a commis la diablerie<br />• et depuis combien de temps le vampire s’est nourri."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_1_EXCEPTIONALSUCCESS, Text = null},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_1_FOCUS_DESCRIPTION, Text = "Vous pouvez évaluer le nombre et la force des liens de sang, même partiels, que possède le sujet, incluant ceux dus à la Vaulderie. Vous ne savez pas à qui la cible est liée, ni si les liens sont mutuels, vous connaissez juste le nombre, et l’importance des liens de sang présents."},
 
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_2_NAME", Text = "Rage Sanguinaire"},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_2_DESCRIPTION", Text = "Vous pouvez pousser le sujet à utiliser sa vitae comme bon vous semble. Un vampire subissant ce pouvoir ressent comme une poussée d’adrénaline et a conscience automatiquement que l’on a utilisé une discipline sur lui."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_2_SYSTEM", Text = "Dépensez 1 point de Sang et faites un challenge en opposition en utilisant votre Mental + Occulte contre le Mental + Volonté de la cible. La cible doit se trouver à 1 pas de vous. Si vous réussissez, la cible doit dépenser 1 point de sang comme vous le souhaitez : (effet a choisir dans la liste)<br />• Augmenter son attribut physique<br /> • Activer une discipline comme célérité <br /> • Soigner une blessure <br /> • S’éveiller de torpeur<br /> • Suer du sang de ses pores.<br /> La dépense peut excéder la limite de génération. Le pouvoir permet de dépenser le sang mais ne permet pas de forcer le sujet à dépenser une action à moins qu’il ne le veuille sciemment. Par exemple, vous pouvez forcer votre cible à dépenser du sang pour passer en \"forme ténébreuse\" mais la victime ne se transformera pas, à moins de le vouloir."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_2_EXCEPTIONALSUCCESS", Text = null},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_2_FOCUS_DESCRIPTION", Text = "Vous pouvez utiliser ce pouvoir à 10 pas de votre cible au lieu d’être à 1 pas."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_2_NAME, Text = "Rage Sanguinaire"},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_2_DESCRIPTION, Text = "Vous pouvez pousser le sujet à utiliser sa vitae comme bon vous semble. Un vampire subissant ce pouvoir ressent comme une poussée d’adrénaline et a conscience automatiquement que l’on a utilisé une discipline sur lui."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_2_SYSTEM, Text = "Dépensez 1 point de Sang et faites un challenge en opposition en utilisant votre Mental + Occulte contre le Mental + Volonté de la cible. La cible doit se trouver à 1 pas de vous. Si vous réussissez, la cible doit dépenser 1 point de sang comme vous le souhaitez : (effet a choisir dans la liste)<br />• Augmenter son attribut physique<br /> • Activer une discipline comme célérité <br /> • Soigner une blessure <br /> • S’éveiller de torpeur<br /> • Suer du sang de ses pores.<br /> La dépense peut excéder la limite de génération. Le pouvoir permet de dépenser le sang mais ne permet pas de forcer le sujet à dépenser une action à moins qu’il ne le veuille sciemment. Par exemple, vous pouvez forcer votre cible à dépenser du sang pour passer en \"forme ténébreuse\" mais la victime ne se transformera pas, à moins de le vouloir."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_2_EXCEPTIONALSUCCESS, Text = null},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_2_FOCUS_DESCRIPTION, Text = "Vous pouvez utiliser ce pouvoir à 10 pas de votre cible au lieu d’être à 1 pas."},
 
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_3_NAME", Text = "Puissance du Sang"},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_3_DESCRIPTION", Text = "Vous maîtrisez votre Vitae à un point tel que vous pouvez la rendre plus épaisse de façon temporaire, faisant que votre forme vampirique manifeste une génération plus puissante."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_3_SYSTEM", Text = "Utilisez une action simple pour activer ce pouvoir. L’effet dure 1 heure. Alors que Sang Puissant est actif, votre réserve maximale de sang augmente de la moitié de sa capacité normale (arrondi au supérieur). De plus, vous pouvez utiliser 2 points de sang par tour lorsque ce pouvoir est actif. Vous êtes considéré comme ayant 3 générations au-dessus de la vôtre pendant toute la durée du pouvoir afin de réveiller quelqu’un de torpeur. Vous ne pouvez utiliser ce pouvoir qu’une seule fois par nuit. Lorsque le pouvoir prend fin, le sang excédentaire dans votre métabolisme se dilue et vous retrouvez votre réserve normale de sang.<br /> Si vous êtes diablé lorsque vous avez activé ce pouvoir, on prend en compte votre génération normale et non la génération virtuelle et temporaire."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_3_EXCEPTIONALSUCCESS", Text = null},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_3_FOCUS_DESCRIPTION", Text = "Vous pouvez utiliser ce pouvoir 2 fois par nuit au lieu d’une seule fois."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_3_NAME, Text = "Puissance du Sang"},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_3_DESCRIPTION, Text = "Vous maîtrisez votre Vitae à un point tel que vous pouvez la rendre plus épaisse de façon temporaire, faisant que votre forme vampirique manifeste une génération plus puissante."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_3_SYSTEM, Text = "Utilisez une action simple pour activer ce pouvoir. L’effet dure 1 heure. Alors que Sang Puissant est actif, votre réserve maximale de sang augmente de la moitié de sa capacité normale (arrondi au supérieur). De plus, vous pouvez utiliser 2 points de sang par tour lorsque ce pouvoir est actif. Vous êtes considéré comme ayant 3 générations au-dessus de la vôtre pendant toute la durée du pouvoir afin de réveiller quelqu’un de torpeur. Vous ne pouvez utiliser ce pouvoir qu’une seule fois par nuit. Lorsque le pouvoir prend fin, le sang excédentaire dans votre métabolisme se dilue et vous retrouvez votre réserve normale de sang.<br /> Si vous êtes diablé lorsque vous avez activé ce pouvoir, on prend en compte votre génération normale et non la génération virtuelle et temporaire."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_3_EXCEPTIONALSUCCESS, Text = null},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_3_FOCUS_DESCRIPTION, Text = "Vous pouvez utiliser ce pouvoir 2 fois par nuit au lieu d’une seule fois."},
 
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_4_NAME", Text = "Vol de VL'un des principes de base de la magie sympathique est le concept que les choses identiques s'attirent. En transformant de façon mystique le sang de votre corps en un aimant Thaumaturgique, vous pouvez littéralement siphonner le sang de votre cible, le faisant dégouliner de ses pores jusque dans votre main avant d’être absorbé dans votre corps."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_4_SYSTEM", Text = "Dépensez 1 point de Sang et utilisez une action standard pour effectuer un challenge en opposition utilisant votre attribut Mental + Occulte contre le Mental + Volonté de votre cible qui devra se situer à 25 pas de vous. Si vous réussissez, vous pouvez drainer mystiquement jusqu’à 3 points de sang de votre victime. Ce sang s’extirpe au travers des pores de la victime, plane dans les airs jusqu'à votre main avant d’être absorbé magiquement par votre corps. Le sang substitué de cette façon conserve ses propriétés normales - ingérer du sang de vampire crée un lien de sang, du sang empoisonné vous rend malade, un sang malade transmet ses infections, etc. Inutile de préciser que ce pouvoir aux propriétés incroyables est considéré comme un bris de la Mascarade lorsqu’il est utilisé publiquement.<br />Vous pouvez utiliser ce pouvoir de façon répétée sur votre cible même si vous ratez l’un de vos challenges. Il s'agit d’une exception à la règle sur l’utilisation répétée de challenge mentaux sur la même cible."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_4_EXCEPTIONALSUCCESS", Text = "Vous volez 4 points de sang de votre victime au lieu de 3."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_4_FOCUS_DESCRIPTION", Text = "Lorsque vous utilisez Vol de Vitae sur un vampire, votre pouvoir neutralise les propriétés du sang vampirique jusqu'à un certain degré. Le sang récupéré de cette façon ne peut créer un lien de sang avec vous, ne peut vous rendre malade ou vous infecter. Les disciplines affectant le sang d’un vampire tel que le Sang Acide de Vicissitude continuent à produire leurs effets."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_4_NAME, Text = "Vol de VL'un des principes de base de la magie sympathique est le concept que les choses identiques s'attirent. En transformant de façon mystique le sang de votre corps en un aimant Thaumaturgique, vous pouvez littéralement siphonner le sang de votre cible, le faisant dégouliner de ses pores jusque dans votre main avant d’être absorbé dans votre corps."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_4_SYSTEM, Text = "Dépensez 1 point de Sang et utilisez une action standard pour effectuer un challenge en opposition utilisant votre attribut Mental + Occulte contre le Mental + Volonté de votre cible qui devra se situer à 25 pas de vous. Si vous réussissez, vous pouvez drainer mystiquement jusqu’à 3 points de sang de votre victime. Ce sang s’extirpe au travers des pores de la victime, plane dans les airs jusqu'à votre main avant d’être absorbé magiquement par votre corps. Le sang substitué de cette façon conserve ses propriétés normales - ingérer du sang de vampire crée un lien de sang, du sang empoisonné vous rend malade, un sang malade transmet ses infections, etc. Inutile de préciser que ce pouvoir aux propriétés incroyables est considéré comme un bris de la Mascarade lorsqu’il est utilisé publiquement.<br />Vous pouvez utiliser ce pouvoir de façon répétée sur votre cible même si vous ratez l’un de vos challenges. Il s'agit d’une exception à la règle sur l’utilisation répétée de challenge mentaux sur la même cible."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_4_EXCEPTIONALSUCCESS, Text = "Vous volez 4 points de sang de votre victime au lieu de 3."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_4_FOCUS_DESCRIPTION, Text = "Lorsque vous utilisez Vol de Vitae sur un vampire, votre pouvoir neutralise les propriétés du sang vampirique jusqu'à un certain degré. Le sang récupéré de cette façon ne peut créer un lien de sang avec vous, ne peut vous rendre malade ou vous infecter. Les disciplines affectant le sang d’un vampire tel que le Sang Acide de Vicissitude continuent à produire leurs effets."},
 
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_5_NAME", Text = "Chaudron de Sang"},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_5_DESCRIPTION", Text = "En touchant votre opposant, vous pouvez faire bouillir le sang dans ses veines, lui infligeant une incroyable souffrance. Une vapeur écarlate s'élève tout autour du corps de votre victime tandis que son sang bouillonne en sortant de ses pores et de chacun de ses orifices. Peu de vampires peuvent supporter cette fournaise intérieure et les mortels sont inévitablement tués par une telle attaque."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_5_SYSTEM", Text = "Utilisez une action standard pour Agripper votre cible. si vous réussissez, dépensez 1 point de Sang pour infliger le “chaudron de sang” à votre victime, en plus de lui infliger les effets standard d’un agrippement. Le chaudron de sang bout 2 points de sang de votre cible, lui infligeant ainsi 2 dégâts aggravés. Les dégâts causés par ce pouvoir ne peuvent être réduits ou annulés.<br /> La première fois que vous utilisez Chaudron de Sang sur votre cible, vous devez réussir une Manœuvre de Combat “Agripper” contre votre cible. Si vous avez déjà agrippé votre cible, vous pouvez activer ce pouvoir en dépensant 1 Point de Sang et en utilisant votre action standard.<br />Ce pouvoir ne convertit pas le dommage normal causé par l’agrippement en dégât aggravé et ce dommage peut, quant à lui, être réduit ou annulé normalement. La technique d’agrippement ne réduit pas les dommages causés par le Chaudron de Sang.<br />Les mortels qui subissent ce pouvoir meurent instantanément."},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_5_EXCEPTIONALSUCCESS", Text = null},
-                new Traduction{LCID = 1036, Key = "BLOOD_POWER_5_FOCUS_DESCRIPTION", Text = "Vous pouvez dépenser 1 point de sang supplémentaire et faire bouillir jusqu’à 3 points de sang, causant ainsi 3 dommages aggravés par utilisation de ce pouvoir."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_5_NAME, Text = "Chaudron de Sang"},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_5_DESCRIPTION, Text = "En touchant votre opposant, vous pouvez faire bouillir le sang dans ses veines, lui infligeant une incroyable souffrance. Une vapeur écarlate s'élève tout autour du corps de votre victime tandis que son sang bouillonne en sortant de ses pores et de chacun de ses orifices. Peu de vampires peuvent supporter cette fournaise intérieure et les mortels sont inévitablement tués par une telle attaque."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_5_SYSTEM, Text = "Utilisez une action standard pour Agripper votre cible. si vous réussissez, dépensez 1 point de Sang pour infliger le “chaudron de sang” à votre victime, en plus de lui infliger les effets standard d’un agrippement. Le chaudron de sang bout 2 points de sang de votre cible, lui infligeant ainsi 2 dégâts aggravés. Les dégâts causés par ce pouvoir ne peuvent être réduits ou annulés.<br /> La première fois que vous utilisez Chaudron de Sang sur votre cible, vous devez réussir une Manœuvre de Combat “Agripper” contre votre cible. Si vous avez déjà agrippé votre cible, vous pouvez activer ce pouvoir en dépensant 1 Point de Sang et en utilisant votre action standard.<br />Ce pouvoir ne convertit pas le dommage normal causé par l’agrippement en dégât aggravé et ce dommage peut, quant à lui, être réduit ou annulé normalement. La technique d’agrippement ne réduit pas les dommages causés par le Chaudron de Sang.<br />Les mortels qui subissent ce pouvoir meurent instantanément."},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_5_EXCEPTIONALSUCCESS, Text = null},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_POWER_5_FOCUS_DESCRIPTION, Text = "Vous pouvez dépenser 1 point de sang supplémentaire et faire bouillir jusqu’à 3 points de sang, causant ainsi 3 dommages aggravés par utilisation de ce pouvoir."},
 
-                new Traduction{LCID = 1036, Key = "BLOOD_TEST_SCORE", Text = "Il n'y a pas de Score standard pour La Voie du Sang"},
+                new Traduction{LCID = 1036, Key = EnumBlood.BLOOD_TEST_SCORE, Text = "Il n'y a pas de Score standard pour La Voie du Sang"},
 
             };
 
@@ -3045,94 +3065,13 @@
             }
         }
 
-        //private static class PresenceInitializer
-        //{
-        //    public static void Initializer(DBNContext context, List<Focus> focus)
-        //    {
-        //        var powers = new List<Power>
-        //    {
-        //        new Power { Level = 1, PowerName = "PRESENCE_POWER_1_NAME", Description = "PRESENCE_POWER_1_DESCRIPTION", System = "PRESENCE_POWER_1_SYSTEM", Focus = focus[3], FocusEffect = "PRESENCE_POWER_1_FOCUS_DESCRIPTION", ExceptionalSuccess = "PRESENCE_POWER_1_EXCEPTIONALSUCCESS", DisciplineName = "PRESENCE_NAME" },
-        //        new Power { Level = 2, PowerName = "PRESENCE_POWER_2_NAME", Description = "PRESENCE_POWER_2_DESCRIPTION", System = "PRESENCE_POWER_2_SYSTEM", Focus = focus[3], FocusEffect = "PRESENCE_POWER_2_FOCUS_DESCRIPTION", ExceptionalSuccess = "PRESENCE_POWER_2_EXCEPTIONALSUCCESS", DisciplineName = "PRESENCE_NAME" },
-        //        new Power { Level = 3, PowerName = "PRESENCE_POWER_3_NAME", Description = "PRESENCE_POWER_3_DESCRIPTION", System = "PRESENCE_POWER_3_SYSTEM", Focus = focus[4], FocusEffect = "PRESENCE_POWER_3_FOCUS_DESCRIPTION", ExceptionalSuccess = "PRESENCE_POWER_3_EXCEPTIONALSUCCESS", DisciplineName = "PRESENCE_NAME" },
-        //        new Power { Level = 4, PowerName = "PRESENCE_POWER_4_NAME", Description = "PRESENCE_POWER_4_DESCRIPTION", System = "PRESENCE_POWER_4_SYSTEM", Focus = focus[4], FocusEffect = "PRESENCE_POWER_4_FOCUS_DESCRIPTION", ExceptionalSuccess = "PRESENCE_POWER_4_EXCEPTIONALSUCCESS", DisciplineName = "PRESENCE_NAME" },
-        //        new Power { Level = 5, PowerName = "PRESENCE_POWER_5_NAME", Description = "PRESENCE_POWER_5_DESCRIPTION", System = "PRESENCE_POWER_5_SYSTEM", Focus = focus[4], FocusEffect = "PRESENCE_POWER_5_FOCUS_DESCRIPTION", ExceptionalSuccess = "PRESENCE_POWER_5_EXCEPTIONALSUCCESS", DisciplineName = "PRESENCE_NAME" }
-        //    };
-
-        //        powers.ForEach(p =>
-        //        {
-        //            context.Powers.AddOrUpdate(p);
-        //        });
-
-        //        #region Traduction
-        //        var trad = new List<Traduction>
-        //    {
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_NAME", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_DESCRIPTION", Text = ""},
-
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_1_NAME", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_1_DESCRIPTION", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_1_SYSTEM", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_1_EXCEPTIONALSUCCESS", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_1_FOCUS_DESCRIPTION", Text = ""},
-
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_2_NAME", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_2_DESCRIPTION", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_2_SYSTEM", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_2_EXCEPTIONALSUCCESS", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_2_FOCUS_DESCRIPTION", Text = ""},
-
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_3_NAME", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_3_DESCRIPTION", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_3_SYSTEM", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_3_EXCEPTIONALSUCCESS", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_3_FOCUS_DESCRIPTION", Text = ""},
-
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_4_NAME", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_4_DESCRIPTION", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_4_SYSTEM", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_4_EXCEPTIONALSUCCESS", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_4_FOCUS_DESCRIPTION", Text = ""},
-
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_5_NAME", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_5_DESCRIPTION", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_5_SYSTEM", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_5_EXCEPTIONALSUCCESS", Text = ""},
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_POWER_5_FOCUS_DESCRIPTION", Text = ""},
-
-        //        new Traduction{LCID = 1036, Key = "PRESENCE_TEST_SCORE", Text = ""},
-
-        //    };
-
-        //        trad.ForEach(t =>
-        //        {
-        //            context.Traductions.AddOrUpdate(t);
-        //        });
-        //        #endregion
-        //        context.SaveChanges();
-
-        //        var discipline = new Discipline
-        //        {
-        //            DisciplineKey = "PRESENCE_KEY",
-        //            DisciplineName = "PRESENCE_NAME",
-        //            Description = "PRESENCE_DESCRIPTION",
-        //            TestScore = "PRESENCE_TEST_SCORE",
-        //            Powers = powers
-        //        };
-
-        //        context.Disciplines.AddOrUpdate(discipline);
-        //        context.SaveChanges();
-        //    }
-        //}
-
-
-
         #endregion
 
-        #region Atouts
         private static class AtoutInitializer
         {
             public static void Initializer(DbnContext context)
             {
+                #region Atouts généraux
                 var atouts = new List<Atout>
                 {
                     new Atout{Key = EnumAtoutFlaw.ATOUT_AMBIDEXTROUS_KEY, Name = EnumAtoutFlaw.ATOUT_AMBIDEXTROUS_NAME, Description = EnumAtoutFlaw.ATOUT_AMBIDEXTROUS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.General, Cost = 2},
@@ -3269,6 +3208,7 @@
                     new Traduction{LCID = 1036, Key = EnumAtoutFlaw.ATOUT_IRON_WILL_DESCRIPTION, Text = "En atteignant un niveau de contrôle mental digne des maîtres des arts martiaux ou des érudits intensément dévoués, vous maîtrisez une structure mentale rigide. Vous pouvez utiliser cette détermination pour concentrer votre esprit, résistant à la torture, l’intimidation et les pouvoirs qui tentent directement de vous contrôler. Vous gagnez un re-test gratuit pour résister aux effets d’Auspex, Animalisme et Domination. La volonté de Fer ne peut pas être utilisée pour faire des re-tests pour percer Occultation ou Chimérie, mais octroie un re-test quand vous tentez de résister à des pouvoirs comme la télépathie ou Assaut Psychique. Ce re-test peut être utilisé avant ou après le re-test de Volonté et est une exception à la règle qui limite le nombre de re-tests à un par Challenge."},
 
                 };
+                #endregion
 
                 #region Clan Rarity
                 atouts.AddRange(new List<Atout>
@@ -3294,10 +3234,10 @@
                 #region Assamite Atouts
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_ASSAMITE_SURPRISE_KEY, Name = EnumAtoutFlaw.ATOUT_ASSAMITE_SURPRISE_NAME, Description = EnumAtoutFlaw.ATOUT_ASSAMITE_SURPRISE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_ASSAMITE_VIZIR_KEY, Name = EnumAtoutFlaw.ATOUT_ASSAMITE_VIZIR_NAME, Description = EnumAtoutFlaw.ATOUT_ASSAMITE_VIZIR_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_ASSAMITE_STEAL_KEY, Name = EnumAtoutFlaw.ATOUT_ASSAMITE_STEAL_NAME, Description = EnumAtoutFlaw.ATOUT_ASSAMITE_STEAL_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_ASSAMITE_WARLOCK_KEY, Name = EnumAtoutFlaw.ATOUT_ASSAMITE_WARLOCK_NAME, Description = EnumAtoutFlaw.ATOUT_ASSAMITE_WARLOCK_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_ASSAMITE_SURPRISE_KEY, Name = EnumAtoutFlaw.ATOUT_ASSAMITE_SURPRISE_NAME, Description = EnumAtoutFlaw.ATOUT_ASSAMITE_SURPRISE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumAssamite.CLAN_ASSAMITE},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_ASSAMITE_VIZIR_KEY, Name = EnumAtoutFlaw.ATOUT_ASSAMITE_VIZIR_NAME, Description = EnumAtoutFlaw.ATOUT_ASSAMITE_VIZIR_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumAssamite.CLAN_ASSAMITE},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_ASSAMITE_STEAL_KEY, Name = EnumAtoutFlaw.ATOUT_ASSAMITE_STEAL_NAME, Description = EnumAtoutFlaw.ATOUT_ASSAMITE_STEAL_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumAssamite.CLAN_ASSAMITE},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_ASSAMITE_WARLOCK_KEY, Name = EnumAtoutFlaw.ATOUT_ASSAMITE_WARLOCK_NAME, Description = EnumAtoutFlaw.ATOUT_ASSAMITE_WARLOCK_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumAssamite.CLAN_ASSAMITE},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3319,10 +3259,10 @@
                 #region Brujah Atouts
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_BRUJAH_BROTHERHOOD_KEY, Name = EnumAtoutFlaw.ATOUT_BRUJAH_BROTHERHOOD_NAME, Description = EnumAtoutFlaw.ATOUT_BRUJAH_BROTHERHOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_BRUJAH_ANGER_KEY, Name = EnumAtoutFlaw.ATOUT_BRUJAH_ANGER_NAME, Description = EnumAtoutFlaw.ATOUT_BRUJAH_ANGER_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_BRUJAH_ALECTO_KEY, Name = EnumAtoutFlaw.ATOUT_BRUJAH_ALECTO_NAME, Description = EnumAtoutFlaw.ATOUT_BRUJAH_ALECTO_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_BRUJAH_TRUE_KEY, Name = EnumAtoutFlaw.ATOUT_BRUJAH_TRUE_NAME, Description = EnumAtoutFlaw.ATOUT_BRUJAH_TRUE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_BRUJAH_BROTHERHOOD_KEY, Name = EnumAtoutFlaw.ATOUT_BRUJAH_BROTHERHOOD_NAME, Description = EnumAtoutFlaw.ATOUT_BRUJAH_BROTHERHOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumBrujah.CLAN_BRUJAH},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_BRUJAH_ANGER_KEY, Name = EnumAtoutFlaw.ATOUT_BRUJAH_ANGER_NAME, Description = EnumAtoutFlaw.ATOUT_BRUJAH_ANGER_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumBrujah.CLAN_BRUJAH},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_BRUJAH_ALECTO_KEY, Name = EnumAtoutFlaw.ATOUT_BRUJAH_ALECTO_NAME, Description = EnumAtoutFlaw.ATOUT_BRUJAH_ALECTO_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumBrujah.CLAN_BRUJAH},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_BRUJAH_TRUE_KEY, Name = EnumAtoutFlaw.ATOUT_BRUJAH_TRUE_NAME, Description = EnumAtoutFlaw.ATOUT_BRUJAH_TRUE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumBrujah.CLAN_BRUJAH},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3344,11 +3284,11 @@
                 #region Set Atouts
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_SET_PERSONNAL_KULT_KEY, Name = EnumAtoutFlaw.ATOUT_SET_PERSONNAL_KULT_NAME, Description = EnumAtoutFlaw.ATOUT_SET_PERSONNAL_KULT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_SET_VIPERS_KEY, Name = EnumAtoutFlaw.ATOUT_SET_VIPERS_NAME, Description = EnumAtoutFlaw.ATOUT_SET_VIPERS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_SET_TLACIQUE_KEY, Name = EnumAtoutFlaw.ATOUT_SET_TLACIQUE_NAME, Description = EnumAtoutFlaw.ATOUT_SET_TLACIQUE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_SET_BLOOD_KEY, Name = EnumAtoutFlaw.ATOUT_SET_BLOOD_NAME, Description = EnumAtoutFlaw.ATOUT_SET_BLOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_SET_WITCHCRAFT_KEY, Name = EnumAtoutFlaw.ATOUT_SET_WITCHCRAFT_NAME, Description = EnumAtoutFlaw.ATOUT_SET_WITCHCRAFT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_SET_PERSONNAL_KULT_KEY, Name = EnumAtoutFlaw.ATOUT_SET_PERSONNAL_KULT_NAME, Description = EnumAtoutFlaw.ATOUT_SET_PERSONNAL_KULT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumSet.CLAN_SET},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_SET_VIPERS_KEY, Name = EnumAtoutFlaw.ATOUT_SET_VIPERS_NAME, Description = EnumAtoutFlaw.ATOUT_SET_VIPERS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumSet.CLAN_SET},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_SET_TLACIQUE_KEY, Name = EnumAtoutFlaw.ATOUT_SET_TLACIQUE_NAME, Description = EnumAtoutFlaw.ATOUT_SET_TLACIQUE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumSet.CLAN_SET},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_SET_BLOOD_KEY, Name = EnumAtoutFlaw.ATOUT_SET_BLOOD_NAME, Description = EnumAtoutFlaw.ATOUT_SET_BLOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumSet.CLAN_SET},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_SET_WITCHCRAFT_KEY, Name = EnumAtoutFlaw.ATOUT_SET_WITCHCRAFT_NAME, Description = EnumAtoutFlaw.ATOUT_SET_WITCHCRAFT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumSet.CLAN_SET},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3373,11 +3313,11 @@
                 #region Gangrel Atout
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_GANGREL_BLOOD_KEY, Name = EnumAtoutFlaw.ATOUT_GANGREL_BLOOD_NAME, Description = EnumAtoutFlaw.ATOUT_GANGREL_BLOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_GANGREL_COYOTE_KEY, Name = EnumAtoutFlaw.ATOUT_GANGREL_COYOTE_NAME, Description = EnumAtoutFlaw.ATOUT_GANGREL_COYOTE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_GANGREL_NOIAD_KEY, Name = EnumAtoutFlaw.ATOUT_GANGREL_NOIAD_NAME, Description = EnumAtoutFlaw.ATOUT_GANGREL_NOIAD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_GANGREL_BEAST_ANGER_KEY, Name = EnumAtoutFlaw.ATOUT_GANGREL_BEAST_ANGER_NAME, Description = EnumAtoutFlaw.ATOUT_GANGREL_BEAST_ANGER_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_GANGREL_AHRIMANES_KEY, Name = EnumAtoutFlaw.ATOUT_GANGREL_AHRIMANES_NAME, Description = EnumAtoutFlaw.ATOUT_GANGREL_AHRIMANES_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GANGREL_BLOOD_KEY, Name = EnumAtoutFlaw.ATOUT_GANGREL_BLOOD_NAME, Description = EnumAtoutFlaw.ATOUT_GANGREL_BLOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumGangrel.CLAN_GANGREL},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GANGREL_COYOTE_KEY, Name = EnumAtoutFlaw.ATOUT_GANGREL_COYOTE_NAME, Description = EnumAtoutFlaw.ATOUT_GANGREL_COYOTE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumGangrel.CLAN_GANGREL},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GANGREL_NOIAD_KEY, Name = EnumAtoutFlaw.ATOUT_GANGREL_NOIAD_NAME, Description = EnumAtoutFlaw.ATOUT_GANGREL_NOIAD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumGangrel.CLAN_GANGREL},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GANGREL_BEAST_ANGER_KEY, Name = EnumAtoutFlaw.ATOUT_GANGREL_BEAST_ANGER_NAME, Description = EnumAtoutFlaw.ATOUT_GANGREL_BEAST_ANGER_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumGangrel.CLAN_GANGREL},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GANGREL_AHRIMANES_KEY, Name = EnumAtoutFlaw.ATOUT_GANGREL_AHRIMANES_NAME, Description = EnumAtoutFlaw.ATOUT_GANGREL_AHRIMANES_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumGangrel.CLAN_GANGREL},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3403,10 +3343,10 @@
                 #region Giovanni Atout
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_GIOVANNI_NECROMANCY_KEY, Name = EnumAtoutFlaw.ATOUT_GIOVANNI_NECROMANCY_NAME, Description = EnumAtoutFlaw.ATOUT_GIOVANNI_NECROMANCY_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_GIOVANNI_BIG_ARMS_KEY, Name = EnumAtoutFlaw.ATOUT_GIOVANNI_BIG_ARMS_NAME, Description = EnumAtoutFlaw.ATOUT_GIOVANNI_BIG_ARMS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_GIOVANNI_GHOST_KEY, Name = EnumAtoutFlaw.ATOUT_GIOVANNI_GHOST_NAME, Description = EnumAtoutFlaw.ATOUT_GIOVANNI_GHOST_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_GIOVANNI_PREMASCINE_KEY, Name = EnumAtoutFlaw.ATOUT_GIOVANNI_PREMASCINE_NAME, Description = EnumAtoutFlaw.ATOUT_GIOVANNI_PREMASCINE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GIOVANNI_NECROMANCY_KEY, Name = EnumAtoutFlaw.ATOUT_GIOVANNI_NECROMANCY_NAME, Description = EnumAtoutFlaw.ATOUT_GIOVANNI_NECROMANCY_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumGiovanni.CLAN_GIOVANNI},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GIOVANNI_BIG_ARMS_KEY, Name = EnumAtoutFlaw.ATOUT_GIOVANNI_BIG_ARMS_NAME, Description = EnumAtoutFlaw.ATOUT_GIOVANNI_BIG_ARMS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumGiovanni.CLAN_GIOVANNI},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GIOVANNI_GHOST_KEY, Name = EnumAtoutFlaw.ATOUT_GIOVANNI_GHOST_NAME, Description = EnumAtoutFlaw.ATOUT_GIOVANNI_GHOST_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumGiovanni.CLAN_GIOVANNI},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GIOVANNI_PREMASCINE_KEY, Name = EnumAtoutFlaw.ATOUT_GIOVANNI_PREMASCINE_NAME, Description = EnumAtoutFlaw.ATOUT_GIOVANNI_PREMASCINE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumGiovanni.CLAN_GIOVANNI},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3428,10 +3368,10 @@
                 #region Lasombra Atout
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_LASOMBRA_ANGEL_FACE_KEY, Name = EnumAtoutFlaw.ATOUT_LASOMBRA_ANGEL_FACE_NAME, Description = EnumAtoutFlaw.ATOUT_LASOMBRA_ANGEL_FACE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_LASOMBRA_BORN_IN_SHADOWS_KEY, Name = EnumAtoutFlaw.ATOUT_LASOMBRA_BORN_IN_SHADOWS_NAME, Description = EnumAtoutFlaw.ATOUT_LASOMBRA_BORN_IN_SHADOWS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_LASOMBRA_ABYSS_KEY, Name = EnumAtoutFlaw.ATOUT_LASOMBRA_ABYSS_NAME, Description = EnumAtoutFlaw.ATOUT_LASOMBRA_ABYSS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_LASOMBRA_KIASYDE_KEY, Name = EnumAtoutFlaw.ATOUT_LASOMBRA_KIASYDE_NAME, Description = EnumAtoutFlaw.ATOUT_LASOMBRA_KIASYDE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_LASOMBRA_ANGEL_FACE_KEY, Name = EnumAtoutFlaw.ATOUT_LASOMBRA_ANGEL_FACE_NAME, Description = EnumAtoutFlaw.ATOUT_LASOMBRA_ANGEL_FACE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumLasombra.CLAN_LASOMBRA },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_LASOMBRA_BORN_IN_SHADOWS_KEY, Name = EnumAtoutFlaw.ATOUT_LASOMBRA_BORN_IN_SHADOWS_NAME, Description = EnumAtoutFlaw.ATOUT_LASOMBRA_BORN_IN_SHADOWS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumLasombra.CLAN_LASOMBRA },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_LASOMBRA_ABYSS_KEY, Name = EnumAtoutFlaw.ATOUT_LASOMBRA_ABYSS_NAME, Description = EnumAtoutFlaw.ATOUT_LASOMBRA_ABYSS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumLasombra.CLAN_LASOMBRA },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_LASOMBRA_KIASYDE_KEY, Name = EnumAtoutFlaw.ATOUT_LASOMBRA_KIASYDE_NAME, Description = EnumAtoutFlaw.ATOUT_LASOMBRA_KIASYDE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumLasombra.CLAN_LASOMBRA},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3453,11 +3393,11 @@
                 #region Malkavian Atout
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_EXTENDED_AWARENESS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumMalkavian.CLAN_MALKAVIAN },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_ANANKE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumMalkavian.CLAN_MALKAVIAN },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_MOON_KNIGHT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumMalkavian.CLAN_MALKAVIAN },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_MAZE_MIND_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumMalkavian.CLAN_MALKAVIAN},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_KEY, Name = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_NAME, Description = EnumAtoutFlaw.ATOUT_MALKAVIEN_SOPHISTICATED_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumMalkavian.CLAN_MALKAVIAN},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3482,10 +3422,10 @@
                 #region Nosferatu Atout
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_BLIND_EYE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumNosferatu.CLAN_NOSFERATU },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_HIDDEN_ATOUT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumNosferatu.CLAN_NOSFERATU },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_MALLEABLE_BLOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumNosferatu.CLAN_NOSFERATU },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_KEY, Name = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_NAME, Description = EnumAtoutFlaw.ATOUT_NOSFERATU_UNATURAL_ADAPTATION_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumNosferatu.CLAN_NOSFERATU},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3507,11 +3447,11 @@
                 #region Toréador Atout
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3},
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_ARTIST_BLESS_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumToreador.CLAN_TOREADOR },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_ISHTARRI_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumToreador.CLAN_TOREADOR },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_VOLGIRRE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumToreador.CLAN_TOREADOR },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_ABSENT_INFLUENCE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumToreador.CLAN_TOREADOR},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_KEY, Name = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_NAME, Description = EnumAtoutFlaw.ATOUT_TOREADOR_GRACE_OF_THE_DANCER_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumToreador.CLAN_TOREADOR},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3536,10 +3476,10 @@
                 #region Trémére Atout
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_EXPERTISE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumTremere.CLAN_TREMERE },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_TELYAV_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumTremere.CLAN_TREMERE },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_TALISMAN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumTremere.CLAN_TREMERE },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_KEY, Name = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_NAME, Description = EnumAtoutFlaw.ATOUT_TREMERE_COUNTER_MAGIE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumTremere.CLAN_TREMERE},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3561,10 +3501,10 @@
                 #region Tzimisce Atout
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_TZIMISCE_BLOOD_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumTzimisce.CLAN_TZIMISCE },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_SZLACHTA_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumTzimisce.CLAN_TZIMISCE },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_CARPATIQUE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumTzimisce.CLAN_TZIMISCE },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumTzimisce.CLAN_TZIMISCE},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3586,10 +3526,10 @@
                 #region Ventrue Atout
                 atouts.AddRange(new List<Atout>
                 {
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3 },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_ROYAL_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumVentrue.CLAN_VENTRUE },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumVentrue.CLAN_VENTRUE },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumVentrue.CLAN_VENTRUE },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_ROYAL_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumVentrue.CLAN_VENTRUE},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3608,17 +3548,373 @@
                 });
                 #endregion
 
-                context.Atouts.AddRange(atouts);
-
-                atoutTrad.ForEach(t =>
+                #region Caïtiff Atout
+                atouts.AddRange(new List<Atout>
                 {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_CAITIFF_PROPICE_KEY, Name = EnumAtoutFlaw.ATOUT_CAITIFF_PROPICE_NAME, Description = EnumAtoutFlaw.ATOUT_CAITIFF_PROPICE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumCaitiff.CLAN_CAITIFF },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_CAITIFF_SANG_ECLIPSE_KEY, Name = EnumAtoutFlaw.ATOUT_CAITIFF_SANG_ECLIPSE_NAME, Description = EnumAtoutFlaw.ATOUT_CAITIFF_SANG_ECLIPSE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumCaitiff.CLAN_CAITIFF },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_CAITIFF_VESTIGES_GRANDEUR_KEY, Name = EnumAtoutFlaw.ATOUT_CAITIFF_VESTIGES_GRANDEUR_NAME, Description = EnumAtoutFlaw.ATOUT_CAITIFF_VESTIGES_GRANDEUR_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumCaitiff.CLAN_CAITIFF },
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAITIFF_PROPICE_NAME, Text = "Propice" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAITIFF_PROPICE_DESCRIPTION, Text = "Cet atout duplique les effets de n’importe lequel des atouts généraux qui coûtent 3 points ou moins." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAITIFF_SANG_ECLIPSE_NAME, Text = "Sang Éclipsé" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAITIFF_SANG_ECLIPSE_DESCRIPTION, Text = "Il est plus facile pour vous de rester éveillé la journée et vous ne prenez que des dégâts normaux au soleil (à a place des dégâts aggravés)." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAITIFF_VESTIGES_GRANDEUR_NAME, Text = "Vestiges de la Grandeur" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAITIFF_VESTIGES_GRANDEUR_DESCRIPTION, Text = "Vous pouvez ajouter l’une des disciplines suivantes à votre liste de disciplines de clan possible: Aliénation, Protéisme, Serpentis, Quietus, Obténébration, Vicissitude, ou Chimérie." },
+                });
+                #endregion
+
+                atouts.ForEach(a =>
+                {
+                    context.Atouts.AddOrUpdate(a);
+                });
+
+                atoutTrad.ForEach(trad =>
+                {
+                    context.Traductions.AddOrUpdate(trad);
+                });
+
+                context.SaveChanges();
+
+            }
+        }
+
+        private static class ClanInitializer
+        {
+            public static void Initializer(DbnContext context)
+            {
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumAssamite.CLAN_ASSAMITE,
+                    Affiliate = EnumAffiliate.INDEPENDENT_CLAN,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumCelerity.CELERITY_KEY || disci.DisciplineKey == EnumObfuscate.OBFUSCATE_KEY || disci.DisciplineKey == EnumQuietus.QUIESTUS_KEY select disci).ToList(),
+                    History = EnumAssamite.CLAN_ASSAMITE_HISTORY,
+                    Name = EnumAssamite.CLAN_ASSAMITE_NAME,
+                    Organisation = EnumAssamite.CLAN_ASSAMITE_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumAssamite.CLAN_ASSAMITE_SURNAME,
+                    Weakness = EnumAssamite.CLAN_ASSAMITE_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE, Text = "ASSAMITE"},
+                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE_HISTORY, Text = "Les Assamites, aussi connus comme Les Enfants d’Haqim, sont originaires du Moyen-Orient. Talentueux assassins et guerriers agiles, la majeure partie du clan réside dans une forteresse de montagne appelée Alamut. Ces guerriers sont toujours prêts à accomplir de dangereuses missions, si la dîme de Sang est assez élevée. Leur soif de sang est légendaire, tout comme leur tendance à juger les autres vampires selon les lois de leur fondateur. Ceux qui sont trouvés en défaut doivent être détruits. <br /> Le Clan Assamite n’a prêté allégeance à aucune secte. Bien que quelques éléments épars ont rejoint soit la Camarilla soit le Sabbat, le clan refuse catégoriquement de courber l’échine face à n’importe quelle hiérarchie vampirique. A cette fin, ses membres n’acceptent jamais de contrats à long terme, restant plutôt indépendants dans le grand Jyhad. C’est pourquoi le clan fait peur et n’inspire pas confiance, étant donné que les vampires savent que la loyauté des Assamites va au plus offrant. Certains Assamites suivent une Voie d’Illumination très religieuse qui codifie la dévotion fanatique du clan à la Montagne. Nommée Voie du Sang, elle prône la diablerie et insiste sur une vénération fanatique du fondateur du clan, Haqim.<br /> Par le passé, les Assamites étaient de vicieux diabolistes, contraints d’arrêter cette pratique uniquement parce que les Tremeres leur jetèrent une puissante malédiction à la demande du Cercle Intérieur de la Camarilla. Cette malédiction transforma la Vitae vampirique en un poison pour les Assamites, brûlant leurs veines. A cause de cela, les Assamites (et plus particulièrement les plus anciens) détestent les Tremere par dessus tout. Quand L’Ancien s’éleva et prit le contrôle du clan, il brisa la malédiction avec sa propre sorcellerie, faisant tomber les entraves des Tremere et jurant que le clan se vengerait.<br /> Les vieux Assamites ont tendance à être issus de la culture du Moyen-Orient ou d’Afrique du Nord, alors que les plus jeunes reçoivent l’Étreinte quelle que soit leur origine humaine. La peau d’un Assamite devient plus foncée avec l’âge, à l’inverse des autres vampires qui pâlissent. A cause de cela, les plus vieux Assamites ont une peau d’un noir surnaturel proche de l’onyx, comme sculptée dans l’ébène le plus sombre.<br /> La majorité des Enfants d’Haqim sont des guerriers, entraînés à devenir des tueurs, des espions et des agents secrets. Ils prennent des contrats et retournent à Alamut avec leur paiement une fois qu’ils ont réussi. Le reste du clan - une minorité significative - fait partie des deux autres castes : les Sorciers et les Vizirs. Les Sorciers restent cachés à Alamut, servant l’ancien le plus puissant de leur clan, un vampire appelé L’Ancien. Les Vizirs, autrefois de confiance, ont défié la Montagne dans un schisme idéologique, refusant de se plier à la volonté de L’Ancien. Pour ce crime, ils sont chassés par les leurs. La Montagne n’a de cesse que de pourchasser jusqu’au dernier ceux qu’elle considère comme des traîtres."},
+                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE_NAME, Text = "Assamite"},
+                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE_ORGANIZATION, Text = "Le clan Assamite a une culture isolée et structurée. Tous les Assamites se doivent de suivre les diktats de L’Ancien, qu’ils traitent avec un mélange de vénération et de peur. De petits groupes de deux ou trois Assamites (appelés <i>falaqi</i>) peuvent résider hors de la Montagne, tant qu’ils adhèrent à la foi d’Haqim et aux diktats de L’Ancien. Bien qu’autrefois le clan avait un respect marqué envers la foi musulmane, le culte d’Allah a été interdit par L’Ancien. Tous les Assamites doivent croire uniquement en Haqim ou être détruits pour leur manque de loyauté."},
+                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE_SURNAME, Text = "Assassins"},
+                    new Traduction{LCID = 1036, Key = EnumAssamite.CLAN_ASSAMITE_WEAKNESS, Text = "Depuis que la malédiction Tremere a été brisée, les Assamites sont revenus à leur soif de sang. Les Assamites trouvent le sang vampirique très addictif. Quand un Assamite boit du sang de vampire, il gagne 2 Traits de la Bête, pour les 10 prochaines minutes. Si l’Assamite rentre en frénésie durant cette période, il doit tenter de diabler le dernier vampire dont il a goûté le sang. Contrairement aux Traits de la Bête classiques, ces traits ne comptent pas pour déterminer si un vampire perd des Points de Moralité et ces Traits de la Bête disparaissent après 10 minutes."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumBrujah.CLAN_BRUJAH,
+                    Affiliate = EnumAffiliate.CAMARILLA,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumCelerity.CELERITY_KEY || disci.DisciplineKey == EnumPotence.POTENCE_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY select disci).ToList(),
+                    History = EnumBrujah.CLAN_BRUJAH_HISTORY,
+                    Name = EnumBrujah.CLAN_BRUJAH_NAME,
+                    Organisation = EnumBrujah.CLAN_BRUJAH_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumBrujah.CLAN_BRUJAH_SURNAME,
+                    Weakness = EnumBrujah.CLAN_BRUJAH_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH, Text = "BRUJAH"},
+                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH_HISTORY, Text = "Il y a longtemps, les vampires du Clan Brujah furent des érudits en quête de sagesse. Ils inspirèrent la gloire de l’ancienne Carthage, une cité grandiose où mortels et vampires vivaient ensemble en paix. Cependant, la traîtrise des Ventrues et les armées de l’ancienne Rome abattirent Carthage et brisèrent pour toujours le clan Brujah. Au fil des siècles, des divisions internes ont profondément secoué le clan Brujah, la nature du clan passant d’un groupe de philosophes stoïques à une armée de guerriers passionnés. Les Brujahs ne sont plus les créatures qu’ils étaient à Carthage.<br /> En ces nuits, les Brujahs sont un groupe d’ardents guerriers, individualistes et rebelles, conduits à la fois au succès et à l’échec par leur nature tempétueuse. Ils ressentent les passions mortelles plus profondément que les autres vampires et sont enclins à frapper avant de poser toute question. Les membres de ce clan aiment les causes et agiront impulsivement contre quoi que ce soit qu’ils perçoivent comme une injustice. Ils se réunissent en de violentes assemblées appelées <i>rants<i/> où ils engagent des débats passionnés, défient leurs rivaux au combat, ou suscitent le soutien de croisades contre le status quo. Ils savent mieux que tous que la capacité de ressentir des émotions peut aussi être une voie sombre. De nombreux Brujahs sont emportés par la frénésie et la folie s’ils n’arrivent pas à contrôler leurs passions.<br /> Les membres du clan Brujah sont étreints au sein de nombreuses cultures, régions et religions. Les Brujahs n’ont jamais été sélectifs – ils choisissent leurs Infants sur la base de la pulsion et du désir d’un individu de corriger les torts. Lorsqu’il s’agit de s’adapter au monde moderne, les Brujahs le font mieux que la plupart des vampires. Ils adoptent aisément les symboles de rébellion : crânes rasés, motos, vestes en cuir, clous ou t-shirts aux slogans provocateurs."},
+                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH_NAME, Text = "Brujah"},
+                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH_ORGANIZATION, Text = "Les Brujahs expérimentés tendent à inspirer leurs frères de clan, mais il est attendu d’un frère de clan qu’il prouve sa valeur plus qu’il ne se tourne vers ses anciens pour résoudre ses problèmes ; ainsi la hiérarchie du clan est au mieux peu structurée. Les Brujahs tendent à se regrouper en factions philosophiques se réclamant souvent des Idéalistes, des Individualistes ou des Iconoclastes. Les Iconoclastes sont passionnés par la mise à bas de la société et la construction de quelque chose de neuf, tandis que les Idéalistes préfèrent résoudre les problèmes de la société plutôt que de recommencer depuis le début.Les Individualistes sont plus solitaires, travaillant sur une base d’une personne à la fois plutôt que de se concentrer sur la société dans son ensemble."},
+                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH_SURNAME, Text = "La Plèbe, La Populace"},
+                    new Traduction{LCID = 1036, Key = EnumBrujah.CLAN_BRUJAH_WEAKNESS, Text = "Les Brujahs sont très émotifs et ont de grandes difficultés à contrôler la fureur de leur Bête. Leur difficulté à résister à la frénésie est augmentée de 2."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumSet.CLAN_SET,
+                    Affiliate = EnumAffiliate.INDEPENDENT_ALLIANCE,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumObfuscate.OBFUSCATE_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY || disci.DisciplineKey == EnumSerpentis.SERPENTIS_KEY select disci).ToList(),
+                    History = EnumSet.CLAN_SET_HISTORY,
+                    Name = EnumSet.CLAN_SET_NAME,
+                    Organisation = EnumSet.CLAN_SET_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumSet.CLAN_SET_SURNAME,
+                    Weakness = EnumSet.CLAN_SET_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET, Text = "SETHITE"},
+                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET_HISTORY, Text = "Les disciples de Set, aussi connus comme le clan Setite, débutèrent en tant que culte de la mort dans l’ancienne Égypte mais, en ces nuits, le clan a grandi et prospéré. Que vous soyez à la recherche de secrets ésotériques oubliés ou d’une nuit sous drogue, de plaisirs et d’excès, les Disciples de Set peuvent pourvoir à tous vos désirs. Ces vampires rusés se sont spécialisés dans l’exploitation des faiblesses d’autrui afin d’acquérir le pouvoir pour eux-mêmes. Les Disciples de Set révèrent leur ancêtre, Set, comme le premier vampire et affirment qu’ils sont son unique descendance − les autres clans descendent de créatures inférieures qui devinrent des non-morts bien après l’élévation de Set.<br />En leur sein, les Disciples de Set sont une organisation religieuse dédiée au culte et à la dévotion envers leur Antédiluvien, le tout-puissant Set du mythe égyptien. La foi imprègne le clan, dicte les actions de ses membres et leur donne un but commun. Même quand les schismes religieux survinrent, qui créèrent des lignées telles que les Daityas, les Tlaciques ou les Vipères, la plupart des Setites restèrent unis dans leur foi singulière en Set. C’est uniquement dans le Sabbat que les Setites tournent le dos à leur Antédiluvien, défendent le culte de Caïn et renient la nature divine de Set.<br /> Malheureusement, un tel dévouement fanatique crée des ennemis. Les autres clans considèrent les Disciples de Set à peine mieux que des infernalistes vendant leur âme à une entité inconnue. Assurément, les Setites se spécialisent dans l’offre de pactes avec le démon mais ils arrivent presque toujours à tirer leur épingle du jeu. Néanmoins, de nombreux vampires les regardent avec une méfiance sceptique et préfèrent ne pas s’allier avec les Setites.<br /> Les Disciples de Set apparurent en Afrique du Nord ; nombre de leurs anciens revendiquent d’avoir été prêtres dans l’ancienne Égypte, utilisant ces affirmations comme un levier pour atteindre les positions de pouvoir au sein du clan. En ces nuits, les Setites choisissent leurs infants dans de nombreuses cultures. Ils sélectionnent principalement le charisme, le dévouement et le bagou. Habituellement, ces infants sont tout d’abord initiés au culte de Set puis l’Étreinte leur est donnée en tant que sombre récompense au service de leur dieu. Cependant, il arrive qu’un infant étreint récemment rejette ces enseignements et fuie le temple. Quelques-uns de ces individus se retrouvent au sein du Mouvement Anarch, combattant pour se libérer des volontés de leurs anciens. Pour les jeunes Setites, cela inclut la liberté de religion − une cause très chère à leur cœur.Les Disciples de Set apparurent en Afrique du Nord ; nombre de leurs anciens revendiquent d’avoir été prêtres dans l’ancienne Égypte, utilisant ces affirmations comme un levier pour atteindre les positions de pouvoir au sein du clan.En ces nuits, les Setites choisissent leurs infants dans de nombreuses cultures.Ils sélectionnent principalement le charisme, le dévouement et le bagou.Habituellement, ces infants sont tout d’abord initiés au culte de Set puis l’Étreinte leur est donnée en tant que sombre récompense au service de leur dieu. Cependant, il arrive qu’un infant étreint récemment rejette ces enseignements et fuie le temple.Quelques - uns de ces individus se retrouvent au sein du Mouvement Anarch, combattant pour se libérer des volontés de leurs anciens. Pour les jeunes Setites, cela inclut la liberté de religion − une cause très chère à leur cœur. <br /> Le clan s’est bien adapté à la société moderne, abandonnant les ornements du passé comme un serpent abandonne sa peau. Mais à l’intérieur des temples Setites, au milieu des piliers en or et des statues funéraires égyptiennes, le culte de Set prospère et se répand dans la nuit."},
+                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET_NAME, Text = "Disciples de Set"},
+                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET_ORGANIZATION, Text = "Les Disciples se rassemblent au sein de temples, habituellement un par grande région. Ce temple coordonne un réseau de cultes clandestins et de repaires de stupéfiants, son clergé vampirique se disperse sur plusieurs états ou territoires. Le prestige clanique d’un Disciple de Set est basé sur le prestige du temple qu’il sert et sa position dans la hiérarchie religieuse. Le temple le plus grand et le plus prestigieux se trouve en Afrique du Nord où règne un puissant Mathusalem. De là, le Plus Grand des Prêtres envoie des édits au nom de Set pour les temples inférieurs."},
+                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET_SURNAME, Text = "Serpents"},
+                    new Traduction{LCID = 1036, Key = EnumSet.CLAN_SET_WEAKNESS, Text = "Les Setites réagissent violemment aux lumières vives. Ils subissent 1 point de dommage additionnel quand ils sont exposés à la lumière du soleil et tous les Scores de Test sont réduits de 2 pour tout challenge initié lorsqu’ils sont exposés à une lumière vive quel qu’en soit le type. Notez que les Scores de Test défensifs ne sont pas sujets à cette pénalité."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumGangrel.CLAN_GANGREL,
+                    Affiliate = EnumAffiliate.CAMARILLA,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAnimalism.ANIMALISM_KEY || disci.DisciplineKey == EnumProtean.PROTEAN_KEY || disci.DisciplineKey == EnumFortitude.FORTITUDE_KEY select disci).ToList(),
+                    History = EnumGangrel.CLAN_GANGREL_HISTORY,
+                    Name = EnumGangrel.CLAN_GANGREL_NAME,
+                    Organisation = EnumGangrel.CLAN_GANGREL_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumGangrel.CLAN_GANGREL_SURNAME,
+                    Weakness = EnumGangrel.CLAN_GANGREL_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL, Text = "GANGREL"},
+                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL_HISTORY, Text = "Les autres Vampires considèrent les Gangrels comme des créatures primitives. Ils ne comprennent pas la différence entre primitif et prédateur. Oui, les Gangrels peuvent être des bêtes vicieuses et cruelles, soumises à des pulsions animales — mais ils sont aussi des chasseurs rusés et civilisés. En tant que clan, les Gangrels sont méfiants et distants. Ils méprisent les sociétés organisées et préfèrent opérer en dehors des structures et des hiérarchies. Cet individualisme les a amenés à se développer de différentes façons, engendrant de nombreuses lignées différentes, des ultra-territoriaux Andas ou Mariners aux disparates lignées des Noiads ou des Coyotes, dont les pouvoirs diffèrent du clan parent. Le clan les considère tous comme Gangrel.<br /> Là où les autres clans se concentrent sur la politique, le pouvoir ou les possessions, les Gangrels sont des solitaires et des voyageurs ; peu passent du temps dans les cours de Vampire. Ils ont peu de respect pour les inimitiés ou alliances de clan. Les conflits avec les Gangrels concernent plus souvent le domaine ou les droits de chasse plutôt que la politique ou les arrangements en vue du pouvoir. En outre, ils ne ne font pas la différence entre les Anciens et les Nouveaux-nés, comme le font les autres clans. Au lieu de ça, les Gangrels fondent le prestige du clan sur les capacités individuelles, récompensant le courage et la force. Les Anciens Gangrels demandent le respect — mais c’est un respect qu’ils méritent d’obtenir. La plupart des Gangrels apparaissent sales, grossiers et en loques, comme il sied à un clan de vagabonds. En outre, lorsqu’ils sont en frénésie, ils prennent l’aspect de créatures naturelles, leur donnant une mine animale. Ils campent où ils veulent, dans le sol de la terre et ne prêtent pas attention à ce que les autres pensent de leur apparence. Les Gangrels infantent sporadiquement, souvent après avoir chassé un éventuel Infant. Ils abandonnent fréquemment le jeune Vampire après son étreinte, le forçant à apprendre les leçons basiques de survie par lui-même. Une fois que l’infant se sera montré digne, son Sire reviendra vers lui pour l’établir dans la société et l’introduire au sein du clan."},
+                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL_NAME, Text = "Gangrel"},
+                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL_ORGANIZATION, Text = "À certaines occasions, les membres du clan Gangrel se rassemblent, discutent de l’actualité et se font leurs récits de voyages. Ces réunions sont informelles, rarement planifiées à l’avance et parfois ne durent que quelques nuits. Au-delà de ça, les Gangrels évitent d’autres relations que celles entre Sire et Infant. Le dirigeant des Gangrels est celui dont les victoires récentes sont les plus prestigieuses. Ceux dont les faits marquants datent d’un passé lointain, ou qui ont récemment perdu la face, reçoivent beaucoup moins de respect."},
+                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL_SURNAME, Text = "Apatrides"},
+                    new Traduction{LCID = 1036, Key = EnumGangrel.CLAN_GANGREL_WEAKNESS, Text = "Tous les Gangrels ont une caractéristique physique animale. Par exemple, vous pouvez avoir des yeux de faucon, des écailles sur votre peau ou une crinière de lion. À chaque fois qu’un Gangrel passe en frénésie, il gagne temporairement une caractéristique physique animale additionnelle. Ces caractéristiques physiques animales temporaires s’effacent lorsque le Vampire dort une journée, mais la caractéristique animale permanente du Gangrel, elle, ne disparaît jamais. Elle peut être cachée par des vêtements, un pouvoir d’Occultation ou temporairement retirée par des pouvoirs tels que Vicissitude, mais elle reviendra toujours lorsque le Vampire dormira."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumGiovanni.CLAN_GIOVANNI,
+                    Affiliate = EnumAffiliate.INDEPENDENT_CLAN,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumDominate.DOMINATE_KEY || disci.DisciplineKey == EnumPotence.POTENCE_KEY || disci.DisciplineKey == EnumSepulcher.SEPULCHER_KEY select disci).ToList(),
+                    History = EnumGiovanni.CLAN_GIOVANNI_HISTORY,
+                    Name = EnumGiovanni.CLAN_GIOVANNI_NAME,
+                    Organisation = EnumGiovanni.CLAN_GIOVANNI_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumGiovanni.CLAN_GIOVANNI_SURNAME,
+                    Weakness = EnumGiovanni.CLAN_GIOVANNI_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI, Text = "GIOVANNI"},
+                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI_HISTORY, Text = "Les Giovanni commencent leur histoire en tant que maison de marchands vénitiens. Étreints par les érudits du Clan Cappadocien, les Giovanni étaient supposés servir de relais entre le Clan et le monde des mortels durant la Renaissance, mais les marchands, audacieux et avides de pouvoir, se retournèrent rapidement contre leurs maîtres. La chute des Cappadociens n’était que le début de leurs ambitions.<br /> Les Giovanni amassèrent une vaste fortune au cours des siècles, en utilisant leur connaissance approfondie de la politique et beaucoup d’habileté financière. De plus, ils maîtrisèrent les sombres secrets de la Nécromancie, imposant leur contrôle sur les esprits des morts.<br /> L’arrogance des Giovanni grandit à mesure que leur pouvoir augmentait et ils s’accaparèrent rapidement le marché de la Nécromancie dans le monde des Vampires. Pendant des siècles, les Giovanni firent fructifier leurs talents, forçant les autres clans à accepter leur indépendance et à ignorer leur sombre passé. Pendant que le reste du monde Vampirique juge les Giovanni pour la destruction et la diablerie des Cappadociens, il ne peut en aucun cas ignorer les Nécromants — ou tourner le dos au pouvoir qu’apporte le jeune clan.<br /> Devant des étrangers au clan, les Giovanni feront de grandes démonstrations d’humilité et d’amitié. Cependant, cloîtrés dans leurs murs, les membres de la famille incestueuse se livrent une compétition acharnée, n’ayant aucune limite s’ils peuvent gagner un peu plus de pouvoir. Ils ne nouent pas de véritables alliances, mais ils sont prêts à toutes les courbettes pour s’attirer les bonnes grâces d’un autre clan de Vampire. En fin de compte, le Clan Giovanni n’a de loyauté véritable qu’envers lui-même."},
+                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI_NAME, Text = "Giovanni"},
+                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI_ORGANIZATION, Text = "Fidèles à leurs racines remontant à la Renaissance, les Giovanni ont une organisation interne stricte. Les Anciens dirigent les sangs les plus faibles et gardent les plus jeunes en coupe réglée.<br /> Cependant, le clan n’a que faire des rôles traditionnels des sexes, hommes et femmes peuvent prétendre au pouvoir chez les Giovanni. La structure interne est encore complexifiée par des relations incestueuses, des cultes de la mort hérétiques et des relations étranges avec les esprits fantomatiques des membres disparus de la famille."},
+                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI_SURNAME, Text = "Nécromants"},
+                    new Traduction{LCID = 1036, Key = EnumGiovanni.CLAN_GIOVANNI_WEAKNESS, Text = "La morsure d’un Giovanni cause une douleur atroce aux mortels qui la reçoivent. Quand un Giovanni se nourrit sur un Mortel, il inflige 3 points de dégâts pour chaque point de sang drainé au lieu des 2 habituels."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumLasombra.CLAN_LASOMBRA,
+                    Affiliate = EnumAffiliate.SABBAT,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumDominate.DOMINATE_KEY || disci.DisciplineKey == EnumPotence.POTENCE_KEY || disci.DisciplineKey == EnumObtenebration.OBTENEBRATION_KEY select disci).ToList(),
+                    History = EnumLasombra.CLAN_LASOMBRA_HISTORY,
+                    Name = EnumLasombra.CLAN_LASOMBRA_NAME,
+                    Organisation = EnumLasombra.CLAN_LASOMBRA_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumLasombra.CLAN_LASOMBRA_SURNAME,
+                    Weakness = EnumLasombra.CLAN_LASOMBRA_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumLasombra.CLAN_LASOMBRA, Text = "LASOMBRA"},
+                    new Traduction{LCID = 1036, Key = EnumLasombra.CLAN_LASOMBRA_NAME, Text = "LASOMBRA"},
+                    new Traduction{LCID = 1036, Key = EnumLasombra.CLAN_LASOMBRA_SURNAME, Text = "Magistères"},
+                    new Traduction{LCID = 1036, Key = EnumLasombra.CLAN_LASOMBRA_HISTORY, Text = "Nés dans les ombres, leurs esprits ayant fusionné avec les profondeurs de l’Abîme, les Vampires du clan Lasombra sont majestueux, élégants et rongés par l’exercice du pouvoir. Peu de Vampires ont autant de volonté et de contrôle, ou maintiennent un tel intérêt à l’excellence, la noblesse et l’ambition que les Lasombras. Le clan est rempli de prêtres souhaitant devenir Pape ou de conseillers qui dirigent le destin de nations entières. Ils aiment les « sports » de la noblesse (duels, empoisonnement, assassinat et ambition) et dirigent la nuit avec élégance et de sombres désirs.<br /> Là où les autres Vampires cherchent du sens, regardant le sang ou les strates hiérarchiques de leur clan pour se motiver dans leur existence éternelle, les Lasombras ne cherchent rien de moins que la suprématie totale. Leur influence dans l’Église est sans égale. Au travers des âges, les Lasombras se sont employés à piéger la Foi, récupérant à la fois des biens et du pouvoir en restant en coulisse.<br /> Même si la Foi est cruciale pour les Lasombras, la plupart d’entre eux ne croient pas que les Vampires puissent être pardonnés ou sauvés. Ils croient que le vampirisme est une malédiction imposée à certains afin de guider les Mortels dans la lumière de Dieu ou pour punir et détruire ceux qui ne peuvent quitter les ténèbres. En tout cas le clan a depuis longtemps abandonné l’espoir de paradis et de salut. Les seuls plaisirs que trouve un Lasombra sont dans le monde Mortel ; la seule gloire qu’il obtient est celle de voir ses ennemis et rivaux écrasés sous sa botte.<br /> L’arrogance est nativement présente dans le sang des Lasombras. Même les plus jeunes membres du clan irradient d’un sens sombre pour le commandement et les plus anciens peuvent utiliser les pouvoirs du clan pour imposer leur volonté à la nuit elle-même. Ils sentent qu’aucun Vampire ne leur arrive à la cheville et que leur sang est significativement supérieur. "},
+                    new Traduction{LCID = 1036, Key = EnumLasombra.CLAN_LASOMBRA_ORGANIZATION, Text = "Les Lasombras préfèrent les cours majestueuses, les messes noires ainsi que les ornements et les titres aristocratiques. La cérémonie, tout comme le pouvoir, fait partie intégrante de la structure du clan. Pour résumer, les Lasombras sont déviants et meurtriers. Le lignage apporte beaucoup au prestige et certaines lignées familiales sont plus respectées que d’autres. Un système complexe de patronages et de mentorats permet de nouvelles conditions sociales, tout comme une position hiérarchique au sein de sa secte. Un petit groupe au sein du clan, connu sous le nom d’Amici Noctis (les Amis de la Nuit), se rassemble en secret et définit la politique à suivre pour le reste du clan. Ce groupe impose sa volonté sur tous les membres du clan, indépendamment de la secte ou des alliances personnelles. Quand un Lasombra doit être jugé, il est amené devant la Cour de Sang où son utilité sera évaluée et où il sera détruit si celle-ci est jugée insuffisante."},
+                    new Traduction{LCID = 1036, Key = EnumLasombra.CLAN_LASOMBRA_WEAKNESS, Text = "Les Vampires du clan Lasombra n’ont pas de reflet. Que ce soit sur un miroir, de l’eau, une surface polie ou un rétroviseur arrière de taxi, les Lasombras ne se reflètent pas. Leur réflexion ne peut pas être capturée par des systèmes qui fonctionnent via des miroirs (comme les vieux appareils photos) mais peut être enregistrée sur des appareils photo modernes."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumMalkavian.CLAN_MALKAVIAN,
+                    Affiliate = EnumAffiliate.CAMARILLA,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAuspex.AUSPEX_KEY || disci.DisciplineKey == EnumDementation.DEMENTATION_KEY || disci.DisciplineKey == EnumObfuscate.OBFUSCATE_KEY select disci).ToList(),
+                    History = EnumMalkavian.CLAN_MALKAVIAN_HISTORY,
+                    Name = EnumMalkavian.CLAN_MALKAVIAN_NAME,
+                    Organisation = EnumMalkavian.CLAN_MALKAVIAN_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumMalkavian.CLAN_MALKAVIAN_SURNAME,
+                    Weakness = EnumMalkavian.CLAN_MALKAVIAN_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumMalkavian.CLAN_MALKAVIAN, Text = "MALKAVIAN"},
+                    new Traduction{LCID = 1036, Key = EnumMalkavian.CLAN_MALKAVIAN_NAME, Text = "Malkavian"},
+                    new Traduction{LCID = 1036, Key = EnumMalkavian.CLAN_MALKAVIAN_SURNAME, Text = "Lunatiques"},
+                    new Traduction{LCID = 1036, Key = EnumMalkavian.CLAN_MALKAVIAN_HISTORY, Text = "Pour certains, l’éternité n’est rien de plus qu’une continuation de leur existence mortelle. Pour les Malkaviens, la transition est bien plus abrupte et dévastatrice. L’étreinte fracasse l’esprit de ceux qui sont amenés dans ce clan, les conduisant juste au delà du bord de la folie − mais en déverrouillant des dons surnaturels d’introspection et de perspicacité.<br /> Tous les Malkaviens sont profondément et sombrement fous ; leur psychologie est dans un équilibre précaire au bord de la falaise qu’est leur santé mentale. C’est un phénomène douloureusement aliénant. Leurs dérangements peuvent prendre la forme structurée, médicalement comprise, d’une folie ou elle peut être un renversement complet des sens. Elle peut aller et venir sous la forme d’une psychose vive ou elle peut se manifester sous la forme d’hallucinations élaborées sur le long terme. Chaque Malkavien a vu son esprit se disloquer selon des schémas différents ; aucun d’entre eux n’émerge de son étreinte exactement de la même manière.<br /> Il est très difficile pour les autres Vampires de se lier aux membres du clan Malkavien. Ils sont hargneux, imprévisibles et parfois inintelligibles. Ils voient le monde différemment et, occasionnellement, essaient d’éduquer et d’éclairer les autres à des vérités que seuls eux semblent comprendre. Ces leçons prennent la forme de farces très élaborées, terrifiantes et dangereuses. Ne suivant une logique que seul un Malkavien pourrait comprendre. Les Malkaviens semblent donner l’étreinte au hasard, prenant leurs infants dans toutes les strates de la société mortelle. L’apparence extérieure d’un Malkavien est habituellement spécifique au dérangement du personnage, variant d’une propreté obsessionnelle à un ébouriffement complet. Les Malkaviens les plus jeunes tendent à être plus solitaires et déviants, luttant pour se comprendre eux-mêmes et le nouveau monde dans lequel ils ont été plongés. Les anciens tendent à avoir une meilleure compréhension de leurs tumultes intérieurs et semblent plus à l’aise. De plus, tous les Malkaviens sont connectés à un vaste sixième sens persistant − certains disent que c’est la conscience somnolente du fondateur de leur clan − et ils possèdent tous une perspicacité au delà de toute compréhension mortelle."},
+                    new Traduction{LCID = 1036, Key = EnumMalkavian.CLAN_MALKAVIAN_ORGANIZATION, Text = "En vérité, le concept de structure est dénué de sens quand on décrit le chaos déchaîné qui affecte le clan Malkavien. Les Malkaviens vont et viennent comme il leur plait, remarquant à peine la traversée des âges. Ils n’ont aucune hiérarchie de clan ni aucune structure. Les anciens sont nominalement en charge, principalement parce qu’ils tendent à être plus lucides que ceux étreint plus récemment."},
+                    new Traduction{LCID = 1036, Key = EnumMalkavian.CLAN_MALKAVIAN_WEAKNESS, Text = "Tous les membres du clan Malkavien souffrent d’un dérangement permanent et incurable. Ils peuvent acquérir et guérir d’autres dérangements mais ils ne pourront jamais guérir de leur dérangement principal. Les Malkaviens ne reçoivent pas d’XP de handicap pour ce dérangement principal ; cependant ils reçoivent normalement les XP de handicaps pour des dérangements additionnels. Réinitialiser les traits de Dérangement d’un Malkavien le place à 1 plutôt que 0.Pour plus de détails, voir Dérangements."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumNosferatu.CLAN_NOSFERATU,
+                    Affiliate = EnumAffiliate.CAMARILLA,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAnimalism.ANIMALISM_KEY || disci.DisciplineKey == EnumObfuscate.OBFUSCATE_KEY || disci.DisciplineKey == EnumPotence.POTENCE_KEY select disci).ToList(),
+                    History = EnumNosferatu.CLAN_NOSFERATU_HISTORY,
+                    Name = EnumNosferatu.CLAN_NOSFERATU_NAME,
+                    Organisation = EnumNosferatu.CLAN_NOSFERATU_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumNosferatu.CLAN_NOSFERATU_SURNAME,
+                    Weakness = EnumNosferatu.CLAN_NOSFERATU_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumNosferatu.CLAN_NOSFERATU, Text = "NOSFERATU"},
+                    new Traduction{LCID = 1036, Key = EnumNosferatu.CLAN_NOSFERATU_NAME, Text = "Nosferatu"},
+                    new Traduction{LCID = 1036, Key = EnumNosferatu.CLAN_NOSFERATU_SURNAME, Text = "Rats d’égouts"},
+                    new Traduction{LCID = 1036, Key = EnumNosferatu.CLAN_NOSFERATU_HISTORY, Text = "Les membres du Clan Nosferatu sont physiquement tordus et déformés par l’Étreinte, transformés en d’horribles monstres issus de leur apparence mortelle. Pire, les déformations Nosferatu sont si cruelles et vicieuses que nombre de ceux qui sont Étreints ne survivent pas. Ces vampires sont si hideux qu’ils doivent rester cachés de la société mortelle, de peur qu’ils ne brisent la Mascarade.<br /> Certains membres du Clan Nosferatu se délectent de leur apparence répugnante, utilisant leurs difformités pour choquer et horrifier les autres vampires. Ils gardent le plus souvent possible leur visage clairement apparent, se réjouissant de l’inconfort qu’une telle vue cause. Plus particulièrement, ces vampires déformés raillent les Toreadors ; les Nosferatus abhorrent leur beauté et leurs dons artistiques.Si les Toreadors en avaient l’opportunité, le Clan Nosferatu serait éradiqué afin de préserver la Mascarade – une excuse à peine voilée pour masquer bigoterie et élitisme.Le Clan Nosferatu porte une animosité similaire et se délecte plus que tout des blessures infligées aux Toreadors.<br /> Les Membres du Clan Nosferatu établissent leur résidence au sein des égouts des grandes villes, s’abritant dans des couvées avec des goules animales pour les protéger durant la journée. Les Nosferatus sont des courtiers de l’information, experts dans la ruse et la discrétion pour mettre en place des pressions politiques. Ils collectent les secrets, espionnent et font chanter les autres vampires. S’ils sont cruels dans leur utilisation des secrets des autres, c’est parce que leur éternité est des plus dures. Leur laideur les fait répugnants et un tel isolement se transforme vite en dépit.<br />La légende dit que l’Antédiluvien Nosferatu regretta d’avoir bafoué la loi de Caïn et, lorsque le clan fut maudit, jura d’éradiquer sa progéniture de la surface de la Terre. Il conserva la plus puissante de ses couvées, la lia au sang et lui ordonna de chasser les Nosferatus jusqu’à ce que tous les membres du clan soient détruits. Peu importe la secte ou autre loyauté d’un Nosferatu, le clan est uni dans la peur et la haine de ces Niktuku."},
+                    new Traduction{LCID = 1036, Key = EnumNosferatu.CLAN_NOSFERATU_ORGANIZATION, Text = "Les Nosferatus tendent à s’organiser en petits groupes, des couvées habituellement étreintes par le même sire. Ces couvées peuvent s’étendre en de vastes groupes avec des hiérarchies internes basées sur rien de plus que les humeurs et caprices de leur sire originel. Au-delà d’une simple ville, le clan partage l’information via des moyens technologiques ; ils utilisent des emails, forums et serveurs sécurisés connus comme le ShreckNET qui est maintenu par une puissante lignée de Nosferatus."},
+                    new Traduction{LCID = 1036, Key = EnumNosferatu.CLAN_NOSFERATU_WEAKNESS, Text = "Tous les Nosferatus sont inhumainement laids. Les Nosferatus ne peuvent pas avoir le focus d’attribut Apparence."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumToreador.CLAN_TOREADOR,
+                    Affiliate = EnumAffiliate.CAMARILLA,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAuspex.AUSPEX_KEY || disci.DisciplineKey == EnumCelerity.CELERITY_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY select disci).ToList(),
+                    History = EnumToreador.CLAN_TOREADOR_HISTORY,
+                    Name = EnumToreador.CLAN_TOREADOR_NAME,
+                    Organisation = EnumToreador.CLAN_TOREADOR_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumToreador.CLAN_TOREADOR_SURNAME,
+                    Weakness = EnumToreador.CLAN_TOREADOR_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumToreador.CLAN_TOREADOR, Text = "TOREADOR"},
+                    new Traduction{LCID = 1036, Key = EnumToreador.CLAN_TOREADOR_NAME, Text = "Toreador"},
+                    new Traduction{LCID = 1036, Key = EnumToreador.CLAN_TOREADOR_SURNAME, Text = "Dégénérés"},
+                    new Traduction{LCID = 1036, Key = EnumToreador.CLAN_TOREADOR_HISTORY, Text = "Les roses magnifiques dans un jardin étoilé au soir. Un air chantant dans un crépuscule somnolent. La douceur du baiser d’un amant. Ces images évoquent le Toreador car ces vampires sont les plus beaux de tous.<br />Les Toreadors sont des artistes, écrivains et créateurs : des artisans qui bénéficient d’une vie immortelle d’apparat et de sensualité. Et, contrairement à d’autres clans, les Toreadors s’enfoncent dans le monde des mortels. Souvent, ils font semblant d’être mortels, vivant comme des célébrités et donnant des patronages à des artistes mortels influents. De ville en ville, de passion en passion, le Toreador voltige, inspirant de lui le meilleur des arts et laissant une traînée de cœurs brisés derrière lui.<br />Avec des goûts aussi raffinés, il est facile pour un Toreador de devenir blasé, amer et rempli d’ennui. Entourés par l’excès, ils perdent très vite tout intérêt, saisissant prix après prix − les plus doux étant ceux volés aux autres. Les plus anciens Toreadors deviennent souvent dépravés, tombant dans la débauche simplement pour pouvoir ressentir quoi que ce soit.<br />Les Toreadors aiment la politique et vivent pour la hiérarchie, tant qu’ils en sont au sommet. Ils développent des cultes de la personnalité, rassemblant des adeptes captivés par leur beauté ou mendiant leur patronage. Ils sont toujours à la pointe de la culture, des arts et de la société. Ils s’enorgueillissent de leur beauté et de leur grâce, hébergent des salons et rassemblements pour montrer leur beauté et leur style. Ceux qui ne peuvent pas maintenir le rythme sont ostracisés et ridiculisés. Les Vampires qui sont laids, non-civilisés ou qui ne montrent aucun signe de respect pour les arts sont déchirés par les griffes métaphoriques d’un Toreador. C’est spécifiquement pour cette raison qu’il existe une inimitié éternelle entre les clan Toreador et Nosferatu, une haine ancrée tellement profondément qu’elle durera éternellement."},
+                    new Traduction{LCID = 1036, Key = EnumToreador.CLAN_TOREADOR_ORGANIZATION, Text = "La hiérarchie du clan Toreador est basée sur un système complexe de guildes et de patronages. Avec des étoiles montantes mises en avant − et rapidement mises au rebut dès lors que leur gloire a disparu. Une clique de puissants anciens s’alignent les uns les autres dans un combat subtil de politique alors qu’ils réduisent des réputations à néant et détruisent des vies. Les jeunes Toreadors jetés dans ce bassin rempli de requins doivent rapidement apprendre à nager ou couler."},
+                    new Traduction{LCID = 1036, Key = EnumToreador.CLAN_TOREADOR_WEAKNESS, Text = "Les Toreadors sont souvent extasiés par la beauté et l’art. Quand vous rencontrez une œuvre d’art, une performance ou quelque chose de magnifique qui vous intéresse particulièrement, vous devez lui accorder toute votre attention le temps d’une scène. Un Toreador peut, en dépensant un point de volonté, résister à cette pulsion. Bien que des distractions comme des voix fortes ou une bagarre à proximité peuvent détourner votre attention, un Toreador déteste être interrompu alors qu’il découvre l’art et la beauté et répondra avec colère − même avec violence, voire la frénésie."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumTremere.CLAN_TREMERE,
+                    Affiliate = EnumAffiliate.CAMARILLA,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAuspex.AUSPEX_KEY || disci.DisciplineKey == EnumDominate.DOMINATE_KEY || disci.DisciplineKey == EnumBlood.BLOOD_KEY select disci).ToList(),
+                    History = EnumTremere.CLAN_TREMERE_HISTORY,
+                    Name = EnumTremere.CLAN_TREMERE_NAME,
+                    Organisation = EnumTremere.CLAN_TREMERE_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumTremere.CLAN_TREMERE_SURNAME,
+                    Weakness = EnumTremere.CLAN_TREMERE_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumTremere.CLAN_TREMERE, Text = "TREMERE"},
+                    new Traduction{LCID = 1036, Key = EnumTremere.CLAN_TREMERE_NAME, Text = "Tremere"},
+                    new Traduction{LCID = 1036, Key = EnumTremere.CLAN_TREMERE_SURNAME, Text = "Sorciers"},
+                    new Traduction{LCID = 1036, Key = EnumTremere.CLAN_TREMERE_HISTORY, Text = "De tous les Clans vampiriques, les Tremeres ont sans doute l’histoire la plus obscure. Il y a longtemps, les Tremeres n’étaient pas des vampires mais de puissants sorciers mortels, spécialisés dans la magie hermétique. Au travers d’une ruse vicieuse et d’une ambition dévorante, ils rejoignirent la société des morts-vivants immortels. Même dans les nuits modernes, les Tremeres sont les maîtres incontestés de la sorcellerie du sang, gardant farouchement leurs secrets. Leurs nombreux succès ont valu aux Tremeres beaucoup d’ennemis amers. Leur héritage est celui du pouvoir occulte exercé par la perspicacité politique et ils sont extrêmement dangereux. Les Tremeres exigent le respect par dessus tout – à la fois des autres vampires et au sein de leur propre clan.<br />Au fil des siècles, aucun clan n’a commis d’atrocités aussi terribles que les Tremeres. De sombres affaires, d’horribles expériences et de viles trahisons entachent leur réputation. Pourtant, les Tremeres continuent de détenir le pouvoir, principalement en raison de solides alliances avec d’autres Clans et de l’influence de leur magie. Ceux qui se retournent contre les Tremeres perdent l’accès à leurs dons occultes et à leurs compétences thaumaturgiques. Un allié sorcier peut être une immense aubaine.<br />Les Sorciers ont abandonné leur robe noire et leur grand bâton au Moyen-Âge ; au contraire, les Tremeres ont adopté une attitude stricte et professionnelle, comme il convient aux nuits modernes. Les costumes austères, les robes guindées et les accessoires haut de gamme ont remplacé les chapeaux et les cannes, car l’image de la maîtrise occulte s’adapte à chaque âge qui passe."},
+                    new Traduction{LCID = 1036, Key = EnumTremere.CLAN_TREMERE_ORGANIZATION, Text = "Les Tremeres évoluent dans une hiérarchie stricte et disciplinée, aux rangs statiques et aux sévères restrictions, connue sous le nom de « Pyramide », dirigée par un conseil des Anciens Tremeres les plus puissants. Des titres tels qu’Apprenti, Seigneur et Régent distinguent nettement les rangs Tremere au sein du clan.<br />Chaque Tremere est choisi avec soin parmi une population mortelle sous contrôle. Une fois transformé en goule, l’éventuel infant est éduqué, testé, puis introduit dans le clan comme un modeste Apprenti. Par son labeur, son dévouement et de judicieuses trahisons, un Tremere peut s’élever dans la Pyramide et saisir le pouvoir dans le Clan. Les Tremeres ne vivent pas seuls mais se réfugient dans des paroisses occultes où ils peuvent travailler ensemble et surveiller leurs arrières."},
+                    new Traduction{LCID = 1036, Key = EnumTremere.CLAN_TREMERE_WEAKNESS, Text = "Le Sang des Tremere contient des défauts et des inégalités inconnus des autres Clans. À cause de ces failles, les Tremeres tombent plus facilement dépendants au sang d’un autre. Il suffit à un Tremere de boire deux fois le sang d’un autre vampire pour être Lié au sang, au lieu des trois fois habituellement – la première ingestion compte comme si le Tremere avait bu deux fois."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumTzimisce.CLAN_TZIMISCE,
+                    Affiliate = EnumAffiliate.SABBAT,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAnimalism.ANIMALISM_KEY || disci.DisciplineKey == EnumAuspex.AUSPEX_KEY || disci.DisciplineKey == EnumVicissitude.VICISSITUDE_KEY select disci).ToList(),
+                    History = EnumTzimisce.CLAN_TZIMISCE_HISTORY,
+                    Name = EnumTzimisce.CLAN_TZIMISCE_NAME,
+                    Organisation = EnumTzimisce.CLAN_TZIMISCE_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumTzimisce.CLAN_TZIMISCE_SURNAME,
+                    Weakness = EnumTzimisce.CLAN_TZIMISCE_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumTzimisce.CLAN_TZIMISCE, Text = "TZIMISCE"},
+                    new Traduction{LCID = 1036, Key = EnumTzimisce.CLAN_TZIMISCE_NAME, Text = "Tzimisce"},
+                    new Traduction{LCID = 1036, Key = EnumTzimisce.CLAN_TZIMISCE_SURNAME, Text = "Monstres"},
+                    new Traduction{LCID = 1036, Key = EnumTzimisce.CLAN_TZIMISCE_HISTORY, Text = "Bien avant que l’histoire ne commence à être documentée, les Tzimisces résidaient dans les montagnes et les fastes de l’Ancien Monde, se tenant éloignés des troupeaux de mortels pathétiques sur lesquels ils se nourrissaient. Dirigeants absolus des territoires qu’ils occupent, ce sont des créatures jalouses et possessives, profondément connectées à la terre. Ils défendent violemment leurs domaines, vivant dans des groupes basés sur le lignage − un Sire et son infant adorateur − et savent manipuler le lien de sang avec expertise et cruauté.<br />Les éons passés dans leurs châteaux de pierre ont tordu l’esprit des Tzimisces et les longs siècles d’études leur ont donné la maîtrise de la chair ; ils possèdent la capacité de modeler et manipuler la chair comme un autre manipulerait de l’argile. Ils appliquent une philosophie qui révère la métamorphose, portant leur regard au-delà du fragile corps physique dans une tentative de découverte de la nature de l’âme. Détachés et scientifiques, les Tzimisces utilisent les mortels à la fois comme nourriture et sujets d’expériences. Ils ne se soucient absolument pas des humains, les jetant impitoyablement quand ils ne leur sont plus d’aucune utilité.<br />Les mystiques Tzimisces connaissent bien les esprits de la terre et pratiquent une forme de magie qu’ils appellent le Koldunisme. Ils gardent jalousement ces secrets, particulièrement des Tremere, qu’ils voient comme des usurpateurs de leurs pouvoirs anciens. Ils voient les autres clans comme des prétendants et des faibles, en rut et vivant au milieu même des animaux qu’ils mangent. Pour témoigner leur dédain, de nombreux Tzimisces modèlent leur propre chair en d’étranges et monstrueuses œuvres d’art, avec des couronnes de corne et des vêtements confectionnés à partir de peau sculptée."},
+                    new Traduction{LCID = 1036, Key = EnumTzimisce.CLAN_TZIMISCE_ORGANIZATION, Text = "Les Tzimisces sont profondément méfiants vis-à-vis des autres Vampires, convaincus que les autres clans envient leurs secrets et qu’ils feront tout pour les obtenir. Ils s’organisent en petites unités familiales étroitement unies autour des forteresses ancestrales de l’Ancien Monde ou des exploitations récemment obtenues dans le Nouveau Monde. Le chef de chaque lignée est connu sous le nom de voïvode et son pouvoir en son propre domaine est absolu."},
+                    new Traduction{LCID = 1036, Key = EnumTzimisce.CLAN_TZIMISCE_WEAKNESS, Text = "Les Tzimisces sont inextricablement liés à leur domaine d’origine et doivent rester à proximité d’au moins deux poignées de leur sol d’origine − la terre d’un lieu important pour le Tzimisce lors de ses jours mortels, comme la terre de son lieu de naissance ou le cimetière dans lequel il a été étreint. Chaque jour passé sans cette connexion physique à sa terre inflige une pénalité cumulative de -1 sur tous ses traits de test d’attaque (pour un maximum de -5). Ces pénalités sont présentes jusqu'à ce qu’il se repose pendant une journée complète au milieu de sa terre."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumVentrue.CLAN_VENTRUE,
+                    Affiliate = EnumAffiliate.CAMARILLA,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumDominate.DOMINATE_KEY || disci.DisciplineKey == EnumFortitude.FORTITUDE_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY select disci).ToList(),
+                    History = EnumVentrue.CLAN_VENTRUE_HISTORY,
+                    Name = EnumVentrue.CLAN_VENTRUE_NAME,
+                    Organisation = EnumVentrue.CLAN_VENTRUE_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumVentrue.CLAN_VENTRUE_SURNAME,
+                    Weakness = EnumVentrue.CLAN_VENTRUE_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE, Text = "VENTRUE"},
+                    new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_NAME, Text = "Ventrue"},
+                    new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_SURNAME, Text = "Roys"},
+                    new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_HISTORY, Text = "Alors que les autres clans s’essaient à la politique, étudient la philosophie et encouragent les arts, les descendants du Clan Ventrue ciblent leurs recherches sur la seule chose qui importe vraiment : le pouvoir. Régner est dans leur sang et rares sont les Ventrues qui ne ressentent pas le besoin de commander. La légende du Clan Ventrue est celle des Rois et des Reines, un lignage de souverains datant d’avant la chute de l’Empire Romain. Ils considèrent qu’il est dans leur droit divin de mener et de façonner le monde. Cette attitude s’applique non seulement aux autres vampires mais aussi aux domaines des mortels où les Ventrues sont souvent des faiseurs de rois et décident du destin des empires mortels.<br /> <i>Noblesse oblige<i/> est un terme souvent entendu dans les couloirs du Clan Ventrue. Ils respectent la dignitas, une vertu basée sur l’honneur, la propriété ainsi que le respect et ceux qui se plient à ces règles complexes seront l’exemple même de la réussite au sein du Clan des Roys. Les Ventrues sont malins, éduqués et érudits, aussi doués avec une épée qu’avec un stylo. Conservateurs et insensibles, ils basent rarement leurs décisions sur des émotions. Tout ce qu’ils font est pensé avec l’acquisition du pouvoir en tête et la survie du plus fort. Ils savent que la rudesse peut être nécessaire pour diriger un domaine rempli de morts-vivants désobéissants.<br />La pratique du pouvoir royal par les Ventrues se traduit assez bien dans le monde moderne. À la place des rois et des empereurs, ils sont devenus des PDG influents, contrôlant des empires de la finance et des affaires, plutôt que des terres et des serfs. Le Clan a recentré ses intérêts en faveur de la technologie moderne et du commerce où ils fraient tels des loups voraces au sein d’un troupeau de moutons sans défense.<br />Dans le but de maintenir la position dominante du Clan, les Ventrues choisissent généralement leurs infants parmi ceux étant déjà en pleine réussite : meneurs militaires, entrepreneurs, hommes d’affaires et riches investisseurs rejoignent les rangs des anciens rois et reines."},
+                    new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_ORGANIZATION, Text = "Comme les membres mortels de la royauté, un Ventrue apprend son lignage le jour de son Étreinte et doit être toujours prêt à réciter son entière ascendance parfaitement, à la lettre, sur demande de ses aînés. En interne, les Ventrues opèrent dans des systèmes d’allégeance féodaux bien que leur nature exacte ait évolué depuis ses origines antiques. De nos jours, pairie, vassalité et serments de fidélité s’intègrent bien avec les contrats d’affaires, OPA et autres styles de management agressif."},
+                    new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_WEAKNESS, Text = "Les Ventrues ont des goûts sélectifs en ce qui concerne le sang.<br />Chaque Ventrue ne trouve qu’un seul type de sang de mortel à son goût et ne gagne aucune subsistance d’autres sangs. Quand un joueur crée un personnage Ventrue, il doit parler avec son conteur et définir ensemble un type de sang qui convient aux goûts de ce personnage. Cette catégorie doit être plutôt restreinte ; moins d’une personne sur 10 devrait correspondre à cette description.Ce choix est permanent.<br />D’autres types de sang (y compris les animaux) ne nourrissent pas le Vampire. Peu importe la quantité qu’il consomme, sa Réserve de Sang n’augmentera pas et il vomira immédiatement le sang ingéré. Le sang d’autres créatures surnaturelles (comme les autres vampires) est exempté de cette restriction et peut subvenir aux besoins du personnage, quand bien même cette créature ne rentre pas dans les restrictions alimentaires du Ventrue.<br /> S’il est forcé de se nourrir dans un endroit inhabituel, un Ventrue doit dépenser une action inter-partie supplémentaire pour pouvoir venir en jeu avec sa Réserve de Sang pleine."},
+                }.ForEach(t => {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumCaitiff.CLAN_CAITIFF,
+                    Affiliate = $"{EnumAffiliate.CAMARILLA}, {EnumAffiliate.SABBAT}, {EnumAffiliate.ANARCH}",
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAnimalism.ANIMALISM_KEY || disci.DisciplineKey == EnumAuspex.AUSPEX_KEY || disci.DisciplineKey == EnumCelerity.CELERITY_KEY || disci.DisciplineKey == EnumObfuscate.OBFUSCATE_KEY || disci.DisciplineKey == EnumDominate.DOMINATE_KEY || disci.DisciplineKey == EnumFortitude.FORTITUDE_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY || disci.DisciplineKey == EnumPotence.POTENCE_KEY select disci).ToList(),
+                    History = EnumCaitiff.CLAN_CAITIFF_HISTORY,
+                    Name = EnumCaitiff.CLAN_CAITIFF_NAME,
+                    Organisation = EnumCaitiff.CLAN_CAITIFF_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Major,
+                    Surname = EnumCaitiff.CLAN_CAITIFF_SURNAME,
+                    Weakness = EnumCaitiff.CLAN_CAITIFF_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumCaitiff.CLAN_CAITIFF, Text = "CAITTIF"},
+                    new Traduction{LCID = 1036, Key = EnumCaitiff.CLAN_CAITIFF_NAME, Text = "Caittif"},
+                    new Traduction{LCID = 1036, Key = EnumCaitiff.CLAN_CAITIFF_SURNAME, Text = "Déchets, Bâtards (Pander)"},
+                    new Traduction{LCID = 1036, Key = EnumCaitiff.CLAN_CAITIFF_HISTORY, Text = "Les Caïtiffs ne forment pas un clan. Ils se regroupent ensemble en tant qu’exilés, mais ils n’ont aucun lien de sang entre eux et aucun ne porte de trait universellement distinctif. À l’occasion, le sang d’un vampire ne porte pas les marques de clan de son Sire. Ces infants infortunés sont généralement abandonnés et méprisés car considérés comme inaptes à la société vampirique. Ils sont exclus de leur lignée car ils sont une honte pour leurs sires. L’appellation même implique que le vampire est sans aucune valeur, un paria dans le monde vampirique.<br />La plupart des Caïtiffs fuient de cité en cité, leur existence même vidée de son sens à cause d’un accident d’Étreinte. En tant que groupe, les Caïtiffs ont très peu en commun. Ils peuvent venir de tous horizons ; ils peuvent avoir été choisis par leurs sires ratés ou l’étreinte peut avoir été un véritable accident.Au mieux, ils ne sont qu’une ombre pâle, une réfection du clan qui a échoué à l’étreindre sans personne pour les recommander dans les couloirs de la société vampirique.Les Caïtiffs sont seuls dans la nuit.<br />Les autres vampires rejettent les Caïtiffs, même ceux qui sont normalement ouverts d’esprit. Depuis longtemps, une rumeur clame que les Caitiffs sont une infection, une maladie. Et que passer trop de temps avec eux transformerait l’étreinte du Vampire, de sorte qu’il n’étreindrait que des Caïtiffs. D’autres rumeurs qualifient les Caïtiffs de malédiction, un châtiment de Dieu ou d’une autre force éternelle. Et d’autres encore, plus sombres, annoncent l’abondance de Caïtiffs comme un symbole de la fin des temps ; il sont un signe de l’affaiblissement du pouvoir vampirique et que le monde sera bientôt détruit par le feu."},
+                    new Traduction{LCID = 1036, Key = EnumCaitiff.CLAN_CAITIFF_ORGANIZATION, Text = "Les Caïtiffs n’ont aucune organisation et aucun sens de l’unité. Ils sont tués dans certains domaines, jetés dehors d’autres et complètement ignorés dans la plupart. Quand un Caïtiff a quelque chose à offrir, il est utilisé sans pitié par un autre Vampire. Quand il n’est plus utile, il est éliminé. À l’occasion, des Caïtiffs se regroupent pour se protéger mais sont susceptibles de se vendre les uns les autres pour leur sécurité ou un profit au lieu de garder leur alliance."},
+                    new Traduction{LCID = 1036, Key = EnumCaitiff.CLAN_CAITIFF_WEAKNESS, Text = "Les Caïtiffs ne peuvent pas commencer le jeu avec plus de 2 points dans l’historique Génération. Ils peuvent baisser leur génération grâce à la Diablerie. Les Caïtiffs ne peuvent pas enseigner leurs disciplines de clan à d’autres."},
+                }.ForEach(t => {
                     context.Traductions.AddOrUpdate(t);
                 });
 
                 context.SaveChanges();
             }
         }
-
-        #endregion
     }
 }

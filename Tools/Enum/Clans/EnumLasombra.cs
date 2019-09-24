@@ -13,5 +13,6 @@ namespace Tools
         public static readonly string CLAN_LASOMBRA_SURNAME = "CLAN_LASOMBRA_SURNAME";
         public static readonly string CLAN_LASOMBRA_HISTORY = "CLAN_LASOMBRA_HISTORY";
         public static readonly string CLAN_LASOMBRA_ORGANIZATION = "CLAN_LASOMBRA_ORGANIZATION";
+        public static readonly string CLAN_LASOMBRA_WEAKNESS = "CLAN_LASOMBRA_WEAKNESS";
     }
 }

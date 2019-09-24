@@ -1,10 +1,5 @@
-﻿using BLL.Enum.Attributs;
-using DTO;
-using System;
+﻿using DTO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {

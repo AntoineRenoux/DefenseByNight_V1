@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using Tools;
 
 namespace DefenseByNight.Areas.Rules.Models
 {
@@ -12,6 +10,9 @@ namespace DefenseByNight.Areas.Rules.Models
         public string Surname { get; set; }
         public string History { get; set; }
         public string Organisation { get; set; }
+        public string Weakness { get; set; }
+        public EnumRarityClan RarityClan { get; set; }
+        public string Affiliate { get; set; }
 
         public List<DisciplineViewModel> Disciplines { get; set; }
     }

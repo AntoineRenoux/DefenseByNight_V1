@@ -14,6 +14,6 @@ namespace BLL.Services
             this.clanRepository = clanRepository;
         }
 
-        public List<ClanDto> GetAll() => clanRepository.GetAll();
+        public List<ClanDto> GetAll(int languageId) => clanRepository.GetAll(languageId);
     }
 }
