@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DisciplineDto
+    public class DisciplineDto : IDto
     {
         [Required]
         public string DisciplineKey { get; set; }

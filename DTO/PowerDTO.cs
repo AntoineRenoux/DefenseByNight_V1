@@ -2,7 +2,7 @@
 
 namespace DTO
 {
-    public class PowerDto
+    public class PowerDto : IDto
     {
         [Required]
         public string PowerName { get; set; }

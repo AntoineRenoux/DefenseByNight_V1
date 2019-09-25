@@ -3,7 +3,7 @@ using Tools;
 
 namespace DTO
 {
-    public class ClanDto
+    public class ClanDto : IDto
     {
         public string ClanKey { get; set; }
         public string Name { get; set; }

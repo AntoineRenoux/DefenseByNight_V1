@@ -11,22 +11,18 @@ namespace DefenseByNight.Areas.Rules.Controllers
     [Authorize]
     public class DisciplinesController : BaseController
     {
-        private readonly IPowerServices powerService;
         private readonly IDisciplineService disciplineService;
 
         public DisciplinesController(ITraductionService traductionService
-            , IPowerServices powerService
             , IDisciplineService disciplineService) : base(traductionService)
         {
-            this.powerService = powerService;
             this.disciplineService = disciplineService;
         }
 
         // GET: Rules/Disciplines
         public ActionResult Index()
         {
-            var disciplines = disciplineService.GetAllWithPowers(CurrentUser.Lang);
-            var model = Mapper.Map<List<DisciplineDto>, List<DisciplineViewModel>>(disciplines);
+            var model = Mapper.Map<List<DisciplineDto>, List<DisciplineViewModel>>(disciplineService.GetAll(CurrentUser.Lang));
             
             return View(model);
         }

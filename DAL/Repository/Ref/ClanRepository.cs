@@ -12,60 +12,27 @@ namespace DAL.Repository.Ref
     {
         public List<ClanDto> GetAll(int languageId)
         {
-            var ret = context.Clans.Include(x => x.Disciplines).Include(x => x.Atouts).ToList();
+            var clans = context.Clans
+                        .Include(d => d.Disciplines)
+                        .Include(d => d.Disciplines.Select(p => p.Powers))
+                        .Include(a => a.Atouts)
+                        .ToList();
 
-            ret.ForEach(clan =>
-            {
-                clan.Name = (from trad in context.Traductions
-                             where trad.Key == clan.Name
-                             && trad.LCID == languageId
-                             select trad.Text).FirstOrDefault();
+            var clansDto = Mapper.Map<List<Clan>, List<ClanDto>>(clans);
 
-                clan.Affiliate = (from trad in context.Traductions
-                                  where trad.Key == clan.Affiliate
-                                  && trad.LCID == languageId
-                                  select trad.Text).FirstOrDefault();
-
-                clan.History = (from trad in context.Traductions
-                                where trad.Key == clan.History
-                                && trad.LCID == languageId
-                                select trad.Text).FirstOrDefault();
-
-                clan.Organisation = (from trad in context.Traductions
-                                     where trad.Key == clan.Organisation
-                                     && trad.LCID == languageId
-                                     select trad.Text).FirstOrDefault();
-
-                clan.Surname = (from trad in context.Traductions
-                                where trad.Key == clan.Surname
-                                && trad.LCID == languageId
-                                select trad.Text).FirstOrDefault();
-
-                clan.Weakness = (from trad in context.Traductions
-                                 where trad.Key == clan.Weakness
-                                 && trad.LCID == languageId
-                                 select trad.Text).FirstOrDefault();
-
-                clan.Disciplines.ToList().ForEach(disci =>
+            clansDto.ForEach(clan => {
+                clan.Translate(context, languageId);
+                clan.Disciplines.ForEach(disci =>
                 {
-                    disci.Description = (from trad in context.Traductions
-                                         where trad.Key == disci.Description
-                                         && trad.LCID == languageId
-                                         select trad.Text).FirstOrDefault();
-
-                    disci.DisciplineName = (from trad in context.Traductions
-                                            where trad.Key == disci.DisciplineName
-                                            && trad.LCID == languageId
-                                            select trad.Text).FirstOrDefault();
-
-                    disci.TestScore = (from trad in context.Traductions
-                                       where trad.Key == disci.TestScore
-                                       && trad.LCID == languageId
-                                       select trad.Text).FirstOrDefault();
+                    disci.Translate(context, languageId);
+                    disci.Powers.ForEach(power =>
+                    {
+                        power.Translate(context, languageId);
+                    });
                 });
             });
 
-            return Mapper.Map<List<Clan>, List<ClanDto>>(ret);
+            return clansDto;
         }
     }
 }

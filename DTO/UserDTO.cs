@@ -2,7 +2,7 @@
 
 namespace DTO
 {
-    public class UserDto
+    public class UserDto : IDto
     {
         public int? UserId { get; set; }
 

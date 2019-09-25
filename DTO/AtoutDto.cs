@@ -2,7 +2,7 @@
 
 namespace DTO
 {
-    public class AtoutDto
+    public class AtoutDto : IDto
     {
         public string Key { get; set; }
         public string Name { get; set; }

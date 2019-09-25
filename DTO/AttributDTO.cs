@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DTO
 {
-    public class AttributDto
+    public class AttributDto : IDto
     {
         [Required]
         public string AttributKey { get; set; }

@@ -111,6 +111,7 @@
     <Compile Include="BaseIdentityRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="DbnContext.cs" />
+    <Compile Include="Helpers\TraductionHelper.cs" />
     <Compile Include="IDataBaseContext.cs" />
     <Compile Include="Interfaces\Ref\IAtoutRepository.cs" />
     <Compile Include="Interfaces\Ref\IAttributRepository.cs" />

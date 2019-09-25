@@ -11,24 +11,20 @@ namespace DefenseByNight.Areas.Rules.Controllers
     [Authorize]
     public class ClansController : BaseController
     {
-        private readonly IAtoutService atoutService;
         private readonly IClanService clanService;
 
         public ClansController(ITraductionService traductionService,
-            IClanService clanService
-            ,IAtoutService atoutService) : base(traductionService)
+            IClanService clanService) : base(traductionService)
         {
-            this.atoutService = atoutService;
             this.clanService = clanService;
         }
 
         // GET: Rules/Clans
         public ActionResult Index()
         {
-            var clans = clanService.GetAll(1036);
-            var model = Mapper.Map<List<ClanDto>, List<ClanViewModel>>(clans);
+            var model = Mapper.Map<List<ClanDto>, List<ClanViewModel>>(clanService.GetAll(CurrentUser.Lang));
 
-            return View();
+            return View(model);
         }
     }
 }
