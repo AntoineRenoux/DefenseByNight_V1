@@ -33,7 +33,7 @@ namespace DAL.Repository.Ref
                 });
             });
 
-            return disciplinesDto;
+            return disciplinesDto.OrderBy(x => x.DisciplineName).ToList();
         }
     }
 }

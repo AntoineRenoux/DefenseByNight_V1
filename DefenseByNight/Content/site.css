@@ -27,7 +27,7 @@ body {
         font-size: 10px;
     }
 
-div.toptop {
+div.ancorButtonToTop {
     position: fixed;
     bottom: 0;
     margin-bottom: 60px;
