@@ -179,6 +179,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Rules\Views\Disciplines\_SideMenu.cshtml" />
+    <Content Include="Areas\Rules\Views\Disciplines\_DisciplinesDescription.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

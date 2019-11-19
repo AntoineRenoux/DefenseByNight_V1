@@ -1,0 +1,18 @@
+﻿@model List<DisciplineViewModel>
+
+<div class="nav navbar-left">
+    <div class="col-md-2 topDisciplines well">
+        <div class="text-center">
+            <a href="#">@Translate.GetTraduction(EnumRessource.GEN_LBL_DISCIPLINE).Text</a>
+            <hr />
+        </div>
+        <div class="navbarScroll">
+            @foreach (var discipline in Model)
+            {
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <a href="#@discipline.DisciplineKey">@discipline.DisciplineName</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

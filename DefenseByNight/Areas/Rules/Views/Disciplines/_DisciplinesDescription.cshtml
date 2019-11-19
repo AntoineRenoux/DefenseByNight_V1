@@ -1,0 +1,105 @@
+﻿
+@model List<DisciplineViewModel>
+
+<h1 class="title well">
+    <i class="fas fa-ankh"></i>
+    @Translate.GetTraduction(EnumRessource.GEN_LBL_DISCIPLINE).Text
+    <i class="fas fa-ankh"></i>
+</h1>
+
+
+@foreach (var discipline in Model)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h2 class="title">
+                        <a class="anchor" name="@discipline.DisciplineKey"></a>
+                        @discipline.DisciplineName
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <p class="text-justify">
+                            @Html.Raw(discipline.Description)
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="text-center">
+                            <strong> @Translate.GetTraduction(EnumRessource.GEN_LBL_TEST_SCORE).Text : </strong>
+                            @Html.Raw(discipline.TestScore)
+                        </p>
+                    </div>
+
+                    <div class="col-md-12 text-center well">
+                        <div class="col-md-offset-2">
+                            @foreach (var power in discipline.Powers)
+                            {
+                                <div class="col-md-2">
+                                    <a href="#@power.PowerName">@power.PowerName</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    @foreach (var power in discipline.Powers)
+                    {
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="title">
+                                    <a class="anchor" name="@power.PowerName"></a>
+                                    <span class="dotPower">
+                                        @for (int i = 0; i < power.Level; i++)
+                                        {
+                                            <i class="fas fa-circle"></i>
+                                        }
+                                    </span>
+                                    @power.PowerName
+                                </h2>
+                            </div>
+
+                            <div class="col-md-12">
+                                <p class="text-justify">
+                                    @Html.Raw(power.Description)
+                                </p>
+                            </div>
+
+                            <div class="col-md-12">
+                                <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_SYSTEM).Text</h4>
+                                <p class="text-justify">
+                                    @Html.Raw(power.System)
+                                </p>
+                            </div>
+
+                            @if (power.ExceptionalSuccess != null)
+                            {
+                                <div class="col-md-12">
+                                    <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_EXEPTIONNAL_SUCCESS).Text</h4>
+                                    <p class="text-justify">
+                                        @Html.Raw(power.ExceptionalSuccess)
+                                    </p>
+                                </div>
+                            }
+
+                            @if (power.Focus != null)
+                            {
+                                <div class="col-md-12">
+                                    <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_FOCUS).Text : @power.Focus.FocusName</h4>
+                                    <p class="text-justify">
+                                        @Html.Raw(power.FocusEffect)
+                                    </p>
+                                </div>
+                            }
+
+                        </div>
+                        <hr />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
