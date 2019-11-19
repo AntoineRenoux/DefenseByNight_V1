@@ -40,15 +40,8 @@ div.ancorButtonToTop {
 }
 
 .title {
-    font-family: "Northwood High";
-    text-align: center;
-    color: #990000;
-}
-
-a.title {
-    cursor: pointer;
-    text-decoration: none;
-    color: #990000;
+    font-weight: bold;
+    display: initial;
 }
 
 .footer-style {
@@ -65,7 +58,14 @@ img.sizable {
     width: 100%;
 }
 
+.clanDiv{
+    padding-bottom: 15px;
+}
 
+.articleJustify {
+    text-align: justify;
+    text-justify: auto;
+}
 
 .vertical-center {
     margin: 0;

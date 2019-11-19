@@ -1,11 +1,11 @@
 ﻿
 @model List<DisciplineViewModel>
 
-<h1 class="title well">
-    <i class="fas fa-ankh"></i>
-    @Translate.GetTraduction(EnumRessource.GEN_LBL_DISCIPLINE).Text
-    <i class="fas fa-ankh"></i>
-</h1>
+<div class="row well text-center">
+    <h1 class="title">
+        @Translate.GetTraduction(EnumRessource.GEN_LBL_DISCIPLINE).Text
+    </h1>
+</div>
 
 
 @foreach (var discipline in Model)
@@ -14,10 +14,10 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
-                    <h2 class="title">
+                    <h3 class="title">
                         <a class="anchor" name="@discipline.DisciplineKey"></a>
                         @discipline.DisciplineName
-                    </h2>
+                    </h3>
                 </div>
                 <div class="panel-body">
                     <div>
@@ -47,7 +47,7 @@
                     @foreach (var power in discipline.Powers)
                     {
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 text-center clanDiv">
                                 <h2 class="title">
                                     <a class="anchor" name="@power.PowerName"></a>
                                     <span class="dotPower">

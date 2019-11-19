@@ -1,6 +1,14 @@
 ﻿@model List<ClanViewModel>
 
 @{
-    ViewBag.Title = Translate.GetTraduction(EnumRessource.GEN_LBL_RULES).Text;
+    ViewBag.Title = Translate.GetTraduction(EnumRessource.GEN_LBL_CLANS).Text;
 }
 
+<div class="row">
+    <div class="col-md-2">
+        @Html.Partial("_SideMenu")
+    </div>
+    <div class="col-md-8">
+        @Html.Partial("_ClansDescription")
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model List<ClanViewModel>
+
+<div class="row well text-center">
+    <h1 class="title">
+        @Translate.GetTraduction(EnumRessource.GEN_LBL_CLANS).Text
+    </h1>
+</div>
+
+<div class="row">
+    @foreach (var clan in Model)
+    {
+        <div class="panel panel-default clanDiv">
+            <div class="panel-heading text-center">
+                <h3 class="title">
+                    <a class="anchor" name="@clan.ClanKey"></a>
+                    @clan.Name
+                </h3>
+                - @clan.Surname
+            </div>
+            <div class="panel-body">
+                <div class="text-center">
+                    @foreach (var disciplines in clan.Disciplines)
+                    {
+                        <a>@Html.Raw(disciplines.DisciplineName)</a>
+                    }
+                </div>
+
+                <div>
+                    <h4> @Translate.GetTraduction(EnumRessource.GEN_LBL_HISTORY).Text</h4>
+                    <p class="articleJustify">@Html.Raw(clan.History)</p>
+                </div>
+
+                <div>
+                    <h4> @Translate.GetTraduction(EnumRessource.GEN_LBL_ORGANISATION).Text</h4>
+                    <p class="articleJustify">@Html.Raw(clan.Organisation)</p>
+                </div>
+
+                <div>
+                    <h4> @Translate.GetTraduction(EnumRessource.GEN_LBL_WEAKNESS).Text</h4>
+                    <p class="articleJustify">@Html.Raw(clan.Weakness)</p>
+                </div>
+            </div>       
+        </div>
+    }
+</div>

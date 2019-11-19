@@ -1,0 +1,18 @@
+﻿@model List<ClanViewModel>
+
+<div class="nav navbar-left">
+    <div class="col-md-2 topDisciplines well">
+        <div class="text-center">
+            <a href="#">@Translate.GetTraduction(EnumRessource.GEN_LBL_CLANS).Text</a>
+            <hr />
+        </div>
+        <div class="navbarScroll">
+            @foreach (var clan in Model)
+            {
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <a href="#@clan.ClanKey">@clan.Name</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

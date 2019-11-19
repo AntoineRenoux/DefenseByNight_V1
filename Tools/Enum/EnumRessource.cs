@@ -37,5 +37,9 @@
         public readonly static string GEN_LBL_EXEPTIONNAL_SUCCESS = "GEN_LBL_EXEPTIONNAL_SUCCESS";
 
         public readonly static string GEN_LBL_DISCIPLINE_POWER = "GEN_LBL_DISCIPLINE_POWER";
+
+        public readonly static string GEN_LBL_HISTORY = "GEN_LBL_HISTORY";
+        public readonly static string GEN_LBL_ORGANISATION = "GEN_LBL_ORGANISATION";
+        public readonly static string GEN_LBL_WEAKNESS = "GEN_LBL_WEAKNESS";
     }
 }
