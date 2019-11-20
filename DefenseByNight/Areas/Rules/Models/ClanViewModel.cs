@@ -15,5 +15,6 @@ namespace DefenseByNight.Areas.Rules.Models
         public string Affiliate { get; set; }
 
         public List<DisciplineViewModel> Disciplines { get; set; }
+        public List<AtoutViewModel> Atouts { get; set; }
     }
 }

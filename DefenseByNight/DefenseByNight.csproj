@@ -220,6 +220,7 @@
     <Compile Include="Areas\Character\Models\Character.cs" />
     <Compile Include="Areas\Rules\Controllers\ClansController.cs" />
     <Compile Include="Areas\Rules\Controllers\DisciplinesController.cs" />
+    <Compile Include="Areas\Rules\Models\AtoutViewModel.cs" />
     <Compile Include="Areas\Rules\Models\ClanViewModel.cs" />
     <Compile Include="Areas\Rules\Models\DisciplineViewModel.cs" />
     <Compile Include="Areas\Rules\Models\FocusViewModel.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Areas\Rules\RulesAreaRegistration.cs" />
     <Compile Include="Areas\Rules\RulesBundleConfig.cs" />
     <Compile Include="Helpers\Translate.cs" />
+    <Compile Include="Mapping\AtoutVmToDtoProfile.cs" />
     <Compile Include="Mapping\ClanVmToDtoProfile.cs" />
     <Compile Include="Mapping\DisciplineVmToDtoProfile.cs" />
     <Compile Include="Mapping\FocusVmToDtoProfile.cs" />

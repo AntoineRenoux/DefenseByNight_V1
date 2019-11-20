@@ -30,9 +30,14 @@ namespace DAL.Repository.Ref
                         power.Translate(context, languageId);
                     });
                 });
+
+                clan.Atouts.ForEach(atout =>
+                {
+                    atout.Translate(context, languageId);
+                });
             });
 
-            return clansDto;
+            return clansDto.OrderByDescending(x => x.RarityClan).ThenBy(x => x.Name).ToList();
         }
     }
 }

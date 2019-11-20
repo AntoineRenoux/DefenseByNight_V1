@@ -139,6 +139,8 @@
                 new Traduction{LCID = 1036, Key = "GEN_LBL_FOCUS", Text = "Focus"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_EXEPTIONNAL_SUCCESS", Text = "Succès Exceptionnel"},
 
+                new Traduction{LCID = 1036, Key = "GEN_LBL_POINT", Text = "Points"},
+
                  
                 #region Menu
                 new Traduction{LCID = 1036, Key = "GEN_LBL_DISCIPLINE_POWER", Text = "Disciplines & Pouvoirs"},
@@ -148,6 +150,11 @@
                 new Traduction{LCID = 1036, Key = "GEN_LBL_HISTORY", Text = "Histoire"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_ORGANISATION", Text = "Organisation"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_WEAKNESS", Text = "Faiblesse du clan"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_CLAN_ATOUT", Text = "Atouts de Lignée"},
+
+                new Traduction{LCID = 1036, Key = "GEN_LBL_MAJOR_CLAN", Text = "Clans Majeurs"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_MINOR_CLAN", Text = "Clans Mineurs"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_RARE_CLAN", Text = "Lignées rares"},
             	#endregion
 
                 };
@@ -214,7 +221,8 @@
                      new Traduction{LCID = 1036, Key = EnumAffiliate.INDEPENDENT_ALLIANCE, Text = "Aliance indépendante"},
                      new Traduction{LCID = 1036, Key = EnumAffiliate.INDEPENDENT_CLAN, Text = "Clan indépendant"},
                      new Traduction{LCID = 1036, Key = EnumAffiliate.ANARCH, Text = "Anarch"},
-                }.ForEach(trad => {
+                }.ForEach(trad =>
+                {
                     context.Traductions.AddOrUpdate(trad);
                 });
 
@@ -3548,7 +3556,7 @@
                     new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_AURA_OF_COMMAND_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumVentrue.CLAN_VENTRUE },
                     new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_CROISE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumVentrue.CLAN_VENTRUE },
                     new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_PARANGON_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumVentrue.CLAN_VENTRUE },
-                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_ROYAL_KEY, Name = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_NAME, Description = EnumAtoutFlaw.ATOUT_TZIMISCE_KOLDUN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumVentrue.CLAN_VENTRUE},
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_VENTRUE_ROYAL_KEY, Name = EnumAtoutFlaw.ATOUT_VENTRUE_ROYAL_NAME, Description = EnumAtoutFlaw.ATOUT_VENTRUE_ROYAL_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumVentrue.CLAN_VENTRUE},
                 });
 
                 atoutTrad.AddRange(new List<Traduction>
@@ -3588,6 +3596,125 @@
                 });
                 #endregion
 
+                #region Baali Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_BAALI_INFERNAL_LEGACY_KEY, Name = EnumAtoutFlaw.ATOUT_BAALI_INFERNAL_LEGACY_NAME, Description = EnumAtoutFlaw.ATOUT_BAALI_INFERNAL_LEGACY_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumBaali.CLAN_BAALI },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_BAALI_ANGELLIS_ATER_KEY, Name = EnumAtoutFlaw.ATOUT_BAALI_ANGELLIS_ATER_NAME, Description = EnumAtoutFlaw.ATOUT_BAALI_ANGELLIS_ATER_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumBaali.CLAN_BAALI },
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_BAALI_INFERNAL_LEGACY_NAME, Text = "Héritage Infernal" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_BAALI_INFERNAL_LEGACY_DESCRIPTION, Text = "Cet atout duplique les mécaniques de l’Atout Pouvoir Infernal ainsi que l’atout de la Voie des Révélations Démoniaques." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_BAALI_ANGELLIS_ATER_NAME, Text = "Lignée de sang : Angellis Ater" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_BAALI_ANGELLIS_ATER_DESCRIPTION, Text = " Vous êtes un membre de la lignée des Angellis Ater, qui provient de Lasombras satanistes. Vos disciplines de clans sont Daemonium, Domination et au choix entre Puissance, Présence, Occultation." },
+                });
+                #endregion
+
+                #region Cappadocian Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_NECROMANTIC_INSTINCT_KEY, Name = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_NECROMANTIC_INSTINCT_NAME, Description = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_NECROMANTIC_INSTINCT_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumCappadocian.CLAN_CAPPADOCIAN },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_BLOODLINE_SAMEDI_KEY, Name = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_BLOODLINE_SAMEDI_NAME, Description = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_BLOODLINE_SAMEDI_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumCappadocian.CLAN_CAPPADOCIAN },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_SAIL_KEY, Name = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_SAIL_NAME, Description = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_SAIL_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumCappadocian.CLAN_CAPPADOCIAN },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_BLOODLINE_LAMIA_KEY, Name = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_BLOODLINE_LAMIA_NAME, Description = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_BLOODLINE_LAMIA_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 4, ClanKey = EnumCappadocian.CLAN_CAPPADOCIAN },
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_NECROMANTIC_INSTINCT_NAME, Text = "Instinct Nécromantique" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_NECROMANTIC_INSTINCT_DESCRIPTION, Text = "Vous pouvez acheter une voie supplémentaire de Nécromancie." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_BLOODLINE_SAMEDI_NAME, Text = "Lignée de sang: Samedi" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_BLOODLINE_SAMEDI_DESCRIPTION, Text = "Vous êtes un membre de la lignée des Samedi, un groupe indépendant de vampires répugnants et pourrissants qui pratiquent le vaudou. Vos disciplines de sang sont Force d’Âme, Occultation et Thanatosis." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_SAIL_NAME, Text = "Voile Percé" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_SAIL_DESCRIPTION, Text = "Vous gagnez de la puissance (Sang) quand des créatures sentiantes meurent dans votre ligne de vue." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_BLOODLINE_LAMIA_NAME, Text = "Lignée de sang: Lamia" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CAPPADOCIAN_BLOODLINE_LAMIA_DESCRIPTION, Text = "Vous êtes un membre de la lignée des Lamias, qui consiste en un ordre de femmes qui autrefois jurèrent de protéger leurs maîtres Cappadociens. Vos disciplines de clan sont Force d’Âme, Nécromancie: Voie de Mortis et Puissance." },
+
+                });
+                #endregion
+
+                #region Ravnos Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_RAVNOS_DAYDREAM_KEY, Name = EnumAtoutFlaw.ATOUT_RAVNOS_DAYDREAM_NAME, Description = EnumAtoutFlaw.ATOUT_RAVNOS_DAYDREAM_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumRavnos.CLAN_RAVNOS },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_RAVNOS_BLOODLINE_BRAHMAN_KEY, Name = EnumAtoutFlaw.ATOUT_RAVNOS_BLOODLINE_BRAHMAN_NAME, Description = EnumAtoutFlaw.ATOUT_RAVNOS_BLOODLINE_BRAHMAN_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumRavnos.CLAN_RAVNOS  },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_RAVNOS_KING_ESCAPE_KEY, Name = EnumAtoutFlaw.ATOUT_RAVNOS_KING_ESCAPE_NAME, Description = EnumAtoutFlaw.ATOUT_RAVNOS_KING_ESCAPE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumRavnos.CLAN_RAVNOS  },
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_RAVNOS_DAYDREAM_NAME, Text = "Rêve Éveillé" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_RAVNOS_DAYDREAM_DESCRIPTION, Text = "Vous pouvez brièvement manipuler une illusion que vous avez créée comme si elle était réelle." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_RAVNOS_BLOODLINE_BRAHMAN_NAME, Text = "Lignée de Sang : Brahman" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_RAVNOS_BLOODLINE_BRAHMAN_DESCRIPTION, Text = "Vous êtes un membre de la lignée de sang des Brahman, un groupe d’indiens philosophes et gourous. Vos disciplines de clan sont Animalisme, Auspex et Chimérie." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_RAVNOS_KING_ESCAPE_NAME, Text = "Roi de l’évasion" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_RAVNOS_KING_ESCAPE_DESCRIPTION, Text = "Vous êtes extrêmement doué pour vous soustraire aux situations dangereuses." },
+                });
+                #endregion
+
+                #region Salubri Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_SALUBRI_JUST_FURY_KEY, Name = EnumAtoutFlaw.ATOUT_SALUBRI_JUST_FURY_NAME, Description = EnumAtoutFlaw.ATOUT_SALUBRI_JUST_FURY_DECRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumSalubri.CLAN_SALUBRI },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_SALUBRI_SPIRIT_ARMOR_KEY, Name = EnumAtoutFlaw.ATOUT_SALUBRI_SPIRIT_ARMOR_NAME, Description = EnumAtoutFlaw.ATOUT_SALUBRI_SPIRIT_ARMOR_DECRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 2, ClanKey = EnumSalubri.CLAN_SALUBRI  },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_SALUBRI_BLOODLINE_HEALER_KEY, Name = EnumAtoutFlaw.ATOUT_SALUBRI_BLOODLINE_HEALER_NAME, Description = EnumAtoutFlaw.ATOUT_SALUBRI_BLOODLINE_HEALER_DECRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumSalubri.CLAN_SALUBRI  },
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_SALUBRI_JUST_FURY_NAME, Text = "Juste fureur" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_SALUBRI_JUST_FURY_DECRIPTION, Text = "Votre foi augmente vos attaques de bagarre et de mêlée en combattant les agents démoniaques." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_SALUBRI_SPIRIT_ARMOR_NAME, Text = "Armure spirituelle" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_SALUBRI_SPIRIT_ARMOR_DECRIPTION, Text = "Votre foi vous protège des puissances démoniaques." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_SALUBRI_BLOODLINE_HEALER_NAME, Text = "Lignée : Guérisseur" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_SALUBRI_BLOODLINE_HEALER_DECRIPTION, Text = "Vous êtes une réminiscence de temps plus paisibles : un membre de la lignée des guérisseurs. Vos disciplines dans le clan sont Auspex, Force d’Âme et Obeah." },
+                });
+                #endregion
+
+                #region Cacophony Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_CACOPHONY_SURNATURAL_ARIA_KEY, Name = EnumAtoutFlaw.ATOUT_CACOPHONY_SURNATURAL_ARIA_NAME, Description = EnumAtoutFlaw.ATOUT_CACOPHONY_SURNATURAL_ARIA_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumCacophony.CLAN_CACOPHONY },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_CACOPHONY_CELESTIAL_OCTAVES_KEY, Name = EnumAtoutFlaw.ATOUT_CACOPHONY_CELESTIAL_OCTAVES_NAME, Description = EnumAtoutFlaw.ATOUT_CACOPHONY_CELESTIAL_OCTAVES_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumCacophony.CLAN_CACOPHONY },
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CACOPHONY_SURNATURAL_ARIA_NAME, Text = "Aria surnaturel" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CACOPHONY_SURNATURAL_ARIA_DESCRIPTION, Text = "Votre maximum potentiel pour la compétence Performance : Chanter est accru de 3 et vous payez la moitié du coût d’XP pour acheter la Compétence Performance : Chanter." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CACOPHONY_CELESTIAL_OCTAVES_NAME, Text = "Octaves Célestes" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_CACOPHONY_CELESTIAL_OCTAVES_DESCRIPTION, Text = "Vous pouvez utiliser la Transe sur n’importe quel personnage qui vous écoute chanter." },
+                });
+                #endregion
+
+                #region Gargoyle Atout
+                atouts.AddRange(new List<Atout>
+                {
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GARGOYLE_FLY_KEY, Name = EnumAtoutFlaw.ATOUT_GARGOYLE_FLY_NAME, Description = EnumAtoutFlaw.ATOUT_GARGOYLE_FLY_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 1, ClanKey = EnumGargoyle.CLAN_GARGOYLE },
+                    new Atout{Key = EnumAtoutFlaw.ATOUT_GARGOYLE_DARK_STATUE_KEY, Name = EnumAtoutFlaw.ATOUT_GARGOYLE_DARK_STATUE_NAME, Description = EnumAtoutFlaw.ATOUT_GARGOYLE_DARK_STATUE_DESCRIPTION, Type = EnumAtoutFlaw.TypeAtout.Clan, Cost = 3, ClanKey = EnumGargoyle.CLAN_GARGOYLE },
+                });
+
+                atoutTrad.AddRange(new List<Traduction>
+                {
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_GARGOYLE_FLY_NAME, Text = "Vol" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_GARGOYLE_FLY_DESCRIPTION, Text = "Vous avez des ailes qui fonctionnent. Ces ailes vous permettent de voler aussi rapidement que vous pouvez vous déplacer." },
+
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_GARGOYLE_DARK_STATUE_NAME, Text = "Sombre Statue" },
+                     new Traduction{ LCID = 1036, Key = EnumAtoutFlaw.ATOUT_GARGOYLE_DARK_STATUE_DESCRIPTION, Text = "Vous pouvez dépenser une action standard pour vous transformer en une statue de vous-même, apparemment sculptée en pierre pleine." },
+                });
+                #endregion
+
                 atouts.ForEach(a =>
                 {
                     context.Atouts.AddOrUpdate(a);
@@ -3607,6 +3734,10 @@
         {
             public static void Initializer(DbnContext context)
             {
+
+                //Clans Majeurs
+
+                #region Assamite
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumAssamite.CLAN_ASSAMITE,
@@ -3632,7 +3763,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Brujah
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumBrujah.CLAN_BRUJAH,
@@ -3658,7 +3791,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Disciples de Set
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumSet.CLAN_SET,
@@ -3684,7 +3819,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Gangrel
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumGangrel.CLAN_GANGREL,
@@ -3710,7 +3847,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Giovanni
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumGiovanni.CLAN_GIOVANNI,
@@ -3736,7 +3875,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Lassombra
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumLasombra.CLAN_LASOMBRA,
@@ -3762,7 +3903,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Malkavian
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumMalkavian.CLAN_MALKAVIAN,
@@ -3788,7 +3931,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Nosferatu
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumNosferatu.CLAN_NOSFERATU,
@@ -3814,7 +3959,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Toreador
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumToreador.CLAN_TOREADOR,
@@ -3840,7 +3987,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Tremere
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumTremere.CLAN_TREMERE,
@@ -3866,7 +4015,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Tzimisce
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumTzimisce.CLAN_TZIMISCE,
@@ -3892,7 +4043,9 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Ventrue
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumVentrue.CLAN_VENTRUE,
@@ -3911,14 +4064,16 @@
                     new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE, Text = "VENTRUE"},
                     new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_NAME, Text = "Ventrue"},
                     new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_SURNAME, Text = "Roys"},
-                    new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_HISTORY, Text = "Alors que les autres clans s’essaient à la politique, étudient la philosophie et encouragent les arts, les descendants du Clan Ventrue ciblent leurs recherches sur la seule chose qui importe vraiment : le pouvoir. Régner est dans leur sang et rares sont les Ventrues qui ne ressentent pas le besoin de commander. La légende du Clan Ventrue est celle des Rois et des Reines, un lignage de souverains datant d’avant la chute de l’Empire Romain. Ils considèrent qu’il est dans leur droit divin de mener et de façonner le monde. Cette attitude s’applique non seulement aux autres vampires mais aussi aux domaines des mortels où les Ventrues sont souvent des faiseurs de rois et décident du destin des empires mortels.<br /> <i>Noblesse oblige<i/> est un terme souvent entendu dans les couloirs du Clan Ventrue. Ils respectent la dignitas, une vertu basée sur l’honneur, la propriété ainsi que le respect et ceux qui se plient à ces règles complexes seront l’exemple même de la réussite au sein du Clan des Roys. Les Ventrues sont malins, éduqués et érudits, aussi doués avec une épée qu’avec un stylo. Conservateurs et insensibles, ils basent rarement leurs décisions sur des émotions. Tout ce qu’ils font est pensé avec l’acquisition du pouvoir en tête et la survie du plus fort. Ils savent que la rudesse peut être nécessaire pour diriger un domaine rempli de morts-vivants désobéissants.<br />La pratique du pouvoir royal par les Ventrues se traduit assez bien dans le monde moderne. À la place des rois et des empereurs, ils sont devenus des PDG influents, contrôlant des empires de la finance et des affaires, plutôt que des terres et des serfs. Le Clan a recentré ses intérêts en faveur de la technologie moderne et du commerce où ils fraient tels des loups voraces au sein d’un troupeau de moutons sans défense.<br />Dans le but de maintenir la position dominante du Clan, les Ventrues choisissent généralement leurs infants parmi ceux étant déjà en pleine réussite : meneurs militaires, entrepreneurs, hommes d’affaires et riches investisseurs rejoignent les rangs des anciens rois et reines."},
+                    new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_HISTORY, Text = "Alors que les autres clans s’essaient à la politique, étudient la philosophie et encouragent les arts, les descendants du Clan Ventrue ciblent leurs recherches sur la seule chose qui importe vraiment : le pouvoir. Régner est dans leur sang et rares sont les Ventrues qui ne ressentent pas le besoin de commander. La légende du Clan Ventrue est celle des Rois et des Reines, un lignage de souverains datant d’avant la chute de l’Empire Romain. Ils considèrent qu’il est dans leur droit divin de mener et de façonner le monde. Cette attitude s’applique non seulement aux autres vampires mais aussi aux domaines des mortels où les Ventrues sont souvent des faiseurs de rois et décident du destin des empires mortels.<br /> <i>Noblesse oblige</i> est un terme souvent entendu dans les couloirs du Clan Ventrue. Ils respectent la dignitas, une vertu basée sur l’honneur, la propriété ainsi que le respect et ceux qui se plient à ces règles complexes seront l’exemple même de la réussite au sein du Clan des Roys. Les Ventrues sont malins, éduqués et érudits, aussi doués avec une épée qu’avec un stylo. Conservateurs et insensibles, ils basent rarement leurs décisions sur des émotions. Tout ce qu’ils font est pensé avec l’acquisition du pouvoir en tête et la survie du plus fort. Ils savent que la rudesse peut être nécessaire pour diriger un domaine rempli de morts-vivants désobéissants.<br />La pratique du pouvoir royal par les Ventrues se traduit assez bien dans le monde moderne. À la place des rois et des empereurs, ils sont devenus des PDG influents, contrôlant des empires de la finance et des affaires, plutôt que des terres et des serfs. Le Clan a recentré ses intérêts en faveur de la technologie moderne et du commerce où ils fraient tels des loups voraces au sein d’un troupeau de moutons sans défense.<br />Dans le but de maintenir la position dominante du Clan, les Ventrues choisissent généralement leurs infants parmi ceux étant déjà en pleine réussite : meneurs militaires, entrepreneurs, hommes d’affaires et riches investisseurs rejoignent les rangs des anciens rois et reines."},
                     new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_ORGANIZATION, Text = "Comme les membres mortels de la royauté, un Ventrue apprend son lignage le jour de son Étreinte et doit être toujours prêt à réciter son entière ascendance parfaitement, à la lettre, sur demande de ses aînés. En interne, les Ventrues opèrent dans des systèmes d’allégeance féodaux bien que leur nature exacte ait évolué depuis ses origines antiques. De nos jours, pairie, vassalité et serments de fidélité s’intègrent bien avec les contrats d’affaires, OPA et autres styles de management agressif."},
                     new Traduction{LCID = 1036, Key = EnumVentrue.CLAN_VENTRUE_WEAKNESS, Text = "Les Ventrues ont des goûts sélectifs en ce qui concerne le sang.<br />Chaque Ventrue ne trouve qu’un seul type de sang de mortel à son goût et ne gagne aucune subsistance d’autres sangs. Quand un joueur crée un personnage Ventrue, il doit parler avec son conteur et définir ensemble un type de sang qui convient aux goûts de ce personnage. Cette catégorie doit être plutôt restreinte ; moins d’une personne sur 10 devrait correspondre à cette description.Ce choix est permanent.<br />D’autres types de sang (y compris les animaux) ne nourrissent pas le Vampire. Peu importe la quantité qu’il consomme, sa Réserve de Sang n’augmentera pas et il vomira immédiatement le sang ingéré. Le sang d’autres créatures surnaturelles (comme les autres vampires) est exempté de cette restriction et peut subvenir aux besoins du personnage, quand bien même cette créature ne rentre pas dans les restrictions alimentaires du Ventrue.<br /> S’il est forcé de se nourrir dans un endroit inhabituel, un Ventrue doit dépenser une action inter-partie supplémentaire pour pouvoir venir en jeu avec sa Réserve de Sang pleine."},
                 }.ForEach(t =>
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
 
+                #region Caitiff
                 context.Clans.AddOrUpdate(new Clan
                 {
                     ClanKey = EnumCaitiff.CLAN_CAITIFF,
@@ -3944,6 +4099,179 @@
                 {
                     context.Traductions.AddOrUpdate(t);
                 });
+                #endregion
+
+                //Clans Mineurs
+
+                #region Baali
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumBaali.CLAN_BAALI,
+                    Affiliate = EnumAffiliate.INDEPENDENT_CLAN,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumDaimonion.DAIMOINON_KEY || disci.DisciplineKey == EnumObfuscate.OBFUSCATE_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY select disci).ToList(),
+                    History = EnumBaali.CLAN_BAALI_HISTORY,
+                    Name = EnumBaali.CLAN_BAALI_NAME,
+                    Organisation = EnumBaali.CLAN_BAALI_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Minor,
+                    Surname = EnumBaali.CLAN_BAALI_SURNAME,
+                    Weakness = EnumBaali.CLAN_BAALI_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumBaali.CLAN_BAALI, Text = "BAALI"},
+                    new Traduction{LCID = 1036, Key = EnumBaali.CLAN_BAALI_HISTORY, Text = "Les Vampires parlent très rarement des Baalis, croyant superstitieusement que ces infernalistes peuvent s’entendre être appelés et se convoquer. Il y a longtemps, un groupe de vampires a passé un pacte avec des forces démoniaques, vendant leur âme pour du pouvoir utilisable à l’encontre des autres clans. Le premier de ceux-ci était Baal le destructeur, une puissante force de conquête et de destruction. Bien que ses armées aient finalement été mises en déroute et conduites vers l’obscurité, le clan Baali n’a pas été oblitéré. Au contraire, il continue d’exister au sein de la cité maudite de Chorazin.Les Baalis, occasionnellement, quittent leur cité et se cachent parmi les autres clans, œuvrant insidieusement pour corrompre les autres vampires.<br />Les Baalis pensent que les démons sont les véritables enfants de la nuit, chassés du ciel par un Dieu narcissique qui a créé l’humanité seulement pour satisfaire sa vanité. Ces vampires sont des créatures corrompues, vicieuses et il n’y a rien qu’un Baali ne fera pas pour satisfaire sa propre ambition. Sacrifices sanglants, rituels noirs, massacres brutaux, aucun acte n’est assez vil ou ne coûte trop cher. Ces Vampires ne sont pas apologétiques dans leur adoration du mal mais se repaissent dans ses bénéfices. Du fait de ses ambitions vicieuses, la connaissance du clan en mystères occultes est vaste − comme le sont ses ennemis. Les infernalistes sont craints et chassés et la plupart des vampires les voient comme une abomination.<br />Bien que leur nombre soit réduit, les Baalis sont dangereux. Ils se rassemblent en de petits couvents, ou « ruches », partageant leur savoir infernal et recherchant des rituels démoniaques blasphématoires. Ils en savent beaucoup sur la Fin des Temps et collectionnent souvent d’obscurs et rares livres de prophéties et de savoir. Les Baalis utilisent ces révélations pour prédire les évènements futurs à leurs dépends ainsi que pour attirer les érudits vampires d’autres clans. A contrario des autres Vampires, les Baalis veulent que la fin des Temps se réalise. Ils voient la Géhenne comme une opportunité de se venger et que leurs maîtres démoniaques puissent enfin se lever."},
+                    new Traduction{LCID = 1036, Key = EnumBaali.CLAN_BAALI_NAME, Text = "Baali"},
+                    new Traduction{LCID = 1036, Key = EnumBaali.CLAN_BAALI_ORGANIZATION, Text = "Les Baalis préfèrent s’organiser en de petites cabales où chacun des membres vénère le même suzerain infernal. Ces cabales ne sont pas liées par loyauté ou affection, mais par acte d’engagement auprès de leur maître démoniaque et par un besoin pressé par la peur de servir leur terrible fondateur de clan."},
+                    new Traduction{LCID = 1036, Key = EnumBaali.CLAN_BAALI_SURNAME, Text = "Démons"},
+                    new Traduction{LCID = 1036, Key = EnumBaali.CLAN_BAALI_WEAKNESS, Text = "Les Baalis ne peuvent pas supporter de regarder ou manipuler tout objet lié à la foi, de quelque nature que ce soit. Les démons vampiriques doivent détourner le regard de tels objets et les toucher brûle leur peau en infligeant un point de dégât aggravé qui ne peut pas être réduit ou encaissé. De plus, si un Baali venait à rencontrer la Vraie Foi, tout effet d’entrave ou de dégât est doublé."},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+                #endregion
+
+                #region Cappadocian
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumCappadocian.CLAN_CAPPADOCIAN,
+                    Affiliate = EnumAffiliate.INDEPENDENT_CLAN,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAuspex.AUSPEX_KEY || disci.DisciplineKey == EnumFortitude.FORTITUDE_KEY || disci.DisciplineKey == EnumMortis.MORTIS_KEY select disci).ToList(),
+                    History = EnumCappadocian.CLAN_CAPPADOCIAN_HISTORY,
+                    Name = EnumCappadocian.CLAN_CAPPADOCIAN_NAME,
+                    Organisation = EnumCappadocian.CLAN_CAPPADOCIAN_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Minor,
+                    Surname = EnumCappadocian.CLAN_CAPPADOCIAN_SURNAME,
+                    Weakness = EnumCappadocian.CLAN_CAPPADOCIAN_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumCappadocian.CLAN_CAPPADOCIAN, Text = "CAPPADOCIAN"},
+                    new Traduction{LCID = 1036, Key = EnumCappadocian.CLAN_CAPPADOCIAN_HISTORY, Text = "L’antédiluvien Cappadocien était un érudit monastique qui ne prêtait que très peu d’intérêt aux causes politiques ou au commandement. Cappadocius cherchait la vérité, interrogeant les secrets de la vie et de la mort, demandant à sa descendance de faire de même. Pendant l’Âge des ténèbres, le clan était très peuplé, si ce n’est puissant, et ses membres étaient souvent vus comme des juges impartiaux dans le grand Jyhad. L’attitude obsessionnelle du clan vis-à-vis de ses études (et sa pratique ouverte de la Nécromancie) ont conduit les autres clans à voir ces vampires comme des êtres sinistres et perturbants. Leurs tendances isolationnistes ont empêché les Cappadociens d’avoir de nombreux alliés puissants.<br />En général, les Cappadociens ne considèrent ni l’ethnicité ni la nationalité quand ils étreignent des infants. Des individus de toutes les religions ont été amenés dans le clan, tant que ces mortels souhaitaient étudier la mort. Du fait de leurs habitudes monastiques, les érudits Cappadociens ne passent que très peu de temps auprès des mortels. Ils laissèrent de telles tâches à l’une de leurs lignées mineures, un groupe de vampires étreints depuis une famille de marchands Vénitiens. Malheureusement les Giovanni se sont révélés être indignes de confiance et ont pris le contrôle du clan, chassant et diablant tous les Cappadociens qu’ils trouvèrent.<br />Seule une poignée de ces vampires ont survécu dans les nuits modernes, se soustrayant au regard du monde vampirique, préférant leurs études à la politique. Ces vampires haïssent les Giovanni avec passion et sélectionnent avec une bien plus grande attention leurs infants, résultant en une population assez basse de Cappadociens de par le monde. Ceux qui restent ont pris de nouveaux noms, tel que les Émissaires des Crânes au sein du Sabbat, cachant leur réel lignage dans leur double poursuite de recherche et de vengeance.<br />Les deux lignées Cappadociennes sont très distinctes et sont nées de deux manières complètement différentes. Les Lamia étaient les gardiens et les protecteurs de leur lignée monastique ; ils sont maintenant en disgrâce et presque éteints. Les Samedi, rejetons plus récents des Cappadociens encore actifs, cachent leur véritable nature et se présentent comme des mercenaires et des érudits du vaudou."},
+                    new Traduction{LCID = 1036, Key = EnumCappadocian.CLAN_CAPPADOCIAN_NAME, Text = "Cappadocien"},
+                    new Traduction{LCID = 1036, Key = EnumCappadocian.CLAN_CAPPADOCIAN_ORGANIZATION, Text = "Au moyen-âge, les Cappadociens remplirent les rôles de conseillers auprès de Princes en tant qu’intendants de grands dépôts de connaissances. En interne, le clan avait très peu de hiérarchie, bien qu’ils révèrent ceux avec le plus de connaissances et instruisent les plus jeunes et les ignorants. Après que les Giovanni eurent détruit la majorité du clan, les Cappadociens restants avaient encore moins d’intérêt à communiquer les uns avec les autres de peur de révéler leur position aux Giovanni."},
+                    new Traduction{LCID = 1036, Key = EnumCappadocian.CLAN_CAPPADOCIAN_SURNAME, Text = "Profanateurs"},
+                    new Traduction{LCID = 1036, Key = EnumCappadocian.CLAN_CAPPADOCIAN_WEAKNESS, Text = "Quelle que soit la quantité de sang qu’un Cappadocien consomme, sa peau gardera la pâleur de la mort, le faisant ressembler à un cadavre."},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+                #endregion
+
+                #region Ravnos
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumRavnos.CLAN_RAVNOS,
+                    Affiliate = EnumAffiliate.INDEPENDENT_CLAN,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAnimalism.ANIMALISM_KEY || disci.DisciplineKey == EnumFortitude.FORTITUDE_KEY || disci.DisciplineKey == EnumChimerstry.CHIMERSTRY_KEY select disci).ToList(),
+                    History = EnumRavnos.CLAN_RAVNOS_HISTORY,
+                    Name = EnumRavnos.CLAN_RAVNOS_NAME,
+                    Organisation = EnumRavnos.CLAN_RAVNOS_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Minor,
+                    Surname = EnumRavnos.CLAN_RAVNOS_SURNAME,
+                    Weakness = EnumRavnos.CLAN_RAVNOS_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumRavnos.CLAN_RAVNOS, Text = "RAVNOS"},
+                    new Traduction{LCID = 1036, Key = EnumRavnos.CLAN_RAVNOS_HISTORY, Text = "Le clan Ravnos a une réputation assez sombre, alourdie par l’histoire et les préjugés. Ses membres sont des trompeurs, des voleurs et des vagabonds qui volent ce qu’ils veulent avant de passer à la cible suivante. Les Ravnos rejettent typiquement toutes les formes d’autorité, ignorant les limites des sectes et désobéissant aux lois. Dans les nuits modernes, une grande tragédie a frappé le clan Ravnos, réduisant ses effectifs quasiment à néant. Bien qu’il ait commencé à se repeupler après les horreurs de la Semaine des Cauchemars, le clan reste réduit. La majorité de ses membres sont des individus récemment étreints luttant toujours pour comprendre le monde vampirique. Les anciens du clan sont plus reclus qu’avant, effrayés par l’idée d’une nouvelle purge. Comme les gourous des temps anciens, ils ne partagent la sagesse de leur clan qu’avec ceux qui ont prouvé en être dignes.<br />La plupart des Ravnos sont de nouvelles étreintes alors que le clan cherche à se repeupler après les horreurs de la Semaine des Cauchemars. Déchiré entre les anciennes traditions et les idéaux modernes de leurs nouvelles progénitures, les Ravnos forment un clan meurtri par la transition et endeuillé de milles vérités perdues.<br />Avec leur capacité unique permettant de créer des illusions, les Ravnos se spécialisent dans le questionnement de la vérité et la résolution des mystères. Les Ravnos capricieux utilisent cette capacité pour leur profit, saisissant des opportunités pour des gains à court terme. D’autres membres du clan perdent complètement le contact avec la réalité. Ceux qui vivent pour devenir des anciens voient ce pouvoir comme une philosophie et l’utilisent pour atteindre l’illumination dans leur état d’esprit. Ils étudient l’équilibre entre la réalité et la tromperie et contemplent la vérité absolue.<br />Les plus jeunes des membres du clan Ravnos peuvent être de n’importe quelle nationalité ou culture, bien qu’ils soient souvent choisis pour leur capacité à survivre et tromper. Des jeunes qui aiment la liberté, des hipsters, des groupies de groupes de rock itinérants, des militants politiques, des voyageurs irlandais, des tziganes ou des adolescents fugueurs, les Ravnos ont pléthore d’icônes de jeunesse et de vigueur à choisir. Les Ravnos un peu plus vieux viennent en général de la caste Hindou des Brahman, se rappelant d’un temps où les Ravnos étaient basés sur un système de castes plus présent que dans les nuits modernes. Les deux groupes se chamaillent souvent sur l’avenir du clan, tandis que les jeunes Ravnos luttent pour trouver leur place dans le monde. Les plus vieux Ravnos sont plus sages, plus puissants dans le sang et plus expérimentés − mais l’afflux de jeunes vampires amène de nouvelles idées, de l’expérience technologique et une grande quantité de changements et d’énergie. Le clan est au bord du précipice entre respect des traditions et le fait d’en embrasser de nouvelles, entre d’anciennes vérités et des mensonges trop rapides. Les Ravnos doivent trouver un équilibre ou alors changer à jamais."},
+                    new Traduction{LCID = 1036, Key = EnumRavnos.CLAN_RAVNOS_NAME, Text = "Ravnos"},
+                    new Traduction{LCID = 1036, Key = EnumRavnos.CLAN_RAVNOS_ORGANIZATION, Text = "L’autarcie est très importante pour le clan Ravnos. Ses membres vagabondent dans le monde et n’accordent que très peu d’attention à la société vampirique établie. La majorité des membres du clan sont jeunes, naïfs et ont tendance à l’égoïsme et aux buts à court terme. Ceux qui survivront à cette période d’épreuves établiront la place du clan dans les nuits modernes."},
+                    new Traduction{LCID = 1036, Key = EnumRavnos.CLAN_RAVNOS_SURNAME, Text = "Menteurs"},
+                    new Traduction{LCID = 1036, Key = EnumRavnos.CLAN_RAVNOS_WEAKNESS, Text = "Une histoire tumultueuse fait des Ravnos des esclaves de leurs vices. Chaque Ravnos a un dérangement de Compulsion, qui représente un penchant pour une sorte de vice − le mensonge, la cruauté ou le vol par exemple. Ils ressentent cette compulsion à se livrer à leur vice s’ils en ont l’opportunité. Les Ravnos ne gagnent pas d’XP de dérangement pour cette faiblesse de clan. Pour plus d’informations consultez les Dérangements."},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+                #endregion
+
+                #region Salubri
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumSalubri.CLAN_SALUBRI,
+                    Affiliate = EnumAffiliate.SABBAT,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAuspex.AUSPEX_KEY || disci.DisciplineKey == EnumFortitude.FORTITUDE_KEY || disci.DisciplineKey == EnumValeren.VALEREN_KEY select disci).ToList(),
+                    History = EnumSalubri.CLAN_SALUBRI_HISTORY,
+                    Name = EnumSalubri.CLAN_SALUBRI_NAME,
+                    Organisation = EnumSalubri.CLAN_SALUBRI_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Minor,
+                    Surname = EnumSalubri.CLAN_SALUBRI_SURNAME,
+                    Weakness = EnumSalubri.CLAN_SALUBRI_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumSalubri.CLAN_SALUBRI, Text = "SALUBRI"},
+                    new Traduction{LCID = 1036, Key = EnumSalubri.CLAN_SALUBRI_HISTORY, Text = "Pendant l’Âge des Ténèbres, les Salubriens formaient un clan respecté de guérisseurs. Son fondateur, Saulot, était reconnu pour sa sagesse et les autres vampires traitaient ses infants avec respect. Quand Saulot disparut vers l’Orient à la recherche du mystérieux état de Golconde, ses infants furent laissés sans protection ni guide. En son absence, les Salubriens furent les cibles d’un ambitieux groupe de mages mortels souhaitant leur voler leur immortalité. Les Tremeres massacrèrent les Salubriens, absorbant leur âme pour obtenir la puissance du Sang.<br />Quand Saulot revint de sa quête, il retrouva son clan en ruine, au bord de l’extinction. Son voyage l’avait transformé et les nouveaux infants qu’il avait étreints étaient très différents des anciens. Plus belliqueux et beaucoup moins intéressés par l’élévation spirituelle, ces nouveaux infants abattirent leur terrible vengeance sur les ennemis du clan – malgré cela, la guerre fut perdue. Saulot fut détruit, les Salubriens furent désignés comme des infernalistes et des diabolistes et les autres clans de vampires se joignirent aux Tremeres dans cette chasse au Salubri. Le clan fut annihilé et les traces même de son existence s’évanouirent.<br />Craignant les Tremeres et leurs alliés, les Furies restantes et leurs cousins guérisseurs firent beaucoup d’efforts pour se cacher des autres vampires. Au fil des siècles, d’autres clans reprirent servilement les mensonges des Tremeres, décrétant que la quête de Saulot, visant le Golconde, n’était qu’une trahison à l’état de Vampire et les surnoms avilissants de « cyclopes » ou de « mangeurs d’âmes » devinrent communs pour décrire ce clan autrefois honoré.<br />Dans les nuits modernes, le clan des Furies a connu une résurrection. Un nouveau leader, nommé Adonaï, a réuni son clan et trouvé des alliés dans sa quête de vengeance contre les Tremeres : le Sabbat. Élevés parmi les plus grands combattants de la secte, les Salubriens se sont imposés comme un danger significatif pour la Camarilla qui s’est empressée, une fois cette menace révélée, de réutiliser l’ancienne calomnie, désignant les Salubriens de diabolistes, d’infernalistes, voire pire. Les Furies sont dévolues à la destruction du clan Tremere, bien qu’ils doivent faire preuve de beaucoup de prudence au vu de leurs nombreux alliés. Heureusement, ces guerriers n’ont aucun intérêt pour des concepts tels que l’honneur ou la fierté. Ce sont des chasseurs impitoyables, des soldats vengeurs d’une guerre depuis longtemps oubliée. Ils ne vivent que pour la vengeance, peu importe la méthode, peu importe le coût.<br />Aucun membre de la Camarilla ne s’associe avec un Salubrien et même les Anarchs craignent et répudient les membres de ce Clan. Si découverts, les Salubriens sont systématiquement détruits. Et il est difficile pour un Salubrien de cacher son clan de par le troisième œil qu’ils arborent tous au milieu du front peu après l’étreinte. Cet œil est habituellement fermé, la fente minuscule de la paupière cachée par la chair du front. Toutefois, quand le Salubrien entre en frénésie ou qu’il utilise sa discipline de clan à un niveau supérieur au premier (Valeren ou Obeah), l’œil s’ouvre avec une effrayante aura de lumière surnaturelle."},
+                    new Traduction{LCID = 1036, Key = EnumSalubri.CLAN_SALUBRI_NAME, Text = "Salubrien"},
+                    new Traduction{LCID = 1036, Key = EnumSalubri.CLAN_SALUBRI_ORGANIZATION, Text = "En raison de la destruction du clan par les Tremeres, les Salubriens n’ont pas d’organisation. Pour la plupart, ils ne se connaissent même pas et se cachent même de leur propre clan. Bien qu’ils commencent doucement à se repeupler, la plupart d’entre eux croient que les mensonges les concernant se répandent toujours et que leurs infants seront détruits s’ils sont découverts."},
+                    new Traduction{LCID = 1036, Key = EnumSalubri.CLAN_SALUBRI_SURNAME, Text = "Furies"},
+                    new Traduction{LCID = 1036, Key = EnumSalubri.CLAN_SALUBRI_WEAKNESS, Text = "Les Salubriens ne peuvent se nourrir que durant un acte de violence. Ainsi, il ne peuvent acheter l’historique Troupeau ni utiliser le troupeau d’un autre personnage."},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+                #endregion
+
+                //Lignées raress
+
+                #region Daughters of Cacophony
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumCacophony.CLAN_CACOPHONY,
+                    Affiliate = EnumAffiliate.INDEPENDENT_CLAN,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumMelpominee.MELPOMINEE_KEY || disci.DisciplineKey == EnumFortitude.FORTITUDE_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY select disci).ToList(),
+                    History = EnumCacophony.CLAN_CACOPHONY_HISTORY,
+                    Name = EnumCacophony.CLAN_CACOPHONY_NAME,
+                    Organisation = EnumCacophony.CLAN_CACOPHONY_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Rare,
+                    Surname = EnumCacophony.CLAN_CACOPHONY_SURNAME,
+                    Weakness = EnumCacophony.CLAN_CACOPHONY_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumCacophony.CLAN_CACOPHONY, Text = "CACOPHONY"},
+                    new Traduction{LCID = 1036, Key = EnumCacophony.CLAN_CACOPHONY_HISTORY, Text = "Alors que la culture mortelle est entrée dans l’âge des Lumières, elle a inventé de nouvelles machines et étendu le monde aux horizons les plus éloignés du globe. La société vampirique a aussi, par ricochet, connu des changements significatifs. Les Filles de la Cacophonie montèrent sur la scène de l’existence Vampirique en fanfare, refusant de se cacher ou d’agir comme si elles étaient moins importantes que les clans plus anciens. Quelques érudits pensent que la lignée est un rejeton du clan Malkavien ou du clan Toreador mais les Filles de la Cacophonie refusent de confirmer l’un ou l’autre. Elles préfèrent être reconnues pour leurs talents et non pas comme une simple excroissance ; elles refusent d’être le dérivé de la renommée de quelqu’un d’autre.<br />Quelles que soient leurs origines, les Filles de la Cacophonie sont connues pour leurs voix extraordinaires. L’intensité d’une chanson d’une Fille ainsi que la démence qu’elle apporte sont tout bonnement impressionnantes. La chanson fait autant partie de leur existence immortelle que le sang. Chaque moment de l’éternité d’une Fille est passé à écouter la musique des sphères. Elles chantent tout autour d’elles, les enchantant à jamais dans sa mélodie. Cette malédiction − ou bénédiction − font passer les Filles de la Cacophonie pour confuses ou capricieuses.<br />Presque tous les membres de cette lignée sont des femmes. Durant l’ère Victorienne, les filles préféraient garder la lignée ainsi, mais dans les nuits modernes, elles ont assoupli ces restrictions. Les mâles un peu âgés sont généralement des castrats remarquables, tandis que les plus jeunes viennent de toutes les gammes de talents vocaux. Ces mâles sont familièrement appelés les Fils de la Discorde et sont quasiment tous universellement liés au sang à leurs sires femmes. Ces cacophonistes mâles sont traités avec suspicion par un grand nombre des femelles plus âgées du clan et doivent gagner le droit de chanter."},
+                    new Traduction{LCID = 1036, Key = EnumCacophony.CLAN_CACOPHONY_NAME, Text = "Filles de la Cacophonie"},
+                    new Traduction{LCID = 1036, Key = EnumCacophony.CLAN_CACOPHONY_ORGANIZATION, Text = "Y a pas lol"},
+                    new Traduction{LCID = 1036, Key = EnumCacophony.CLAN_CACOPHONY_SURNAME, Text = "Sirènes"},
+                    new Traduction{LCID = 1036, Key = EnumCacophony.CLAN_CACOPHONY_WEAKNESS, Text = "Les Filles de la Cacophonie entendent constamment de la musique. Cette chanson incessante distrait les Filles autant qu’elle les guide. Elles souffrent d’une pénalité de -2 à tous les Scores de Test basés sur l’Investigation."},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+                #endregion
+
+                #region Gargoyle
+                context.Clans.AddOrUpdate(new Clan
+                {
+                    ClanKey = EnumGargoyle.CLAN_GARGOYLE,
+                    Affiliate = EnumAffiliate.INDEPENDENT_CLAN,
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumPotence.POTENCE_KEY || disci.DisciplineKey == EnumFortitude.FORTITUDE_KEY || disci.DisciplineKey == EnumVisceratika.VISCERATIKA_KEY select disci).ToList(),
+                    History = EnumGargoyle.CLAN_GARGOYLE_HISTORY,
+                    Name = EnumGargoyle.CLAN_GARGOYLE_NAME,
+                    Organisation = EnumGargoyle.CLAN_GARGOYLE_ORGANIZATION,
+                    RarityClan = EnumRarityClan.Rare,
+                    Surname = EnumGargoyle.CLAN_GARGOYLE_SURNAME,
+                    Weakness = EnumGargoyle.CLAN_GARGOYLE_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumGargoyle.CLAN_GARGOYLE, Text = "GARGOYLE"},
+                    new Traduction{LCID = 1036, Key = EnumGargoyle.CLAN_GARGOYLE_HISTORY, Text = "Les Tremeres ont créé les tant décriées Gargouilles au cours de leurs plus sombres expériences de clan de sorciers. Créée grâce au sang et à la chair de Tzimisce, Nosferatu et Gangrel kidnappés, une Gargouille est un amalgame de morceaux fusionnés en une seule créature qui n’a aucun souvenir de ses passés conjoints. Au commencement, elles étaient les esclaves des Tremeres, agissant sans intelligence, sentience ni volonté. Ce n’est qu’après une révolution que les Gargouilles ont trouvé la liberté ; elles ont été libérées de force par des membres d’autres clans.<br />Les Gargouilles sont monstrueuses et sont un rappel constant d’un âge plus sombre. Elles vilipendent et haïssent au plus haut point le clan Tremere et cherchent en permanence des manières de se venger de leurs créateurs. Les Gargouilles modernes sont étreintes, mais le processus éradique malgré tout toute trace de la mémoire du vampire, faisant de chaque nouvelle gargouille une ardoise vierge. Les Gargouilles plus anciennes enseignent encore aux plus jeunes l’histoire de l’esclavage de leur peuple, s’assurant que chaque génération connaisse les atrocités dont ils ont souffert aux mains des Tremeres.<br />Avec leur apparence hideuse, les Gargouilles sont une menace pour la Mascarade. Elles doivent toujours se cacher du regard des mortels. Leur lignée se lie souvent d’amitié avec des Nosferatus, Gangrels ou Tzimices, se sentant attirée par ces clans par une forme primitive de mémoire de leur sang."},
+                    new Traduction{LCID = 1036, Key = EnumGargoyle.CLAN_GARGOYLE_NAME, Text = "Gargouilles"},
+                    new Traduction{LCID = 1036, Key = EnumGargoyle.CLAN_GARGOYLE_ORGANIZATION, Text = "Y a pas lol"},
+                    new Traduction{LCID = 1036, Key = EnumGargoyle.CLAN_GARGOYLE_SURNAME, Text = "Grotesques"},
+                    new Traduction{LCID = 1036, Key = EnumGargoyle.CLAN_GARGOYLE_WEAKNESS, Text = "Les Gargouilles sont monstrueuses en apparence et ne peuvent pas passer pour humaines sans une aide surnaturelle, telle que l’Occultation. De plus, les Tremeres ont créé les Gargouilles afin qu’elles servent d’esclaves, résultant en une pénalité de -2 sur leurs traits pour résister aux pouvoirs de Domination ; incluant les techniques basées sur de la Domination."},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+                #endregion
 
                 context.SaveChanges();
             }

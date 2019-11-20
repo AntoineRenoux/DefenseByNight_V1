@@ -38,8 +38,17 @@
 
         public readonly static string GEN_LBL_DISCIPLINE_POWER = "GEN_LBL_DISCIPLINE_POWER";
 
+        #region Clans
         public readonly static string GEN_LBL_HISTORY = "GEN_LBL_HISTORY";
         public readonly static string GEN_LBL_ORGANISATION = "GEN_LBL_ORGANISATION";
         public readonly static string GEN_LBL_WEAKNESS = "GEN_LBL_WEAKNESS";
+        public readonly static string GEN_LBL_CLAN_ATOUT = "GEN_LBL_CLAN_ATOUT";
+        public readonly static string GEN_LBL_POINT = "GEN_LBL_POINT";
+
+        public readonly static string GEN_LBL_MAJOR_CLAN = "GEN_LBL_MAJOR_CLAN";
+        public readonly static string GEN_LBL_MINOR_CLAN = "GEN_LBL_MINOR_CLAN";
+        public readonly static string GEN_LBL_RARE_CLAN = "GEN_LBL_RARE_CLAN";
+        #endregion
+
     }
 }
