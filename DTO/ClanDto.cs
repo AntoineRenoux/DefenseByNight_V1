@@ -16,5 +16,7 @@ namespace DTO
 
         public List<DisciplineDto> Disciplines { get; set; }
         public List<AtoutDto> Atouts { get; set; }
+
+        public List<BloodlineDto> Bloodlines { get; set; }
     }
 }

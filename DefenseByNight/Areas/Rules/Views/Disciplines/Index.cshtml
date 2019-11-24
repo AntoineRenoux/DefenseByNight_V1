@@ -4,12 +4,17 @@
     ViewBag.Title = Translate.GetTraduction(EnumRessource.GEN_LBL_RULES).Text;
 }
 
-<div class="row">
-    <div class="col-md-2">
-        @Html.Partial("_SideMenu")
-    </div>
-    <div class="col-md-8">
-        @Html.Partial("_DisciplinesDescription")
+@section head{
+    @Styles.Render("~/Content/DisciplineDescription")
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            @Html.Partial("_SideMenu")
+        </div>
+        <div class="col-sm-10">
+            @Html.Partial("_DisciplinesDescription")
+        </div>
     </div>
 </div>
-

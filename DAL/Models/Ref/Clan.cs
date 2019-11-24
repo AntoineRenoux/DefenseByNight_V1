@@ -31,6 +31,9 @@ namespace DAL.Models.Ref
         public string Affiliate { get; set; }
 
         public virtual ICollection<Discipline> Disciplines { get; set; }
+        
         public virtual ICollection<Atout> Atouts { get; set; }
+
+        public virtual ICollection<Bloodline> Bloodlines { get; set; }
     }
 }

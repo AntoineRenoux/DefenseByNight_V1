@@ -89,7 +89,8 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 PhoneNumber = model.MobilePhone,
-                UserName = model.Alias
+                UserName = model.Alias,
+                BirthDay = model.BirthDay
             };
 
             var result = await userManager.CreateAsync(user, model.Password);

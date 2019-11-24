@@ -1,87 +1,84 @@
 ﻿@model List<ClanViewModel>
 
-<div class="row well text-center">
-    <h1 class="title">
-        @Translate.GetTraduction(EnumRessource.GEN_LBL_CLANS).Text
-    </h1>
-</div>
 
-<div class="row">
-    @foreach (var rarityClan in Enum.GetValues(typeof(Tools.EnumRarityClan)))
+<h1 class="title">
+    @Translate.GetTraduction(EnumRessource.GEN_LBL_CLANS).Text
+</h1>
+
+<hr />
+
+@foreach (var rarityClan in Enum.GetValues(typeof(Tools.EnumRarityClan)))
+{
+    <div class="text-center">
+        <h2 class="title">
+            @switch (rarityClan.ToString())
+            {
+                case "Major":
+                    <a class="anchor" name="@rarityClan.ToString()"></a>
+                    @Translate.GetTraduction(EnumRessource.GEN_LBL_MAJOR_CLAN).Text
+                    break;
+                case "Minor":
+                    <a class="anchor" name="@rarityClan.ToString()"></a>
+                    @Translate.GetTraduction(EnumRessource.GEN_LBL_MINOR_CLAN).Text
+                    break;
+                case "Rare":
+                    <a class="anchor" name="@rarityClan.ToString()"></a>
+                    @Translate.GetTraduction(EnumRessource.GEN_LBL_RARE_CLAN).Text
+                    break;
+                default:
+                    break;
+            }
+        </h2>
+        <hr />
+    </div>
+
+    foreach (var clan in Model.Where(x => x.RarityClan == (Tools.EnumRarityClan)rarityClan))
     {
-        <div class="col-md-12 well text-center">
-            <h2 class="title">
+        <div class="text-center">
+            <h3 class="title">
+                <a class="anchor" name="@clan.ClanKey"></a>
+                @clan.Name
+            </h3>
+            @clan.Surname
+        </div>
+        <hr />
+        <div class="text-center">
+            @foreach (var disciplines in clan.Disciplines)
+            {
+                <a href="/Rules/Disciplines#@Html.Raw(disciplines.DisciplineName)">@Html.Raw(disciplines.DisciplineName)</a>
 
-                @switch (rarityClan.ToString())
+                if (clan.Disciplines.IndexOf(disciplines) < clan.Disciplines.Count - 1)
                 {
-                    case "Major":
-                        <a class="anchor" name="@rarityClan.ToString()"></a>
-                        @Translate.GetTraduction(EnumRessource.GEN_LBL_MAJOR_CLAN).Text
-                        break;
-                    case "Minor":
-                        <a class="anchor" name="@rarityClan.ToString()"></a>
-                        @Translate.GetTraduction(EnumRessource.GEN_LBL_MINOR_CLAN).Text
-                        break;
-                    case "Rare":
-                        <a class="anchor" name="@rarityClan.ToString()"></a>
-                        @Translate.GetTraduction(EnumRessource.GEN_LBL_RARE_CLAN).Text
-                        break;
-                    default:
-                        break;
+                    <span class="glyphicon glyphicon-minus"></span>
                 }
-            </h2>
+            }
         </div>
 
-        foreach (var clan in Model.Where(x => x.RarityClan == (Tools.EnumRarityClan)rarityClan))
-        {
-            <div class="panel panel-default clanDiv">
-                <div class="panel-heading text-center">
-                    <h3 class="title">
-                        <a class="anchor" name="@clan.ClanKey"></a>
-                        @clan.Name
-                    </h3>
-                    - @clan.Surname
-                </div>
-                <div class="panel-body">
-                    <div class="text-center">
-                        @foreach (var disciplines in clan.Disciplines)
-                        {
-                            <a href="/Rules/Disciplines#@Html.Raw(disciplines.DisciplineName)">@Html.Raw(disciplines.DisciplineName)</a>
+        <div>
+            <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_HISTORY).Text</h4>
+            <p class="articleJustify">@Html.Raw(clan.History)</p>
+        </div>
 
-                            if (clan.Disciplines.IndexOf(disciplines) < clan.Disciplines.Count - 1)
-                            {
-                                <span class="glyphicon glyphicon-minus"></span>
-                            }
-                        }
-                    </div>
+        <div>
+            <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_ORGANISATION).Text</h4>
+            <p class="articleJustify">@Html.Raw(clan.Organisation)</p>
+        </div>
 
-                    <div>
-                        <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_HISTORY).Text</h4>
-                        <p class="articleJustify">@Html.Raw(clan.History)</p>
-                    </div>
+        <div>
+            <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_WEAKNESS).Text</h4>
+            <p class="articleJustify">@Html.Raw(clan.Weakness)</p>
+        </div>
 
-                    <div>
-                        <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_ORGANISATION).Text</h4>
-                        <p class="articleJustify">@Html.Raw(clan.Organisation)</p>
-                    </div>
-
-                    <div>
-                        <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_WEAKNESS).Text</h4>
-                        <p class="articleJustify">@Html.Raw(clan.Weakness)</p>
-                    </div>
-
-                    <div>
-                        <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_CLAN_ATOUT).Text</h4>
-                        @foreach (var atout in clan.Atouts)
-                        {
-                            <span><strong>@atout.Name : (@atout.Cost @Translate.GetTraduction(EnumRessource.GEN_LBL_POINT).Text)</strong> <i>@atout.Description</i></span>
-                            <br />
-                        }
-                    </div>
-                </div>
-            </div>
-        }
+        <div>
+            <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_CLAN_ATOUT).Text</h4>
+            @foreach (var atout in clan.Atouts)
+            {
+                <span><strong>@atout.Name : (@atout.Cost @Translate.GetTraduction(EnumRessource.GEN_LBL_POINT).Text)</strong> <i>@atout.Description</i></span>
+                <br />
+            }
+        </div>
+        <hr />
     }
+}
 
 
-</div>

@@ -22,7 +22,9 @@ namespace DefenseByNight.App_Start
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap.min.js",
+                      "~/Scripts/bootstrap.bundle.min.js",
+                      "~/Scripts/index.d.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/unbostrusive-ajax").Include(
@@ -30,7 +32,9 @@ namespace DefenseByNight.App_Start
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/bootstrap-grid.min.css",
+                      "~/Content/bootstrap-reboot.min.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include(

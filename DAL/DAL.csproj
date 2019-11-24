@@ -122,6 +122,7 @@
     <Compile Include="Interfaces\Ref\ITraductionRepository.cs" />
     <Compile Include="Ioc\AutofacContainer.cs" />
     <Compile Include="Mapping\AttributEntityToDtoProfile.cs" />
+    <Compile Include="Mapping\BloodlineEntityToDtoProfile.cs" />
     <Compile Include="Mapping\ClanEntityToDtoProfile.cs" />
     <Compile Include="Mapping\DisciplineEntityToDtoProfile.cs" />
     <Compile Include="Mapping\FocusEntityToDtoProfile.cs" />

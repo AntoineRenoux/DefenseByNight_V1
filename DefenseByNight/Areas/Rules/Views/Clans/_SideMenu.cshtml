@@ -1,37 +1,36 @@
 ﻿@model List<ClanViewModel>
 
-<div class="nav navbar-left">
-    <div class="col-md-2 topDisciplines well">
-        <div class="text-center">
-            <a href="#">@Translate.GetTraduction(EnumRessource.GEN_LBL_CLANS).Text</a>
-            <hr />
-        </div>
-        <div class="navbarScroll">
-            @foreach (var rarityClan in Enum.GetValues(typeof(Tools.EnumRarityClan)))
+<div class="text-center">
+    <a href="#">@Translate.GetTraduction(EnumRessource.GEN_LBL_CLANS).Text</a>
+    <hr />
+</div>
+
+<ul class="nav">
+    @foreach (var rarityClan in Enum.GetValues(typeof(Tools.EnumRarityClan)))
+    {
+        <li>
+            @switch (rarityClan.ToString())
             {
-            <div class="col-md-12">
-                @switch (rarityClan.ToString())
-                {
-                    case "Major":
-                        <a href="#@rarityClan.ToString()">@Translate.GetTraduction(EnumRessource.GEN_LBL_MAJOR_CLAN).Text</a>
-                        break;
-                    case "Minor":
-                        <a href="#@rarityClan.ToString()">@Translate.GetTraduction(EnumRessource.GEN_LBL_MINOR_CLAN).Text</a>
-                        break;
-                    case "Rare":
-                        <a href="#@rarityClan.ToString()">@Translate.GetTraduction(EnumRessource.GEN_LBL_RARE_CLAN).Text</a>
-                        break;
-                    default:
-                        break;
-                }
+                case "Major":
+                    <a href="#@rarityClan.ToString()">@Translate.GetTraduction(EnumRessource.GEN_LBL_MAJOR_CLAN).Text</a>
+                    break;
+                case "Minor":
+                    <a href="#@rarityClan.ToString()">@Translate.GetTraduction(EnumRessource.GEN_LBL_MINOR_CLAN).Text</a>
+                    break;
+                case "Rare":
+                    <a href="#@rarityClan.ToString()">@Translate.GetTraduction(EnumRessource.GEN_LBL_RARE_CLAN).Text</a>
+                    break;
+                default:
+                    break;
+            }
+            <ul>
                 @foreach (var clan in Model.Where(x => x.RarityClan == (Tools.EnumRarityClan)rarityClan))
                 {
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <li>
                         <a href="#@clan.ClanKey">@clan.Name</a>
-                    </div>
+                    </li>
                 }
-            </div>
-            }
-        </div>
-    </div>
-</div>
+            </ul>
+        </li>
+    }
+</ul>

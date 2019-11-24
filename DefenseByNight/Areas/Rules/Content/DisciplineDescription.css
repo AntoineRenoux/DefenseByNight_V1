@@ -1,0 +1,10 @@
+﻿body {
+}
+
+.dotPower {
+    padding-top: 15px;
+}
+
+    .dotPower > i {
+        font-size: 10px;
+    }

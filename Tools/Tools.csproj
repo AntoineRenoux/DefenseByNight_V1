@@ -43,6 +43,14 @@
   <ItemGroup>
     <Compile Include="Enum\Attributs\EnumAttribut.cs" />
     <Compile Include="Enum\Attributs\EnumFocus.cs" />
+    <Compile Include="Enum\Clans\Bloodlines\EnumAhrimane.cs" />
+    <Compile Include="Enum\Clans\Bloodlines\EnumCoyote.cs" />
+    <Compile Include="Enum\Clans\Bloodlines\EnumNoiad.cs" />
+    <Compile Include="Enum\Clans\Bloodlines\EnumTlacique.cs" />
+    <Compile Include="Enum\Clans\Bloodlines\EnumTrueBrujah.cs" />
+    <Compile Include="Enum\Clans\Bloodlines\EnumVipers.cs" />
+    <Compile Include="Enum\Clans\Bloodlines\EnumVizier.cs" />
+    <Compile Include="Enum\Clans\Bloodlines\EnumWarlock.cs" />
     <Compile Include="Enum\Clans\EnumAssamite.cs" />
     <Compile Include="Enum\Clans\EnumBaali.cs" />
     <Compile Include="Enum\Clans\EnumBrujah.cs" />
@@ -97,5 +105,6 @@
     <Compile Include="Enum\EnumRoles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

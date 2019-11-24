@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AtoutDto.cs" />
     <Compile Include="AttributDto.cs" />
+    <Compile Include="BloodlineDto.cs" />
     <Compile Include="ClanDto.cs" />
     <Compile Include="DisciplineDto.cs" />
     <Compile Include="FocusDto.cs" />

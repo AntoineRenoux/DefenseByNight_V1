@@ -96,7 +96,7 @@
             WeatherInitializer.Initializer(context, focus);
 
             ClanInitializer.Initializer(context);
-
+            BloodlineInitializer.Initializer(context);
             AtoutInitializer.Initializer(context);
 
         }
@@ -143,7 +143,7 @@
 
                  
                 #region Menu
-                new Traduction{LCID = 1036, Key = "GEN_LBL_DISCIPLINE_POWER", Text = "Disciplines & Pouvoirs"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_DISCIPLINE_POWER", Text = "Les Disciplines & Pouvoirs"},
                 #endregion
 
                 #region Clans
@@ -152,8 +152,8 @@
                 new Traduction{LCID = 1036, Key = "GEN_LBL_WEAKNESS", Text = "Faiblesse du clan"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_CLAN_ATOUT", Text = "Atouts de Lignée"},
 
-                new Traduction{LCID = 1036, Key = "GEN_LBL_MAJOR_CLAN", Text = "Clans Majeurs"},
-                new Traduction{LCID = 1036, Key = "GEN_LBL_MINOR_CLAN", Text = "Clans Mineurs"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_MAJOR_CLAN", Text = "Les Clans Majeurs"},
+                new Traduction{LCID = 1036, Key = "GEN_LBL_MINOR_CLAN", Text = "Les Clans Mineurs"},
                 new Traduction{LCID = 1036, Key = "GEN_LBL_RARE_CLAN", Text = "Lignées rares"},
             	#endregion
 
@@ -172,25 +172,25 @@
             {
                 var errorMessages = new List<Traduction>
                 {
-                    new Traduction{LCID = 1036, Key = "ERR_FIRSTNAME_MISSING", Text = "Le prénom n'est pas renseigné."},
-                    new Traduction{LCID = 1036, Key = "ERR_FIRSTNAME_TO_LONG", Text = "Le prénom ne peut pas dépasser les 20 carractères."},
+                    new Traduction{LCID = 1036, Key = "ERR_FIRSTNAME_MISSING", Text = "Le champs Prénom est requis."},
+                    new Traduction{LCID = 1036, Key = "ERR_FIRSTNAME_TO_LONG", Text = "Le Prénom ne peut pas dépasser les 20 carractères."},
 
-                    new Traduction{LCID = 1036, Key = "ERR_LASTNAME_MISSING", Text = "Le nom de famille n'est pas renseigné."},
-                    new Traduction{LCID = 1036, Key = "ERR_LASTNAME_TO_LONG", Text = "Le nom de famille ne peut pas dépasser les 20 carractères."},
+                    new Traduction{LCID = 1036, Key = "ERR_LASTNAME_MISSING", Text = "Le champs Nom de Famille est requis."},
+                    new Traduction{LCID = 1036, Key = "ERR_LASTNAME_TO_LONG", Text = "Le Nom de Famille ne peut pas dépasser les 20 carractères."},
 
-                    new Traduction{LCID = 1036, Key = "ERR_ALIAS_MISSING", Text = "Le pseudo n'est pas renseigné."},
-                    new Traduction{LCID = 1036, Key = "ERR_ALIAS_TO_LONG", Text = "Le pseudo ne peut pas dépasser les 20 carractères."},
+                    new Traduction{LCID = 1036, Key = "ERR_ALIAS_MISSING", Text = "Le champs Pseudo est requis."},
+                    new Traduction{LCID = 1036, Key = "ERR_ALIAS_TO_LONG", Text = "Le Pseudo ne peut pas dépasser les 20 carractères."},
 
-                    new Traduction{LCID = 1036, Key = "ERR_EMAIL_MISSING", Text = "L'adresse mail n'est pas renseignée."},
+                    new Traduction{LCID = 1036, Key = "ERR_EMAIL_MISSING", Text = "Le champs Email est requis."},
                     new Traduction{LCID = 1036, Key = "ERR_EMAIL_UNCORRECT", Text = "L'adresse mail n'est pas correcte."},
 
-                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_MISSING", Text = "Le mot de passe n'est pas renseigné."},
-                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_TO_SHORT", Text = "Le mot de passe doit faire au moins 8 caractères."},
-                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_NOT_MATCHING", Text = "Le mot de passe ne correcpond pas à celui renseigné."},
+                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_MISSING", Text = "Le champs Mot de Passe est requis."},
+                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_TO_SHORT", Text = "LeMot de Passe doit faire au moins 8 caractères."},
+                    new Traduction{LCID = 1036, Key = "ERR_PASSWORD_NOT_MATCHING", Text = "Le Mot de Passe ne correcpond pas à celui renseigné."},
 
-                    new Traduction{LCID = 1036, Key = "ERR_BIRTHDATE_MISSING", Text = "La date de naissance n'est pas renseignée."},
+                    new Traduction{LCID = 1036, Key = "ERR_BIRTHDATE_MISSING", Text = "Le champs Date de naissance est requis."},
 
-                    new Traduction{LCID = 1036, Key = "ERR_SIGNIN_FAIL", Text = "L'adresse mail ou le mot de passe est incorrecte."},
+                    new Traduction{LCID = 1036, Key = "ERR_SIGNIN_FAIL", Text = "Le Pseudo et/ou le Mot de passe sont/est incorrecte(s)."},
                 };
 
                 errorMessages.ForEach(t =>
@@ -4274,6 +4274,153 @@
                 #endregion
 
                 context.SaveChanges();
+            }
+        }
+
+        private static class BloodlineInitializer
+        {
+            public static void Initializer(DbnContext context)
+            {
+
+                #region Lignées Assamites
+                context.Bloodlines.Add(new Bloodline
+                {
+                    BloodlineKey = EnumVizier.BLOODLINE_VIZIER,
+                    Clan = context.Clans.Where(x => x.ClanKey == EnumAssamite.CLAN_ASSAMITE).FirstOrDefault(),
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumCelerity.CELERITY_KEY || disci.DisciplineKey == EnumAuspex.AUSPEX_KEY || disci.DisciplineKey == EnumQuietus.QUIESTUS_KEY select disci).ToList(),
+                    History = EnumVizier.BLOODLINE_VIZIER_HISTORY,
+                    Weakness = EnumVizier.BLOODLINE_VIZIER_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumVizier.BLOODLINE_VIZIER_NAME, Text = "Vizirs"},
+                    new Traduction{LCID = 1036, Key = EnumVizier.BLOODLINE_VIZIER_HISTORY, Text = "Autrefois, les Assamites Vizirs étaient responsables de la compilation et de la documentation sur la culture, le gouvernement, les arts et la religion pour le clan. Toutefois, après le schisme du clan, les Vizirs islamiques défièrent le culte d’Haqim et fuirent la Montagne. Les Vizirs sont guidés par le besoin d’accumulation de savoir avec un zèle qui frôle l’obsession. Les Vizirs sont des passionnés de recherche, souhaitant apprendre des savoirs rares et prêts à tout pour découvrir des secrets interdits. Ils sont très concentrés, parfois même à leur désavantage et la plupart des Vizirs agiront de manière irrationnelle (et parfois de manière auto-destructrice) pour aller plus loin dans leurs recherches."},
+                    new Traduction{LCID = 1036, Key = EnumVizier.BLOODLINE_VIZIER_WEAKNESS, Text = "Les Vizirs sont obsédés par leurs recherches, au point de se mettre en danger pour cela. Tous les Vizirs ont un Dérangement Obsessionnel, avec la condition «Savoir Inconnu». Les Vizirs n’obtiennent pas d’expérience pour ce dérangement."},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Bloodlines.Add(new Bloodline
+                {
+                    BloodlineKey = EnumWarlock.BLOODLINE_WARLOCK,
+                    Clan = context.Clans.Where(x => x.ClanKey == EnumAssamite.CLAN_ASSAMITE).FirstOrDefault(),
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumObfuscate.OBFUSCATE_KEY ||  disci.DisciplineKey == EnumQuietus.QUIESTUS_KEY select disci).ToList(),
+                    History = EnumWarlock.BLOODLINE_WARLOCK_HISTORY
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumWarlock.BLOODLINE_WARLOCK, Text = "Sorciers"},
+                    new Traduction{LCID = 1036, Key = EnumWarlock.BLOODLINE_WARLOCK_HISTORY, Text = "Les membres de la Caste des Sorciers du Clan Assamite étaient satisfaits de passer leur immortalité à méditer sur les théories magiques, la philosophie religieuse et le savoir intellectuel ; mais depuis que la malédiction du clan a été brisée, ils se sont concentrés sur deux objectifs. Le premier est la vengeance contre les Tremere et contre les traîtres du clan, les Vizirs. Leur second objectif est de prendre soin de <strong>L’Ancien</strong> dont le comportement est de plus en plus erratique. Il voit les ombres des infernaux partout. Les Sorciers ne peuvent pas lui désobéir mais ils craignent que sa folie n’entraîne le clan à sa perte."},
+                    new Traduction{LCID = 1036, Key = EnumWarlock.BLOODLINE_WARLOCK_WEAKNESS, Text = "Les Vizirs sont obsédés par leurs recherches, au point de se mettre en danger pour cela. Tous les Vizirs ont un Dérangement Obsessionnel, avec la condition «Savoir Inconnu». Les Vizirs n’obtiennent pas d’expérience pour ce dérangement."},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+                #endregion
+
+                #region Lignée Brujah
+                context.Bloodlines.Add(new Bloodline
+                {
+                    BloodlineKey = EnumTrueBrujah.ENUM_TRUE_BRUJAH_WARLOCK,
+                    Clan = context.Clans.Where(x => x.ClanKey == EnumBrujah.CLAN_BRUJAH).FirstOrDefault(),
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumPotence.POTENCE_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY || disci.DisciplineKey == EnumTemporis.TEMPORIS_KEY select disci).ToList(),
+                    History = EnumTrueBrujah.ENUM_TRUE_BRUJAH_WARLOCK_HISTORY,
+                    Weakness = EnumTrueBrujah.ENUM_TRUE_BRUJAH_WARLOCK_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumTrueBrujah.ENUM_TRUE_BRUJAH_WARLOCK_NAME, Text = "Vrais Brujahs"},
+                    new Traduction{LCID = 1036, Key = EnumTrueBrujah.ENUM_TRUE_BRUJAH_WARLOCK_HISTORY, Text = "Un groupe de Brujahs se tient à l’écart des autres et a totalement en horreur la majorité de son clan. Ces vampires prétendent que les Brujahs passionnés ne sont pas les véritables héritiers de la sagesse de leur Antédiluvien. Appelés Vrais Brujahs ou Sages, ils affirment que Troile, l’enfant préféré du fondateur, a commis la diablerie sur lui, changeant la nature profonde du clan dans cet acte haineux. Les Sages s’évertuent à rester fidèles à la voie originale, dénuée de la passion du fondateur et vilipendent l’instabilité émotionnelle.<br />En lien avec leur idéologie, le centre d’intérêt d’un Vrai Brujah est la poursuite de l’étude du savoir. Les membres de cette lignée tendent à être des individus réservés, sobres et austères : académiciens et historiens, avec un amour de l’éducation et une grande capacité à apprendre. La lignée se réunit deux fois par siècle pour échanger autour de discussions académiques, recherches, traités scientifiques et avancements philosophiques."},
+                    new Traduction{LCID = 1036, Key = EnumTrueBrujah.ENUM_TRUE_BRUJAH_WARLOCK_WEAKNESS, Text = "Les vrai Brujahs perdent leurs capacités émotionnelles lorsqu’ils sont étreints. Ils ne peuvent acheter la compétence Empathie et il payent le double du coût normal en expérience pour des points de Moralité."},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+                #endregion
+
+                #region Lignée Disciple de Set
+                context.Bloodlines.Add(new Bloodline
+                {
+                    BloodlineKey = EnumVipers.ENUM_SET_VIPERS,
+                    Clan = context.Clans.Where(x => x.ClanKey == EnumSet.CLAN_SET).FirstOrDefault(),
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumPotence.POTENCE_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY || disci.DisciplineKey == EnumSerpentis.SERPENTIS_KEY select disci).ToList(),
+                    History = EnumVipers.ENUM_SET_VIPERS_HISTORY,
+                    Weakness = EnumVipers.ENUM_SET_VIPERS_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumVipers.ENUM_SET_VIPERS_NAME, Text = "Vipères"},
+                    new Traduction{LCID = 1036, Key = EnumVipers.ENUM_SET_VIPERS_HISTORY, Text = "Les Disciples de Set ont une réputation de séduction, de persuasion et de discrétion. La lignée des Vipères, communément appelée « Les Guerriers Setites », va à l’encontre de cet idéal, préférant à la place la force brute et l’intimidation pure. Ils sont les protecteurs du temple, soldats dans la guerre sainte de Set et sont avides de combattre, voire de mourir au nom de leur sombre dieu. Les Vipères ne connaissent pas la peur et, à la différence de la plupart des vampires, pensent que leur immortalité n’est que le reflet des caprices de Set. Ils sont passionnés, de fervents idéologues qui prêchent la parole de Set. Cette lignée est connue pour convertir autrui de force au culte de Set à travers la peur, la torture et l’intimidation."},
+                    new Traduction{LCID = 1036, Key = EnumVipers.ENUM_SET_VIPERS_WEAKNESS, Text = null},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Bloodlines.Add(new Bloodline
+                {
+                    BloodlineKey = EnumTlacique.ENUM_SET_TLACIQUE,
+                    Clan = context.Clans.Where(x => x.ClanKey == EnumSet.CLAN_SET).FirstOrDefault(),
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumObfuscate.OBFUSCATE_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY || disci.DisciplineKey == EnumProtean.PROTEAN_KEY select disci).ToList(),
+                    History = EnumTlacique.ENUM_SET_TLACIQUE_HISTORY,
+                    Weakness = EnumTlacique.ENUM_SET_TLACIQUE_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumTlacique.ENUM_SET_TLACIQUE, Text = "Tlacique"},
+                    new Traduction{LCID = 1036, Key = EnumTlacique.ENUM_SET_TLACIQUE_HISTORY, Text = "Ces vampires revendiquent descendre d’un aspect aztèque de Set qu’ils appellent \"Tezcatlipoca\", le dieu de la nuit et de la magie noire. Fondé en Amérique du Sud avant l’arrivée des conquistadors espagnols, la propagation des Setites sur ce continent durant des siècles avant que les Amériques soient découvertes reste un mystère.<br />Les Tlaciques natifs résistèrent à la colonisation et combattirent sauvagement contre les envahisseurs vampires d’Europe. À la fin, ils furent surpassés par les forces Lasombras et Ventrues souhaitant une tête de pont dans le Nouveau Monde. La lignée survécut, se retranchant dans les profondeurs inconnues des jungles sud-américaines. De là, ils redoublèrent leurs attaques contre tous les vampires européens, gardant secrets leurs temples où les anciennes traditions − et les anciens dieux − sont toujours vénérés."},
+                    new Traduction{LCID = 1036, Key = EnumTlacique.ENUM_SET_TLACIQUE_WEAKNESS, Text = null},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+                #endregion
+
+                #region Lignée Gangrel
+                context.Bloodlines.Add(new Bloodline
+                {
+                    BloodlineKey = EnumCoyote.ENUM_GANGREL_COYOTE,
+                    Clan = context.Clans.Where(x => x.ClanKey == EnumGangrel.CLAN_GANGREL).FirstOrDefault(),
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumCelerity.CELERITY_KEY || disci.DisciplineKey == EnumObfuscate.OBFUSCATE_KEY || disci.DisciplineKey == EnumProtean.PROTEAN_KEY select disci).ToList(),
+                    History = EnumCoyote.ENUM_GANGREL_COYOTE_HISTORY,
+                    Weakness = EnumCoyote.ENUM_GANGREL_COYOTE_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumCoyote.ENUM_GANGREL_COYOTE_NAME, Text = "Coyotes"},
+                    new Traduction{LCID = 1036, Key = EnumCoyote.ENUM_GANGREL_COYOTE_HISTORY, Text = "Les Coyotes, populairement connus comme « Gangrels Urbains », sont les ultimes prédateurs urbains. Leur lignée commença il y a plusieurs siècles, mais devint vraiment proéminente durant la Révolution Industrielle, lorsque l’expansion urbaine et la technologie moderne ont changé le monde. Les Coyotes étaient autrefois uniquement dans le Sabbat, mais sont maintenant parfois Autarchs ou Anarchs et même occasionnellement membres de la Camarilla. Contrairement à la plupart des Gangrels, ils sont très à l’aise dans cet environnement. Ce sont principalement de jeunes Vampires modernes, choisissant de chasser leurs proies dans les villes et de tester les limites de leurs pouvoirs Vampiriques."},
+                    new Traduction{LCID = 1036, Key = EnumCoyote.ENUM_GANGREL_COYOTE_WEAKNESS, Text = null},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+
+                context.Bloodlines.Add(new Bloodline
+                {
+                    BloodlineKey = EnumAhrimane.ENUM_GANGREL_AHRIMANE,
+                    Clan = context.Clans.Where(x => x.ClanKey == EnumGangrel.CLAN_GANGREL).FirstOrDefault(),
+                    Disciplines = (from disci in context.Disciplines where disci.DisciplineKey == EnumAnimalism.ANIMALISM_KEY || disci.DisciplineKey == EnumPresence.PRESENCE_KEY select disci).ToList(),
+                    History = EnumAhrimane.ENUM_GANGREL_AHRIMANE_HISTORY,
+                    Weakness = EnumAhrimane.ENUM_GANGREL_AHRIMANE_WEAKNESS
+                });
+
+                new List<Traduction>
+                {
+                    new Traduction{LCID = 1036, Key = EnumAhrimane.ENUM_GANGREL_AHRIMANE_NAME, Text = "Ahrimanes"},
+                    new Traduction{LCID = 1036, Key = EnumAhrimane.ENUM_GANGREL_AHRIMANE_HISTORY, Text = "Les Arhimanes forment un groupe rare de Gangrel uniquement femelles du sud des Etats-Unis. Ces Gangrels sont extrêmement chamaniques et ont un lien peu commun avec les esprits de toutes sortes. Elles sont aussi secrètes qu’extrêmement violentes. Seules les joueuses peuvent choisir cet atout. Bien que le groupe tienne ses origines du Sabbat, les Ahrimanes sont trop rares pour vraiment se réclamer d’une secte. Les Ahrimanes choisissent souvent de devenir Autarchs."},
+                    new Traduction{LCID = 1036, Key = EnumAhrimane.ENUM_GANGREL_AHRIMANE_WEAKNESS, Text = null},
+                }.ForEach(t =>
+                {
+                    context.Traductions.AddOrUpdate(t);
+                });
+                #endregion
             }
         }
     }

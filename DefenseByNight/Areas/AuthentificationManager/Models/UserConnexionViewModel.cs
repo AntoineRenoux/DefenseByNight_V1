@@ -15,8 +15,5 @@ namespace DefenseByNight.Areas.AuthentificationManager.Models
 
         [HiddenInput(DisplayValue = false)]
         public string ReturnUrl { get; set; }
-
-        [Required]
-        public DateTimeOffset BirthDay { get; set; }
     }
 }

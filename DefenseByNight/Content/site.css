@@ -3,6 +3,14 @@
     src: url('../fonts/Northwood High.ttf');
 }
 
+body {
+    margin: 0;
+}
+
+img.sizable {
+    width: 100%;
+}
+
 a.anchor {
     display: block;
     position: relative;
@@ -10,38 +18,12 @@ a.anchor {
     visibility: hidden;
 }
 
-.topDisciplines {
-    position: fixed;
-}
-
-.navbarScroll {
-    overflow-x: auto;
-    height: calc(100vh);
-}
-
-body {
-    margin-top: 50px;
-    margin-bottom: 30px;
-}
-
-.dotPower {
-    padding-bottom: 15px;
-}
-
-    .dotPower > i {
-        font-size: 10px;
-    }
-
-div.ancorButtonToTop {
-    position: fixed;
-    bottom: 0;
-    margin-bottom: 60px;
-    z-index: 1;
+.containerHeight{
+    height: calc(100vh - 56px);
 }
 
 .title {
     font-weight: bold;
-    display: initial;
 }
 
 .footer-style {
@@ -52,10 +34,6 @@ div.ancorButtonToTop {
     text-align: center;
     font-size: 60px;
     margin-top: 0px;
-}
-
-img.sizable {
-    width: 100%;
 }
 
 .clanDiv{
@@ -73,4 +51,8 @@ img.sizable {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+#navbarMain{
+    z-index: 5;
 }

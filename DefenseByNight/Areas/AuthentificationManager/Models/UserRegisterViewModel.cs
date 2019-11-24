@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BLL.Enum;
+using DefenseByNight.Helpers;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DefenseByNight.Areas.AuthentificationManager.Models
 {
@@ -12,6 +15,11 @@ namespace DefenseByNight.Areas.AuthentificationManager.Models
         [MinLength(8)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Required]
+        [Compare("Password")]
+        [DataType(DataType.Password)]
+        public string ConfirmePassword { get; set; }
 
         [Required]
         [MaxLength(20)]
@@ -28,5 +36,9 @@ namespace DefenseByNight.Areas.AuthentificationManager.Models
         [Required]
         [DataType(DataType.PhoneNumber)]
         public string MobilePhone { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTimeOffset BirthDay { get; set; }
     }
 }

@@ -10,31 +10,30 @@
     @RenderSection("head", required: false)
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+    <img class="sizable" src="~/Content/Images/FondDefenseByNight-01.jpg" />
+
+    <nav id="navbarMain" class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text, "Login", "Auth", new { area = "AuthentificationManager" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION).Text, "Register", "Auth", new { area = "AuthentificationManager" }, new { @class = "nav-link" })
+                    </li>
+                </ul>
             </div>
-            <ul class="nav navbar-nav navbar-right navbar-collapse collapse">
-                <li class="dropdown">
-                    @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text, "Login", "Auth", new { area = "AuthentificationManager" }, null)
-                </li>
-                <li class="dropdown">
-                    @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION).Text, "Register", "Auth", new { area = "AuthentificationManager" }, null)
-                </li>
-            </ul>
         </div>
-    </div>
+    </nav>
+
     <div class="body-content">
         @RenderBody()
-        <footer class="navbar-fixed-bottom text-center footer-style">
-            <p>&copy; @DateTimeOffset.Now.Year - @Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text - powered by Zesso</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -43,7 +42,24 @@
     @Scripts.Render("~/bundles/unbostrusive-ajax")
     @Scripts.Render("~/bundles/bootstrap")
 
-    @Scripts.Render("~/bundles/custom-validator-auth")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.onscroll = function () { myFunction() };
+
+            var navbar = document.getElementById("navbarMain");
+
+            var sticky = navbar.offsetTop;
+            function myFunction() {
+                if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("fixed-top")
+                } else {
+                    navbar.classList.remove("fixed-top");
+                }
+            }
+        });
+    </script>
 
     @RenderSection("scripts", required: false)
 </body>
