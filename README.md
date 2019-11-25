@@ -1,7 +1,14 @@
 # DefenseByNight
-Site permettant le traitement des AIP et la gestion de la cité de la Défense
+Outil de gestion de l'association Conte d'Ys évoluant dans le M.E.T de White Wolf.
 
 **Features**
+
+- Règles : 
+ * Disciplines / Pouvoirs
+ * Clans / Lignées
+ * Atouts
+
+**A venir**
 
 - Gestion des fiches de personnages
 
