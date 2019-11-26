@@ -10,7 +10,7 @@ namespace DAL
     {
         public DbnContext(): base("name=LocalContext")
         {
-
+            Database.SetInitializer(new DbnContextInitializer());
         }
 
         #region References

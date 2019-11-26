@@ -1,10 +1,6 @@
 ﻿body {
 }
 
-.dotPower {
-    padding-top: 15px;
+i.fa-circle {
+    font-size: 10px;
 }
-
-    .dotPower > i {
-        font-size: 10px;
-    }

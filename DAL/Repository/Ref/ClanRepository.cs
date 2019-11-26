@@ -37,7 +37,7 @@ namespace DAL.Repository.Ref
                 });
             });
 
-            return clansDto.OrderByDescending(x => x.RarityClan).ThenBy(x => x.Name).ToList();
+            return clansDto.OrderBy(x => x.Name).ToList();
         }
     }
 }

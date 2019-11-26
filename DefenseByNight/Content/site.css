@@ -1,9 +1,4 @@
-﻿@font-face {
-    font-family: Northwood High;
-    src: url('../fonts/Northwood High.ttf');
-}
-
-body {
+﻿body {
     margin: 0;
 }
 
@@ -18,16 +13,12 @@ a.anchor {
     visibility: hidden;
 }
 
-.containerHeight{
+.containerHeight {
     height: calc(100vh - 56px);
 }
 
 .title {
     font-weight: bold;
-}
-
-.footer-style {
-    background-color: black;
 }
 
 #countdown {
@@ -36,23 +27,16 @@ a.anchor {
     margin-top: 0px;
 }
 
-.clanDiv{
-    padding-bottom: 15px;
-}
-
 .articleJustify {
     text-align: justify;
     text-justify: auto;
 }
 
-.vertical-center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+.sticky-offset {
+    top: 56px;
 }
 
-#navbarMain{
-    z-index: 5;
+.navbar-height{
+    height: calc(100vh - 56px);
+    overflow-x: auto;
 }

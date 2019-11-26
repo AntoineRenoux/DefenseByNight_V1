@@ -111,6 +111,7 @@
     <Compile Include="BaseIdentityRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="DbnContext.cs" />
+    <Compile Include="DbnDBInitializer.cs" />
     <Compile Include="Helpers\TraductionHelper.cs" />
     <Compile Include="IDataBaseContext.cs" />
     <Compile Include="Interfaces\Ref\IAtoutRepository.cs" />
@@ -129,23 +130,6 @@
     <Compile Include="Mapping\PowerEntityToDtoProfile.cs" />
     <Compile Include="Mapping\TraductionEntityToDtoProfile.cs" />
     <Compile Include="Mapping\UserEntityToDtoProfile.cs" />
-    <Compile Include="Migrations\201909241158053_InitialCreate.cs" />
-    <Compile Include="Migrations\201909241158053_InitialCreate.Designer.cs">
-      <DependentUpon>201909241158053_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909241342004_Affiliation.cs" />
-    <Compile Include="Migrations\201909241342004_Affiliation.Designer.cs">
-      <DependentUpon>201909241342004_Affiliation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909241847448_Clans.cs" />
-    <Compile Include="Migrations\201909241847448_Clans.Designer.cs">
-      <DependentUpon>201909241847448_Clans.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909241920005_Setting.cs" />
-    <Compile Include="Migrations\201909241920005_Setting.Designer.cs">
-      <DependentUpon>201909241920005_Setting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AppRole.cs" />
     <Compile Include="Models\Ref\Affiliate.cs" />
     <Compile Include="Models\Ref\Atout.cs" />
@@ -180,20 +164,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909241158053_InitialCreate.resx">
-      <DependentUpon>201909241158053_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909241342004_Affiliation.resx">
-      <DependentUpon>201909241342004_Affiliation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909241847448_Clans.resx">
-      <DependentUpon>201909241847448_Clans.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909241920005_Setting.resx">
-      <DependentUpon>201909241920005_Setting.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

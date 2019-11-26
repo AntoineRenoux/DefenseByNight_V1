@@ -12,7 +12,7 @@
 
     <img class="sizable" src="~/Content/Images/FondDefenseByNight-01.jpg" />
 
-    <nav id="navbarMain" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             @Html.ActionLink(Translate.GetTraduction(EnumRessource.GEN_LBL_SITE_NAME).Text, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,23 +57,6 @@
     @Scripts.Render("~/bundles/bootstrap")
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            window.onscroll = function () { myFunction() };
-
-            var navbar = document.getElementById("navbarMain");
-
-            var sticky = navbar.offsetTop;
-            function myFunction() {
-                if (window.pageYOffset >= sticky) {
-                    navbar.classList.add("fixed-top")
-                } else {
-                    navbar.classList.remove("fixed-top");
-                }
-            }
-        });
-    </script>
 
     @RenderSection("scripts", required: false)
 

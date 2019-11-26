@@ -11,6 +11,9 @@
                 @Translate.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION).Text
             </h1>
             <hr />
+            <div class="col-sm-12 alert alert-danger" role="alert" @(ViewData.ModelState.IsValid ? "hidden" : "")>
+                @Html.ValidationSummary(true)
+            </div>
             @using (Html.BeginForm("Register", "Auth", FormMethod.Post, new { id = "registrationForm" }))
             {
                 <div class="form-row">
