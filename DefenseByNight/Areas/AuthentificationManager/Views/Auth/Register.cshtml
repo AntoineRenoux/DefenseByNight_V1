@@ -11,59 +11,61 @@
                 @Translate.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION).Text
             </h1>
             <hr />
-            <div class="col-sm-12 alert alert-danger" role="alert" @(ViewData.ModelState.IsValid ? "hidden" : "")>
+            <div class="col-12 alert alert-danger" role="alert" @(ViewData.ModelState.IsValid ? "hidden" : "")>
                 @Html.ValidationSummary(true)
             </div>
-            @using (Html.BeginForm("Register", "Auth", FormMethod.Post, new { id = "registrationForm" }))
+            @using (Html.BeginForm("Register", "Auth", FormMethod.Post, new { @class = "cmxform", id = "registerForm" }))
             {
                 <div class="form-row">
                     <div class="form-group col-md-4 col-sm-12">
                         <label for="FirstName">@Translate.GetTraduction(EnumRessource.GEN_LBL_FIRSTNAME).Text</label>
-                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "François" })
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "François", required = "true" })
                         @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-4 col-sm-12">
                         <label for="LastName">@Translate.GetTraduction(EnumRessource.GEN_LBL_LASTNAME).Text</label>
-                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Villon" })
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Villon", required = "true" })
                         @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-4 col-sm-12">
                         <label for="Alias">@Translate.GetTraduction(EnumRessource.GEN_LBL_ALIAS).Text</label>
-                        @Html.TextBoxFor(m => m.Alias, new { @class = "form-control", placeholder = "KikooDarkDuLouvre" })
+                        @Html.TextBoxFor(m => m.Alias, new { @class = "form-control", placeholder = "LeSeulPrinceDeFrance75", required = "true" })
                         @Html.ValidationMessageFor(m => m.Alias, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="MobilePhone">@Translate.GetTraduction(EnumRessource.GEN_LBL_MOBILE_PHONE).Text</label>
-                        @Html.TextBoxFor(m => m.MobilePhone, new { @class = "form-control", placeholder = "0665077803" })
-                        @Html.ValidationMessageFor(m => m.MobilePhone, "", new { @class = "text-danger " })
+                        @Html.TextBoxFor(m => m.MobilePhone, new { @class = "form-control", placeholder = "06XXXXXXXX", required = "true" })
+                        @Html.ValidationMessageFor(m => m.MobilePhone, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col">
                         <label for="BirthDay">@Translate.GetTraduction(EnumRessource.GEN_LBL_BIRTHDATE).Text</label>
-                        @Html.TextBoxFor(m => m.BirthDay, new { @class = "form-control", placeholder = "06/08/1431" })
-                        @Html.ValidationMessageFor(m => m.BirthDay, "", new { @class = "text-danger " })
+                        @Html.TextBoxFor(m => m.BirthDay, new { @class = "form-control", type = "date", placeholder = "06/08/1431", required = "true" })
+                        @Html.ValidationMessageFor(m => m.BirthDay, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="Email">@Translate.GetTraduction(EnumRessource.GEN_LBL_EMAIL).Text</label>
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "niquelajustice@mascarade.fr" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger " })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "villon.françois@mascarade.fr", required = "true" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6 col-sm-12">
                         <label for="Password">@Translate.GetTraduction(EnumRessource.GEN_LBL_PASSWORD).Text</label>
-                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password", placeholder = "***********" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger " })
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password", placeholder = "***********", required = "true" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-6 col-sm-12">
                         <label for="ConfirmePassword">@Translate.GetTraduction(EnumRessource.GEN_LBL_CONFIRM_PASSWORD).Text</label>
-                        @Html.TextBoxFor(m => m.ConfirmePassword, new { @class = "form-control", type = "password", placeholder = "***********" })
-                        @Html.ValidationMessageFor(m => m.ConfirmePassword, "", new { @class = "text-danger " })
+                        @Html.TextBoxFor(m => m.ConfirmePassword, new { @class = "form-control", type = "password", placeholder = "***********", required = "true" })
+                        @Html.ValidationMessageFor(m => m.ConfirmePassword, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary col">@Translate.GetTraduction(EnumRessource.GEN_LBL_REGISTRATION).Text</button>
                 </div>
@@ -72,9 +74,10 @@
     </div>
 </div>
 
-
 @section scripts{
     <script>
-        $("img.sizable").hide();
+        $(document).ready(function () {
+            $("img.sizable").hide();
+        });
     </script>
 }

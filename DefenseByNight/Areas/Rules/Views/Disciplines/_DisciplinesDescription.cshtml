@@ -1,97 +1,93 @@
 ﻿
 @model List<DisciplineViewModel>
 
+<div class="tab-content">
 
-<h1 class="title">
-    @Translate.GetTraduction(EnumRessource.GEN_LBL_DISCIPLINE).Text
-</h1>
-
-<hr />
-
-@foreach (var discipline in Model)
-{
-    <div class="text-center">
-        <h3 class="title">
-            <a class="anchor" name="@discipline.DisciplineName"></a>
-            @discipline.DisciplineName
-        </h3>
-    </div>
-    <hr />
-    <div>
-        <p class="text-justify">
-            @Html.Raw(discipline.Description)
-        </p>
-    </div>
-
-    <div>
-        <p class="text-center">
-            <strong> @Translate.GetTraduction(EnumRessource.GEN_LBL_TEST_SCORE).Text : </strong>
-            @Html.Raw(discipline.TestScore)
-        </p>
-    </div>
-
-    <div class="row">
-        @foreach (var power in discipline.Powers)
-        {
-            <div class="col">
-                <a href="#@power.PowerName">@power.PowerName</a>
-            </div>
-        }
-    </div>
-
-    <hr />
-
-    foreach (var power in discipline.Powers)
+    @foreach (var discipline in Model)
     {
-        <div class="row">
-            <div class="col text-center">
-                <h2 class="title">
-                    <a class="anchor" name="@power.PowerName"></a>
-                    <span>
-                        @for (int i = 0; i < power.Level; i++)
-                        {
-                            <i class="fas fa-circle"></i>
-                        }
-                    </span>
-                    @power.PowerName
-                </h2>
+        <div id="@discipline.DisciplineKey" aria-labelledby="link_@discipline.DisciplineKey" class="tab-pane fade show @(Model.IndexOf(discipline) == 0 ? "active" : "")" role="tabpanel">
+            <div class="text-center">
+                <h3 class="title">
+                    <a class="anchor" name="@discipline.DisciplineName"></a>
+                    @discipline.DisciplineName
+                </h3>
             </div>
-
-            <div class="col-md-12">
+            <hr />
+            <div>
                 <p class="text-justify">
-                    @Html.Raw(power.Description)
+                    @Html.Raw(discipline.Description)
                 </p>
             </div>
 
-            <div class="col-md-12">
-                <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_SYSTEM).Text</h4>
-                <p class="text-justify">
-                    @Html.Raw(power.System)
+            <div>
+                <p class="text-center">
+                    <strong> @Translate.GetTraduction(EnumRessource.GEN_LBL_TEST_SCORE).Text : </strong>
+                    @Html.Raw(discipline.TestScore)
                 </p>
             </div>
 
-            @if (power.ExceptionalSuccess != null)
+            <div class="row">
+                @foreach (var power in discipline.Powers)
+                {
+                    <div class="col">
+                        <a href="#@power.PowerName">@power.PowerName</a>
+                    </div>
+                }
+            </div>
+
+            <hr />
+
+            @foreach (var power in discipline.Powers)
             {
-                <div class="col-md-12">
-                    <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_EXEPTIONNAL_SUCCESS).Text</h4>
-                    <p class="text-justify">
-                        @Html.Raw(power.ExceptionalSuccess)
-                    </p>
+                <div class="row">
+                    <div class="col text-center">
+                        <h2 class="title">
+                            <a class="anchor" name="@power.PowerName"></a>
+                            <span>
+                                @for (int i = 0; i < power.Level; i++)
+                                {
+                                    <i class="fas fa-circle"></i>
+                                }
+                            </span>
+                            @power.PowerName
+                        </h2>
+                    </div>
+
+                    <div class="col-md-12">
+                        <p class="text-justify">
+                            @Html.Raw(power.Description)
+                        </p>
+                    </div>
+
+                    <div class="col-md-12">
+                        <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_SYSTEM).Text</h4>
+                        <p class="text-justify">
+                            @Html.Raw(power.System)
+                        </p>
+                    </div>
+
+                    @if (power.ExceptionalSuccess != null)
+                    {
+                        <div class="col-md-12">
+                            <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_EXEPTIONNAL_SUCCESS).Text</h4>
+                            <p class="text-justify">
+                                @Html.Raw(power.ExceptionalSuccess)
+                            </p>
+                        </div>
+                    }
+
+                    @if (power.Focus != null)
+                    {
+                        <div class="col-md-12">
+                            <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_FOCUS).Text : @power.Focus.FocusName</h4>
+                            <p class="text-justify">
+                                @Html.Raw(power.FocusEffect)
+                            </p>
+                        </div>
+                    }
+
                 </div>
             }
-
-            @if (power.Focus != null)
-            {
-                <div class="col-md-12">
-                    <h4>@Translate.GetTraduction(EnumRessource.GEN_LBL_FOCUS).Text : @power.Focus.FocusName</h4>
-                    <p class="text-justify">
-                        @Html.Raw(power.FocusEffect)
-                    </p>
-                </div>
-            }
-
         </div>
-        <hr />
     }
-}
-
+</div>

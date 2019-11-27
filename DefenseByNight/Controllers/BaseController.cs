@@ -8,11 +8,8 @@ namespace DefenseByNight.Controllers
 {
     public abstract class BaseController : Controller
     {
-        protected readonly ITraductionService _traductionService;
-
-        public BaseController(ITraductionService traductionService)
+        public BaseController()
         {
-            _traductionService = traductionService;
         }
 
         public AppUserModel CurrentUser

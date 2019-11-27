@@ -165,11 +165,7 @@
     <Content Include="Areas\AuthentificationManager\Views\web.config" />
     <Content Include="Areas\AuthentificationManager\Views\_ViewStart.cshtml" />
     <Content Include="Areas\AuthentificationManager\Views\Auth\Register.cshtml" />
-    <Content Include="Areas\Character\Views\web.config" />
     <Content Include="Areas\AuthentificationManager\Views\Auth\Login.cshtml" />
-    <Content Include="Areas\Character\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Character\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Character\Views\Create\Index.cshtml" />
     <Content Include="Areas\Rules\Views\web.config" />
     <Content Include="Areas\Rules\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Rules\Views\Disciplines\Index.cshtml" />
@@ -207,9 +203,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -237,9 +233,6 @@
     <Compile Include="Areas\AuthentificationManager\Controllers\AuthController.cs" />
     <Compile Include="Areas\AuthentificationManager\AuthentificationManagerAreaRegistration.cs" />
     <Compile Include="Areas\AuthentificationManager\LoginBundleConfig.cs" />
-    <Compile Include="Areas\Character\CharacterAreaRegistration.cs" />
-    <Compile Include="Areas\Character\Controllers\CreationController.cs" />
-    <Compile Include="Areas\Character\Models\Character.cs" />
     <Compile Include="Areas\Rules\Controllers\ClansController.cs" />
     <Compile Include="Areas\Rules\Controllers\DisciplinesController.cs" />
     <Compile Include="Areas\Rules\Models\AtoutViewModel.cs" />
@@ -249,6 +242,8 @@
     <Compile Include="Areas\Rules\Models\PowerViewModel.cs" />
     <Compile Include="Areas\Rules\RulesAreaRegistration.cs" />
     <Compile Include="Areas\Rules\RulesBundleConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Filters\CustomAuthorize.cs" />
     <Compile Include="Helpers\Translate.cs" />
     <Compile Include="Mapping\AtoutVmToDtoProfile.cs" />
     <Compile Include="Mapping\ClanVmToDtoProfile.cs" />
@@ -289,6 +284,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Error\AccessDenied.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -11,7 +11,7 @@
                 @Translate.GetTraduction(EnumRessource.GEN_LBL_CONNEXION).Text
             </h1>
             <hr />
-            <div class="col-sm-12 alert alert-danger" role="alert" @(ViewData.ModelState.IsValid ? "hidden" : "")>
+            <div class="col-12 alert alert-danger" role="alert" @(ViewData.ModelState.IsValid ? "hidden" : "")>
                 @Html.ValidationSummary(true)
             </div>
             <div class="col">
@@ -38,6 +38,8 @@
 
 @section scripts{
     <script>
-        $("img.sizable").hide();
+        $(document).ready(function () {
+            $("img.sizable").hide();
+        });
     </script>
 }

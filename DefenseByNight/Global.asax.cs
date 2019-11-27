@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using BLL.Enum;
+using Tools.Enum;
 using DAL.Ioc;
 using DefenseByNight.App_Start;
 using DefenseByNight.IoC;

@@ -1,4 +1,4 @@
-﻿namespace BLL.Enum
+﻿namespace Tools.Enum
 {
     public static class EnumRessource
     {

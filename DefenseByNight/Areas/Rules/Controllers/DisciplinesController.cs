@@ -5,16 +5,16 @@ using DefenseByNight.Controllers;
 using DTO;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Tools.Enum;
 
 namespace DefenseByNight.Areas.Rules.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = EnumRoles.MEMBER)]
     public class DisciplinesController : BaseController
     {
         private readonly IDisciplineService disciplineService;
 
-        public DisciplinesController(ITraductionService traductionService
-            , IDisciplineService disciplineService) : base(traductionService)
+        public DisciplinesController(IDisciplineService disciplineService)
         {
             this.disciplineService = disciplineService;
         }

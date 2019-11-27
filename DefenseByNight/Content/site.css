@@ -2,6 +2,10 @@
     margin: 0;
 }
 
+.main-navbar{
+    z-index: 2000;
+}
+
 img.sizable {
     width: 100%;
 }

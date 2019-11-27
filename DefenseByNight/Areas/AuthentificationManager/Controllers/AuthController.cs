@@ -1,4 +1,4 @@
-﻿using BLL.Enum;
+﻿using Tools.Enum;
 using System.Web.Mvc;
 using DefenseByNight.Areas.AuthentificationManager.Models;
 using System.Security.Claims;
@@ -9,6 +9,7 @@ using Microsoft.Owin.Security;
 using DAL.Models.Identity;
 using DefenseByNight.Controllers;
 using DefenseByNight.Helpers;
+using System;
 
 namespace DefenseByNight.Areas.AuthentificationManager.Controllers
 {
@@ -66,7 +67,7 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
             var authManager = ctx.Authentication;
 
             authManager.SignOut("ApplicationCookie");
-            return RedirectToAction("index", "home");
+            return RedirectToAction("index", "home", new { area = "" });
         }
 
         [HttpGet]
@@ -90,7 +91,8 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
                 LastName = model.LastName,
                 PhoneNumber = model.MobilePhone,
                 UserName = model.Alias,
-                BirthDay = model.BirthDay
+                BirthDay = model.BirthDay,
+                Created = DateTimeOffset.UtcNow
             };
 
             var result = await userManager.CreateAsync(user, model.Password);
@@ -98,6 +100,9 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
             if (result.Succeeded)
             {
                 await SignIn(user);
+                await userManager.AddToRoleAsync(user.Id, EnumRoles.MEMBER);
+                if (user.Email == "ant.renoux@gmail.com")
+                    await userManager.AddToRoleAsync(user.Id, EnumRoles.ADMIN);
                 return RedirectToAction("index", "home", new { area = "" });
             }
 
@@ -124,7 +129,7 @@ namespace DefenseByNight.Areas.AuthentificationManager.Controllers
         {
             if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
             {
-                return Url.Action("index", "home", new { area = ""});
+                return Url.Action("index", "home", new { area = "" });
             }
 
             return returnUrl;

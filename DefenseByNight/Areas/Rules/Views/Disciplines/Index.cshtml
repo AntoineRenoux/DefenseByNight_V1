@@ -10,11 +10,29 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-2">
-            @Html.Partial("_SideMenu")
+        <div class="sidebar-expanded col-3 d-none d-md-block">
+            <div class="sticky-top sticky-offset navbar-height">
+                @Html.Partial("_SideMenu")
+            </div>
         </div>
-        <div class="col-sm-10">
+        <div class="col">
             @Html.Partial("_DisciplinesDescription")
         </div>
     </div>
 </div>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var disciplineKey = window.location.href.split("#")[1];
+
+            if (disciplineKey != "" && disciplineKey != undefined) {
+                $("a[id^='link_'].active").removeClass("active");
+                $("div[role='tabpanel'].active").removeClass("active");
+                $("#link_" + disciplineKey).addClass("active");
+                $("div[role='tabpanel']#" + disciplineKey).addClass("active")
+            }
+        });
+    </script>
+}

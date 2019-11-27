@@ -15,11 +15,11 @@
             <div class="text-center">
                 @foreach (var disciplines in clan.Disciplines)
                 {
-                    <a href="/Rules/Disciplines#@Html.Raw(disciplines.DisciplineName)">@Html.Raw(disciplines.DisciplineName)</a>
+                    <a href="/Rules/Disciplines#@Html.Raw(disciplines.DisciplineKey)">@Html.Raw(disciplines.DisciplineName)</a>
 
                     if (clan.Disciplines.IndexOf(disciplines) < clan.Disciplines.Count - 1)
                     {
-                        <span class="glyphicon glyphicon-minus"></span>
+                        <i class="fas fa-minus"></i>
                     }
                 }
             </div>

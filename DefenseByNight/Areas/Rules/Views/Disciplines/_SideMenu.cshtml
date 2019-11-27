@@ -1,14 +1,8 @@
 ﻿@model List<DisciplineViewModel>
 
-<div class="nav">
-    <div class="row">
-        <a href="#">@Translate.GetTraduction(EnumRessource.GEN_LBL_DISCIPLINE).Text</a>
-        <hr />
-        @foreach (var discipline in Model)
-        {
-            <div class="col-sm-12">
-                <a href="#@discipline.DisciplineName">@discipline.DisciplineName</a>
-            </div>
-        }
-    </div>
+<div class="nav flex-column nav-pills align-content-end" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    @foreach (var discipline in Model)
+    {
+        <a id="link_@discipline.DisciplineKey" href="#@discipline.DisciplineKey" class="nav-link @(Model.IndexOf(discipline) == 0 ? "active" : "")" data-toggle="pill" role="tab" aria-controls="v-pills-home" aria-selected="false">@discipline.DisciplineName</a>
+    }
 </div>

@@ -1,36 +1,13 @@
 ﻿@model List<ClanViewModel>
 
+<div class="nav flex-column nav-pills align-content-end text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    @foreach (var rarityClan in Enum.GetValues(typeof(Tools.EnumRarityClan)))
+    {
+        <i class="fas fa-ankh"></i>
 
-    <div class="nav flex-column nav-pills align-content-end" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        @foreach (var rarityClan in Enum.GetValues(typeof(Tools.EnumRarityClan)))
+        foreach (var clan in Model.Where(x => x.RarityClan == (Tools.EnumRarityClan)rarityClan))
         {
-            switch (rarityClan.ToString())
-            {
-                case "Major":
-                    <span>
-                        <i class="fas fa-ankh"></i>
-                        @Translate.GetTraduction(EnumRessource.GEN_LBL_MAJOR_CLAN).Text
-                    </span>
-                    break;
-                case "Minor":
-                    <span>
-                        <i class="fas fa-ankh"></i>
-                        @Translate.GetTraduction(EnumRessource.GEN_LBL_MINOR_CLAN).Text
-                    </span>
-                    break;
-                case "Rare":
-                    <span>
-                        <i class="fas fa-ankh"></i>
-                        @Translate.GetTraduction(EnumRessource.GEN_LBL_RARE_CLAN).Text
-                    </span>
-                    break;
-                default:
-                    break;
-            }
-
-            foreach (var clan in Model.Where(x => x.RarityClan == (Tools.EnumRarityClan)rarityClan))
-            {
-                <a id="link_@clan.ClanKey" href="#@clan.ClanKey" class="nav-item" data-toggle="pill" role="tab" aria-controls="v-pills-home" aria-selected="false">@clan.Name</a>
-            }
+            <a id="link_@clan.ClanKey" href="#@clan.ClanKey" class="nav-link @(Model.IndexOf(clan) == 0 ? "active" : "")" data-toggle="pill" role="tab" aria-controls="v-pills-home" aria-selected="false">@clan.Name</a>
         }
-    </div>
+    }
+</div>

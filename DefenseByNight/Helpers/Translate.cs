@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using BLL.Interfaces;
 using BLL.Services;
-using DAL.Interfaces;
 using DAL.Interfaces.Ref;
 using DAL.Repository.Ref;
 using DTO;

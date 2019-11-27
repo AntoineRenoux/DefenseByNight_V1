@@ -1,12 +1,23 @@
-﻿using BLL.Enum;
-using DefenseByNight.Helpers;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Tools.Enum;
 
 namespace DefenseByNight.Areas.AuthentificationManager.Models
 {
     public class UserRegisterViewModel
     {
+        [Required]
+        [MaxLength(20)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [MaxLength(20)]
+        public string LastName { get; set; }
+
+        [Required]
+        [MaxLength(20)]
+        public string Alias { get; set; }
+
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
@@ -20,19 +31,7 @@ namespace DefenseByNight.Areas.AuthentificationManager.Models
         [Compare("Password")]
         [DataType(DataType.Password)]
         public string ConfirmePassword { get; set; }
-
-        [Required]
-        [MaxLength(20)]
-        public string FirstName { get; set; }
-
-        [Required]
-        [MaxLength(20)]
-        public string LastName { get; set; }
-
-        [Required]
-        [MaxLength(20)]
-        public string Alias { get; set; }
-
+      
         [Required]
         [DataType(DataType.PhoneNumber)]
         public string MobilePhone { get; set; }

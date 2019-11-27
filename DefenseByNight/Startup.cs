@@ -13,9 +13,7 @@ namespace DefenseByNight
 {
     public partial class Startup
     {
-
         public static Func<UserManager<AppUser>> UserManagerFactory { get; private set; }
-
 
         public void Configuration(IAppBuilder app)
         {

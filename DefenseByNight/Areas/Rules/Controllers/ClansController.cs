@@ -5,16 +5,16 @@ using DefenseByNight.Controllers;
 using DTO;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Tools.Enum;
 
 namespace DefenseByNight.Areas.Rules.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = EnumRoles.MEMBER)]
     public class ClansController : BaseController
     {
         private readonly IClanService clanService;
 
-        public ClansController(ITraductionService traductionService,
-            IClanService clanService) : base(traductionService)
+        public ClansController(IClanService clanService)
         {
             this.clanService = clanService;
         }

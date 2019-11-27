@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tools
+namespace Tools.Enum
 {
     public class EnumAffiliate
     {
